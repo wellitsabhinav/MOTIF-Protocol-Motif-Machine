@@ -21,7 +21,7 @@ def run(gate, output=None, synthesize=False):
     objects = subprocess.check_output(["git", "rev-parse", "--git-path", "objects"], cwd=root, text=True).strip()
     alternates = destination / ".git" / "objects" / "info" / "alternates"
     alternates.parent.mkdir(parents=True, exist_ok=True)
-    alternates.write_text((root / objects).resolve().as_posix() + "\n")
+    alternates.write_bytes((root / objects).resolve().as_posix().encode() + b"\n")
     subprocess.run(["git", "update-ref", "HEAD", SNAPSHOT], cwd=destination, check=True)
     subprocess.run(["git", "read-tree", SNAPSHOT], cwd=destination, check=True)
     env = os.environ.copy()
@@ -38,6 +38,8 @@ def run(gate, output=None, synthesize=False):
         command.append("--synthesize")
     subprocess.run(command, cwd=destination, env=env, check=True)
     data = json.loads(output.read_text())
+    if data["source_sha"] != SNAPSHOT:
+        raise AssertionError("Historical fixture provenance is not the pinned snapshot")
     if gate == 2 and data["classification"] != "MOTIF_BYTE_EXCHANGE_PROTOCOL_SPECIFIC":
         raise AssertionError("Historical negative result changed")
     return data
