@@ -2,6 +2,8 @@ import os
 import random
 import shutil
 import subprocess
+from collections import deque
+from dataclasses import replace
 from pathlib import Path
 
 from motif import Engine
@@ -119,6 +121,13 @@ def core_vectors(config, name, reference=False):
         wire.hold(p1=1)
         engine.step(wire.pins, abort=True)
         wire.hold(p0=1)
+        if config.watchdog:
+            wire.hold(p0=0)
+            wire.hold(100)
+            assert not engine.active and not wire.trace[-1]["oe"]
+            wire.hold(p0=1)
+            wire.hold(p0=0)
+            assert engine.active
     elif name == "uart":
         for value in [0, 255, 85, 170, 37]:
             wire.uart(value, period=config.period)
@@ -149,14 +158,48 @@ initial begin #4;clk=1;#1;clk=0;rst_n=1;
     return header + "\n".join(lines) + f'\n$display("PASS {name} core: {len(lines)} model/RTL cycles");$finish;end endmodule\n'
 
 
+def fifo_vectors(seed=73):
+    rng = random.Random(seed)
+    queue = deque()
+    overflow = underflow = False
+    lines = []
+    for cycle in range(1200):
+        reset, push, pop = rng.randrange(40) == 0, bool(rng.randrange(2)), bool(rng.randrange(2))
+        data = rng.randrange(256)
+        if reset:
+            queue.clear()
+            overflow = underflow = False
+        else:
+            removed = pop and bool(queue)
+            if removed:
+                queue.popleft()
+            elif pop:
+                underflow = True
+            if push:
+                if len(queue) < 4:
+                    queue.append(data)
+                else:
+                    overflow = True
+        head = queue[0] if queue else 0
+        lines.append(f"rst_n={int(not reset)};push={int(push)};pop={int(pop)};data=8'd{data};#4;clk=1;#1;if(count!==3'd{len(queue)} || head!==8'd{head} || overflow!==1'b{int(overflow)} || underflow!==1'b{int(underflow)})$fatal(1,\"FIFO seed {seed} cycle {cycle}\");clk=0;#1;")
+    return """module tb;
+reg clk=0,rst_n=0,push=0,pop=0;reg [7:0] data=0;
+wire [7:0] head;wire [2:0] count;wire full,empty,overflow,underflow;
+motif_fifo fifo(clk,rst_n,push,pop,data,head,count,full,empty,overflow,underflow);
+initial begin #4;clk=1;#1;clk=0;rst_n=1;
+""" + "\n".join(lines) + '\n$display("PASS FIFO: 1200 vectors, seed 73");$finish;end endmodule\n'
+
+
 def run():
     simulate("shifts", primitive_vectors())
     simulate("guardian", guardian_vectors())
+    simulate("fifo", fifo_vectors())
     for name, config in [("spi", spi.target()), ("uart", uart.receiver(32)), ("timed_stream", timed_stream.receiver(16))]:
         simulate(name, core_vectors(config, name))
         simulate(name + "_reference", core_vectors(config, name, reference=True))
     simulate("host", Path("test/host_tb.sv").read_text(encoding="utf-8"))
     simulate("host_reference", Path("test/host_tb.sv").read_text(encoding="utf-8").replace("tt_um_wellitsabhinav_motif dut", "motif_reference_top dut"))
+    simulate("watchdog_core", core_vectors(replace(spi.target(), watchdog=32), "spi"))
 
 
 if __name__ == "__main__":

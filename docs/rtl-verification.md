@@ -40,3 +40,9 @@ These counts are not technology area or timing. The current local result has 1,4
 compound-design cells and 1,472 reference cells. That small difference and equal
 tested throughput do not establish an implementation advantage. CMOS5L mapping
 and placement/routing are a separate qualification step. I²C remains model-only.
+
+Additional qualification checks 1,200 randomized FIFO transactions (seed 73),
+including reset, simultaneous push/pop, full and empty conditions. A 5,525-cycle
+SPI trace with a 32-cycle watchdog confirms timeout suppression and rearm only
+after a fresh frame edge. Total integration comparisons now cover 22,015 cycles,
+in addition to primitive vectors and the host transactions.
