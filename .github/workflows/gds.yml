@@ -1,0 +1,36 @@
+name: gds
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gds:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build CMOS5L GDS
+        uses: TinyTapeout/tt-gds-action@3412659307918422f3f0727917cf9b499aaca588
+        with:
+          pdk: ihp-sg13cmos5l
+          tools-ref: d66cf179e7bc4d296362ab7e2e3b344dc3c4f665
+          librelane-version: 3.1.0.dev3
+  precheck:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: TinyTapeout/tt-gds-action/precheck@3412659307918422f3f0727917cf9b499aaca588
+        with:
+          tools-ref: d66cf179e7bc4d296362ab7e2e3b344dc3c4f665
+  gl_test:
+    needs: gds
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: TinyTapeout/tt-gds-action/gl_test@3412659307918422f3f0727917cf9b499aaca588
+  docs:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: TinyTapeout/tt-gds-action/docs@3412659307918422f3f0727917cf9b499aaca588
+        with:
+          tools-ref: d66cf179e7bc4d296362ab7e2e3b344dc3c4f665
