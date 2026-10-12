@@ -1,6 +1,6 @@
-"""Independent executable semantics of the committed v2 contract."""
+"""Independent executable semantics of the preregistered bounded contract."""
 from ..transaction import (Entry, RX, DECIDE, RESPOND, HANDOFF, WAIT, TX,
-                           HALT, CONTINUE, ALWAYS, TIMER, CHAIN)
+                           HALT, CONTINUE, ALWAYS, TIMER, CHAIN, INTERRUPT_BRANCH, is_temporal)
 
 
 class FieldShift:
@@ -27,12 +27,43 @@ class Transaction:
     def __init__(self, words, transmit=True):
         self.entries = tuple(Entry.decode(word) for word in words)
         self.transmit = transmit
+        self.executed_entries = []
         self.clear()
 
     def clear(self):
         self.pc = self.pending_field = 0
         self.desired_role = self.role = 0
         self.accepted = self.response = self.drive_enable = self.drive_value = self.hold = self.halted = False
+        self._clear_temporal()
+
+    def _clear_temporal(self):
+        self.temporal_count = 0
+        self.temporal_started = self.temporal_done = False
+
+    def _observe_temporal(self, entry, bit):
+        events = []
+        matches = entry.argument == 2 or bool(bit) == bool(entry.value)
+        if not matches:
+            if self.temporal_started:
+                events.append("temporal_interrupt")
+            self._clear_temporal()
+        else:
+            if not self.temporal_started:
+                self.temporal_started = True
+                events.append("temporal_start")
+            self.temporal_count += 1
+            if self.temporal_count == entry.mask:
+                self.temporal_done = True
+                events.append("temporal_qualified")
+        return events
+
+    def acquire(self, bit):
+        """Clear the old epoch and count entry zero's acquisition observation."""
+        self.clear()
+        entry = self.entries[0]
+        if is_temporal(entry):
+            return ["TEMPORAL_QUALIFY"], self._observe_temporal(entry, bit)
+        return [], []
 
     @property
     def phase(self):
@@ -41,7 +72,7 @@ class Transaction:
     @property
     def waiting_timer(self):
         e = self.entries[self.pc]
-        return not self.halted and e.opcode == WAIT and (e.argument & 3) == 2
+        return not self.halted and e.opcode == WAIT and not is_temporal(e) and (e.argument & 3) == 2
 
     @property
     def ack(self):
@@ -57,7 +88,10 @@ class Transaction:
         sources = (True, rising, falling, settled)
         old_rx, old_tx = list(rx_fifo), list(tx_fifo)
         old_full, old_empty = len(old_rx) == capacity, not old_tx
+        old_tx_bit = tx.bit
         loads = pushes = shifts = 0
+        temporal_seen = False
+        self.executed_entries = []
 
         def fatal(name):
             events.append(name)
@@ -73,10 +107,13 @@ class Transaction:
             capture = e.opcode == RESPOND and (e.argument & 3) == 2
             if not sources[e.trigger] and not (capture and sources[e.value & 3]):
                 break
+            if is_temporal(e) and temporal_seen:
+                break
             if self.pc in visited:
                 fatal("composition_fault")
                 break
             visited.add(self.pc)
+            self.executed_entries.append(self.pc)
             previous_pc = self.pc
             advanced = False
             op = e.opcode
@@ -149,17 +186,33 @@ class Transaction:
             elif op == WAIT:
                 mode = e.argument & 3
                 fires.append("WAIT_POLICY")
-                self.hold = bool(e.flags & 1) and bool(self.desired_role)
-                ready = (not self.desired_role or not old_empty) if mode == 0 else not old_full if mode == 1 else settled if mode == 2 else bool(bit) == bool(e.value & 1)
-                if ready:
-                    if mode == 2 and e.flags & 2 and bool(settled_bit) != bool(tx.bit):
-                        fatal("data_mismatch")
-                        break
-                    if mode != 0:
-                        self.hold = False
-                    self.pc = e.next
-                    advanced = True
-                    events.append("wait_complete")
+                if is_temporal(e):
+                    temporal_seen = True
+                    fires.append("TEMPORAL_QUALIFY")
+                    self.hold = False
+                    if self.temporal_done:
+                        self._clear_temporal()
+                        self.pc = e.next
+                        advanced = True
+                        events.append("wait_complete")
+                    else:
+                        outcome = self._observe_temporal(e, bit)
+                        events += outcome
+                        if "temporal_interrupt" in outcome and e.flags & INTERRUPT_BRANCH:
+                            self.pc = e.alternate
+                            advanced = True
+                else:
+                    self.hold = bool(e.flags & 1) and bool(self.desired_role)
+                    ready = (not self.desired_role or not old_empty) if mode == 0 else not old_full if mode == 1 else settled if mode == 2 else bool(bit) == bool(e.value & 1)
+                    if ready:
+                        if mode == 2 and e.flags & 2 and bool(settled_bit) != bool(old_tx_bit):
+                            fatal("data_mismatch")
+                            break
+                        if mode != 0:
+                            self.hold = False
+                        self.pc = e.next
+                        advanced = True
+                        events.append("wait_complete")
             elif op == TX:
                 fires.append("SHIFT_TX")
                 shifts += 1
@@ -184,6 +237,8 @@ class Transaction:
                     self.drive_enable = self.hold = False
                 if e.flags & 1:
                     events.append("frame_terminate")
+                    rx_fifo.clear(); rx_fifo.extend(old_rx)
+                    tx_fifo.clear(); tx_fifo.extend(old_tx)
                 events.append("transaction_halt")
             else:
                 predicates = (True, self.accepted, self.response, bool(self.desired_role), old_full, old_empty)

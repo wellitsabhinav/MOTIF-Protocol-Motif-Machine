@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "model_only": true,
+  "preregistration_commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+  "cases": [
+    {
+      "name": "nominal",
+      "cycles": 125000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000
+        ],
+        "observed_presence_cycles": [
+          [
+            76502,
+            82503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.04,
+            "low": 120.02
+          }
+        ]
+      }
+    },
+    {
+      "name": "shortest_legal",
+      "cycles": 124000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          74000
+        ],
+        "observed_presence_cycles": [
+          [
+            75503,
+            81504
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1510.06,
+            "low": 120.02
+          }
+        ]
+      }
+    },
+    {
+      "name": "longest_bounded",
+      "cycles": 148000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          98000
+        ],
+        "observed_presence_cycles": [
+          [
+            99502,
+            105503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1990.04,
+            "low": 120.02
+          }
+        ]
+      }
+    },
+    {
+      "name": "back_to_back",
+      "cycles": 200000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000,
+          150000
+        ],
+        "observed_presence_cycles": [
+          [
+            76502,
+            82503
+          ],
+          [
+            151502,
+            157503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.04,
+            "low": 120.02
+          },
+          {
+            "start": 3030.04,
+            "low": 120.02
+          }
+        ]
+      }
+    },
+    {
+      "name": "unusual_legal_idle",
+      "cycles": 225000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          135000
+        ],
+        "observed_presence_cycles": [
+          [
+            136502,
+            142503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 2730.04,
+            "low": 120.02
+          }
+        ]
+      }
+    },
+    {
+      "name": "short_pulse",
+      "cycles": 105000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      }
+    },
+    {
+      "name": "interrupted_non_reset",
+      "cycles": 125050,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      }
+    },
+    {
+      "name": "system_reset",
+      "cycles": 125000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      }
+    },
+    {
+      "name": "watchdog_abort",
+      "cycles": 125000,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      }
+    }
+  ],
+  "all_passed": true,
+  "stage": "model_before_rtl",
+  "source_sha": "637aeb947e7726ce0ef6347f0788c2803149f091",
+  "preregistration_sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522",
+  "model_hashes": {
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "827439de5eb3cd4aae83be8ac093b66d2590aec1971be798fd07367ed347a450",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/motifs/transaction.py": "3a12183462280a5269ee02fcb98dcf792a260643ccf8040ef52302a083ae4ad9",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "motif/transaction.py": "e5d789ea8f5cc98b195fc20177969e9a4da2c8362c59c1d492bb838c5269f2bb"
+  },
+  "rtl_hashes": {
+    "src/motif_core.sv": "2d79a90df6022f269069444b7f41423d85abb0ea12b5753d2d9e3ef38083bb98",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "4670966fae26e6db5211f639672f714555126a853adcbc5402dda7c6152f6821",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "7cc7d3cb3dc32bde3620500bafb2dae9b897d47c6b1bece676c8478025cfc18c"
+  },
+  "pytest": {
+    "command": "python -m pytest -q",
+    "passed": 154
+  },
+  "synthetic_contract": {
+    "exhaustive_binary_sequences": 1024,
+    "sequence_length": 7,
+    "thresholds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "levels": [
+      0,
+      1
+    ],
+    "maximum_threshold": 65535
+  },
+  "limitations": [
+    "Model-only stage; RTL is still the unchanged v2 implementation",
+    "Historical helper preloads four unused FF FIFO tokens; new repair runner must omit them and independently requalify"
+  ]
+}

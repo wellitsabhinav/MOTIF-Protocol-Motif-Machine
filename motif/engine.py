@@ -124,6 +124,7 @@ class Engine:
 
     def step(self, pins, reset=False, abort=False, requests=None):
         cfg = self.config
+        self.exchange.executed_entries = []
         edge = self.frontend.step(pins)
         own = self.pad_history.step(int(bool(self.last_oe & (1 << cfg.clock_pin))) | (int(bool(self.last_oe & (1 << cfg.rx_pin))) << 1))
         fires = []
@@ -175,7 +176,9 @@ class Engine:
         elif acquire:
             self.active = True
             self.rx.clear()
-            self.exchange.clear()
+            temporal_fires, temporal_events = self.exchange.acquire(bool(edge.level & (1 << cfg.rx_pin)))
+            fires += temporal_fires
+            events += temporal_events
             fires += ["FRAME_ACQUIRE", "RESET_COUNTER"]
             events.append("frame_start")
             if cfg.sample == "timer":

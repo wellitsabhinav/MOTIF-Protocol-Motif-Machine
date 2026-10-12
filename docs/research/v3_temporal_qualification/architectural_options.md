@@ -8,8 +8,8 @@ preserving qualified profiles.
 
 The
 [`diagnosis`](diagnosis.md) distinguishes the historical sampled-field failure
-from a configuration-only composition that passes its nine selected model
-cases. Three additional probes expose early interruption blindness, missing
+from a configuration-only composition that passes its nine selected cases with
+exact model/RTL agreement. Three additional matching probes expose early interruption blindness, missing
 active-epoch restart and timer-phase dependent response delay. These findings
 justify testing a stronger temporal capability; they do not prove impossibility
 over all v2 tables.

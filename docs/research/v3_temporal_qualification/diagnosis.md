@@ -104,13 +104,17 @@ latency put final qualification at acquisition +23,999. All sixteen slots are
 occupied. The candidate observes RISING interruption edges during the eight
 RESPOND entries and rejects at the next timer event using the response latch.
 
-An exploratory in-memory model run passed all nine unchanged selected oracle
-cases. Continuous LOW durations 23,999, 24,000 and 24,001 cycles respectively
-reject, accept and accept. The isolated pinned-source model/RTL reproduction is
-provided by `python -m tools.temporal_baseline`; its completed concise report is
-[`v2_composition_baseline.json`](../../../experiments/temporal_qualification/v2_composition_baseline.json)
-when qualification evidence is recorded. The harness writes full traces only
-under `build/` and checks the immutable source/trace compiler before and after.
+The pinned-source reproduction passes all nine unchanged selected oracle cases
+with exact model/RTL agreement over 1,302,050 cycles. The three additional
+negative probes also match across model and RTL over 387,550 cycles, for a
+total of 1,689,600 compared cycles. Evidence and selected trace windows are in
+[`v2_composition_baseline.json`](../../../experiments/temporal_qualification/v2_composition_baseline.json).
+Run `python -m tools.temporal_baseline` to reproduce from an isolated Git archive
+of the pinned v2 source. The harness writes full traces only under `build/` and
+checks the immutable source/trace compiler before and after. A separate
+exploratory model-only boundary probe rejects 23,999 continuous LOW cycles and
+accepts 24,000 and 24,001 cycles; do not infer RTL qualification for those
+additional boundary probes from the original nine cases.
 
 This is a new composition audit. It does not revise the historical architecture
 freeze, classification or unseen result.
@@ -120,10 +124,10 @@ freeze, classification or unseen result.
 The same independent oracle is applied to three precisely specified additional
 stimuli in
 [`v2_composition_probes.json`](../../../experiments/temporal_qualification/v2_composition_probes.json).
-Both implementations must be compared before calling these RTL measurements.
-The model observations are:
+The oracle remains unchanged, and full normalized model/RTL traces agree for
+all three probes. Their measured negative results are:
 
-| Added probe | Independent expectation | Candidate model observation |
+| Added probe | Independent expectation | Matching candidate model/RTL observation |
 |---|---|---|
 | LOW 1 cycle / HIGH 1 cycle / LOW 23,998 cycles | No presence; both LOW intervals are short | False presence `[77000,82999)`: interruption occurs during alignment, before the response monitor. |
 | LOW 10,000 cycles / HIGH 50 cycles / LOW 24,000 cycles | One presence after final release 84050 | No presence: delayed rejection misses the new falling edge while the frame is active. |
@@ -148,8 +152,8 @@ on new chained tests.
 
 | Reproduction | First discrepancy | Source correspondence |
 |---|---|---|
-| `build/review-pr10-handoff-wait` | Cycle 25: TIMER-triggered TX handoff loads 80 then chains a validating timer WAIT. Model compares the newly loaded TX bit, passes and pops FIFO; RTL compares the pre-edge TX bit, raises mismatch and cancels the load/pop. | WAIT uses the pre-edge TX datapath input in RTL (`src/motif_transaction.sv:203–204`). Model uses mutated `tx.bit` (`motif/motifs/transaction.py:155`). Snapshot the pre-edge bit for this predicate. |
-| `build/review-pr10-terminate-commit` | Cycle 18: one-bit RX chains DECIDE/enqueue then terminating HALT. Model retains the new FIFO byte; RTL cancels the same-cycle enqueue. | RTL cancels FIFO/TX actions on termination (`src/motif_transaction.sv:244–245`), preserving earlier queued contents. Model termination clears actors without rolling back the same-cycle operation. |
+| [`handoff_wait`](../../../experiments/temporal_qualification/review/handoff_wait/model.jsonl) | Cycle 25: TIMER-triggered TX handoff loads 80 then chains a validating timer WAIT. Model compares the newly loaded TX bit, passes and pops FIFO; RTL compares the pre-edge TX bit, raises mismatch and cancels the load/pop. | WAIT uses the pre-edge TX datapath input in RTL (`src/motif_transaction.sv:203–204`). Model uses mutated `tx.bit` (`motif/motifs/transaction.py:155`). Snapshot the pre-edge bit for this predicate. |
+| [`terminate_commit`](../../../experiments/temporal_qualification/review/terminate_commit/model.jsonl) | Cycle 18: one-bit RX chains DECIDE/enqueue then terminating HALT. Model retains the new FIFO byte; RTL cancels the same-cycle enqueue. | RTL cancels FIFO/TX actions on termination (`src/motif_transaction.sv:244–245`), preserving earlier queued contents. Model termination clears actors without rolling back the same-cycle operation. |
 
 These findings refine model/source correspondence and atomic action priority.
 They do not invalidate the established qualified I2C/Microwire traces or prove
