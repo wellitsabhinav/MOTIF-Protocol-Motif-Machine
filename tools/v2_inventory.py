@@ -112,11 +112,22 @@ def accounting():
                 if current is not None:
                     for i,p in enumerate(MOTIFS): current[p]+=bool(row["motifs"]&(1<<i))
                     if row["motifs"]&2: frames.append(current);current=None
-        active_entries=sorted({r["pc"] for r in rows if r["active"]})
+        observed_pcs=sorted({r["pc"] for r in rows if r["active"]})
         exemplar=reports[0]["configuration"]
         words=exemplar["program"]
-        from motif.transaction import Entry
-        entries={i:Entry.decode(words[i]) for i in active_entries}
+        from motif.transaction import Entry, CHAIN, ALWAYS
+        # Registered PC observations omit immediate entries. Include their
+        # possible configured successors, labeling this as dependency coverage
+        # rather than claiming that every alternate branch fired.
+        referenced=set(observed_pcs)
+        pending=list(referenced)
+        while pending:
+            e=Entry.decode(words[pending.pop()])
+            if e.flags & CHAIN:
+                for index in (e.next,e.alternate):
+                    if index not in referenced and Entry.decode(words[index]).trigger==ALWAYS:
+                        referenced.add(index);pending.append(index)
+        entries={i:Entry.decode(words[i]) for i in sorted(referenced)}
         op_names=["SHIFT_RX_COUNT","FIELD_DECISION","BOUNDARY_RESPONSE","DIRECTION_HANDOFF","WAIT_POLICY","SHIFT_TX","TERMINATE","CONTINUE"]
         sources=["poll","clock_rising","clock_falling","timer_sample"]
         event_groups={(sources[e.trigger],op_names[e.opcode]) for e in entries.values()}
@@ -129,8 +140,10 @@ def accounting():
         fields=sorted(exemplar.keys()-{"program","fill","validate_stop"}-(set() if name=="i2c_target" else {"period","validate_start","hold_clock","pad_timing_check"}))
         result["protocols"][name]={"aggregate_primitive_firings":counts,"completed_transactions":len(frames),"primitive_firings_per_transaction":frames,
                                     "maximum_primitive_types_per_cycle":max(r["motifs"].bit_count() for r in rows),
-                                    "active_program_entries":active_entries,"active_configuration_fields":fields,
+                                    "observed_registered_pc_values":observed_pcs,"configured_entry_dependencies":sorted(referenced),"active_configuration_fields":fields,
+                                    "activity_counting_scope":"PC values are registered observations. Entry dependencies include possible immediate successors, and interface groups describe configured dependencies, not branch coverage or physical wires. State fields are semantic dependencies, not switching/power measurements.",
                                     "event_route_groups":event_groups,"event_route_group_count":len(event_groups),"data_route_groups":data_groups,"data_route_group_count":len(data_groups),
-                                    "active_transaction_state_fields":["pc","halted","pending_field","desired_role","current_role","accepted","captured_response","drive_enable","drive_value"]+(["hold"] if name=="i2c_target" else []),
+                                    "active_transaction_state_fields":["pc","halted","pending_field","desired_role","accepted","drive_enable","drive_value"]+(["captured_response","hold"] if name=="i2c_target" else []),
+                                    "diagnostic_state_fields":["current_role"],
                                     "new_rtl_required_for_protocol":0,"new_rtl_reference":"relative to this preregistered implemented vocabulary; both training workloads influenced its design"}
     return result
