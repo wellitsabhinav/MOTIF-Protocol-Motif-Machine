@@ -29,6 +29,12 @@ identical between RTL variants. The RTL reference improves on the initial Python
 reference's separate FIFO operation; no enqueue latency advantage is claimed
 against this refined reference.
 
+The pinned OSS CAD Suite performs lint, bare RTL simulation and formal checks.
+Cocotb uses Python 3.11, cocotb 2.0.1 and Tiny Tapeout's Icarus 13.0 package,
+matching the official gate-test tooling. The suite's bundled development cocotb
+and simulator passed assertions but crashed at shutdown, so they are not used
+for cocotb qualification.
+
 `python -m tools.synthesis` reproduces generic Boolean cell counts by hierarchy.
 These counts are not technology area or timing. The current local result has 1,485
 compound-design cells and 1,472 reference cells. That small difference and equal

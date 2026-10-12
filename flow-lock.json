@@ -23,6 +23,8 @@
   "python": "3.12",
   "pytest": "8.3.5",
   "cocotb": "2.0.1",
+  "cocotb_python": "3.11",
+  "cocotb_iverilog": "TinyTapeout/iverilog v13.0, iverilog_13.0-1_amd64.deb",
   "local_tools": {
     "iverilog": "12.0 devel s20150603-1391-gd480c4d7d",
     "verilator": "5.020",
