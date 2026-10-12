@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -69,6 +70,15 @@ def freeze(path, parent=None):
     aliases = {"SHIFT_TX_LOAD": "SHIFT_TX", **{name: "BYTE_EXCHANGE" for name in
                ("MATCH_FIRST_WORD", "OPEN_DRAIN_ACK", "OPEN_DRAIN_ACK_SAMPLE", "TURNAROUND", "STRETCH_UNTIL_READY")}}
     entries = []
+    routed_fields = {
+        "FRAME_ACQUIRE": ["frame", "frame_pin", "clock_pin", "rx_pin", "exchange"],
+        "FRAME_RELEASE": ["frame", "frame_pin", "clock_pin", "rx_pin", "exchange", "watchdog"],
+        "RESET_COUNTER": [],
+        "SHIFT_RX_COUNT": ["rx_pin", "clock_pin", "sample", "lsb_first", "exchange"],
+        "SHIFT_TX": ["tx_pin", "clock_pin", "transmit", "lsb_first", "fill", "exchange"],
+        "TIMED_SAMPLE": ["period", "validate_start", "validate_stop", "rx_pin", "sample", "exchange"],
+        "BYTE_EXCHANGE": ["address", "ack_address", "ack_data", "transmit", "lsb_first", "exchange", "period", "rx_pin", "tx_pin", "clock_pin", "open_drain"],
+    }
     for name, fields in usage["motifs"].items():
         model, actor, rtl, module = locations[name]
         assumptions = []
@@ -87,6 +97,11 @@ def freeze(path, parent=None):
                         "data_inputs": fields["data_inputs"], "data_outputs": fields["data_outputs"],
                         "protocol_users": fields["protocols"], "contains_protocol_specific_assumptions": bool(assumptions),
                         "assumptions": assumptions})
+        if parent:
+            entries[-1]["configuration_fields_from_initial_accounting"] = fields["configuration_fields"]
+            entries[-1]["configuration_fields"] = routed_fields[name]
+            header = Path(rtl).read_text().split(");", 1)[0]
+            entries[-1]["rtl_port_declarations"] = re.findall(r"(?:input|output)\s+[^,;]+(?:,[^\n;]+)?", header)
     data = {"schema_version": 1, "baseline": "model_faithful_i2c_promotion" if parent else "initial_model_and_rtl_subset",
             "source_sha": sha, "hash_convention": "SHA-256 of text with CRLF normalized to LF",
             "control_boundary": "All motif/model sources, synthesizable integration, pin/configuration logic and physical flow inputs; existing interface only",
@@ -98,6 +113,7 @@ def freeze(path, parent=None):
     if parent:
         data.update(parent_manifest=parent.as_posix(), parent_manifest_sha256=digest(parent.read_bytes()),
                     transition="Gate 1 promoted existing model machinery; no Gate 2/3 experiment uses the initial RTL-only subset")
+        data["metadata_refinement"] = "Promoted per-motif configuration fields include routed dependencies; the original accounting-field inventory and full initial configuration schema remain preserved. This refines metadata, not available hardware controls."
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
     print(path)
