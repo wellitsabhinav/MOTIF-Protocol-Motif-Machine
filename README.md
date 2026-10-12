@@ -15,9 +15,10 @@ flowchart LR
   Guardian --> Pads
 ```
 
-Current status: M0 executable model established. SPI mode-0 target and UART 8N1
-receive behavior exercise the shared actors. I²C qualification is next; RTL and
-physical results are pending.
+Current status: SPI mode-0 target, UART 8N1 receive and seven-bit I²C target
+behaviors are tested in the executable model. I²C covers repeated START,
+ACK/NACK, turnaround, clock stretching and recovery. RTL and physical results
+remain pending; model reuse does not establish implementation cost.
 
 ```sh
 python -m pip install -e '.[test]'

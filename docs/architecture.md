@@ -17,3 +17,11 @@ Open-drain requests can pull low or release. Conflicting requests release a pad.
 The current model has one sample timer. Additional timer instances are not yet
 needed by the qualified configurations. Pin levels are digital; analog thresholds,
 pull-up sizing, metastability probability and silicon behavior are not modeled.
+
+I²C uses a bounded byte-exchange motif with first-word matching, a ninth-clock
+response, bidirectional handoff and FIFO-readiness stretching. Its eight phases
+are fixed implementation state; configuration cannot add states or transitions.
+It uses the same receive/transmit shifters and FIFOs as other configurations.
+This motif currently serves only I²C and therefore remains protocol-specific
+machinery in the accounting report. Its usefulness beyond that mapping is not
+established. No general-purpose sequencing escape mechanism was introduced.

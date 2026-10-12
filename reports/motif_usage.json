@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_model_encoding_estimate",
+  "configuration_widths": {
+    "frame": 2,
+    "frame_pin": 3,
+    "clock_pin": 3,
+    "rx_pin": 3,
+    "tx_pin": 3,
+    "sample": 1,
+    "transmit": 1,
+    "lsb_first": 1,
+    "period": 16,
+    "validate_start": 1,
+    "validate_stop": 1,
+    "open_drain": 8,
+    "watchdog": 16,
+    "fill": 8,
+    "exchange": 1,
+    "address": 7,
+    "ack_address": 1,
+    "ack_data": 1
+  },
+  "state_widths": {
+    "frontend": 26,
+    "rx": 11,
+    "tx": 12,
+    "timer": 22,
+    "pending_sample": 4,
+    "validated_byte": 8,
+    "active": 1,
+    "guardian_age_trip": 17,
+    "diagnostics": 9,
+    "fifos": 78,
+    "byte_exchange": 17
+  },
+  "allocated_config_bits": 77,
+  "allocated_state_bits": 205,
+  "configurations": {
+    "spi_target": {
+      "motif_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 8,
+        "SHIFT_TX": 9
+      },
+      "unique_motif_types": 5,
+      "event_routes": [
+        [
+          "frame",
+          "acquire/release"
+        ],
+        [
+          "rise",
+          "rx"
+        ],
+        [
+          "fall",
+          "tx"
+        ],
+        [
+          "rx_complete",
+          "rx_fifo"
+        ],
+        [
+          "tx_complete",
+          "tx_load"
+        ],
+        [
+          "acquire",
+          "tx_load"
+        ],
+        [
+          "release",
+          "guardian"
+        ]
+      ],
+      "event_route_count": 7,
+      "data_routes": [
+        "rx->rx_fifo",
+        "tx_fifo->tx",
+        "constant->tx"
+      ],
+      "maximum_observed_firings_per_cycle": 3,
+      "qualified_event_to_rx_action_cycles": 0,
+      "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
+      "protocol_specific_hardware": []
+    },
+    "uart_rx": {
+      "motif_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 8,
+        "TIMED_SAMPLE": 10
+      },
+      "unique_motif_types": 5,
+      "event_routes": [
+        [
+          "fall",
+          "acquire"
+        ],
+        [
+          "acquire",
+          "timer"
+        ],
+        [
+          "timer_sample",
+          "rx"
+        ],
+        [
+          "timer_stop",
+          "rx_fifo/release"
+        ],
+        [
+          "release",
+          "guardian"
+        ]
+      ],
+      "event_route_count": 5,
+      "data_routes": [
+        "rx->rx_fifo"
+      ],
+      "maximum_observed_firings_per_cycle": 2,
+      "qualified_event_to_rx_action_cycles": 1,
+      "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
+      "protocol_specific_hardware": []
+    },
+    "timed_stream": {
+      "motif_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 8,
+        "TIMED_SAMPLE": 8
+      },
+      "unique_motif_types": 5,
+      "event_routes": [
+        [
+          "frame",
+          "acquire/release"
+        ],
+        [
+          "acquire",
+          "timer"
+        ],
+        [
+          "timer_sample",
+          "rx"
+        ],
+        [
+          "rx_complete",
+          "rx_fifo"
+        ],
+        [
+          "release",
+          "guardian"
+        ]
+      ],
+      "event_route_count": 5,
+      "data_routes": [
+        "rx->rx_fifo"
+      ],
+      "maximum_observed_firings_per_cycle": 2,
+      "qualified_event_to_rx_action_cycles": 1,
+      "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
+      "protocol_specific_hardware": []
+    },
+    "i2c_target": {
+      "motif_firings": {
+        "BYTE_EXCHANGE": 14,
+        "FRAME_ACQUIRE": 2,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 3,
+        "SHIFT_RX_COUNT": 25,
+        "SHIFT_TX": 9
+      },
+      "unique_motif_types": 6,
+      "event_routes": [
+        [
+          "sda_edge/scl_level",
+          "acquire/release"
+        ],
+        [
+          "rise",
+          "rx/exchange"
+        ],
+        [
+          "fall",
+          "tx/exchange"
+        ],
+        [
+          "rx_complete",
+          "exchange_decision"
+        ],
+        [
+          "fifo_ready",
+          "stretch_release"
+        ],
+        [
+          "release",
+          "guardian"
+        ]
+      ],
+      "event_route_count": 6,
+      "data_routes": [
+        "rx->first_word_match",
+        "rx->rx_fifo",
+        "tx_fifo->tx"
+      ],
+      "maximum_observed_firings_per_cycle": 3,
+      "qualified_event_to_rx_action_cycles": 0,
+      "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
+      "protocol_specific_hardware": [
+        "bounded ninth-clock byte exchange"
+      ]
+    }
+  },
+  "sequential_reference": {
+    "coverage": "SPI target mode 0 only",
+    "issued_operations_per_byte_frame": 19,
+    "maximum_operation_backlog": 1,
+    "rx_enqueue_latency_after_terminal_shift_cycles": 1,
+    "motif_rx_enqueue_latency_after_terminal_shift_cycles": 0,
+    "throughput_at_test_spacing": "both complete identical frames",
+    "program_storage_bits": 0,
+    "limitation": "Fixed SPI reference; not equivalent multi-protocol programmability or RTL area evidence"
+  },
+  "reuse": {
+    "BYTE_EXCHANGE": [
+      "i2c_target"
+    ],
+    "FRAME_ACQUIRE": [
+      "spi_target",
+      "uart_rx",
+      "timed_stream",
+      "i2c_target"
+    ],
+    "FRAME_RELEASE": [
+      "spi_target",
+      "uart_rx",
+      "timed_stream",
+      "i2c_target"
+    ],
+    "RESET_COUNTER": [
+      "spi_target",
+      "uart_rx",
+      "timed_stream",
+      "i2c_target"
+    ],
+    "SHIFT_RX_COUNT": [
+      "spi_target",
+      "uart_rx",
+      "timed_stream",
+      "i2c_target"
+    ],
+    "SHIFT_TX": [
+      "spi_target",
+      "i2c_target"
+    ],
+    "TIMED_SAMPLE": [
+      "uart_rx",
+      "timed_stream"
+    ]
+  }
+}
