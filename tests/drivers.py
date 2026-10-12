@@ -1,10 +1,13 @@
 class Wires:
-    def __init__(self, engine):
+    def __init__(self, engine, spacing=8):
         self.engine = engine
+        self.spacing = spacing
         self.pins = 255
         self.trace = []
 
-    def hold(self, cycles=8, **pins):
+    def hold(self, cycles=None, **pins):
+        if cycles is None:
+            cycles = self.spacing
         for key, value in pins.items():
             pin = int(key[1:])
             self.pins = (self.pins | (1 << pin)) if value else (self.pins & ~(1 << pin))

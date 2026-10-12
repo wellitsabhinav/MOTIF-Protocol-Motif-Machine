@@ -13,15 +13,21 @@ Protocol helpers construct configurations of the same engine. Configuration is
 accepted only while disabled. The guardian receives pad requests and ownership
 information independently of shifter contents. It controls all final DATA/OE.
 Open-drain requests can pull low or release. Conflicting requests release a pad.
+Receive-only configurations grant no transmit ownership. A target transmit pin
+must be separate from protected input roles; the RTL guardian independently
+clamps host-loaded assignments that violate this rule.
 
 The current model has one sample timer. Additional timer instances are not yet
 needed by the qualified configurations. Pin levels are digital; analog thresholds,
 pull-up sizing, metastability probability and silicon behavior are not modeled.
 
 I²C uses a bounded byte-exchange motif with first-word matching, a ninth-clock
-response, bidirectional handoff and FIFO-readiness stretching. Its eight phases
+response, bidirectional handoff and FIFO-readiness stretching. Its nine phases
 are fixed implementation state; configuration cannot add states or transitions.
 It uses the same receive/transmit shifters and FIFOs as other configurations.
 This motif currently serves only I²C and therefore remains protocol-specific
 machinery in the accounting report. Its usefulness beyond that mapping is not
 established. No general-purpose sequencing escape mechanism was introduced.
+The existing timed-sample actor also supplies the data-setup interval before
+releasing stretched SCL. This adds a fixed event connection and a settle phase,
+without a new timing actor or arbitrary state-transition table.

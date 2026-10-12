@@ -36,7 +36,29 @@ and simulator passed assertions but crashed at shutdown, so they are not used
 for cocotb qualification.
 
 `python -m tools.synthesis` reproduces generic Boolean cell counts by hierarchy.
-These counts are not technology area or timing. The current local result has 1,485
-compound-design cells and 1,472 reference cells. That small difference and equal
+These counts are not technology area or timing. The current local result has 1,467
+compound-design cells and 1,455 reference cells. That small difference and equal
 tested throughput do not establish an implementation advantage. CMOS5L mapping
 and placement/routing are a separate qualification step. I²C remains model-only.
+
+Additional qualification checks 1,200 randomized FIFO transactions (seed 73),
+including reset, simultaneous push/pop, full and empty conditions. A 5,525-cycle
+SPI trace with a 32-cycle watchdog confirms timeout suppression and rearm only
+after a fresh frame edge. Total integration comparisons now cover 34,351 cycles,
+in addition to primitive vectors and the host transactions.
+The extra 180-cycle compound trace has ten coincident timed RX/clock-driven TX
+firings. A separate 180-cycle reference trace checks RX-priority handling and
+collision reporting; its TX output is outside equivalent coverage. Integration
+comparisons include the corresponding sticky RTL fault/status bits.
+Spacing fixtures add SPI traces of 1,351, 2,026 and 2,701 cycles per RTL variant
+at two, three and four cycles per fixture phase. MOSI setup, high clock and low
+clock each occupy one phase; clock low therefore spans two phases. These are
+digital schedules and do not qualify a maximum external silicon clock rate.
+
+A concurrent host/protocol test reproduces an empty-read race: a byte arriving
+after the read snapshot was previously consumed without being returned. The
+host now captures data validity with the response and commits a FIFO pop only
+for a valid snapshot. The test confirms the late byte is retained for the next
+read in both RTL variants. The cocotb version exercises the same case.
+Host tests also load an output assignment that aliases the framing input and
+confirm released pads with a retained guardian fault in both RTL variants.

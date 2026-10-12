@@ -1,0 +1,9 @@
+MOTIF — Protocol Motif Machine
+Copyright 2026 MOTIF contributors
+
+Integration configuration, workflow conventions and the initial test harness
+are adapted from TinyTapeout/ttihp-verilog-template (CMOS5L branch), distributed
+under Apache-2.0. The pinned source revision is recorded in flow-lock.json.
+
+Generated gate-simulation cell models retain the IHP PDK Authors' copyright and
+Apache-2.0 header. PDK source and generated model copies are not tracked here.

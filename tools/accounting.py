@@ -17,8 +17,8 @@ CONFIG_WIDTHS = {"frame": 2, "frame_pin": 3, "clock_pin": 3, "rx_pin": 3,
                  "address": 7, "ack_address": 1, "ack_data": 1}
 STATE_WIDTHS = {"frontend": 26, "rx": 11, "tx": 12, "timer": 22,
                 "pending_sample": 4, "validated_byte": 8, "active": 1,
-                "guardian_age_trip": 17, "diagnostics": 9, "fifos": 78,
-                "byte_exchange": 17}
+                "guardian_age_trip": 17, "diagnostics": 11, "fifos": 78,
+                "byte_exchange": 18, "pending_timer_start": 1, "own_drive_history": 6}
 
 
 def normalize(name):
@@ -38,7 +38,7 @@ def report():
         "spi_target": [("frame", "acquire/release"), ("rise", "rx"), ("fall", "tx"), ("rx_complete", "rx_fifo"), ("tx_complete", "tx_load"), ("acquire", "tx_load"), ("release", "guardian")],
         "uart_rx": [("fall", "acquire"), ("acquire", "timer"), ("timer_sample", "rx"), ("timer_stop", "rx_fifo/release"), ("release", "guardian")],
         "timed_stream": [("frame", "acquire/release"), ("acquire", "timer"), ("timer_sample", "rx"), ("rx_complete", "rx_fifo"), ("release", "guardian")],
-        "i2c_target": [("sda_edge/scl_level", "acquire/release"), ("rise", "rx/exchange"), ("fall", "tx/exchange"), ("rx_complete", "exchange_decision"), ("fifo_ready", "stretch_release"), ("release", "guardian")],
+        "i2c_target": [("sda_edge/scl_level", "acquire/release"), ("rise", "rx/exchange"), ("fall", "tx/exchange"), ("rx_complete", "exchange_decision"), ("fifo_ready", "tx_prepare"), ("turnaround_begin", "timer_start"), ("timer_sample", "stretch_release"), ("release", "guardian")],
     }
     for name, config in [("spi_target", spi.target()), ("uart_rx", uart.receiver(32)), ("timed_stream", timed_stream.receiver(16)), ("i2c_target", i2c.target())]:
         engine = Engine(config)
@@ -65,13 +65,15 @@ def report():
                 for bit in [0, 1] * 4:
                     wire.hold(16, p2=bit)
                 wire.hold(p0=1)
-        counts = Counter(normalize(firing) for row in wire.trace for firing in row["fires"])
+        counts = Counter(firing for row in wire.trace for firing in {normalize(name) for name in row["fires"]})
         result["configurations"][name] = {
             "motif_firings": dict(sorted(counts.items())), "unique_motif_types": len(counts),
             "event_routes": recipes[name], "event_route_count": len(recipes[name]),
-            "data_routes": ["rx->rx_fifo", "tx_fifo->tx", "constant->tx"] if name == "spi_target" else (["rx->first_word_match", "rx->rx_fifo", "tx_fifo->tx"] if name == "i2c_target" else ["rx->rx_fifo"]),
-            "maximum_observed_firings_per_cycle": max(len(row["fires"]) for row in wire.trace),
+            "data_routes": ["rx->rx_fifo", "tx_fifo->tx", "constant->tx"] if name == "spi_target" else (["rx->first_word_match", "address_constant->first_word_match", "rx->rx_fifo", "tx_fifo->tx"] if name == "i2c_target" else (["rx->validated_byte", "validated_byte->rx_fifo"] if name == "uart_rx" else ["rx->rx_fifo"])),
+            "host_data_routes": ["host->tx_fifo", "rx_fifo->host"],
+            "maximum_observed_firings_per_cycle": max(len({normalize(name) for name in row["fires"]}) for row in wire.trace),
             "qualified_event_to_rx_action_cycles": 0 if config.sample == "rising" else 1,
+            "configured_tx_prepare_to_scl_release_cycles": config.period + 2 if config.exchange else None,
             "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
             "protocol_specific_hardware": ["bounded ninth-clock byte exchange"] if config.exchange else [],
         }
@@ -86,6 +88,28 @@ def report():
                                       "limitation": "Fixed SPI reference; not equivalent multi-protocol programmability or RTL area evidence"}
     result["reuse"] = {motif: [name for name, cfg in result["configurations"].items() if motif in cfg["motif_firings"]]
                        for motif in sorted({key for cfg in result["configurations"].values() for key in cfg["motif_firings"]})}
+    result["provisioned_model_routes"] = {
+        "event_interface_groups": sorted({tuple(route) for cfg in result["configurations"].values() for route in cfg["event_routes"]}),
+        "byte_connections": sorted({route for cfg in result["configurations"].values() for route in cfg["data_routes"]}),
+        "host_connections": ["host->tx_fifo", "rx_fifo->host"],
+        "meaning": "Union of statically defined model interface groups; not physical selector or wire counts"}
+    for cfg in result["configurations"].values():
+        cfg["active_byte_route_count"] = len(cfg["data_routes"])
+        cfg["active_event_interface_group_count"] = len(cfg["event_routes"])
+    groups = {"SHIFT_RX_COUNT": ("rx", ["rx_pin", "sample", "lsb_first"], ["sample"], ["byte_complete"], ["pin bit"], ["received byte"]),
+              "SHIFT_TX": ("tx", ["tx_pin", "transmit", "lsb_first", "fill"], ["falling clock", "load"], ["tx_complete"], ["tx_fifo", "constant"], ["pad bit"]),
+              "FRAME_ACQUIRE": ("active", ["frame", "frame_pin"], ["frame_start"], ["acquire"], [], []),
+              "FRAME_RELEASE": ("active", ["frame", "frame_pin"], ["frame_stop", "abort", "timeout"], ["release"], [], []),
+              "RESET_COUNTER": ("rx", [], ["acquire", "release"], [], [], []),
+              "TIMED_SAMPLE": ("timer", ["period", "validate_start", "validate_stop"], ["acquire", "timer expiry"], ["sample", "validation"], ["pin bit"], ["captured bit"]),
+              "BYTE_EXCHANGE": ("byte_exchange", ["address", "ack_address", "ack_data", "exchange", "period"], ["clock edges", "byte_complete", "fifo_ready", "timer sample"], ["response", "turnaround", "stretch", "timer start"], ["received byte", "address_constant"], ["accepted byte", "drive requests"])}
+    result["motifs"] = {name: {"instances": 1, "protocols": result["reuse"][name], "storage_group": group,
+                              "state_bits_in_shared_group": STATE_WIDTHS[group], "configuration_fields": fields,
+                              "configuration_bits_in_referenced_fields": sum(CONFIG_WIDTHS[field] for field in fields),
+                              "input_events": inputs, "output_events": outputs, "data_inputs": data_inputs,
+                              "data_outputs": data_outputs, "firing_latency_cycles": 0}
+                        for name, (group, fields, inputs, outputs, data_inputs, data_outputs) in groups.items()}
+    result["counting_contract"] = "Motif suboperations count once per type per cycle. Storage groups and configuration fields can be shared and must not be summed across motif entries. Event routes are named model interface groups, not physical wire or selector counts. Byte routes include validation/match storage; host routes are reported separately."
     return result
 
 

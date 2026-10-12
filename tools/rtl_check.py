@@ -2,6 +2,8 @@ import os
 import random
 import shutil
 import subprocess
+from collections import deque
+from dataclasses import replace
 from pathlib import Path
 
 from motif import Engine
@@ -105,9 +107,9 @@ class RecordedEngine(Engine):
         return trace
 
 
-def core_vectors(config, name, reference=False):
+def core_vectors(config, name, reference=False, spacing=8):
     engine = RecordedEngine(config)
-    wire = Wires(engine)
+    wire = Wires(engine, spacing=spacing)
     if name == "spi":
         rng = random.Random(117)
         for _ in range(24):
@@ -119,6 +121,13 @@ def core_vectors(config, name, reference=False):
         wire.hold(p1=1)
         engine.step(wire.pins, abort=True)
         wire.hold(p0=1)
+        if config.watchdog:
+            wire.hold(p0=0)
+            wire.hold(100)
+            assert not engine.active and not wire.trace[-1]["oe"]
+            wire.hold(p0=1)
+            wire.hold(p0=0)
+            assert engine.active
     elif name == "uart":
         for value in [0, 255, 85, 170, 37]:
             wire.uart(value, period=config.period)
@@ -128,6 +137,14 @@ def core_vectors(config, name, reference=False):
         wire.uart(170, period=config.period)
         assert engine.pop_rx() == 170
         wire.hold()
+    elif name == "concurrent":
+        engine.push_tx(170)
+        wire.hold(p0=1, p1=0)
+        wire.hold(4, p0=0)
+        for cycle in range(160):
+            wire.hold(1, p1=((cycle + 3) // 2) % 2, p2=(cycle // 16) % 2)
+        assert any("SHIFT_RX_COUNT" in row["fires"] and "SHIFT_TX" in row["fires"] for row in wire.trace)
+        wire.hold(p0=1)
     else:
         wire.hold(p0=1)
         wire.hold(4, p0=0)
@@ -136,9 +153,16 @@ def core_vectors(config, name, reference=False):
                 wire.hold(config.period, p2=(value >> index) & 1)
         wire.hold(p0=1)
     lines = []
+    collision = False
     for index, (inputs, trace, rx_level, tx_level, head) in enumerate(engine.rows):
         pins, reset, abort, push, pop, data = inputs
-        lines.append(f"pins=8'd{pins};rst_n={int(not reset)};abort_in={int(abort)};push={int(push)};pop={int(pop)};host_data=8'd{data};#4;clk=1;#1;if(rx_value!==8'd{trace['rx_value']} || bit_count!==3'd{trace['rx_count']} || active!==1'b{int(trace['active'])} || pad_data!==8'd{trace['data']} || pad_oe!==8'd{trace['oe']} || rx_count!==3'd{rx_level} || tx_count!==3'd{tx_level} || rx_head!==8'd{head})$fatal(1,\"{name} core mismatch cycle {index}: rx=%d cnt=%d active=%b oe=%h FIFO=%d head=%h\",rx_value,bit_count,active,pad_oe,rx_count,rx_head);clk=0;#1;")
+        faults = set(trace["faults"])
+        status = int(bool(faults & {"ownership", "drive_high", "conflict"})) | (int("rx_overflow" in faults) << 3) | (int("tx_underflow" in faults) << 4) | (int(bool(faults & {"invalid_start", "invalid_stop"})) << 5) | (int("timeout" in faults) << 6)
+        lines.append(f"pins=8'd{pins};rst_n={int(not reset)};abort_in={int(abort)};push={int(push)};pop={int(pop)};host_data=8'd{data};#4;clk=1;#1;if(rx_value!==8'd{trace['rx_value']} || bit_count!==3'd{trace['rx_count']} || active!==1'b{int(trace['active'])} || pad_data!==8'd{trace['data']} || pad_oe!==8'd{trace['oe']} || status!==8'd{status} || rx_count!==3'd{rx_level} || tx_count!==3'd{tx_level} || rx_head!==8'd{head})$fatal(1,\"{name} core mismatch cycle {index}: rx=%d cnt=%d active=%b oe=%h FIFO=%d head=%h status=%h\",rx_value,bit_count,active,pad_oe,rx_count,rx_head,status);clk=0;#1;")
+        if name == "concurrent" and reference:
+            collision |= "SHIFT_RX_COUNT" in trace["fires"] and "SHIFT_TX" in trace["fires"]
+            prefix = lines[-1].split("if(rx_value", 1)[0]
+            lines[-1] = prefix + f"if(status[7]!==1'b{int(collision)} || rx_value!==8'd{trace['rx_value']} || bit_count!==3'd{trace['rx_count']} || rx_count!==3'd{rx_level} || rx_head!==8'd{head})$fatal(1,\"reference collision/RX contract cycle {index}\");clk=0;#1;"
     header = f"""module tb;
 reg clk=0,rst_n=0,abort_in=0,push=0,pop=0;reg [7:0] pins=255,host_data=0;
 wire [7:0] rx_head,pad_data,pad_oe,status,rx_value;
@@ -146,17 +170,57 @@ wire [2:0] rx_count,tx_count,bit_count;wire active;
 motif_core #(.REFERENCE({int(reference)})) core(clk,rst_n,1'b1,abort_in,pins,1'b{int(config.frame=='falling')},1'b{int(config.sample=='timer')},1'b{int(config.transmit)},1'b{int(config.lsb_first)},1'b{int(config.validate_start)},1'b{int(config.validate_stop)},3'd{config.frame_pin},3'd{config.clock_pin},3'd{config.rx_pin},3'd{config.tx_pin},16'd{config.period},16'd{config.watchdog},8'd{config.fill},8'd{config.open_drain},push,pop,host_data,rx_head,pad_data,pad_oe,rx_count,tx_count,status,active,rx_value,bit_count);
 initial begin #4;clk=1;#1;clk=0;rst_n=1;
 """
-    return header + "\n".join(lines) + f'\n$display("PASS {name} core: {len(lines)} model/RTL cycles");$finish;end endmodule\n'
+    label = "reference collision/RX contract" if name == "concurrent" and reference else name + " core"
+    return header + "\n".join(lines) + f'\n$display("PASS {label}: {len(lines)} model/RTL cycles");$finish;end endmodule\n'
+
+
+def fifo_vectors(seed=73):
+    rng = random.Random(seed)
+    queue = deque()
+    overflow = underflow = False
+    lines = []
+    for cycle in range(1200):
+        reset, push, pop = rng.randrange(40) == 0, bool(rng.randrange(2)), bool(rng.randrange(2))
+        data = rng.randrange(256)
+        if reset:
+            queue.clear()
+            overflow = underflow = False
+        else:
+            removed = pop and bool(queue)
+            if removed:
+                queue.popleft()
+            elif pop:
+                underflow = True
+            if push:
+                if len(queue) < 4:
+                    queue.append(data)
+                else:
+                    overflow = True
+        head = queue[0] if queue else 0
+        lines.append(f"rst_n={int(not reset)};push={int(push)};pop={int(pop)};data=8'd{data};#4;clk=1;#1;if(count!==3'd{len(queue)} || head!==8'd{head} || overflow!==1'b{int(overflow)} || underflow!==1'b{int(underflow)})$fatal(1,\"FIFO seed {seed} cycle {cycle}\");clk=0;#1;")
+    return """module tb;
+reg clk=0,rst_n=0,push=0,pop=0;reg [7:0] data=0;
+wire [7:0] head;wire [2:0] count;wire full,empty,overflow,underflow;
+motif_fifo fifo(clk,rst_n,push,pop,data,head,count,full,empty,overflow,underflow);
+initial begin #4;clk=1;#1;clk=0;rst_n=1;
+""" + "\n".join(lines) + '\n$display("PASS FIFO: 1200 vectors, seed 73");$finish;end endmodule\n'
 
 
 def run():
     simulate("shifts", primitive_vectors())
     simulate("guardian", guardian_vectors())
+    simulate("fifo", fifo_vectors())
     for name, config in [("spi", spi.target()), ("uart", uart.receiver(32)), ("timed_stream", timed_stream.receiver(16))]:
         simulate(name, core_vectors(config, name))
         simulate(name + "_reference", core_vectors(config, name, reference=True))
     simulate("host", Path("test/host_tb.sv").read_text(encoding="utf-8"))
     simulate("host_reference", Path("test/host_tb.sv").read_text(encoding="utf-8").replace("tt_um_wellitsabhinav_motif dut", "motif_reference_top dut"))
+    simulate("watchdog_core", core_vectors(replace(spi.target(), watchdog=32), "spi"))
+    simulate("concurrent_core", core_vectors(replace(timed_stream.receiver(16), transmit=True), "concurrent"))
+    simulate("concurrent_reference", core_vectors(replace(timed_stream.receiver(16), transmit=True), "concurrent", reference=True))
+    for spacing in (2, 3, 4):
+        for reference in (False, True):
+            simulate(f"spi_spacing_{spacing}_{int(reference)}", core_vectors(spi.target(), "spi", reference=reference, spacing=spacing))
 
 
 if __name__ == "__main__":

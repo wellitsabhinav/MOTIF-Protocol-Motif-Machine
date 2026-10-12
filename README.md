@@ -19,7 +19,10 @@ Current status: SPI mode-0 target, UART 8N1 receive and seven-bit I²C target
 behaviors are tested in the executable model. I²C covers repeated START,
 ACK/NACK, turnaround, clock stretching and recovery. The SPI/UART RTL subset
 matches model traces and accepts runtime host configuration. Guardian formal
-properties and generic synthesis are available; physical qualification is pending.
+properties and synthesis are available. The routed CMOS5L SPI/UART/timed-stream
+subset meets the internal 50 MHz timing target and passes layout precheck and
+functional gate simulation. I²C remains model-only. See
+[physical qualification](docs/physical.md) for measurements and limits.
 
 ```sh
 python -m pip install -e '.[test]'

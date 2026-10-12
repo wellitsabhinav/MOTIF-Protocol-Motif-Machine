@@ -3,7 +3,10 @@
 The dedicated host SPI port uses mode 0 and MSB-first 24-bit frames: command,
 address, and data/dummy byte. Command 2 writes; command 1 reads. Read data appears
 on the third byte. Deassert CS between commands. RX FIFO reads pop only after the
-third byte completes. Unknown commands have no effect; unknown reads return zero.
+third byte completes. The data and nonempty flag are captured before the third
+byte. An empty snapshot returns zero and does not consume a byte that arrives
+during the response; status reports the empty read. Unknown commands have no
+effect; unknown reads return zero.
 Use at least eight core cycles per host half-phase in this initial qualification.
 
 | Address | Purpose |
@@ -26,6 +29,8 @@ remains available while running. Periods below two inhibit engine enable.
 Reset initializes SPI pin assignments, a 434-cycle period, fill 255, watchdog
 disabled, and the engine disabled. Configuration registers allocate 67 meaningful
 bits, including enable. Other encodings belong to the model-only I²C extension.
+The guardian releases an output assigned to a protected frame, clock or RX pin
+and reports a guard fault. Receive-only configurations grant no output ownership.
 
 Examples: SPI control 9 with default pin assignments; UART control 119, frame/RX
 pin 2, sample period appropriate to baud; external timed stream control 5,

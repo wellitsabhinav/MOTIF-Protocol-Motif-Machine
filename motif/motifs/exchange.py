@@ -5,10 +5,11 @@ class ByteExchange:
     RX/TX data remains in the shared shifters and FIFOs.
     """
 
-    def __init__(self, address, ack_address=True, ack_data=True):
+    def __init__(self, address, ack_address=True, ack_data=True, transmit_enabled=True):
         self.address = address
         self.ack_address = ack_address
         self.ack_data = ack_data
+        self.transmit_enabled = transmit_enabled
         self.clear()
 
     def clear(self):
@@ -19,25 +20,34 @@ class ByteExchange:
         self.controller_ack = False
         self.pending_byte = 0
 
-    def _transmit(self, tx, fifo, fires):
+    def _transmit(self, tx, fifo, fires, events):
         if fifo:
             tx.load(fifo.popleft())
-            self.phase = "tx"
+            self.phase = "settle"
             self.drive_low = not tx.bit
-            self.stretch = False
+            self.stretch = True
             fires.append("SHIFT_TX_LOAD")
+            events.append("turnaround_begin")
         else:
             self.phase = "stretch"
             self.stretch = True
             self.drive_low = False
             fires.append("STRETCH_UNTIL_READY")
 
-    def tick(self, rising, falling, bit, rx, tx, rx_fifo, tx_fifo, capacity):
+    def tick(self, rising, falling, bit, rx, tx, rx_fifo, tx_fifo, capacity, settled=False, settled_bit=0):
         fires, events = [], []
         byte = None
         if self.phase == "stretch":
             if tx_fifo:
-                self._transmit(tx, tx_fifo, fires)
+                self._transmit(tx, tx_fifo, fires, events)
+                fires.append("STRETCH_UNTIL_READY")
+        elif self.phase == "settle":
+            if settled:
+                self.phase = "tx" if settled_bit == tx.bit else "idle"
+                self.stretch = False
+                if settled_bit != tx.bit:
+                    self.drive_low = False
+                    events.append("data_mismatch")
                 fires.append("STRETCH_UNTIL_READY")
         elif self.phase == "rx" and rising:
             byte = rx.fire(bit)
@@ -48,7 +58,7 @@ class ByteExchange:
                 self.phase = "decide"
         elif self.phase == "decide":
                 if self.header:
-                    self.ack = (self.pending_byte >> 1) == self.address and self.ack_address
+                    self.ack = (self.pending_byte >> 1) == self.address and self.ack_address and (self.transmit_enabled or not (self.pending_byte & 1))
                     self.next_role = "tx" if self.pending_byte & 1 else "rx"
                     self.header = False
                     fires.append("MATCH_FIRST_WORD")
@@ -70,7 +80,7 @@ class ByteExchange:
             if not self.ack:
                 self.phase = "idle"
             elif self.next_role == "tx":
-                self._transmit(tx, tx_fifo, fires)
+                self._transmit(tx, tx_fifo, fires, events)
             else:
                 self.phase = "rx"
         elif self.phase == "tx" and falling:
@@ -91,7 +101,7 @@ class ByteExchange:
             elif falling:
                 fires.append("TURNAROUND")
                 if self.controller_ack:
-                    self._transmit(tx, tx_fifo, fires)
+                    self._transmit(tx, tx_fifo, fires, events)
                 else:
                     self.phase = "idle"
                     events.append("transmit_nack")

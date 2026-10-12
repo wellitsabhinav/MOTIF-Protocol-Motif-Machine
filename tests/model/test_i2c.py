@@ -84,18 +84,26 @@ def test_partial_abort_rearms(termination, bits):
     assert engine.pop_rx() == 170
 
 
-def test_clock_stretch_until_fifo_data_available():
-    engine = Engine(target())
+@pytest.mark.parametrize("setup_cycles", [13, 63])
+@pytest.mark.parametrize("byte", [85, 170])
+def test_clock_stretch_until_fifo_data_available(setup_cycles, byte):
+    engine = Engine(target(setup_cycles=setup_cycles))
     bus = Bus(engine)
     bus.start()
     assert bus.write(0xA5)
     assert bus.output["oe"] & 2
     bus.hold(200, scl=1)
     assert bus.output["oe"] & 2
-    engine.push_tx(85)
-    bus.hold(scl=0)
+    engine.push_tx(byte)
+    bus.hold(1, scl=1)
+    assert bus.output["oe"] & 2, "SCL must remain stretched while the first data bit settles"
+    assert bool(bus.output["oe"] & 4) == (not bool(byte & 128))
+    for _ in range(setup_cycles - 1):
+        bus.hold(1)
+        assert bus.output["oe"] & 2
+    bus.hold(8)
     assert not bus.output["oe"] & 2
-    assert bus.read() == 85
+    assert bus.read() == byte
     bus.stop()
 
 

@@ -9,6 +9,10 @@ Acquisition clears partial receive state and arms configured actors. A terminal
 receive firing samples and shifts the eighth bit, resets the bit count and emits
 byte completion together. Timed sampling captures its input bit with its event;
 the receive actor consumes that registered event on the following cycle.
+For unvalidated RX, FIFO deposit participates in the same compound terminal
+firing using the precomputed next byte. UART stop validation and byte-exchange
+decisions consume registered completion state on a later tick. Terminal TX
+advance and refill likewise commit together as one compound firing.
 
 Release discards partial receive assembly and in-flight transmit state. Completed
 RX bytes and queued TX bytes remain available. Loading a TX shifter consumes its
@@ -41,6 +45,23 @@ An address miss or configured rejection leaves SDA released through the ninth
 clock and disables further exchange until a framing boundary. A full RX FIFO
 NACKs and discards the new byte. On reads, an empty TX FIFO stretches SCL low at
 a byte boundary until data arrives. Controller NACK terminates transmission.
+TX preparation holds SCL low while the first data bit settles. A registered
+turnaround event arms the shared timer; its registered expiry releases SCL.
+The default setup interval is 63 core cycles, plus two event-pipeline cycles:
+1.3 µs at the 50 MHz reference point. This conservatively covers Standard-mode
+rise time plus data setup at that point. `setup_cycles` is configurable; digital
+tests also exercise a 13-cycle interval with ideal instantaneous wire transitions.
+Analog rise time and voltage thresholds still require physical qualification.
+The controller driver waits for resolved SCL high before starting its high period.
+At expiry the timer samples resolved SDA. A first-bit mismatch aborts the
+transaction, reports `data_mismatch`, releases outputs and allows a fresh START.
+This is a check at the transmit handoff, not complete bus-collision detection.
+
 The default watchdog is disabled, allowing indefinite I²C waits; an explicitly
-enabled inactivity watchdog releases outputs on expiry. Unrelated pin activity
-does not reset that watchdog. Automatic rearm requires a qualified new START.
+enabled inactivity watchdog releases outputs on expiry. Only external SCL edges
+reset that I²C watchdog. Own SDA activity and unrelated pin activity do not.
+Six bits of guarded drive history align own clock/data requests with synchronized
+pin edges. A delayed self-generated START cannot rearm after abort. A detected
+own SCL truncation or own SDA transition during stable SCL high trips protection
+and reports `pad_timing`. This digital causality check does not prove complete
+protocol timing or bus arbitration. Automatic rearm requires a qualified new START.

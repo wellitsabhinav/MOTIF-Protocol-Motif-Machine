@@ -1,5 +1,10 @@
 # Status
 
+Current coverage: M0/M1 digital model behavior is qualified; integrated
+SPI/UART/timed-stream RTL is qualified; early CMOS5L physical checks pass for that
+subset. The suite has 73 model tests and 34,351 equivalent model/RTL comparison
+cycles. I²C remains model-only. No general cost advantage is established.
+
 2026-10-12 — M0 executable model established. The suite independently verifies
 shared SPI target and UART receive behavior, framing, compound receive/count,
 transmit, and pad protection. The initial run passed 22 tests. I²C qualification
@@ -17,3 +22,25 @@ single-issue reference. Guardian electrical properties have a complete
 combinational proof; watchdog limits 1..15 have a 24-step bounded result.
 Synthesis produces generic cell counts, without technology-area/timing claims.
 A stale framing-level reacquisition bug was fixed and regression-tested.
+
+2026-10-12 — Nominal CMOS5L mapping and a manually gated physical flow are
+reproducible. Concurrent host/protocol
+testing exposed an empty-read race; response validity is now captured with the
+data so a late-arriving byte remains queued. The corrected RTL passes both
+comparison variants and Linux CI. Physical qualification is in progress.
+
+2026-10-12 — The model suite passes 73 tests. I²C stretched-clock setup now uses
+the shared timer and samples resolved SDA before release. Guarded drive history
+rejects delayed self-generated START and detects own clock/data timing faults.
+Only external SCL activity resets an enabled I²C inactivity watchdog. RTL output
+ownership requires transmit enable and a separate output pin. The corrected
+source passes native trace, host and lint checks; physical qualification is being
+repeated because the previous completed layout used the earlier ownership rule.
+
+2026-10-12 — Corrected subset layout passes routed timing at 50 MHz, DRC/LVS and
+official precheck. Routed standard-cell area is 40,546.4 µm²; worst setup/hold
+slacks are +8.0293/+0.1269 ns. A simulation-only PDK adapter repair passes the
+Linux gate retest against the same layout after checking physical source equality.
+Nominal component comparison and routed measurements are published separately.
+Residual max-fanout reports, timing-repair cost and I²C model-only coverage remain
+explicit limitations. Submission and fabrication are future milestones.

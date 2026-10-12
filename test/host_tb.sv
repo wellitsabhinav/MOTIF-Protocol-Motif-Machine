@@ -3,7 +3,8 @@ module tb;
     reg clk=0,rst_n=0,ena=1;
     reg [7:0] ui=8'h02,pins=8'hff;
     wire [7:0] uo,pad_data,pad_oe;
-    tt_um_wellitsabhinav_motif dut(ui,pins,uo,pad_data,pad_oe,ena,clk,rst_n);
+    tt_um_wellitsabhinav_motif dut(.ui_in(ui),.uio_in(pins),.uo_out(uo),.uio_out(pad_data),
+                                 .uio_oe(pad_oe),.ena(ena),.clk(clk),.rst_n(rst_n));
     reg [7:0] discard,result,protocol_rx;
     integer index;
     task tick(input integer cycles);
@@ -31,6 +32,11 @@ module tb;
         tick(4);rst_n=1;tick(8);
         if(pad_oe!==0)$fatal(1,"reset/disabled pad state");
         host_read(3,result);if(result!==8'hb2)$fatal(1,"host configuration read %h",result);
+        host_write(2,2);host_write(0,9);
+        pins[1]=0;pins[0]=0;tick(8);
+        if(pad_oe!==0)$fatal(1,"aliased output gained ownership");
+        host_read(18,result);if(!result[0])$fatal(1,"aliased output fault not retained");
+        rst_n=0;tick(4);pins=8'hff;rst_n=1;tick(8);
         host_write(0,9);host_write(8'h10,8'ha5);
         pins[1]=0;tick(8);pins[0]=0;tick(8);protocol_rx=0;
         for(index=7;index>=0;index=index-1)begin
@@ -50,6 +56,19 @@ module tb;
         for(index=0;index<8;index=index+1)begin pins[2]=(8'h25>>index)&1;tick(32);end
         pins[2]=1;tick(40);host_read(8'h11,result);if(result!==8'h25)$fatal(1,"UART RX %h",result);
         if(pad_oe!==0)$fatal(1,"UART receive drove pads");
+        host_write(0,0);host_write(3,4);host_write(0,8'h77);
+        fork
+            begin host_read(17,result);end
+            begin
+                repeat(420)@(negedge clk);pins[2]=0;repeat(4)@(negedge clk);
+                for(integer inject_bit=0;inject_bit<8;inject_bit=inject_bit+1)begin
+                    pins[2]=(8'h25>>inject_bit)&1;repeat(4)@(negedge clk);
+                end
+                pins[2]=1;repeat(8)@(negedge clk);
+            end
+        join
+        if(result!==0)$fatal(1,"empty read snapshot changed");
+        host_read(17,result);if(result!==8'h25)$fatal(1,"RX byte arriving during empty host read was lost: %h",result);
         host_write(0,0);host_write(1,8);host_write(3,16);host_write(0,5);
         pins[0]=1;tick(8);pins[0]=0;tick(4);
         for(index=7;index>=0;index=index-1)begin pins[2]=(8'haa>>index)&1;tick(16);end
