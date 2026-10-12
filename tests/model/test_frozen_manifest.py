@@ -43,3 +43,14 @@ def test_promoted_boundary_if_present():
     if PROMOTED.exists():
         from tools.frozen_manifest import verify
         verify(PROMOTED)
+
+
+def test_physical_correspondence_cannot_hide_logic_or_extra_state():
+    from tools.physical_correspondence import DECLARATION, declaration_correspondence
+    old = "module m;\n" + DECLARATION + "assign out = a;\nendmodule\n"
+    new = "module m;\nassign out = a;\n" + DECLARATION + "endmodule\n"
+    declaration_correspondence(old, new)
+    with pytest.raises(ValueError, match="exceeds"):
+        declaration_correspondence(old, new.replace("= a", "= b"))
+    with pytest.raises(ValueError, match="duplicated"):
+        declaration_correspondence(old, new + DECLARATION)

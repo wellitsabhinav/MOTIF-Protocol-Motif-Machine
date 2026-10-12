@@ -365,7 +365,7 @@
     "sg13cmos5l_mux4_1": 42
   },
   "allocated_configuration_bits": 78,
-  "source_sha": "2aa8829ee393908384d0e180fd3ab57f1e5dc002",
+  "source_sha": "13dc0c506908464ecdb56bc06e36a8c05fe71211",
   "source_hashes": {
     ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213",
     "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
@@ -386,7 +386,7 @@
     "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
     "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
     "src/motif_byte_exchange.sv": "b30e7bb2f7c4b847b3b6ad1f0db2470acf82358bafa31f1628889c950c62e73b",
-    "src/motif_core.sv": "1c5d41890e95115b377ad5f89a21c9a91e7ed831d8ea654fe2ec32e041f3a505",
+    "src/motif_core.sv": "1d0d5551e758f253033e9bbb0922b67db811830dcf3b90ed57c18a96f35100e8",
     "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
     "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
     "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",

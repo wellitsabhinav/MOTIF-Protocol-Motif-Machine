@@ -19,7 +19,7 @@ boundary includes all model and RTL sources, configuration and physical flow
 inputs. Routing counts denote named logical connections; they do not imply a
 programmable routing table or physical wire count.
 
-`gate1_logical.json` records 47 deterministic I2C cases and 87,715 normalized
+`gate1_logical.json` records 48 deterministic I2C cases and 88,287 normalized
 model/RTL cycles at the recorded source SHA. The model is unchanged. Generated
 input schedules, normalized traces and simulator output are under ignored
 `build/generalization/gate1`; Linux CI retains trace artifacts for 14 days.

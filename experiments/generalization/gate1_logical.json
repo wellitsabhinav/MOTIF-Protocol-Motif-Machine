@@ -3,7 +3,7 @@
   "gate": 1,
   "seed": 20261012,
   "python": "3.12.5",
-  "source_sha": "2aa8829ee393908384d0e180fd3ab57f1e5dc002",
+  "source_sha": "13dc0c506908464ecdb56bc06e36a8c05fe71211",
   "source_hashes": {
     ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213",
     "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
@@ -24,7 +24,7 @@
     "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
     "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
     "src/motif_byte_exchange.sv": "b30e7bb2f7c4b847b3b6ad1f0db2470acf82358bafa31f1628889c950c62e73b",
-    "src/motif_core.sv": "1c5d41890e95115b377ad5f89a21c9a91e7ed831d8ea654fe2ec32e041f3a505",
+    "src/motif_core.sv": "1d0d5551e758f253033e9bbb0922b67db811830dcf3b90ed57c18a96f35100e8",
     "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
     "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
     "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
@@ -1681,6 +1681,41 @@
       "model_rtl_agreement": true
     },
     {
+      "name": "own_pad_timing_fault_and_recovery",
+      "configuration": {
+        "frame": "two_wire",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": true,
+        "lsb_first": false,
+        "period": 63,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 6,
+        "watchdog": 0,
+        "fill": 255,
+        "exchange": true,
+        "address": 82,
+        "ack_address": true,
+        "ack_data": true
+      },
+      "configuration_sha256": "f6c68412e637f2a639a356b798f8ac112437a17f37c6acae78540f6dfe44c35c",
+      "cycles": 572,
+      "trace_sha256": "58b94de7dbdec7b9b581f6a0a2b975e7853f11df42e9e17005d7932505d1a20c",
+      "motif_firings": {
+        "FRAME_ACQUIRE": 2,
+        "RESET_COUNTER": 52,
+        "SHIFT_RX_COUNT": 25,
+        "BYTE_EXCHANGE": 7,
+        "FRAME_RELEASE": 50
+      },
+      "maximum_motif_types_per_cycle": 2,
+      "model_rtl_agreement": true
+    },
+    {
       "name": "simultaneous_host_rx_decision",
       "configuration": {
         "frame": "two_wire",
@@ -1720,7 +1755,7 @@
   "host_scheduling": "Synchronous host actions after actor tick; model source unchanged",
   "physical_status": "not established by logical tests",
   "classification": "MOTIF_I2C_LOGICAL_QUALIFICATION_PASSED",
-  "total_compared_cycles": 87715,
+  "total_compared_cycles": 88287,
   "synthesis": {
     "kind": "technology_mapped_cell_area",
     "cells": 2170,
