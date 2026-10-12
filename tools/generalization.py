@@ -226,6 +226,16 @@ def cases():
     for bit in (1, 0, 1, 0): bus.hold(scl=0, sda=bit); bus.clock_high()
     bus.reset(); bus.stop(); bus.start(); assert bus.write(0xa4) and bus.write(170); bus.stop()
 
+    bus = make("own_pad_timing_fault_and_recovery")
+    bus.start()
+    for bit in range(7, -1, -1):
+        bus.hold(scl=0, sda=(0xa4 >> bit) & 1); bus.clock_high()
+    # A one-cycle low clock returns high before ACK reaches the wire. The
+    # synchronized own SDA change must trip, rather than become a self START.
+    bus.hold(1, scl=0, sda=1); bus.hold(1, scl=1); bus.hold(10)
+    assert "pad_timing" in bus.output["faults"] and not bus.engine.active and not bus.output["oe"]
+    bus.stop(); bus.start(); assert bus.write(0xa4) and bus.write(85); bus.stop()
+
     # Preserve synchronous FIFO decisions when host readiness changes exactly
     # on an actor boundary. No model host API is treated as same-edge bypass.
     bus = make("simultaneous_host_rx_decision")
