@@ -138,7 +138,7 @@ def accounting():
         data_groups=["pin->RX","RX_terminal->pending_field","constant_mask/value->decision","TX_FIFO->TX","TX_bit/response_bit->data_request","readiness->wait","requests/ownership->guardian"]
         if name=="i2c_target":data_groups.extend(["pending_field_low_byte->RX_FIFO","timer_sample->wait"])
         fields=sorted(exemplar.keys()-{"program","fill","validate_stop"}-(set() if name=="i2c_target" else {"period","validate_start","hold_clock","pad_timing_check"}))
-        result["protocols"][name]={"aggregate_primitive_firings":counts,"completed_transactions":len(frames),"primitive_firings_per_transaction":frames,
+        result["protocols"][name]={"aggregate_primitive_firings":counts,"closed_frame_epochs":len(frames),"primitive_firings_per_frame_epoch":frames,
                                     "maximum_primitive_types_per_cycle":max(r["motifs"].bit_count() for r in rows),
                                     "observed_registered_pc_values":observed_pcs,"configured_entry_dependencies":sorted(referenced),"active_configuration_fields":fields,
                                     "activity_counting_scope":"PC values are registered observations. Entry dependencies include possible immediate successors, and interface groups describe configured dependencies, not branch coverage or physical wires. State fields are semantic dependencies, not switching/power measurements.",
