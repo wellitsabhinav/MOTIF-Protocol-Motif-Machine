@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "divergences": [
+    {
+      "case": "malformed_boundaries_watchdog_1",
+      "seed": 19,
+      "cycle": 466,
+      "classification": "RTL bug",
+      "cause": "Existing watchdog ignored acquisition-cycle inactivity when a frame was already active. Guardian.tick rearms before counting that active cycle; with limit one the repeated acquisition immediately trips.",
+      "model_expected": {"active": false, "guardian_tripped": true},
+      "initial_rtl_observed": {"active": true, "guardian_tripped": false},
+      "resolution": "Align watchdog RTL with the unchanged model. Count an active non-progress acquisition cycle as age one and expose its limit-one expiry. This is a Gate 1 semantic correction, not an infrastructure repair."
+    },
+    {
+      "classification": "underspecified behavior",
+      "cause": "Python push_tx/pop_rx calls occur between actor ticks; RTL host pulses commit synchronously using old FIFO state.",
+      "resolution": "Recorder explicitly schedules host actions after actor tick and uses pre-tick pop validity. Same-edge full RX decision/pop is separately tested to NACK the incoming byte. Model source is unchanged."
+    }
+  ]
+}
