@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "architectural_semantic_changes": [],
+  "implementation_corrections": [
+    {"component": "legacy replay fixture", "cause": "Windows translated the Git alternates path to CRLF", "repair": "Use LF bytes and enforce source SHA", "contract": "Historical evidence must execute at the pinned source", "architecture_changed": false, "repair_pr": 8},
+    {"component": "legacy CI", "cause": "Shallow checkout does not contain historical snapshot objects", "repair": "Fetch complete history for RTL replay CI", "contract": "Historical reproduction remains independent of current sources", "architecture_changed": false, "repair_pr": 8},
+    {"component": "model host scheduling", "cause": "Initial recorder missed full-TX push/pop rescue permitted by existing FIFO", "repair": "Accept host push when the simultaneous actor pop creates capacity", "contract": "Preserve existing FIFO primitive; transaction RX acceptance still sees pre-edge full", "architecture_changed": false},
+    {"component": "model lifecycle", "cause": "A fatal composition could retain a handoff timer request", "repair": "Higher-priority release suppresses timer request/start", "contract": "Preregistered lifecycle priority", "architecture_changed": false}
+  ]
+}

@@ -42,7 +42,7 @@ def test_hash_ignores_only_platform_line_endings():
 def test_promoted_boundary_if_present():
     if PROMOTED.exists():
         from tools.frozen_manifest import verify
-        verify(PROMOTED)
+        verify(PROMOTED, historical=True)
 
 
 def test_physical_correspondence_cannot_hide_logic_or_extra_state():
