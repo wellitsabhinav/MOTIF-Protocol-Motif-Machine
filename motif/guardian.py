@@ -58,4 +58,4 @@ class Guardian:
             oe |= mask
             if request.data and not self.open_drain & mask:
                 data |= mask
-        return data, oe
+        return data & oe, oe

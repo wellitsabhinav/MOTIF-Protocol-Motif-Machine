@@ -28,6 +28,10 @@ waveforms/
 *.out
 *.vvp
 obj_dir/
+abc.history
+test/sim_build/
+test/results.xml
+test/gate_level_netlist.v
 runs/
 tt/
 tt_submission/

@@ -17,17 +17,23 @@ flowchart LR
 
 Current status: SPI mode-0 target, UART 8N1 receive and seven-bit I²C target
 behaviors are tested in the executable model. I²C covers repeated START,
-ACK/NACK, turnaround, clock stretching and recovery. RTL and physical results
-remain pending; model reuse does not establish implementation cost.
+ACK/NACK, turnaround, clock stretching and recovery. The SPI/UART RTL subset
+matches model traces and accepts runtime host configuration. Guardian formal
+properties and generic synthesis are available; physical qualification is pending.
 
 ```sh
 python -m pip install -e '.[test]'
 python -m pytest -q
+python -m tools.rtl_check
+python -m tools.formal_check
 ```
 
 `motif/` contains the model and configuration helpers; `tests/` contains wire-level
 and adversarial checks; `docs/` defines behavior and evidence. See
 [architecture](docs/architecture.md), [execution semantics](docs/execution-model.md),
 [protocol support](docs/protocol-support.md), and [verification](docs/verification.md).
+The RTL and host contract are described in [RTL verification](docs/rtl-verification.md)
+and [host interface](docs/host-interface.md). Reproduction requires Icarus/VVP for
+RTL simulation and Yosys for the formal and synthesis commands.
 
 License: Apache-2.0. See LICENSE.
