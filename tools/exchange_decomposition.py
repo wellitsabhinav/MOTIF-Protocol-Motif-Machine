@@ -229,7 +229,8 @@ def run(gate, output=None, synthesize=False):
                 "new_semantics_after_preregistration":False,"clock_drive_cycles":sum(bool(r["oe"]&2) for r in actual)}
         print("PASS v2 Microwire A55A, independent oracle and full model/RTL trace",flush=True)
     else:
-        raise SystemExit("Gate 3 requires frozen v2 and a subsequently committed selection")
+        from tools.unseen_protocol import run as unseen_run
+        return unseen_run(output)
     result["source_sha"]=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
     result["preregistration_sha256"]=hashlib.sha256((DIRECTORY/"preregistered_architecture.json").read_bytes().replace(b"\r\n",b"\n")).hexdigest()
     result["rtl_hashes"]={p.as_posix():hashlib.sha256(p.read_bytes().replace(b"\r\n",b"\n")).hexdigest() for p in sorted(Path("src").glob("*.sv"))}
