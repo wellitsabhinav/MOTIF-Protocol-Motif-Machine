@@ -1,0 +1,102 @@
+[
+  {
+    "cycle": 0,
+    "pins": 252,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 20,
+    "pins": 253,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 1,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 852,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 2,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 853,
+    "pins": 251,
+    "oe": 8,
+    "data": 0,
+    "active": 1,
+    "events": 532,
+    "executed_entries": [
+      1,
+      2,
+      3
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 1364,
+    "pins": 247,
+    "oe": 8,
+    "data": 8,
+    "active": 1,
+    "events": 2048,
+    "executed_entries": [
+      5
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 1876,
+    "pins": 255,
+    "oe": 8,
+    "data": 0,
+    "active": 1,
+    "events": 2048,
+    "executed_entries": [
+      7
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 1877,
+    "pins": 247,
+    "oe": 8,
+    "data": 0,
+    "active": 1,
+    "events": 4096,
+    "executed_entries": [
+      8
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 1969,
+    "pins": 252,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  }
+]

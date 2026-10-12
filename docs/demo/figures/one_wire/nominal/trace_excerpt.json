@@ -1,0 +1,144 @@
+[
+  {
+    "cycle": 0,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 50002,
+    "pins": 248,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 131073,
+    "executed_entries": [],
+    "temporal_count": 1,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 74001,
+    "pins": 248,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 524288,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 24000,
+    "temporal_done": 1
+  },
+  {
+    "cycle": 74002,
+    "pins": 248,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 512,
+    "executed_entries": [
+      0,
+      1
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 75002,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 131584,
+    "executed_entries": [
+      1,
+      2
+    ],
+    "temporal_count": 1,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 76501,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 524288,
+    "executed_entries": [
+      2
+    ],
+    "temporal_count": 1500,
+    "temporal_done": 1
+  },
+  {
+    "cycle": 76502,
+    "pins": 255,
+    "oe": 4,
+    "data": 0,
+    "active": 1,
+    "events": 528,
+    "executed_entries": [
+      2,
+      3
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 76503,
+    "pins": 248,
+    "oe": 4,
+    "data": 0,
+    "active": 1,
+    "events": 131072,
+    "executed_entries": [
+      4
+    ],
+    "temporal_count": 1,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 82502,
+    "pins": 248,
+    "oe": 4,
+    "data": 0,
+    "active": 1,
+    "events": 524288,
+    "executed_entries": [
+      4
+    ],
+    "temporal_count": 6000,
+    "temporal_done": 1
+  },
+  {
+    "cycle": 82503,
+    "pins": 248,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 37408,
+    "executed_entries": [
+      4,
+      5,
+      6
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 124999,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  }
+]

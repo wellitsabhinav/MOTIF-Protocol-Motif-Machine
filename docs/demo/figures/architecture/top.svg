@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1080pt" height="360pt" viewBox="0 0 1080 360" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 360 
+L 1080 360 
+L 1080 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 1007.832225 225.262542 
+Q 540.001516 141.405729 72.996179 225.114055 
+" clip-path="url(#p317f9778c6)" style="fill: none; opacity: 0.55; stroke: #8093a3; stroke-width: 0.75; stroke-linecap: round"/>
+    <path d="M 76.857284 226.250659 
+L 72.996179 225.114055 
+L 76.222125 222.707133 
+" clip-path="url(#p317f9778c6)" style="fill: none; opacity: 0.55; stroke: #8093a3; stroke-width: 0.75; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 70.2 280.198933 
+L 469.8 280.198933 
+Q 473.04 280.198933 473.04 277.109333 
+L 473.04 174.122667 
+Q 473.04 171.033067 469.8 171.033067 
+L 70.2 171.033067 
+Q 66.96 171.033067 66.96 174.122667 
+L 66.96 277.109333 
+Q 66.96 280.198933 70.2 280.198933 
+z
+" clip-path="url(#p317f9778c6)" style="fill: #f2f7fb; stroke: #205b8f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 610.2 280.198933 
+L 1009.8 280.198933 
+Q 1013.04 280.198933 1013.04 277.109333 
+L 1013.04 174.122667 
+Q 1013.04 171.033067 1009.8 171.033067 
+L 610.2 171.033067 
+Q 606.96 171.033067 606.96 174.122667 
+L 606.96 277.109333 
+Q 606.96 280.198933 610.2 280.198933 
+z
+" clip-path="url(#p317f9778c6)" style="fill: #f2f7fb; stroke: #205b8f; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="270" y="215.189163" transform="rotate(-0 270 215.189163)">core</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #205b8f; font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="270" y="246.213333" transform="rotate(-0 270 246.213333)">motif_core</text>
+   </g>
+   <g id="text_3">
+    <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="810" y="215.189163" transform="rotate(-0 810 215.189163)">host</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #205b8f; font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="810" y="246.213333" transform="rotate(-0 810 246.213333)">motif_host_spi</text>
+   </g>
+  </g>
+  <g id="text_5">
+   <text style="font: 12px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(415.96875 16.318125)">MOTIF working source: top-level modules</text>
+   <text style="font: 12px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(301.03125 29.7555)">Yosys elaborated connectivity; omitted ports and logic are listed in source JSON</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p317f9778c6">
+   <rect x="10.8" y="71.136" width="1058.4" height="278.064"/>
+  </clipPath>
+ </defs>
+</svg>

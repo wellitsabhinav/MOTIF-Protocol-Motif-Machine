@@ -1,0 +1,27 @@
+{
+  "kind": "permanent_historical_counterexample",
+  "classification": "MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL",
+  "source_report": "experiments/exchange_decomposition/third_result.json",
+  "source_report_sha256_lf": "ed61601096ac02c40155f0ca0668f0ffbe3c830015ee9bb14c70319e2785d2c8",
+  "rtl_trace_sha256_lf": "ef187103a4f692a72acb842c3e09d2c5964232b693e563493cff03da40446ca0",
+  "oracle": {
+    "passed": false,
+    "errors": [
+      "Expected 0 presence pulse(s), observed 1"
+    ],
+    "qualified_controller_releases_cycles": [],
+    "observed_presence_cycles": [
+      [
+        76247,
+        82240
+      ]
+    ],
+    "timings_us": [
+      {
+        "start": 1524.94,
+        "low": 119.86
+      }
+    ]
+  },
+  "executed_timeline": "unavailable in historical observation schema"
+}

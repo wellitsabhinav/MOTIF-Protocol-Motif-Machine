@@ -57,8 +57,11 @@ module motif_core #(parameter REFERENCE=0) (
     wire [3:0] field_count, field_count_override;
     wire [4:0] field_length;
     wire field_complete, field_timer, waiting_timer;
-    wire [9:0] primitive_fires;
-    wire [16:0] primitive_events;
+    wire [10:0] primitive_fires;
+    wire [19:0] primitive_events;
+    wire [15:0] temporal_count, executed_pcs;
+    wire temporal_started, temporal_done;
+    wire [2:0] executed_count;
     wire desired_role, current_role, accepted, captured_response, halted;
     wire [15:0] pending_field;
     wire tx_overflow, tx_underflow, rx_full, rx_empty, rx_overflow, rx_underflow;
@@ -80,13 +83,14 @@ module motif_core #(parameter REFERENCE=0) (
     wire [3:0] tx_remaining;
     wire tx_bit, tx_terminal, tx_empty, tx_full;
     wire tx_load = exchange_i ? ex_tx_load : enable_i && !inhibit && transmit_i && (acquire || tx_terminal);
-    motif_transaction exchange(clk,rst_n,clear_external,exchange_i && active_o && !inhibit,
+    motif_transaction exchange(clk,rst_n,clear_external,exchange_i && acquire && !inhibit && !end_sample,exchange_i && active_o && !inhibit,
         rising[clock_pin_i],falling[clock_pin_i],levels[rx_pin_i],lsb_i,transmit_i,program_i,
         field_value,field_count,tx_value,tx_head,tx_remaining,rx_full,tx_empty,timer_event==3,timer_bit,
         ex_rx_fire,ex_tx_fire,ex_tx_load,ex_rx_push,field_override,field_count_override,field_length,field_timer,
         exchange_rx_data,turnaround,mismatch,composition_fault,transaction_end,field_complete,completed_field,
         primitive_fires,primitive_events,exchange_phase,desired_role,current_role,accepted,captured_response,pending_field,
-        drive_enable,drive_value,stretch,halted,waiting_timer);
+        drive_enable,drive_value,stretch,halted,waiting_timer,
+        temporal_count,temporal_started,temporal_done,executed_pcs,executed_count);
     wire collision;
     wire [7:0] reference_rx_value, reference_rx_next;
     wire [2:0] reference_rx_count;
@@ -163,5 +167,5 @@ module motif_core #(parameter REFERENCE=0) (
     end
     assign status_o = {collision, timeout_status, framing_error, fill_underflow, rx_overflow,
                        tx_overflow, rx_underflow, guard_fault};
-    wire _unused = &{rx_complete, tx_value, tx_remaining, tx_full, tx_underflow, rx_full, rx_empty, exchange_phase, field_next[15:8], field_length, completed_field, waiting_timer, primitive_fires, primitive_events, desired_role, current_role, accepted, captured_response, halted, pending_field, 1'b0};
+    wire _unused = &{rx_complete, tx_value, tx_remaining, tx_full, tx_underflow, rx_full, rx_empty, exchange_phase, field_next[15:8], field_length, completed_field, waiting_timer, primitive_fires, primitive_events, desired_role, current_role, accepted, captured_response, halted, pending_field, temporal_count, temporal_started, temporal_done, executed_pcs, executed_count, 1'b0};
 endmodule

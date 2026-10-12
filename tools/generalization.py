@@ -12,7 +12,7 @@ if __name__ == "__main__":
         from tools.legacy_baseline import run as _run
         _run(_args.gate, _args.output, _args.synthesize)
     else:
-        from tools.exchange_decomposition import run as _run
+        from tools.historical_snapshot import run as _run
         _run(_args.gate, _args.output, _args.synthesize)
     _sys.exit(0)
 

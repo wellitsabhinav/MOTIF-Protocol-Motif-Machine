@@ -30,6 +30,11 @@ def normalize(name):
 
 
 def report():
+    if Path('docs/research/v3_temporal_qualification/preregistration.json').exists() and 'temporal_count_o' in Path('src/motif_transaction.sv').read_text():
+        from tools.v3_inventory import declared_accounting, report_identity, PREREGISTRATION
+        data = declared_accounting()
+        budget = json.loads(PREREGISTRATION.read_text())['budgets']
+        return {**report_identity(), **data, 'stage': 'accounting', 'passed': data['configuration_bits'] == budget['configuration_bits'] and data['table_bits'] == budget['table_bits'] and data['delta_declared_register_bits_vs_v2'] <= budget['maximum_added_declared_state_bits']}
     if Path('experiments/exchange_decomposition/frozen_v2_manifest.json').exists():
         from tools.v2_inventory import accounting
         return accounting()
@@ -122,7 +127,8 @@ if __name__ == "__main__":
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     current_v2 = Path('experiments/exchange_decomposition/frozen_v2_manifest.json').exists()
-    destination = args.output or Path('build/exchange_decomposition/accounting.json' if current_v2 else 'reports/motif_usage.json')
+    current_v3 = Path('docs/research/v3_temporal_qualification/preregistration.json').exists() and 'temporal_count_o' in Path('src/motif_transaction.sv').read_text()
+    destination = args.output or Path('build/v3_temporal_qualification/accounting.json' if current_v3 else 'build/exchange_decomposition/accounting.json' if current_v2 else 'reports/motif_usage.json')
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(report(), indent=2) + "\n", encoding="utf-8")
     print(destination)

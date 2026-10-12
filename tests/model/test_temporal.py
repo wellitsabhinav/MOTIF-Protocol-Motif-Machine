@@ -9,7 +9,7 @@ from motif.motifs.shift import ShiftTX
 from motif.motifs.transaction import FieldShift, Transaction
 from motif.transaction import (Entry, program, temporal_wait, delay_wait, WAIT, HALT,
                                RESPOND, HANDOFF, RX, DECIDE, TX, TIMER, RISING,
-                               CHAIN, TEMPORAL, INTERRUPT_BRANCH)
+                               CHAIN, TEMPORAL, INTERRUPT_BRANCH, CONTINUE)
 
 
 def machine(entries):
@@ -110,6 +110,19 @@ def test_ordinary_chain_can_begin_qualification_on_the_same_observation():
     assert parts[0].pc == 1 and parts[0].temporal_count == 1
 
 
+def test_second_temporal_entry_after_four_actions_is_deferred_without_fifth_execution():
+    parts = machine([delay_wait(1, next=1, chain=True),
+                     Entry(CONTINUE, next=2, flags=CHAIN),
+                     Entry(CONTINUE, next=3, flags=CHAIN),
+                     Entry(CONTINUE, next=4, flags=CHAIN),
+                     delay_wait(1, next=5), Entry(HALT)])
+    step(parts)
+    _, events, _ = step(parts)
+    assert "composition_fault" not in events
+    assert parts[0].executed_entries == [0, 1, 2, 3]
+    assert parts[0].pc == 4 and parts[0].temporal_count == 0
+
+
 @pytest.mark.parametrize("threshold", range(1, 5))
 @pytest.mark.parametrize("level", [0, 1])
 def test_exhaustive_small_threshold_completion_against_run_length_oracle(threshold, level):
@@ -202,3 +215,22 @@ def test_terminating_halt_cancels_same_cycle_fifo_work_and_preserves_old_entries
     assert "frame_terminate" in step(parts, bit=1, rising=True)[1]
     assert list(parts[3]) == [0x55]
     assert parts[0].executed_entries == [0, 1, 2]
+
+
+@pytest.mark.parametrize("repeated_start", [False, True])
+def test_registered_validation_end_preempts_temporal_acquisition(repeated_start):
+    cfg = Config(frame="two_wire", sample="timer", period=2, validate_stop=True,
+                 transmit=False, rx_pin=2, tx_pin=2, open_drain=4,
+                 program=program([delay_wait(100, next=1, chain=True),
+                                  Entry(RESPOND,next=2), Entry(HALT,flags=2)]))
+    engine = Engine(cfg)
+    rows = []
+    for cycle in range(40):
+        pins = 255
+        if cycle == 8 or repeated_start and cycle >= 27: pins &= ~4
+        if cycle in (9,10): pins &= ~2
+        rows.append(engine.step(pins))
+    assert not rows[29]['active']
+    assert 'frame_start' not in rows[29]['events']
+    assert not rows[29]['oe']
+    assert not engine.rx_fifo

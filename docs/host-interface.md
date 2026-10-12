@@ -24,7 +24,7 @@ Use at least eight core cycles per host half-phase in this initial qualification
 | 18 | Status: bit 0 guard/config rejection, 1 empty RX read, 2 TX overflow, 3 RX overflow, 4 fill underflow, 5 framing error, 6 timeout, 7 reference issue collision |
 | 19 | RX count in bits 2:0, TX count in bits 5:3, active frame in bit 6 |
 | 20 | Transaction diagnostics: bit 0 resolved first-bit mismatch, 1 own pad timing fault, 2 composition fault; sticky until reset |
-| 21 | Interface version, currently 2 |
+| 21 | Interface version, currently 3 |
 | 22 | Transaction control: bit 0 table enable, 1 clock-level-qualified data framing, 2 active-high frame polarity, 3 hold-clock permission, 4 own-pad timing validation |
 | 128–255 | Sixteen 64-bit action entries, eight little-endian bytes per entry |
 
@@ -32,10 +32,10 @@ Disable before changing configuration. A write to control while enabled must
 clear enable; other enabled configuration writes are rejected. FIFO access
 remains available while running. Periods below two inhibit engine enable.
 Reset initializes SPI pin assignments, a 434-cycle period, fill 255, watchdog
-disabled, and the engine disabled. V2 allocates 1,096 configuration bits: 72
+disabled, and the engine disabled. V3 retains 1,096 configuration bits: 72
 global bits and 1,024 table bits. Transaction control and table reset to zero.
 Enabling a table with an invalid receive length or continuation predicate is
-rejected. Shared RX/TX requires open-drain data; a hold route requires explicit
+rejected. Invalid temporal encodings are also rejected. Shared RX/TX requires open-drain data; a hold route requires explicit
 permission and open-drain clock. Clock and RX differ, and TX cannot alias a
 protected clock/frame input. Qualified data framing requires the table path.
 Invalid transaction enable requests retain the disabled
@@ -74,3 +74,29 @@ DI/DO on pins 2/3, active-high CS on pin 0 and clock on pin 1, transaction contr
 5, and control 9. Preload A5 and 5A. Its table emits the dummy zero and presents
 two bytes continuously on rising clock events. The legacy register contract is
 reproducible in the historical snapshot and is not translated by v2.
+
+## V3 temporal WAIT
+
+The sixteen-entry encoding and eight opcodes remain unchanged. WAIT flags bit 2
+selects `TEMPORAL_QUALIFY`. Argument 3 qualifies the configured synchronized RX
+level against value bit 0; argument 2 qualifies a constant-true elapsed delay.
+The mask operand holds a threshold of 1–65,535 consecutive core observations.
+Flags bit 3 selects interruption branching to `alternate`; otherwise a partial
+interruption restarts the wait. Success advances to `next`. CHAIN remains flags
+bit 10. Temporal entries require ALWAYS and forbid hold/mismatch flags, reserved
+operand bits and zero thresholds. Constant-true delay requires value zero and no
+interruption branch. Validation is identical in the packing model and RTL host.
+
+`motif.transaction.temporal_wait(...)` and `delay_wait(...)` compile these entries
+without changing table storage. Qualified v2 profiles have unchanged encodings.
+Old binary tables that used formerly ignored temporal-tag bits acquire v3 meaning;
+arbitrary ignored-bit compatibility is not promised. Host software can inspect
+register 21 before programming.
+
+The first matching observation counts as one, including acquisition's sample
+when entry zero is temporal. The T-th matching observation registers completion,
+consumed on the following executor cycle. False on the T-th candidate observation
+prevents qualification; false after registered completion cannot revoke it.
+The operation adds a separate sixteen-bit counter and two lifecycle bits, with
+no configuration growth. See the immutable v3 preregistration and execution model
+for interruption, chaining and lifecycle priorities.

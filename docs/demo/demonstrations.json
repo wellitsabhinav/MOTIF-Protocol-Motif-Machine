@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "source_hashes": {
+    "experiments/temporal_qualification/configurations/one_wire_reset_presence.json": "da02c34b1de4882a6645bb56ffdf03becf7e7f706464aa6db781d6da43ab3e2e",
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "827439de5eb3cd4aae83be8ac093b66d2590aec1971be798fd07367ed347a450",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/motifs/transaction.py": "7409f397a496b76e30b56e8ba3499ef81b3a59be5136a67623420e0b9788aab1",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "motif/transaction.py": "e5d789ea8f5cc98b195fc20177969e9a4da2c8362c59c1d492bb838c5269f2bb",
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4",
+    "tools/demo.py": "c70653e8c5bda8ab7719de3b21852a82af610c86fe3c9820fa414bf35ccf6d78",
+    "tools/demo_render.py": "5f37f5790184a0ab595e483176e548e1dcbbe86bbf01e0e4ec3cdc2f6c4fd30d",
+    "tools/exchange_decomposition.py": "8c681010888f46a72e1581349ce86514776a2234d2691eebf99fc6535ceb75e5",
+    "tools/unseen_protocol.py": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
+    "tools/v3_trace.py": "c3246a1f81c264e9e4f9059662faca43b310bdbd0eac5c30aa288ddc770363c8"
+  },
+  "campaign": {
+    "status": "in progress; unfrozen",
+    "freeze_sha256_lf": null,
+    "evidence": {},
+    "physical": "No v3 physical claim is established by the demonstration package."
+  },
+  "demonstrations": [
+    {
+      "protocol": "i2c",
+      "case": "bounded",
+      "cycles": 4152,
+      "expected": {
+        "all_address_and_data_ack": true,
+        "received": [
+          85,
+          170
+        ],
+        "transmitted": [
+          165,
+          90
+        ],
+        "released": true
+      },
+      "observed": {
+        "all_address_and_data_ack": true,
+        "received": [
+          85,
+          170
+        ],
+        "transmitted": [
+          165,
+          90
+        ],
+        "released": true
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "587e7b94f5066ab9d578bc4216833b41d4ce694ce6e326f9e911c39038e2581e",
+      "rtl_trace_sha256": "14b56dd06a5586d9606582c45f01caf39dba8e8332916992af06bc857961cd3b"
+    },
+    {
+      "protocol": "microwire",
+      "case": "bounded",
+      "cycles": 1970,
+      "expected": {
+        "word": "0xa55a",
+        "dummy_zero": true,
+        "controller_owns_clock": true,
+        "output_event": "rising"
+      },
+      "observed": {
+        "word": "0xa55a",
+        "dummy_zero": true,
+        "controller_owns_clock": true,
+        "output_event": "rising"
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "3b0ff5553d7999155af366ac10d9f8a2003889c21bd7a63eccbca229d39144b4",
+      "rtl_trace_sha256": "89e04e4b8cf3463da4091146dbff2f8090cb4a014158b09e3d7c6edf28f308fb"
+    },
+    {
+      "protocol": "one_wire",
+      "case": "nominal",
+      "cycles": 125000,
+      "expected": {
+        "presence_pulses": 1,
+        "wire_oracle_passed": true
+      },
+      "observed": {
+        "presence_pulses": 1,
+        "wire_oracle_passed": true
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "d4a655b9c16d7494f07d099a9e1dbeff2fa08a45438cf4286b35bf20937e4720",
+      "rtl_trace_sha256": "3fb5b7e838ae8d92c92ed9060f3736197e8b112754297da6204ef6c34ccf66a8"
+    },
+    {
+      "protocol": "one_wire",
+      "case": "interrupted_non_reset",
+      "cycles": 125050,
+      "expected": {
+        "presence_pulses": 0,
+        "wire_oracle_passed": true
+      },
+      "observed": {
+        "presence_pulses": 0,
+        "wire_oracle_passed": true
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "c8a6d4a16dd3300a8d6cb7bcf72551ccb16c61ca9a84842287e3bd4d468fbf3d",
+      "rtl_trace_sha256": "b97bc6ce0036a1b15601e9a6e8bfd8f936dd36d758f69e63715567272a801bf2"
+    },
+    {
+      "protocol": "spi",
+      "case": "bounded",
+      "cycles": 218,
+      "expected": {
+        "target_received": 60,
+        "controller_received": 166,
+        "released": true
+      },
+      "observed": {
+        "target_received": 60,
+        "controller_received": 166,
+        "released": true
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "438f91837f7a0fa43aa76cd2849f8019a811f871d4657dfaa4f9fedc5b144d49",
+      "rtl_trace_sha256": "cfcb91b17dc18833b14177767b5462349dbd4810a66ef3f90f30e640d082a7c7"
+    },
+    {
+      "protocol": "uart",
+      "case": "bounded",
+      "cycles": 722,
+      "expected": {
+        "received": [
+          85,
+          166
+        ],
+        "released": true
+      },
+      "observed": {
+        "received": [
+          85,
+          166
+        ],
+        "released": true
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "5c40361f1631be0ce53f139e05043c4dd6d3440bc50a5e363acb04d88e94a1aa",
+      "rtl_trace_sha256": "6d49ce69616be27c91533794d5b9dbd7ab0c3400d011a0f513f732881af79a9f"
+    },
+    {
+      "protocol": "timed_stream",
+      "case": "bounded",
+      "cycles": 278,
+      "expected": {
+        "received": [
+          85,
+          170
+        ],
+        "released": true
+      },
+      "observed": {
+        "received": [
+          85,
+          170
+        ],
+        "released": true
+      },
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "03929cf5a4feb49c467c46ebea76cb591c5265e2fc1a768a8ebb4d1e8af549c7",
+      "rtl_trace_sha256": "c634a33ae741daa7a279f8c818c5762e3cb1965a7bd8d4fec289a8d4c5a9acd4"
+    }
+  ],
+  "selected_artifact_sha256": {
+    "i2c/bounded/configuration.json": "6c0d58d7854ebefd09e385136d1a10eab85f4a5e4ba8c51beda76e13ecc93e1b",
+    "i2c/bounded/timeline.png": "6c12cb66c8c35e2ec1c34dd2eb6d07e28b6d84b80f1db441c6c4554b57d3559a",
+    "i2c/bounded/timeline.svg": "40d0180e72038390c7c78f6504beb29f0f63ff7cbc5ca7780c9b1d1b993c5e8f",
+    "i2c/bounded/trace_excerpt.json": "ae39a1ebac3c80d1220091efd324878e3dc06d0291a4816a1cbdc5ae35055bb2",
+    "i2c/bounded/waveform.png": "2dfe36a499f1c57ec73f217546c3d6d081167f58b305df484054e15839f36bd0",
+    "i2c/bounded/waveform.svg": "faa2f37d8e8ab10302661689f266512f1955a2c00f130e3a5c013c98a51c8406",
+    "microwire/bounded/configuration.json": "bafdbba391cb044ca11944888a5741f7a8318724dbf5c98c3c485ae0457bd8ec",
+    "microwire/bounded/timeline.png": "b930bf186916b1ce90e5a71533e4ae49249c900ff0b8c20c69f7583b44fdf415",
+    "microwire/bounded/timeline.svg": "25563257e695431e87dd6aa9e28b0dc0c1d5fae95cea56b8dbdd88bf242e31b6",
+    "microwire/bounded/trace_excerpt.json": "8299e6fc697afb11fedf42e0ef4f92be1d1d73c9460ce18f4f426a52b4806d0c",
+    "microwire/bounded/waveform.png": "b29c02128a38996df9fe18b80564f2552032cb239beb87773321d6cd1177ed08",
+    "microwire/bounded/waveform.svg": "33bb43230294e60b162874321d07ea5a5a0e44913edf634479bd101b816f94a3",
+    "one_wire/nominal/configuration.json": "414253254a210f81b603e6b1c1064096deedbe8cabc3dbed386e3d876683fd0f",
+    "one_wire/nominal/timeline.png": "19fabaa527f0565ae4a04ad5933945fa041b2657f0d3a18d8b127e2995fbd429",
+    "one_wire/nominal/timeline.svg": "1d93f150eb2863794ef2e6786a184d62db497e2bd1811bb403caad0e4a48b102",
+    "one_wire/nominal/trace_excerpt.json": "239cd8a5886b62d07182017507a3e0894205f290e2bea6f5854e7616c875c62e",
+    "one_wire/nominal/waveform.png": "2316c5838fe6f700ead9d507911e713c25c8a40b61b552144d4a8a3e5299fa03",
+    "one_wire/nominal/waveform.svg": "793f3ab522e7bb4adc511cf77c164413b28051f96f0484d9372cb9cdc58a06fa",
+    "one_wire/interrupted_non_reset/configuration.json": "414253254a210f81b603e6b1c1064096deedbe8cabc3dbed386e3d876683fd0f",
+    "one_wire/interrupted_non_reset/timeline.png": "8e945f47bbdbd8a19de573fad4546c14926b715b918b9a33dd387f370ad5a2f2",
+    "one_wire/interrupted_non_reset/timeline.svg": "6b9d21aba13cf4a26538220160ef3cfb92ffb80bb645f3229246c96b3eb11807",
+    "one_wire/interrupted_non_reset/trace_excerpt.json": "6b4ee1907921eaffc9a7b1b140b9668f7b5a80f72aa76fa5b98202e92ad2b885",
+    "one_wire/interrupted_non_reset/waveform.png": "4f6ee053283f946ec14afa1a744bb91171c61b3369a42d0cc306381adc15ba7b",
+    "one_wire/interrupted_non_reset/waveform.svg": "f81337d5ad812ee1e392aadca7992b02b418e935eabf0c7c632c30f352258d64",
+    "spi/bounded/configuration.json": "d4360449345c28c1b1d7e1a0d4662adac916bca799f23354f2fc40791ae4f38f",
+    "spi/bounded/timeline.png": "89e72fca23c13df32a1fbe382d6cad5765bfd1d44a86d7f57fdcadb797da692e",
+    "spi/bounded/timeline.svg": "3303d2fdd4843469576b5532f2ce3d830499e02b854a5650100b878ee23c40d9",
+    "spi/bounded/trace_excerpt.json": "a449915baac0b7aa0ac2f3020b82eef18d446fc1a5956f6a14ed05344dbffe14",
+    "spi/bounded/waveform.png": "01cd6a187b88f548aa94974e58afd17f25a4ab79767829dc1aaac4f81c7b2f08",
+    "spi/bounded/waveform.svg": "1748b94619aed311097a82677dc6dde09c7d9cd3fa862da10faf284f69330714",
+    "uart/bounded/configuration.json": "8dcde84227ee11c867d5e07c5025128f004fc996644a4137ef4846bd613bb1f3",
+    "uart/bounded/timeline.png": "e9f85c4a3ac7301913fc85fa28553efc1b5668be5b8e211df28e73dd89c34f82",
+    "uart/bounded/timeline.svg": "73fb428194b5deb4254d39f4eaddbe216c561fcb0a1755ac02e00c1a152496fb",
+    "uart/bounded/trace_excerpt.json": "bb202c4663a567cc2369f417c57b6e36514496cd2920f74651a6fe4473115317",
+    "uart/bounded/waveform.png": "a367ace965237c54456af566f2f545391cfacb6937657df8e5c663617f225cab",
+    "uart/bounded/waveform.svg": "6ab9bf86d1747007f7e77c39205eafb49fac455406129660a68ae3775045b1e4",
+    "timed_stream/bounded/configuration.json": "8246237012e3b5d0bf1169077d871f338f969d89beee6c7791dbac46acd8b542",
+    "timed_stream/bounded/timeline.png": "e2e571361bf811073e97df7540f4a4eb41e5187b87d88e40ddca05c01953683d",
+    "timed_stream/bounded/timeline.svg": "5eada6051f209e6eac274a3476d0e2a01183061bc1fad0736d15bc2f1e4eae95",
+    "timed_stream/bounded/trace_excerpt.json": "5d7c6205b8e9e52e2eee885bf81ba332de8d0fa6b29ee68936b631d6ad0fcc87",
+    "timed_stream/bounded/waveform.png": "d584276b6bdb5d22475e7c646278146a056eb5e3c37e882d638c183bc10062a9",
+    "timed_stream/bounded/waveform.svg": "7e7d52f8982a62de5a12fb032f05e1ce021f1b08ddb8d8ae1c96d3d768a3c9a2",
+    "architecture/architecture.json": "91da685d3e51c6ef87eb9d01ef7004bf7dc7701f95ddd359ddea814d3648b6fe",
+    "architecture/architecture.png": "2f0364e1db12dbcca6e86aaba87b63dae52a144d02d991f7152d5ba21f32c988",
+    "architecture/architecture.svg": "57197c02b976b33adb36cc38545a67b13f5e28b10c09f3015e99c2e36111f309",
+    "architecture/evolution.json": "fe9b020c9651754845a8837c3f80d8481d6935765db7388850c601562cda674f",
+    "architecture/evolution.png": "a29fa2c0603eab7274be53a47372fa905546af31c4f8e8bfa6bf378d00f745de",
+    "architecture/evolution.svg": "ec4c96ec45aaab1a023b858478e806c23414f6a9e5140d63e63d3de3dd991fe1",
+    "architecture/identity.json": "89de6f84db872cdcb9bd55a8c8936ebca20a21cf54b2c440b323a6ad9a151330",
+    "architecture/temporal.json": "6da061dc79ec578c10b47a0bcf50ee2def460482239c5dadcdafb3a53b07854c",
+    "architecture/temporal.png": "8548fab428689ebf9d545878aa93c35fd2ca7944d56d74bdc0f804b417a5d2d1",
+    "architecture/temporal.svg": "76487fbe544bb53c6a6e246a16c1f82f6ed10be98f7d85dab5bf5debfc88eb3e",
+    "architecture/top.json": "dccbe969dedf4292637a5c652bf9f23cdee4f0dcde41e67a323b69540d5d9ebc",
+    "architecture/top.png": "d98b13cec929dec8df106a13ce0b0ce5448e3403e48ff98001efadca017815c7",
+    "architecture/top.svg": "67d7de53b5b00647fc7b1fb856acb81c107ab13c0290905bc2b326dad9cd3824",
+    "architecture/transaction.json": "943bdb72fa897ca4c915998a87e27939fdacd0105274e0d56c18f801cce8526c",
+    "architecture/transaction.png": "f781f4cbb4a42a8e185f24e7132037c691162445d315f849ee073b249ccf9cb6",
+    "architecture/transaction.svg": "236f6039921dafb534d3366b21dcc67a6c4f6b8f295fe0a125b4b96dc947ca6e",
+    "historical/v2_interrupted_low/identity.json": "bc0f30738f79fb95d229fa4d8354ce4a56013b12cd10e57df8ce21414d10419c",
+    "historical/v2_interrupted_low/waveform.png": "7297e716f30a93680e200bd174903a71b7cda61f539da52c433e4e2b066754ec",
+    "historical/v2_interrupted_low/waveform.svg": "273e653d9a0b1358ef29c907c7fbc4c552437aacac2c435fb3980b33c12d9f9e",
+    "comparison/early_one_cycle_gap/identity.json": "2fda6a62b8a2cbca6787e64f10fd73365fb2593f94d48d63a709be9da5e3cf75",
+    "comparison/early_one_cycle_gap/waveform.png": "619e4ec1c253bd3df3f0f7ba7324e67c435ed01f53c3dda29d166d0dddaf4d8c",
+    "comparison/early_one_cycle_gap/waveform.svg": "96d63674b755c9902e13b429481e1f519bec1c82bc7b6d31bb97f07a44d66ae5",
+    "comparison/interrupt_then_valid_low/identity.json": "a96ab60567af6ebe90e4cfd6b901ca1b8399169e0177582ded2b5f5c5f3911ae",
+    "comparison/interrupt_then_valid_low/waveform.png": "d628fe4c9067dfcccf198b5130b7c9dd3d1fb8a0c2cc625b6afa3634397a3d95",
+    "comparison/interrupt_then_valid_low/waveform.svg": "a809d5e8c6b384bb18cde1e26a73055d313a0d1048750d47c677c374bffa8a2d",
+    "comparison/valid_590_us/identity.json": "b70e3fb0347e2fee2cc5202eebe4f2b4ccb60a275b9f70653c7389aca1f681f4",
+    "comparison/valid_590_us/waveform.png": "57e42a6bf25a7539822cc07a5be0d04cf9d7de6c72f601e4ca19bdd90923d820",
+    "comparison/valid_590_us/waveform.svg": "68a0de108667630d2baefc7f8aa11668f02f04bb38ab9b9d4ade748e66b8ec72"
+  },
+  "hash_convention": "Text CRLF normalized to LF; raster image bytes hashed without normalization",
+  "full_artifacts": "Reproduce with python -m tools.demo --all --schematics; generated under build/demo"
+}

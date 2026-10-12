@@ -1,0 +1,76 @@
+[
+  {
+    "cycle": 0,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 50002,
+    "pins": 248,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 131073,
+    "executed_entries": [],
+    "temporal_count": 1,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 60002,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 262144,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 60052,
+    "pins": 248,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 131072,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 1,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 75052,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 262144,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 125049,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "active": 1,
+    "events": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0,
+    "temporal_done": 0
+  }
+]

@@ -249,7 +249,12 @@ class Transaction:
                 break
             if not advanced or not e.flags & CHAIN or self.entries[self.pc].trigger != ALWAYS:
                 break
-            if self.pc == previous_pc or self.pc in visited or execution == 3:
+            if self.pc == previous_pc or self.pc in visited:
+                fatal("composition_fault")
+                break
+            if temporal_seen and is_temporal(self.entries[self.pc]):
+                break
+            if execution == 3:
                 fatal("composition_fault")
                 break
         return fires, events, byte

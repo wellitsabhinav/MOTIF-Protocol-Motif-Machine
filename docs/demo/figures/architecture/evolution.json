@@ -1,0 +1,59 @@
+[
+  {
+    "label": "Legacy frozen BYTE_EXCHANGE",
+    "identity": "47954e79ab912415c554d6577f53524ada25415b",
+    "modules": [
+      "motif_byte_exchange",
+      "motif_core",
+      "motif_event_frontend",
+      "motif_fifo",
+      "motif_host_spi",
+      "motif_pad_guardian",
+      "motif_reference_top",
+      "motif_sequential_shift",
+      "motif_shift_rx_count",
+      "motif_shift_tx",
+      "motif_timed_sample",
+      "motif_watchdog",
+      "tt_um_wellitsabhinav_motif"
+    ]
+  },
+  {
+    "label": "Frozen v2",
+    "identity": "f0da6a72cb62b6083196872e4f3f140cceb9135d",
+    "modules": [
+      "motif_core",
+      "motif_event_frontend",
+      "motif_fifo",
+      "motif_host_spi",
+      "motif_pad_guardian",
+      "motif_reference_top",
+      "motif_sequential_shift",
+      "motif_shift_rx_count",
+      "motif_shift_tx",
+      "motif_timed_sample",
+      "motif_transaction",
+      "motif_watchdog",
+      "tt_um_wellitsabhinav_motif"
+    ]
+  },
+  {
+    "label": "Working v3 (qualification status separate)",
+    "identity": "3766cfaad79ea206ce60dbde585fc521ac080fc1515b94269d32c0527e898802",
+    "modules": [
+      "motif_core",
+      "motif_event_frontend",
+      "motif_fifo",
+      "motif_host_spi",
+      "motif_pad_guardian",
+      "motif_reference_top",
+      "motif_sequential_shift",
+      "motif_shift_rx_count",
+      "motif_shift_tx",
+      "motif_timed_sample",
+      "motif_transaction",
+      "motif_watchdog",
+      "tt_um_wellitsabhinav_motif"
+    ]
+  }
+]

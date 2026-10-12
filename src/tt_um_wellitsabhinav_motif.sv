@@ -28,6 +28,10 @@ module tt_um_wellitsabhinav_motif #(parameter REFERENCE=0) (
             if(entry[2:0]==0 && (entry[17:13]==0 || entry[17:13]>16))invalid_program=1;
             if(entry[2:0]==7 && entry[15:13]>5)invalid_program=1;
             if(entry[2:0]==4 && entry[53] && !transaction_control[3])invalid_program=1;
+            if(entry[2:0]==4 && entry[55] &&
+               (entry[4:3]!=0 || entry[20:15]!=0 || entry[14:13]<2 || entry[52:37]==0 ||
+                entry[36:22]!=0 || entry[54:53]!=0 || entry[62:57]!=0 ||
+                (entry[14:13]==2 && (entry[21] || entry[56]))))invalid_program=1;
         end
     end
     wire invalid_exchange = (transaction_control[1] && !transaction_control[0]) ||
@@ -93,7 +97,7 @@ module tt_um_wellitsabhinav_motif #(parameter REFERENCE=0) (
             8'h12: read_data = status | {6'b0, empty_read, config_rejected};
             8'h13: read_data = {1'b0, active, tx_count, rx_count};
             8'h14: read_data = {5'b0,exchange_status};
-            8'h15: read_data = 2;
+            8'h15: read_data = 3;
             8'h16: read_data = {3'b0,transaction_control};
             default: if(address[7])read_data=transaction_program[address[6:0]*8 +: 8];
         endcase

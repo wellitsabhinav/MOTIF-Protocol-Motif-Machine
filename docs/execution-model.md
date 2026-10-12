@@ -42,6 +42,40 @@ The fixed pipeline adds synchronization and firing latency. Protocol drivers mus
 allow the documented frontend to observe each level; maximum wire rates are not
 yet qualified. Initial tests use at least eight core cycles per SPI half-phase.
 
+## V3 continuous temporal qualification
+
+Temporal WAIT observes every active core cycle. RX-level persistence and
+constant-true delay share one count, started bit and registered-complete bit;
+the shared timed sampler retains its prior semantics. A threshold T means T
+consecutive matching synchronized observations, with the first counting as one.
+When entry zero is temporal, acquisition clears the old epoch then counts its
+matching observation while suppressing ordinary actions and responses.
+
+A false predicate before completion immediately clears progress. Restart mode
+waits in place for a fresh interval; interruption-branch mode selects `alternate`
+only if a partial interval had started. An initially false input does not branch.
+The T-th matching observation registers success; normal execution consumes it on
+the following cycle and may chain the successor. A subsequent false observation
+does not invalidate a completed interval. A false T-th candidate does prevent it.
+
+A chain can enter a temporal wait and count the current observation. After a
+temporal operation has been evaluated in that cycle, a second temporal entry is
+deferred. It is not counted twice and does not execute as a fifth action. Existing
+revisit/conflicting-action faults and the four-distinct-entry bound remain.
+Actual ordered entry observations, rather than configured possible successors,
+are retained in simulation diagnostics without additional hardware registers.
+
+Reset, disable, abort, release, watchdog and fatal conditions discard progress
+and registered completion. A new acquisition may seed a fresh entry-zero epoch.
+Guardian suppression and configuration immutability retain their priorities.
+Continuity is established only for observations the existing frontend can sample;
+no analog or unsampled subcycle persistence guarantee is implied.
+
+Two disclosed v2 model correspondence corrections match unchanged ordinary RTL
+behavior: TX-bit validation uses the pre-edge TX bit even after a chained load or
+shift, and a terminating HALT cancels same-cycle FIFO work while preserving earlier
+queued entries. Their original counterexamples remain in the v3 audit evidence.
+
 The declarative I²C v2 profile preserves the following externally visible
 behavior. Two-wire framing recognizes SDA transitions while SCL was and remains high.
 START, including repeated START, cancels the previous exchange and acquires a
