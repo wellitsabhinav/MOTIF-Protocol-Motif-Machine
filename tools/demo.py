@@ -153,9 +153,10 @@ def build_case(protocol):
             expected = {"received": values, "released": True}
             observed = {"received": [_host(engine, wire, pop=True) for _ in values], "released": not engine.active}
         assert observed == expected, (protocol, expected, observed)
-        pins = [("frame", 0), ("clock", 1), ("RX", 2)]
+        pins = [("RX / frame input", cfg.rx_pin)] if protocol == "uart" else [
+            ("frame input", cfg.frame_pin), ("clock input", cfg.clock_pin), ("RX input", cfg.rx_pin)]
         if protocol == "spi":
-            pins.append(("TX pin input", 3))
+            pins.append(("TX pin input", cfg.tx_pin))
         return engine, expected, observed, pins
     raise ValueError(protocol)
 
