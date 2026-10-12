@@ -5,7 +5,7 @@ from .events import Frontend
 from .guardian import Guardian, Request
 from .motifs import ShiftRXCount, ShiftTX, TimedSample
 from .motifs.transaction import Transaction, FieldShift
-from .transaction import validate, Entry, HALT
+from .transaction import validate, Entry, HALT, WAIT
 from .pad_history import PadHistory
 
 
@@ -63,6 +63,8 @@ class Config:
             raise ValueError("Data output must not alias clock or frame input")
         if self.hold_clock and not self.open_drain & (1 << self.clock_pin):
             raise ValueError("Hold output must be open drain")
+        if self.exchange and not self.hold_clock and any(Entry.decode(w).opcode == WAIT and Entry.decode(w).flags & 1 for w in self.program):
+            raise ValueError("Program hold requests require explicit ownership permission")
 
 
 class Engine:

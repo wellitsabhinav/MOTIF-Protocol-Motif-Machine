@@ -63,3 +63,12 @@ def validate(words):
 def host_bytes(words):
     validate(words)
     return b"".join(word.to_bytes(8, "little") for word in words)
+
+
+def configuration(mapping):
+    """Compile declarative configuration data through the frozen public types."""
+    from .engine import Config
+    values = dict(mapping)
+    if "program" in values:
+        values["program"] = tuple(int(w, 0) if isinstance(w, str) else w for w in values["program"])
+    return Config(**values)

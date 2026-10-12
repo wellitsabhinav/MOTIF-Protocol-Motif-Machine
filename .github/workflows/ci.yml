@@ -25,7 +25,7 @@ jobs:
       - run: python -m pip install -e '.[test]'
       - run: python -m pytest -q
       - run: python -m tools.frozen_manifest --historical
-      - run: python -m tools.frozen_manifest
+      - run: python -m tools.exchange_decomposition --check-preregistration
   rtl:
     runs-on: ubuntu-24.04
     steps:
@@ -45,6 +45,9 @@ jobs:
       - run: python -m tools.formal_check
       - run: python -m tools.generalization --gate 1
       - run: python -m tools.generalization --gate 2
+      - run: python -m tools.generalization --gate 1 --baseline v2
+      - run: python -m tools.generalization --gate 2 --baseline v2
+      - run: python -m tools.synthesis --output-dir build/exchange_decomposition/synthesis
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -54,6 +57,9 @@ jobs:
             build/generalization/gate1/*/*.jsonl
             build/generalization/gate2/result.json
             build/generalization/gate2/*/*.jsonl
+            build/generalization/legacy/*/result.json
+            build/exchange_decomposition/**/result.json
+            build/exchange_decomposition/**/*.jsonl
           retention-days: 14
   cocotb:
     runs-on: ubuntu-24.04

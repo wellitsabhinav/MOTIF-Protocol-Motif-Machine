@@ -137,6 +137,44 @@ def summary(name, engine):
             "maximum_primitive_types_per_cycle": max(r["motifs"].bit_count() for r in engine.rows)}
 
 
+def primitive_probes():
+    """Synthetic contract probes; these are never counted as protocol users."""
+    result=[]
+    for length in (1,8,9,16):
+        for lsb in (False,True):
+            field=((1<<length)-1)//3 | (1<<(length-1))
+            words=program([
+                Entry(RX,RISING,1,argument=length),
+                Entry(DECIDE,next=2,alternate=15,argument=3|((length-1)<<2),value=field,mask=(1<<length)-1,flags=1|8|16|CHAIN),
+                Entry(RESPOND,next=3,flags=CHAIN),
+                Entry(WAIT,next=4,flags=CHAIN),
+                Entry(HANDOFF,RISING,5),
+                Entry(TX,RISING,6,flags=1),
+                Entry(HALT,flags=2),
+            ])
+            engine=Recorder(Config(program=words,frame_active_high=True,lsb_first=lsb,period=13))
+            cs=clock=0;data=1
+            def hold(cycles=16):
+                for _ in range(cycles):
+                    do=(engine.rows[-1]["data"]>>3)&1 if engine.rows and engine.last_oe&8 else 1
+                    engine.step(240|cs|(clock<<1)|(data<<2)|(do<<3))
+            hold();engine.host_push=True;engine.host_data=0xa6;hold(1)
+            cs=1;hold()
+            indices=range(length) if lsb else range(length-1,-1,-1)
+            for index in indices:
+                clock=0;data=(field>>index)&1;hold();clock=1;hold();clock=0;hold()
+            assert engine.exchange.accepted and engine.exchange.pending_field==field
+            response_indices=range(8) if lsb else range(7,-1,-1)
+            for index in response_indices:
+                clock=1;hold()
+                assert engine.last_oe&8 and ((engine.rows[-1]["data"]>>3)&1)==((0xa6>>index)&1)
+                clock=0;hold()
+            cs=0;hold()
+            assert not engine.last_oe
+            result.append((f"field_{length}_{'lsb' if lsb else 'msb'}",engine))
+    return result
+
+
 def model_validation(destination):
     cases = i2c_cases()
     mic, oracle_result = microwire_case()
@@ -152,12 +190,140 @@ def model_validation(destination):
 
 
 def run(gate, output=None, synthesize=False):
-    raise NotImplementedError("RTL qualification is implemented after model feasibility")
+    destination=Path(output) if output else Path(f"build/exchange_decomposition/gate{gate}/result.json")
+    if gate==1:
+        from tools.legacy_baseline import run as legacy_run, SNAPSHOT
+        legacy_run(1)
+        cases=i2c_cases()
+        reports=[]
+        projection=["pins","levels","rising","falling","byte","rx_value","rx_count","tx_value","tx_remaining","active","data","oe",
+                    "rx_fifo_count","tx_fifo_count","rx_head","status","rx_push","tx_pop"]
+        for name,engine in cases:
+            directory=Path("build/exchange_decomposition/gate1")/name
+            actual=compare_rtl(engine,directory)
+            legacy_directory=Path("build/legacy")/SNAPSHOT/"build/generalization/gate1"/name
+            old_actions=[list(map(int,line.split())) for line in (legacy_directory/"inputs.txt").read_text().splitlines()]
+            if old_actions!=engine.actions: raise AssertionError(f"Changed historical stimulus: {name}")
+            old_rows=[json.loads(line) for line in (legacy_directory/"rtl.jsonl").read_text().splitlines()]
+            for cycle,(old,new) in enumerate(zip(old_rows,actual)):
+                differences={key:[old[key],new[key]] for key in projection if old[key]!=new[key]}
+                if old["exchange_status"]!=(new["exchange_status"] & 3): differences["exchange_status"]=[old["exchange_status"],new["exchange_status"]]
+                if differences: raise AssertionError(f"Legacy external regression {name} cycle {cycle}: {differences}")
+            reports.append({**summary(name,engine),"model_rtl_agreement":True,"legacy_external_equivalence":True})
+            print("PASS v2 I2C",name,len(actual),"cycles",flush=True)
+        probes=[]
+        for name,engine in primitive_probes():
+            compare_rtl(engine,Path("build/exchange_decomposition/primitives")/name)
+            probes.append({**summary(name,engine),"model_rtl_agreement":True,"protocol_user":False})
+            print("PASS generic field/direction probe",name,flush=True)
+        result={"schema_version":2,"gate":1,"classification":"MOTIF_I2C_LOGICAL_QUALIFICATION_PASSED", "cases":reports,"primitive_probes":probes,
+                "total_compared_cycles":sum(r["cycles"] for r in reports),"legacy_snapshot":SNAPSHOT}
+    elif gate==2:
+        engine,oracle_result=microwire_case()
+        actual=compare_rtl(engine,Path("build/exchange_decomposition/gate2/microwire"))
+        expected=oracle(0,0xa55a)[1]
+        observed=[((actual[i]["data"]>>3)&1) if actual[i]["oe"]&8 else 1 for i in oracle_result["sample_indices"]]
+        if observed!=expected: raise AssertionError("Frozen Microwire oracle failed in RTL")
+        result={"schema_version":2,"gate":2,"classification":"MOTIF_EXCHANGE_DECOMPOSITION_I2C_MICROWIRE_REUSE_CONFIRMED",
+                "microwire":{**summary("bounded_93LC46_x16_READ",engine),**oracle_result,"model_rtl_agreement":True},
+                "new_semantics_after_preregistration":False,"clock_drive_cycles":sum(bool(r["oe"]&2) for r in actual)}
+        print("PASS v2 Microwire A55A, independent oracle and full model/RTL trace",flush=True)
+    else:
+        raise SystemExit("Gate 3 requires frozen v2 and a subsequently committed selection")
+    result["source_sha"]=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+    result["preregistration_sha256"]=hashlib.sha256((DIRECTORY/"preregistered_architecture.json").read_bytes().replace(b"\r\n",b"\n")).hexdigest()
+    result["rtl_hashes"]={p.as_posix():hashlib.sha256(p.read_bytes().replace(b"\r\n",b"\n")).hexdigest() for p in sorted(Path("src").glob("*.sv"))}
+    if synthesize:
+        from tools.synthesis import synthesize as synthesis
+        synthesis("tt_um_wellitsabhinav_motif",destination.parent/"synthesis.json")
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    destination.write_text(json.dumps(result,indent=2)+"\n")
+    return result
+
+
+def bench(config,vectors,count):
+    packed=sum(word<<(64*i) for i,word in enumerate(config.program))
+    observations=["pins","lv","ri","fa","fires","events","byte_value","core.field_value","core.field_count","core.tx_value",
+                  "core.tx_remaining","active","pad_data","pad_oe","rx_count","tx_count","rx_head","core.exchange.pc_o","core.exchange.halted_o",
+                  "core.exchange.pending_field_o","core.exchange.desired_role_o","core.exchange.role_o","core.exchange.accepted_o","core.exchange.response_o",
+                  "core.exchange.drive_enable_o","core.exchange.drive_value_o","core.exchange.hold_o","core.tripped","status","ex_status","rx_push","tx_pop"]
+    return f'''module tb;
+reg clk=0,rst_n=0,abort_in=0,push=0,pop=0;
+reg [7:0] pins=255,host_data=0;
+wire [7:0] rx_head,pad_data,pad_oe,status,rx_value;
+wire [2:0] rx_count,tx_count,bit_count,ex_status;wire active;
+motif_core core(clk,rst_n,1'b1,abort_in,pins,1'b{int(config.frame=='falling')},1'b{int(config.sample=='timer')},1'b{int(config.transmit)},1'b{int(config.lsb_first)},1'b{int(config.validate_start)},1'b{int(config.validate_stop)},
+3'd{config.frame_pin},3'd{config.clock_pin},3'd{config.rx_pin},3'd{config.tx_pin},16'd{config.period},16'd{config.watchdog},8'd{config.fill},8'd{config.open_drain},
+push,pop,host_data,rx_head,pad_data,pad_oe,rx_count,tx_count,status,active,rx_value,bit_count,
+1'b1,1'b{int(config.frame=='two_wire')},1'b{int(config.frame_active_high)},1'b{int(config.hold_clock)},1'b{int(config.pad_timing_check)},1024'h{packed:0256x},ex_status);
+integer fd,scan,n,reset_in,pins_in,push_in,pop_in,data_in,abort_value;
+integer lv,ri,fa,fires,events,byte_value,rx_push,tx_pop;
+reg [63:0] next_instruction;
+initial begin
+#4;clk=1;#1;clk=0;rst_n=1;
+fd=$fopen("{vectors.as_posix()}","r");
+for(n=0;n<{count};n=n+1)begin
+scan=$fscanf(fd,"%d %d %d %d %d %d\\n",pins_in,reset_in,abort_value,push_in,pop_in,data_in);
+if(scan!=6)$fatal(1,"bad input vector");
+pins=pins_in[7:0];rst_n=!reset_in;abort_in=abort_value[0];push=push_in[0];pop=pop_in[0];host_data=data_in[7:0];#4;
+lv=core.levels;ri=core.rising;fa=core.falling;fires=0;events=0;byte_value=-1;
+rx_push=core.rx_push && !core.rx_full;tx_pop=core.tx_load && !core.tx_empty;
+if(core.pad_timing)events=events|65536;
+if(!rst_n || core.inhibit)fires=6;
+else if(core.acquire)begin fires=5;events=events|1;end
+else if(active)begin
+fires=core.primitive_fires;events=events|core.primitive_events;
+if(core.field_complete)byte_value=core.completed_field;
+if(core.mismatch || core.composition_fault || core.transaction_end)fires=fires|6;
+next_instruction=core.exchange.program_i[core.exchange.pc_next*64 +: 64];
+if(!core.pending_timer_start && core.timer.running && core.timer.left==1 &&
+   (1'b{int(config.sample=='timer')} || (next_instruction[2:0]==4 && next_instruction[14:13]==2 && !core.exchange.halted_next)))fires=fires|32;
+end
+clk=1;#1;
+$display("ROW {' '.join(['%0d']*len(FIELDS))}",{','.join(observations)});
+clk=0;#1;
+end
+$finish;end endmodule
+'''
+
+
+def compare_rtl(engine,directory):
+    directory.mkdir(parents=True,exist_ok=True)
+    vectors=directory/"inputs.txt"
+    vectors.write_text("".join(" ".join(map(str,a))+"\n" for a in engine.actions))
+    tb=directory/"tb.sv";out=directory/"tb.vvp"
+    tb.write_text(bench(engine.config,vectors,len(engine.rows)))
+    command=[os.environ.get("IVERILOG","iverilog")]
+    if os.environ.get("IVERILOG_BASE"): command.extend(["-B",os.environ["IVERILOG_BASE"]])
+    command.extend(["-g2012","-s","tb","-o",str(out)])
+    command.extend(str(p) for p in sorted(Path("src").glob("*.sv")))
+    command.append(str(tb))
+    compiled=subprocess.run(command,capture_output=True,text=True)
+    if compiled.returncode: raise RuntimeError(compiled.stderr)
+    simulation=subprocess.run([os.environ.get("VVP","vvp"),str(out)],capture_output=True,text=True)
+    (directory/"simulation.log").write_text(simulation.stdout+simulation.stderr)
+    if simulation.returncode: raise RuntimeError(simulation.stdout[-2000:]+simulation.stderr)
+    actual=[dict(zip(FIELDS,map(int,line[4:].split()))) for line in simulation.stdout.splitlines() if line.startswith("ROW ")]
+    for filename,rows in (("model.jsonl",engine.rows),("rtl.jsonl",actual)):
+        (directory/filename).write_text("".join(json.dumps(r,sort_keys=True)+"\n" for r in rows))
+    if len(actual)!=len(engine.rows): raise AssertionError("Incomplete v2 trace")
+    for cycle,(expected,observed) in enumerate(zip(engine.rows,actual)):
+        differences={key:[expected[key],observed[key]] for key in FIELDS if expected[key]!=observed[key]}
+        if differences: raise AssertionError(f"Model/RTL divergence {directory.name} cycle {cycle}: {differences}")
+    return actual
 
 
 if __name__ == "__main__":
     parser=argparse.ArgumentParser()
     parser.add_argument("--model-only",action="store_true")
+    parser.add_argument("--gate",type=int,choices=(1,2,3))
+    parser.add_argument("--check-preregistration",action="store_true")
     parser.add_argument("--output",type=Path,default=Path("build/exchange_decomposition/model.json"))
     args=parser.parse_args()
     if args.model_only: model_validation(args.output)
+    elif args.gate: run(args.gate,args.output)
+    elif args.check_preregistration:
+        path=DIRECTORY/"preregistered_architecture.json"
+        historical=subprocess.check_output(["git","show","d3ca35e2221f8e7654f4c42fa79ab7992e8ee8d8:"+path.as_posix()])
+        if path.read_bytes().replace(b"\r\n",b"\n")!=historical: raise SystemExit("Preregistration changed")
+        print("PASS immutable preregistration")
