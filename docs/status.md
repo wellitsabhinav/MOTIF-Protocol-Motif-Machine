@@ -17,3 +17,9 @@ single-issue reference. Guardian electrical properties have a complete
 combinational proof; watchdog limits 1..15 have a 24-step bounded result.
 Synthesis produces generic cell counts, without technology-area/timing claims.
 A stale framing-level reacquisition bug was fixed and regression-tested.
+
+2026-10-12 — Nominal CMOS5L mapping and a manually gated physical flow are
+reproducible. The current model suite passes 58 tests. Concurrent host/protocol
+testing exposed an empty-read race; response validity is now captured with the
+data so a late-arriving byte remains queued. The corrected RTL passes both
+comparison variants and Linux CI. Physical qualification is in progress.
