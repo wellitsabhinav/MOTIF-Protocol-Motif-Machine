@@ -27,3 +27,18 @@ until reset and is separate from the transaction trip state.
 The fixed pipeline adds synchronization and firing latency. Protocol drivers must
 allow the documented frontend to observe each level; maximum wire rates are not
 yet qualified. Initial tests use at least eight core cycles per SPI half-phase.
+
+Two-wire framing recognizes SDA transitions while SCL was and remains high.
+START, including repeated START, cancels the previous exchange and acquires a
+fresh address frame. STOP releases it. Simultaneous SCL/SDA transitions are not
+treated as qualified START/STOP. First-word matching and byte acceptance consume
+registered receive completion on the following core cycle. ACK drive begins at
+the following falling SCL edge and ends after the ninth rising/falling pair.
+
+An address miss or configured rejection leaves SDA released through the ninth
+clock and disables further exchange until a framing boundary. A full RX FIFO
+NACKs and discards the new byte. On reads, an empty TX FIFO stretches SCL low at
+a byte boundary until data arrives. Controller NACK terminates transmission.
+The default watchdog is disabled, allowing indefinite I²C waits; an explicitly
+enabled inactivity watchdog releases outputs on expiry. Unrelated pin activity
+does not reset that watchdog. Automatic rearm requires a qualified new START.
