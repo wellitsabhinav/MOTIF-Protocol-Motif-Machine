@@ -40,6 +40,19 @@ configuration.
 `frozen_v2_manifest.json` protects all model/RTL, host decoding, packing,
 routing and physical inputs, plus the generic trace compiler. After freeze,
 new workload configuration and independent oracle/stimulus may be added outside
-that boundary. The third workload must be selected and committed afterward.
+that boundary. The third workload was selected and committed afterward in `4959350`.
 No second semantic repair is allowed. Full CMOS5L is gated on three-protocol
 logical success; current v2 synthesis is separate from historical routed evidence.
+
+The selected 1-Wire reset/presence subset matches model/RTL across 1,302,050
+cycles and passes eight of nine independent cases. Interrupted short lows
+produce a false presence pulse: `MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL`.
+No second repair or v2 physical run occurs. See [the report](report.md),
+[selection](third_selection.md), [result](third_result.json) and
+[counterexample](third_counterexample.json). Failed attempts are not validated users.
+
+```sh
+python -m tools.generalization --gate 3 --baseline v2
+python -m tools.unseen_result
+python -m tools.accounting
+```

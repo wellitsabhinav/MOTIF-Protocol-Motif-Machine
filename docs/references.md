@@ -10,3 +10,13 @@
 The initial 50 MHz core-clock target is an internal comparison point. The
 competition announcement does not specify it as a mandatory clock frequency.
 Apache-2.0 is used for the project and matches the official template license.
+# Unseen workload sources
+
+The post-freeze selection compares the primary
+[DS18B20 Rev 6 datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf),
+[AVR313 PS/2 application note](https://www.microchip.com/content/dam/mchp/documents/OTH/ApplicationNotes/ApplicationNotes/doc1235.pdf),
+[AN4453 smart-card application note](https://www.nxp.com/assets/documents/data/en/application-notes/AN4453.pdf),
+and [Microchip SWI description](https://developerhelp.microchip.com/xwiki/bin/view/applications/swi/).
+The [selection record](../experiments/exchange_decomposition/third_selection.md)
+distinguishes published legal timing from the additional preregistered malformed-input
+robustness contract and identifies unavailable document byte hashes explicitly.

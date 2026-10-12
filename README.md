@@ -15,20 +15,25 @@ flowchart LR
   Guardian --> Pads
 ```
 
-Current status: SPI mode-0 target, UART 8N1 receive and seven-bit I²C target
-behaviors are tested in the executable model. I²C covers repeated START,
-ACK/NACK, turnaround, clock stretching and recovery. The SPI/UART RTL subset
-matches model traces and accepts runtime host configuration. Guardian formal
-properties and synthesis are available. The routed CMOS5L SPI/UART/timed-stream
-subset meets the internal 50 MHz timing target and passes layout precheck and
-functional gate simulation. I²C RTL now passes 48 deterministic cases and 88,287
-normalized model/RTL cycles and passes the expanded CMOS5L flow, including
-official precheck and routed-netlist host tests. Frozen BYTE_EXCHANGE reuse fails
-the bounded Microwire workload; its fixed per-byte acknowledgement remains
-protocol-specific. The campaign stops before the unseen-protocol gate.
-The [frozen-vocabulary campaign](docs/generalization.md) records the control
-boundary, evidence and remaining gates. See
-[physical qualification](docs/physical.md) for measurements and limits.
+Current v2 supports SPI mode-0 target, UART 8N1 receive, a framed timed byte
+stream, seven-bit I²C target and bounded Microwire 93LC46 x16 READ. The controlled
+decomposition preserves all 48 I²C cases and 88,287 legacy comparison cycles;
+Microwire returns A55A through the same four generic transaction operations.
+The fixed table has sixteen entries; configuration and control storage are
+reported separately from the operations.
+
+Frozen v2 passes eight of nine subsequently selected 1-Wire initialization
+cases but emits an unwanted presence pulse after interrupted short lows.
+Result: `MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL`. The campaign stops
+without another semantic repair. The earlier A5FF failure of BYTE_EXCHANGE
+remains permanent evidence of its protocol-specific semantics. See the
+[decomposition report](experiments/exchange_decomposition/report.md) and
+[historical campaign](docs/generalization.md).
+
+V2 model/RTL, runtime host, lint, guardian formal and synthesis checks pass.
+V2 has **no routed physical qualification**: the three-protocol gate failed.
+Historical CMOS5L results apply to the earlier circuit only. See
+[physical qualification](docs/physical.md) for their scope and limits.
 
 ```sh
 python -m pip install -e '.[test]'

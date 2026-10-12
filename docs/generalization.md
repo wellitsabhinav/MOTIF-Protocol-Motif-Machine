@@ -1,5 +1,11 @@
 # Frozen-vocabulary qualification
 
+This page records the **historical legacy campaign**. Its BYTE_EXCHANGE negative
+result is permanent. The subsequent, separately preregistered
+[v2 decomposition campaign](../experiments/exchange_decomposition/report.md)
+confirms I²C/Microwire reuse, then stops with an unseen duration-qualification
+counterexample. Current v2 physical qualification was not reached.
+
 This campaign tests whether serial behavior composes through the existing
 hardware vocabulary. It does not optimize area, timing, allocation or benchmark
 scores. A required change to frozen hardware is a negative result.

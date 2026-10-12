@@ -7,11 +7,13 @@ and its qualified edge pulses. Edge reporting is suppressed during initializatio
 Priority is reset/disable/abort/release/timeout, acquisition, then normal firing.
 Acquisition clears partial receive state and arms configured actors. A terminal
 receive firing samples and shifts the eighth bit, resets the bit count and emits
-byte completion together. Timed sampling captures its input bit with its event;
+field completion together. Transaction fields are bounded to 1–16 bits; ordinary
+receive configurations still complete bytes. Timed sampling captures its input bit with its event;
 the receive actor consumes that registered event on the following cycle.
 For unvalidated RX, FIFO deposit participates in the same compound terminal
-firing using the precomputed next byte. UART stop validation and byte-exchange
-decisions consume registered completion state on a later tick. Terminal TX
+firing using the precomputed next byte. UART stop validation consumes a registered
+event on a later tick. Transaction RX stores the completed field; the configured
+graph selects the next decision and whether to chain it immediately. Terminal TX
 advance and refill likewise commit together as one compound firing.
 
 Release discards partial receive assembly and in-flight transmit state. Completed
@@ -23,18 +25,25 @@ new byte and reports overflow. Reset empties FIFOs and clears diagnostics.
 
 SPI raw deselection gates OE immediately, independently of synchronized engine
 release. Ownership acquisition remains synchronized. Reset and disable suppress
-OE. Acquisition requires a fresh qualified falling frame edge; an asserted
+OE. Acquisition requires a fresh qualified configured frame edge; an asserted
 framing level cannot reacquire a timed-out transaction. The watchdog observes
 frontend pin activity, not executor progress claims.
 An enabled watchdog trips after its configured number of inactive cycles during
 an active frame. A new qualified frame acquisition rearms it. Status is sticky
 until reset and is separate from the transaction trip state.
 
+The v2 graph executes at most four distinct immediate ALWAYS entries per cycle.
+Triggers consume the cycle's edge or registered timer event without a backlog;
+only the active entry can observe them. Sampled boundary-response capture has
+priority over completion if both sources fire. Conflicting FIFO/TX actions and
+excessive chains abort. This is not an arbitrary concurrent event monitor.
+
 The fixed pipeline adds synchronization and firing latency. Protocol drivers must
 allow the documented frontend to observe each level; maximum wire rates are not
 yet qualified. Initial tests use at least eight core cycles per SPI half-phase.
 
-Two-wire framing recognizes SDA transitions while SCL was and remains high.
+The declarative I²C v2 profile preserves the following externally visible
+behavior. Two-wire framing recognizes SDA transitions while SCL was and remains high.
 START, including repeated START, cancels the previous exchange and acquires a
 fresh address frame. STOP releases it. Simultaneous SCL/SDA transitions are not
 treated as qualified START/STOP. First-word matching and byte acceptance consume
