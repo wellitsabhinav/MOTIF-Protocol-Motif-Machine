@@ -10,6 +10,10 @@
 No other SPI modes, UART transmitter, analog electrical compliance or fabricated
 silicon results are claimed.
 
+The first three RTL configurations also pass functional simulation of the routed
+netlist. Their shared CMOS5L subset passes 50 MHz STA, DRC/LVS and official
+precheck. This evidence does not include I²C RTL or a routed sequential reference.
+
 I²C excludes ten-bit addressing, general call, controller operation and
 multi-controller arbitration. A 100 kHz schedule at a nominal 50 MHz core is
 tested, together with faster normalized cycle schedules. These tests do not

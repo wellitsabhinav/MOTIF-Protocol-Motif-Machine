@@ -40,12 +40,42 @@ Core selection, timed control and configuration/top-level glue occupy about 41%
 of this mapping; the shifters occupy about 8%. These groups include required
 configuration and connected routing, rather than isolated actor estimates.
 
-Initial placement/routing qualification is in progress. Routed timing,
-congestion and precheck outcomes will be recorded after the workflow completes.
-The first completed layout passed DRC/LVS and precheck. Gate-level elaboration
-required adding the pinned PDK's `sg13cmos5l_udp.v` primitive models to the test
-source list. A later ownership correction supersedes that RTL snapshot; the
-current source requires a new physical run before qualification.
+The [completed corrected build](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38218975479)
+reports 2,641 standard cells, 308 sequential cells and 40,546.4 µm² standard-cell
+area after placement, CTS and timing repair. Utilization is 4.493% of the
+902,417 µm² core; the 6×4 allocation has not been reduced or optimized.
+Timing-repair buffers account for 8,883.3 µm², including 476 hold buffers.
+This routed result is separate from the nominal hierarchy comparison above.
+
+| STA corner | Worst setup slack (ns) | Worst hold slack (ns) |
+|---|---:|---:|
+| Fast, 1.32 V, −40 °C | +10.2543 | +0.1269 |
+| Typical, 1.20 V, 25 °C | +9.4339 | +0.3124 |
+| Slow, 1.08 V, 125 °C | +8.0293 | +0.6478 |
+
+Setup/hold WNS and TNS are zero at all three corners under the official template
+constraints. The first reported worst setup path is reset input to guarded
+`uio_out[7]`; the constraints assign 4 ns external input/output delays. These
+results do not establish a maximum external protocol clock or silicon frequency.
+
+Detailed routing uses 84,540 µm of wire and 15,564 vias. Global routing has zero
+overflow; average derated-resource demand is 2.23%, mostly Metal3 (63% of demand)
+and Metal2 (36%). Placement weighted congestion is 0.7942. The layout preview
+shows active circuitry concentrated in one corner of the allocation. Average
+layer utilization does not bound every local route concentration.
+
+Detailed-route DRC, Magic DRC and LVS report zero errors. Residual reports include
+19 max-fanout violations, with zero max-slew/capacitance violations. The template
+uses fallback SDC; KLayout DRC is disabled in that template and is not claimed.
+The official precheck passed. The original workflow retains its failed gate-job
+history; the successful linked gate retest supersedes that simulation-tool failure.
+
+The [Linux gate retest](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38224260567)
+passes the host-loaded SPI/UART/timed-stream test against this routed artifact.
+The original gate job failed on PDK simulation-model setup. Adding primitive
+models repaired elaboration; removing timing-check blocks from the functional
+copy repaired reset-time unknown values in Icarus 13. The retest verifies physical
+source equality before using the existing artifact; RTL was unchanged by that repair.
 The pinned CMOS5L cells use delayed timing-check wires that Icarus does not
 drive. `tools/prepare_gate_models.py` generates an ignored functional copy with
 those wires connected to the corresponding ports, preserving PDK attribution
@@ -60,5 +90,6 @@ extracts the compact report. Supply the directory containing `final/metrics.json
 It separates standard-cell area from the full tile and filler area, reports
 corner slacks, checks and routing layers, and records the qualified source.
 The manually dispatched `ci` workflow can retest an existing layout artifact
-when its optional `build_run_id` input is supplied. It first verifies that synthesizable sources,
+when its optional `build_run_id` input is supplied. It first verifies that
+synthesizable sources,
 flow configuration, tile description and version lock match the completed build.

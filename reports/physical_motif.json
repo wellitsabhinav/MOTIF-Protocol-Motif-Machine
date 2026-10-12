@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "kind": "routed_cmos5l_subset",
+  "source_sha": "75c1fdfe8032df18e5c451a7d139c046911fbce1",
+  "workflow_run_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38218975479",
+  "clock_period_ns": 20,
+  "tile_size": "6x4",
+  "die_bbox_um": "0.0 0.0 1289.28 710.64",
+  "scope": "SPI target, UART receive and externally framed timed stream; I2C model only; reference has no routed comparison",
+  "measurements": {
+    "stdcell_count": 2641,
+    "stdcell_area_um2": 40546.4,
+    "register_count": 308,
+    "core_area_um2": 902417,
+    "stdcell_utilization": 0.0449309,
+    "detailed_wirelength_um": 84540,
+    "global_wirelength_um": 121514,
+    "vias": 15564,
+    "detailed_route_drc": 0,
+    "magic_drc": 0,
+    "lvs_errors": 0,
+    "max_fanout_violations": 19,
+    "max_slew_violations": 0,
+    "max_cap_violations": 0,
+    "hold_buffer_count": 476,
+    "timing_repair_buffer_area_um2": 8883.3
+  },
+  "corners": {
+    "nom_fast_1p32V_m40C": {
+      "setup_worst_slack_ns": 10.25427061176288,
+      "hold_worst_slack_ns": 0.12693446653060514,
+      "setup_wns_ns": 0,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": 0,
+      "hold_tns_ns": 0,
+      "setup_violations": 0,
+      "hold_violations": 0,
+      "first_reported_setup_path": {
+        "startpoint": "rst_n (input port clocked by clk)",
+        "endpoint": "uio_out[7] (output port clocked by clk)"
+      }
+    },
+    "nom_slow_1p08V_125C": {
+      "setup_worst_slack_ns": 8.029267256113693,
+      "hold_worst_slack_ns": 0.6477727426695025,
+      "setup_wns_ns": 0,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": 0,
+      "hold_tns_ns": 0,
+      "setup_violations": 0,
+      "hold_violations": 0,
+      "first_reported_setup_path": {
+        "startpoint": "rst_n (input port clocked by clk)",
+        "endpoint": "uio_out[7] (output port clocked by clk)"
+      }
+    },
+    "nom_typ_1p20V_25C": {
+      "setup_worst_slack_ns": 9.433945447413786,
+      "hold_worst_slack_ns": 0.31240594329047244,
+      "setup_wns_ns": 0,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": 0,
+      "hold_tns_ns": 0,
+      "setup_violations": 0,
+      "hold_violations": 0,
+      "first_reported_setup_path": {
+        "startpoint": "rst_n (input port clocked by clk)",
+        "endpoint": "uio_out[7] (output port clocked by clk)"
+      }
+    }
+  },
+  "global_route_layers": {
+    "Metal1": {
+      "resources": 0,
+      "demand": 0,
+      "usage_percent": 0.0,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Metal2": {
+      "resources": 159079,
+      "demand": 4097,
+      "usage_percent": 2.58,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Metal3": {
+      "resources": 194422,
+      "demand": 7151,
+      "usage_percent": 3.68,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Metal4": {
+      "resources": 156558,
+      "demand": 111,
+      "usage_percent": 0.07,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Total": {
+      "resources": 510059,
+      "demand": 11359,
+      "usage_percent": 2.23,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    }
+  },
+  "placement_weighted_congestion": 0.7942,
+  "limitations": "STA under official template constraints; zero-delay gate simulation is separate. Average layer usage does not bound local concentration. Cell area excludes filler; tile allocation is not optimized.",
+  "checks": {
+    "gds_build": "success",
+    "official_precheck": "success",
+    "zero_delay_gate_retest": "success",
+    "original_gate_job": "failure"
+  },
+  "gate_retest_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38224260567",
+  "gate_retest_source_sha": "4bc34d7a09ca16ab8582001dca9e2ef25ae8353f",
+  "original_gate_failure_superseded_by": "zero_delay_gate_retest"
+}
