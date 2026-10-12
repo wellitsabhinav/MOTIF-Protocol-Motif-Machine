@@ -1,4 +1,21 @@
 """Deterministic gate experiments; generated traces stay in ignored build output."""
+if __name__ == "__main__":
+    import argparse as _argparse
+    import sys as _sys
+    _parser = _argparse.ArgumentParser()
+    _parser.add_argument("--gate", type=int, choices=(1, 2, 3), required=True)
+    _parser.add_argument("--baseline", choices=("legacy", "v2"), default="legacy")
+    _parser.add_argument("--output")
+    _parser.add_argument("--synthesize", action="store_true")
+    _args = _parser.parse_args()
+    if _args.baseline == "legacy":
+        from tools.legacy_baseline import run as _run
+        _run(_args.gate, _args.output, _args.synthesize)
+    else:
+        from tools.exchange_decomposition import run as _run
+        _run(_args.gate, _args.output, _args.synthesize)
+    _sys.exit(0)
+
 import argparse
 import hashlib
 import json
