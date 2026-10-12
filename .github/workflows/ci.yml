@@ -1,5 +1,17 @@
 name: ci
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build_run_id:
+        description: Optional completed GDS run to retest after verifying unchanged physical sources
+        required: false
+        default: ''
+        type: string
+permissions:
+  contents: read
+  actions: read
 jobs:
   model:
     runs-on: ubuntu-24.04
@@ -38,3 +50,30 @@ jobs:
           sudo apt-get install -y /tmp/motif-iverilog.deb
       - run: python -m pip install -r test/requirements.txt
       - run: make -C test
+  gate_test:
+    if: github.event_name == 'workflow_dispatch' && inputs.build_run_id != ''
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Verify physical source correspondence
+        env:
+          BUILD_RUN_ID: ${{ inputs.build_run_id }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [[ "$BUILD_RUN_ID" =~ ^[0-9]+$ ]]
+          source_sha=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN_ID" --jq .head_sha)
+          [[ "$source_sha" =~ ^[0-9a-f]{40}$ ]]
+          git diff --exit-code "$source_sha" HEAD -- src info.yaml flow-lock.json .github/workflows/gds.yml
+      - uses: actions/download-artifact@v7
+        with:
+          name: tt_submission
+          run-id: ${{ inputs.build_run_id }}
+          github-token: ${{ github.token }}
+          path: build/physical-artifact
+      - uses: actions/upload-artifact@v7
+        with:
+          name: tt_submission
+          path: build/physical-artifact
+      - uses: TinyTapeout/tt-gds-action/gl_test@3412659307918422f3f0727917cf9b499aaca588

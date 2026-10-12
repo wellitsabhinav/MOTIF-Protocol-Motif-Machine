@@ -59,6 +59,6 @@ After downloading the workflow's `GDS_logs` artifact to ignored build output,
 extracts the compact report. Supply the directory containing `final/metrics.json`.
 It separates standard-cell area from the full tile and filler area, reports
 corner slacks, checks and routing layers, and records the qualified source.
-The manually dispatched `gate-test` workflow can retest an existing layout
-artifact after test-tool repairs. It first verifies that synthesizable sources,
+The manually dispatched `ci` workflow can retest an existing layout artifact
+when its optional `build_run_id` input is supplied. It first verifies that synthesizable sources,
 flow configuration, tile description and version lock match the completed build.
