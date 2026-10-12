@@ -8,6 +8,12 @@ class Request:
     data: int
     oe: bool = True
 
+    def __post_init__(self):
+        if type(self.owner) is not int or not 0 <= self.owner < 8 or type(self.pin) is not int or not 0 <= self.pin < 8:
+            raise ValueError("Request owner/pin outside three-bit range")
+        if self.data not in (0, 1) or type(self.oe) is not bool:
+            raise ValueError("Request DATA/OE must be binary")
+
 
 class Guardian:
     """Final authority over pad drive. No shifter state is inspected."""

@@ -82,6 +82,10 @@
         "tx_fifo->tx",
         "constant->tx"
       ],
+      "host_data_routes": [
+        "host->tx_fifo",
+        "rx_fifo->host"
+      ],
       "maximum_observed_firings_per_cycle": 3,
       "qualified_event_to_rx_action_cycles": 0,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
@@ -120,7 +124,12 @@
       ],
       "event_route_count": 5,
       "data_routes": [
-        "rx->rx_fifo"
+        "rx->validated_byte",
+        "validated_byte->rx_fifo"
+      ],
+      "host_data_routes": [
+        "host->tx_fifo",
+        "rx_fifo->host"
       ],
       "maximum_observed_firings_per_cycle": 2,
       "qualified_event_to_rx_action_cycles": 1,
@@ -162,6 +171,10 @@
       "data_routes": [
         "rx->rx_fifo"
       ],
+      "host_data_routes": [
+        "host->tx_fifo",
+        "rx_fifo->host"
+      ],
       "maximum_observed_firings_per_cycle": 2,
       "qualified_event_to_rx_action_cycles": 1,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
@@ -169,7 +182,7 @@
     },
     "i2c_target": {
       "motif_firings": {
-        "BYTE_EXCHANGE": 14,
+        "BYTE_EXCHANGE": 11,
         "FRAME_ACQUIRE": 2,
         "FRAME_RELEASE": 1,
         "RESET_COUNTER": 3,
@@ -206,10 +219,15 @@
       "event_route_count": 6,
       "data_routes": [
         "rx->first_word_match",
+        "address_constant->first_word_match",
         "rx->rx_fifo",
         "tx_fifo->tx"
       ],
-      "maximum_observed_firings_per_cycle": 3,
+      "host_data_routes": [
+        "host->tx_fifo",
+        "rx_fifo->host"
+      ],
+      "maximum_observed_firings_per_cycle": 2,
       "qualified_event_to_rx_action_cycles": 0,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
       "protocol_specific_hardware": [
@@ -263,5 +281,206 @@
       "uart_rx",
       "timed_stream"
     ]
-  }
+  },
+  "motifs": {
+    "SHIFT_RX_COUNT": {
+      "instances": 1,
+      "protocols": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "storage_group": "rx",
+      "state_bits_in_shared_group": 11,
+      "configuration_fields": [
+        "rx_pin",
+        "sample",
+        "lsb_first"
+      ],
+      "configuration_bits_in_referenced_fields": 5,
+      "input_events": [
+        "sample"
+      ],
+      "output_events": [
+        "byte_complete"
+      ],
+      "data_inputs": [
+        "pin bit"
+      ],
+      "data_outputs": [
+        "received byte"
+      ],
+      "firing_latency_cycles": 0
+    },
+    "SHIFT_TX": {
+      "instances": 1,
+      "protocols": [
+        "spi_target",
+        "i2c_target"
+      ],
+      "storage_group": "tx",
+      "state_bits_in_shared_group": 12,
+      "configuration_fields": [
+        "tx_pin",
+        "transmit",
+        "lsb_first",
+        "fill"
+      ],
+      "configuration_bits_in_referenced_fields": 13,
+      "input_events": [
+        "falling clock",
+        "load"
+      ],
+      "output_events": [
+        "tx_complete"
+      ],
+      "data_inputs": [
+        "tx_fifo",
+        "constant"
+      ],
+      "data_outputs": [
+        "pad bit"
+      ],
+      "firing_latency_cycles": 0
+    },
+    "FRAME_ACQUIRE": {
+      "instances": 1,
+      "protocols": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "storage_group": "active",
+      "state_bits_in_shared_group": 1,
+      "configuration_fields": [
+        "frame",
+        "frame_pin"
+      ],
+      "configuration_bits_in_referenced_fields": 5,
+      "input_events": [
+        "frame_start"
+      ],
+      "output_events": [
+        "acquire"
+      ],
+      "data_inputs": [],
+      "data_outputs": [],
+      "firing_latency_cycles": 0
+    },
+    "FRAME_RELEASE": {
+      "instances": 1,
+      "protocols": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "storage_group": "active",
+      "state_bits_in_shared_group": 1,
+      "configuration_fields": [
+        "frame",
+        "frame_pin"
+      ],
+      "configuration_bits_in_referenced_fields": 5,
+      "input_events": [
+        "frame_stop",
+        "abort",
+        "timeout"
+      ],
+      "output_events": [
+        "release"
+      ],
+      "data_inputs": [],
+      "data_outputs": [],
+      "firing_latency_cycles": 0
+    },
+    "RESET_COUNTER": {
+      "instances": 1,
+      "protocols": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "storage_group": "rx",
+      "state_bits_in_shared_group": 11,
+      "configuration_fields": [],
+      "configuration_bits_in_referenced_fields": 0,
+      "input_events": [
+        "acquire",
+        "release"
+      ],
+      "output_events": [],
+      "data_inputs": [],
+      "data_outputs": [],
+      "firing_latency_cycles": 0
+    },
+    "TIMED_SAMPLE": {
+      "instances": 1,
+      "protocols": [
+        "uart_rx",
+        "timed_stream"
+      ],
+      "storage_group": "timer",
+      "state_bits_in_shared_group": 22,
+      "configuration_fields": [
+        "period",
+        "validate_start",
+        "validate_stop"
+      ],
+      "configuration_bits_in_referenced_fields": 18,
+      "input_events": [
+        "acquire",
+        "timer expiry"
+      ],
+      "output_events": [
+        "sample",
+        "validation"
+      ],
+      "data_inputs": [
+        "pin bit"
+      ],
+      "data_outputs": [
+        "captured bit"
+      ],
+      "firing_latency_cycles": 0
+    },
+    "BYTE_EXCHANGE": {
+      "instances": 1,
+      "protocols": [
+        "i2c_target"
+      ],
+      "storage_group": "byte_exchange",
+      "state_bits_in_shared_group": 17,
+      "configuration_fields": [
+        "address",
+        "ack_address",
+        "ack_data",
+        "exchange"
+      ],
+      "configuration_bits_in_referenced_fields": 10,
+      "input_events": [
+        "clock edges",
+        "byte_complete",
+        "fifo_ready"
+      ],
+      "output_events": [
+        "response",
+        "turnaround",
+        "stretch"
+      ],
+      "data_inputs": [
+        "received byte",
+        "address_constant"
+      ],
+      "data_outputs": [
+        "accepted byte",
+        "drive requests"
+      ],
+      "firing_latency_cycles": 0
+    }
+  },
+  "counting_contract": "Motif suboperations count once per type per cycle. Storage groups and configuration fields can be shared and must not be summed across motif entries. Event routes are named model interface groups, not physical wire or selector counts. Byte routes include validation/match storage; host routes are reported separately."
 }

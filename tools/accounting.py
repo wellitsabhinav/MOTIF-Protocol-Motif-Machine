@@ -65,12 +65,13 @@ def report():
                 for bit in [0, 1] * 4:
                     wire.hold(16, p2=bit)
                 wire.hold(p0=1)
-        counts = Counter(normalize(firing) for row in wire.trace for firing in row["fires"])
+        counts = Counter(firing for row in wire.trace for firing in {normalize(name) for name in row["fires"]})
         result["configurations"][name] = {
             "motif_firings": dict(sorted(counts.items())), "unique_motif_types": len(counts),
             "event_routes": recipes[name], "event_route_count": len(recipes[name]),
-            "data_routes": ["rx->rx_fifo", "tx_fifo->tx", "constant->tx"] if name == "spi_target" else (["rx->first_word_match", "rx->rx_fifo", "tx_fifo->tx"] if name == "i2c_target" else ["rx->rx_fifo"]),
-            "maximum_observed_firings_per_cycle": max(len(row["fires"]) for row in wire.trace),
+            "data_routes": ["rx->rx_fifo", "tx_fifo->tx", "constant->tx"] if name == "spi_target" else (["rx->first_word_match", "address_constant->first_word_match", "rx->rx_fifo", "tx_fifo->tx"] if name == "i2c_target" else (["rx->validated_byte", "validated_byte->rx_fifo"] if name == "uart_rx" else ["rx->rx_fifo"])),
+            "host_data_routes": ["host->tx_fifo", "rx_fifo->host"],
+            "maximum_observed_firings_per_cycle": max(len({normalize(name) for name in row["fires"]}) for row in wire.trace),
             "qualified_event_to_rx_action_cycles": 0 if config.sample == "rising" else 1,
             "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
             "protocol_specific_hardware": ["bounded ninth-clock byte exchange"] if config.exchange else [],
@@ -86,6 +87,20 @@ def report():
                                       "limitation": "Fixed SPI reference; not equivalent multi-protocol programmability or RTL area evidence"}
     result["reuse"] = {motif: [name for name, cfg in result["configurations"].items() if motif in cfg["motif_firings"]]
                        for motif in sorted({key for cfg in result["configurations"].values() for key in cfg["motif_firings"]})}
+    groups = {"SHIFT_RX_COUNT": ("rx", ["rx_pin", "sample", "lsb_first"], ["sample"], ["byte_complete"], ["pin bit"], ["received byte"]),
+              "SHIFT_TX": ("tx", ["tx_pin", "transmit", "lsb_first", "fill"], ["falling clock", "load"], ["tx_complete"], ["tx_fifo", "constant"], ["pad bit"]),
+              "FRAME_ACQUIRE": ("active", ["frame", "frame_pin"], ["frame_start"], ["acquire"], [], []),
+              "FRAME_RELEASE": ("active", ["frame", "frame_pin"], ["frame_stop", "abort", "timeout"], ["release"], [], []),
+              "RESET_COUNTER": ("rx", [], ["acquire", "release"], [], [], []),
+              "TIMED_SAMPLE": ("timer", ["period", "validate_start", "validate_stop"], ["acquire", "timer expiry"], ["sample", "validation"], ["pin bit"], ["captured bit"]),
+              "BYTE_EXCHANGE": ("byte_exchange", ["address", "ack_address", "ack_data", "exchange"], ["clock edges", "byte_complete", "fifo_ready"], ["response", "turnaround", "stretch"], ["received byte", "address_constant"], ["accepted byte", "drive requests"])}
+    result["motifs"] = {name: {"instances": 1, "protocols": result["reuse"][name], "storage_group": group,
+                              "state_bits_in_shared_group": STATE_WIDTHS[group], "configuration_fields": fields,
+                              "configuration_bits_in_referenced_fields": sum(CONFIG_WIDTHS[field] for field in fields),
+                              "input_events": inputs, "output_events": outputs, "data_inputs": data_inputs,
+                              "data_outputs": data_outputs, "firing_latency_cycles": 0}
+                        for name, (group, fields, inputs, outputs, data_inputs, data_outputs) in groups.items()}
+    result["counting_contract"] = "Motif suboperations count once per type per cycle. Storage groups and configuration fields can be shared and must not be summed across motif entries. Event routes are named model interface groups, not physical wire or selector counts. Byte routes include validation/match storage; host routes are reported separately."
     return result
 
 

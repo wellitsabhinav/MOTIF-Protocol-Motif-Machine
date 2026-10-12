@@ -29,6 +29,10 @@ class Config:
     ack_data: bool = True
 
     def __post_init__(self):
+        integer_fields = ("frame_pin", "clock_pin", "rx_pin", "tx_pin", "period", "open_drain", "watchdog", "fill", "address")
+        boolean_fields = ("transmit", "lsb_first", "validate_start", "validate_stop", "exchange", "ack_address", "ack_data")
+        if any(type(getattr(self, name)) is not int for name in integer_fields) or any(type(getattr(self, name)) is not bool for name in boolean_fields):
+            raise ValueError("Configuration must use bounded integer and Boolean fields")
         if self.frame not in ("level", "falling", "two_wire") or self.sample not in ("rising", "timer"):
             raise ValueError("Unsupported event source")
         if any(not 0 <= pin < 8 for pin in (self.frame_pin, self.clock_pin, self.rx_pin, self.tx_pin)):

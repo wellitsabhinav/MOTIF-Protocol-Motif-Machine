@@ -29,3 +29,11 @@ executes 19 operations for one complete eight-bit frame, including two TX loads
 and one FIFO enqueue. At the tested spacing both architectures sustain identical
 wire throughput; the reference enqueues a completed RX byte one cycle later.
 These results do not establish a multi-protocol area or throughput advantage.
+
+The current accounting deduplicates byte-exchange suboperations into one motif
+firing per type per cycle. It includes address-constant matching and UART byte
+validation storage in byte routes and lists host FIFO routes separately. Named
+model event-interface groups are not physical wire or selector counts. Per-motif
+metadata identifies shared storage/configuration groups so they are not summed
+twice. RTL mux cells and hierarchy area provide separate implementation evidence.
+Configuration and pad-request validation reject values without bounded encodings.
