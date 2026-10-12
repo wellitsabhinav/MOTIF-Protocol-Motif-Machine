@@ -110,6 +110,26 @@ def verify():
     return frozen
 
 
+def expected_temporal_names():
+    names = {f"level{level}_t{threshold}_delta{delta}" for level in (0, 1)
+             for threshold in (1, 2, 4, 16, 65535) for delta in (-1, 0, 1)}
+    names |= {f"level{level}_interrupt{gap}_{policy}" for level in (0, 1)
+              for gap in (1, 2, 3) for policy in ("restart", "branch")}
+    names |= {f"level{level}_{kind}" for level in (0, 1) for kind in ("multiple_interruptions", "long_idle")}
+    names |= {"constant_delay", "registered_timer_end_precedes_repeated_acquisition"}
+    names |= {"lifecycle_" + kind for kind in ("reset", "abort", "disable", "watchdog", "release")}
+    names |= {f"chained_qualifications_bridges{bridges}" for bridges in (0, 3)}
+    return names
+
+
+def expected_repair_names():
+    original = json.loads(Path("experiments/exchange_decomposition/third_workload.json").read_text())
+    names = {case["name"] for case in original["cases"]}
+    names |= {"startup_interrupted_non_reset", "restart_then_valid", "valid_590us"}
+    names |= {f"legal_phase_low{low}_idle{idle}" for low in (24000, 29500, 48000) for idle in (8, 9)}
+    return names
+
+
 def validate_gate(name, report):
     if not report.get("passed") or report.get("stage") != name or report.get("model_only"):
         raise ValueError("Missing complete passing gate: " + name)
@@ -117,6 +137,9 @@ def validate_gate(name, report):
         cases = report.get("cases", [])
         if not cases or report.get("total_compared_cycles", 0) <= 0:
             raise ValueError("RTL comparisons missing from " + name)
+        expected = expected_temporal_names() if name == "temporal" else expected_repair_names()
+        if len(cases) != len(expected) or {case.get("name") for case in cases} != expected:
+            raise ValueError("Required unique case set incomplete: " + name)
         if any(case.get("model_rtl_agreement") is not True or not case.get("oracle", {}).get("passed") for case in cases):
             raise ValueError("Independent oracle/RTL qualification incomplete: " + name)
         if name == "repair" and sum(case.get("original_historical_case") is True for case in cases) != 9:
@@ -133,6 +156,11 @@ def validate_gate(name, report):
             raise ValueError("Microwire exact-word comparison incomplete")
     if name in ("model", "regression") and (not report.get("checks") or any(check.get("passed") is not True or check.get("exit_code") != 0 for check in report["checks"])):
         raise ValueError("Required command checks missing/failed: " + name)
+    if name in ("model", "regression"):
+        command_names = [check.get("name") for check in report["checks"]]
+        required = {"model-tests"} if name == "model" else {"all-tests", "rtl-existing-modes", "formal-existing", "rtl-lint"}
+        if len(command_names) != len(set(command_names)) or not required <= set(command_names):
+            raise ValueError("Required command-name set incomplete: " + name)
     if name == "cocotb":
         from tools.host_check import expected_test_names
         runtime = report.get("runtime_details", report)
