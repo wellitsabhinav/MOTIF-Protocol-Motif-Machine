@@ -76,7 +76,43 @@
         "FRAME_RELEASE": 16
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 32,
+          "byte_complete": 80,
+          "address_match": 32,
+          "turnaround_begin": 48,
+          "tx_complete": 48,
+          "transmit_nack": 16
+        },
+        "completed_frames": 32,
+        "frame_latency_cycles_min": 646,
+        "frame_latency_cycles_max": 691,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "controller_ack",
+          "decide",
+          "idle",
+          "rx",
+          "settle",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 48,
+          "loaded_tx_bytes": 48,
+          "maximum_rx_count": 3,
+          "maximum_tx_count": 3
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 57,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "random_setup_63",
@@ -113,7 +149,43 @@
         "FRAME_RELEASE": 16
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 32,
+          "byte_complete": 80,
+          "address_match": 32,
+          "turnaround_begin": 48,
+          "tx_complete": 48,
+          "transmit_nack": 16
+        },
+        "completed_frames": 32,
+        "frame_latency_cycles_min": 646,
+        "frame_latency_cycles_max": 829,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "controller_ack",
+          "decide",
+          "idle",
+          "rx",
+          "settle",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 48,
+          "loaded_tx_bytes": 48,
+          "maximum_rx_count": 3,
+          "maximum_tx_count": 3
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 57,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "policy_9fe8e264",
@@ -148,7 +220,37 @@
         "FRAME_RELEASE": 2
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 2,
+          "address_miss": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 185,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "idle",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 15,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "policy_0ea517a3",
@@ -183,7 +285,39 @@
         "FRAME_RELEASE": 2
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_miss": 1,
+          "address_match": 1,
+          "receive_nack": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 185,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "idle",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 25,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "policy_44136fa3",
@@ -218,7 +352,38 @@
         "FRAME_RELEASE": 2
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_miss": 1,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 185,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "idle",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "fifo_full",
@@ -253,7 +418,38 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 1,
+          "byte_complete": 6,
+          "address_match": 1,
+          "receive_nack": 1
+        },
+        "completed_frames": 1,
+        "frame_latency_cycles_min": 949,
+        "frame_latency_cycles_max": 949,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "idle",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 4,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 4,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 65,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "starvation_fifo_ready",
@@ -290,7 +486,44 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 1,
+          "byte_complete": 1,
+          "address_match": 1,
+          "turnaround_begin": 2,
+          "tx_complete": 2,
+          "transmit_nack": 1
+        },
+        "completed_frames": 1,
+        "frame_latency_cycles_min": 919,
+        "frame_latency_cycles_max": 919,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "controller_ack",
+          "decide",
+          "idle",
+          "rx",
+          "settle",
+          "stretch",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 2,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 45,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_0_start",
@@ -325,7 +558,36 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 184,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_0_stop",
@@ -360,7 +622,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 185,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_0_reset",
@@ -395,7 +686,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 167,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_1_start",
@@ -430,7 +750,36 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 200,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_1_stop",
@@ -465,7 +814,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 201,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_1_reset",
@@ -500,7 +878,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 183,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_4_start",
@@ -535,7 +942,36 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 248,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_4_stop",
@@ -570,7 +1006,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 249,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_4_reset",
@@ -605,7 +1070,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 3,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 3,
+        "frame_latency_cycles_min": 25,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_7_start",
@@ -640,7 +1134,36 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 4,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 296,
+        "frame_latency_cycles_max": 339,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 2,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_7_stop",
@@ -675,7 +1198,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 4,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 297,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 2,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "partial_7_reset",
@@ -710,7 +1262,36 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 279,
+        "frame_latency_cycles_max": 338,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "timeout_recovery",
@@ -745,7 +1326,37 @@
         "FRAME_RELEASE": 97
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 3,
+          "byte_complete": 4,
+          "address_match": 3
+        },
+        "completed_frames": 3,
+        "frame_latency_cycles_min": 225,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 96,
+          "timeout_observed": true,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "reset_idle_and_stretch",
@@ -780,7 +1391,37 @@
         "BYTE_EXCHANGE": 8
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 177,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "first_bit_mismatch",
@@ -817,7 +1458,40 @@
         "FRAME_RELEASE": 3
       },
       "maximum_motif_types_per_cycle": 3,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "data_mismatch": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 241,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "coincident_start_stop_0",
@@ -852,7 +1526,36 @@
         "BYTE_EXCHANGE": 5
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 35,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "coincident_start_stop_1",
@@ -887,7 +1590,36 @@
         "BYTE_EXCHANGE": 5
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 36,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "coincident_start_stop_2",
@@ -922,7 +1654,36 @@
         "BYTE_EXCHANGE": 5
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 37,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "coincident_start_stop_3",
@@ -957,7 +1718,36 @@
         "BYTE_EXCHANGE": 5
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 38,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "coincident_start_stop_4",
@@ -992,7 +1782,36 @@
         "BYTE_EXCHANGE": 5
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 39,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "abort_pending_timer",
@@ -1028,7 +1847,38 @@
         "FRAME_RELEASE": 134
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 167,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 133,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "standard_mode",
@@ -1063,7 +1913,36 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 1,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 1,
+        "frame_latency_cycles_min": 10501,
+        "frame_latency_cycles_max": 10501,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "receive_only",
@@ -1098,7 +1977,38 @@
         "FRAME_RELEASE": 2
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_miss": 1,
+          "address_match": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 185,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "idle",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "malformed_boundaries_watchdog_1",
@@ -1132,7 +2042,31 @@
         "SHIFT_RX_COUNT": 23
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 73
+        },
+        "completed_frames": 73,
+        "frame_latency_cycles_min": 2,
+        "frame_latency_cycles_max": 7,
+        "phase_coverage": [
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 975,
+          "timeout_observed": true,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 6,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "malformed_boundaries_watchdog_2",
@@ -1166,7 +2100,31 @@
         "SHIFT_RX_COUNT": 61
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 75
+        },
+        "completed_frames": 75,
+        "frame_latency_cycles_min": 2,
+        "frame_latency_cycles_max": 17,
+        "phase_coverage": [
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 538,
+          "timeout_observed": true,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 10,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "malformed_boundaries_watchdog_4",
@@ -1201,7 +2159,35 @@
         "BYTE_EXCHANGE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 75,
+          "byte_complete": 1,
+          "address_miss": 1
+        },
+        "completed_frames": 75,
+        "frame_latency_cycles_min": 2,
+        "frame_latency_cycles_max": 24,
+        "phase_coverage": [
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 166,
+          "timeout_observed": true,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 11,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "malformed_boundaries_watchdog_64",
@@ -1236,7 +2222,35 @@
         "BYTE_EXCHANGE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 75,
+          "byte_complete": 1,
+          "address_miss": 1
+        },
+        "completed_frames": 74,
+        "frame_latency_cycles_min": 2,
+        "frame_latency_cycles_max": 26,
+        "phase_coverage": [
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 0,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 0,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 11,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_0",
@@ -1273,7 +2287,40 @@
         "FRAME_RELEASE": 52
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 258,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_1",
@@ -1310,7 +2357,40 @@
         "FRAME_RELEASE": 52
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 259,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_2",
@@ -1347,7 +2427,40 @@
         "FRAME_RELEASE": 52
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 260,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_13",
@@ -1384,7 +2497,40 @@
         "FRAME_RELEASE": 52
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 271,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_62",
@@ -1421,7 +2567,40 @@
         "FRAME_RELEASE": 53
       },
       "maximum_motif_types_per_cycle": 3,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "data_mismatch": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 241,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_63",
@@ -1458,7 +2637,40 @@
         "FRAME_RELEASE": 53
       },
       "maximum_motif_types_per_cycle": 3,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "data_mismatch": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 241,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_64",
@@ -1495,7 +2707,40 @@
         "FRAME_RELEASE": 53
       },
       "maximum_motif_types_per_cycle": 3,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "data_mismatch": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 241,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "stop_request_pending_timer_65",
@@ -1532,7 +2777,40 @@
         "FRAME_RELEASE": 53
       },
       "maximum_motif_types_per_cycle": 3,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "data_mismatch": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 241,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx",
+          "settle",
+          "stretch"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 51,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "ninth_clock_spacing_3",
@@ -1569,7 +2847,43 @@
         "TIMED_SAMPLE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "tx_complete": 1,
+          "transmit_nack": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 127,
+        "frame_latency_cycles_max": 145,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "controller_ack",
+          "decide",
+          "idle",
+          "rx",
+          "settle",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 29,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "ninth_clock_spacing_4",
@@ -1606,7 +2920,43 @@
         "TIMED_SAMPLE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "tx_complete": 1,
+          "transmit_nack": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 169,
+        "frame_latency_cycles_max": 187,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "controller_ack",
+          "decide",
+          "idle",
+          "rx",
+          "settle",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 29,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "ninth_clock_spacing_5",
@@ -1643,7 +2993,43 @@
         "TIMED_SAMPLE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "turnaround_begin": 1,
+          "tx_complete": 1,
+          "transmit_nack": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 211,
+        "frame_latency_cycles_max": 229,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "controller_ack",
+          "decide",
+          "idle",
+          "rx",
+          "settle",
+          "tx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 1,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 1
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 29,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "reset_mid_header",
@@ -1678,7 +3064,36 @@
         "BYTE_EXCHANGE": 5
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 3,
+          "byte_complete": 2,
+          "address_match": 1
+        },
+        "completed_frames": 3,
+        "frame_latency_cycles_min": 25,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "own_pad_timing_fault_and_recovery",
@@ -1713,7 +3128,37 @@
         "FRAME_RELEASE": 50
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 2,
+          "byte_complete": 3,
+          "address_match": 2,
+          "pad_timing_fault": 1
+        },
+        "completed_frames": 2,
+        "frame_latency_cycles_min": 148,
+        "frame_latency_cycles_max": 337,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 1,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 1,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 49,
+          "timeout_observed": false,
+          "pad_timing_observed": true
+        },
+        "motif_firings_per_completed_frame_max": 26,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     },
     {
       "name": "simultaneous_host_rx_decision",
@@ -1748,7 +3193,38 @@
         "FRAME_RELEASE": 1
       },
       "maximum_motif_types_per_cycle": 2,
-      "model_rtl_agreement": true
+      "model_rtl_agreement": true,
+      "metrics": {
+        "event_counts": {
+          "frame_start": 1,
+          "byte_complete": 6,
+          "address_match": 1,
+          "receive_nack": 1
+        },
+        "completed_frames": 1,
+        "frame_latency_cycles_min": 932,
+        "frame_latency_cycles_max": 932,
+        "phase_coverage": [
+          "ack_hold",
+          "ack_setup",
+          "decide",
+          "idle",
+          "rx"
+        ],
+        "fifo_actions": {
+          "accepted_rx_bytes": 4,
+          "loaded_tx_bytes": 0,
+          "maximum_rx_count": 4,
+          "maximum_tx_count": 0
+        },
+        "guardian": {
+          "trip_cycles": 0,
+          "timeout_observed": false,
+          "pad_timing_observed": false
+        },
+        "motif_firings_per_completed_frame_max": 65,
+        "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"
+      }
     }
   ],
   "divergences": [],

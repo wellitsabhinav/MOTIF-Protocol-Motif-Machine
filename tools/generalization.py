@@ -332,6 +332,32 @@ def write_trace(path, rows):
     path.write_text("".join(json.dumps(row, sort_keys=True) + "\n" for row in rows), encoding="utf-8")
 
 
+def trace_metrics(rows):
+    event_counts = Counter(name for row in rows for i, name in enumerate(EVENTS) if row["events"] & (1 << i))
+    frames, start, firings = [], None, Counter()
+    for cycle, row in enumerate(rows):
+        if row["events"] & 1:
+            if start is not None:
+                frames.append({"cycles": cycle - start, "termination": "repeated_start", "motif_firings": dict(firings)})
+            start, firings = cycle, Counter()
+        if start is not None:
+            firings.update(m for i, m in enumerate(MOTIFS) if row["motifs"] & (1 << i))
+            if row["motifs"] & 2:
+                frames.append({"cycles": cycle - start + 1, "termination": "release", "motif_firings": dict(firings)})
+                start = None
+    return {"event_counts": dict(event_counts), "completed_frames": len(frames),
+            "frame_latency_cycles_min": min((f["cycles"] for f in frames), default=None),
+            "frame_latency_cycles_max": max((f["cycles"] for f in frames), default=None),
+            "phase_coverage": sorted({PHASES[row["phase"]] for row in rows}),
+            "fifo_actions": {"accepted_rx_bytes": sum(row["rx_push"] for row in rows), "loaded_tx_bytes": sum(row["tx_pop"] for row in rows),
+                             "maximum_rx_count": max(row["rx_fifo_count"] for row in rows), "maximum_tx_count": max(row["tx_fifo_count"] for row in rows)},
+            "guardian": {"trip_cycles": sum(row["guardian_tripped"] for row in rows),
+                         "timeout_observed": any(row["status"] & 64 for row in rows),
+                         "pad_timing_observed": any(row["exchange_status"] & 2 for row in rows)},
+            "motif_firings_per_completed_frame_max": max((sum(f["motif_firings"].values()) for f in frames), default=None),
+            "latency_contract": "Sampled acquisition through release or next repeated START; includes controller and FIFO waits, not a maximum-throughput claim"}
+
+
 def gate1(destination, synthesize=False):
     if PROMOTED.exists():
         verify(PROMOTED)
@@ -367,7 +393,7 @@ def gate1(destination, synthesize=False):
         result["cases"].append({"name": name, "configuration": asdict(engine.config), "configuration_sha256": stable_hash(asdict(engine.config)),
                                "cycles": len(actual), "trace_sha256": stable_hash(actual), "motif_firings": dict(counts),
                                "maximum_motif_types_per_cycle": max(row["motifs"].bit_count() for row in actual),
-                               "model_rtl_agreement": True})
+                               "model_rtl_agreement": True, "metrics": trace_metrics(actual)})
         print("PASS I2C", name, len(actual), "cycles", flush=True)
     result["classification"] = "MOTIF_I2C_LOGICAL_QUALIFICATION_PASSED"
     result["total_compared_cycles"] = sum(c["cycles"] for c in result["cases"])
