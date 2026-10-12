@@ -7,6 +7,8 @@ module watchdog_properties(input wire clk);
     always @(posedge clk) begin
         initialized<=1;
         if(elapsed<20)elapsed<=elapsed+1'b1;
+    end
+    always @* begin
         assume(limit!=0);
         if(elapsed>=16)assert(tripped);
     end
