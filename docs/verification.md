@@ -1,5 +1,19 @@
 # Verification
 
+Current v2 has 109 tests, 48 I²C cases with 88,287 cycles of model/RTL and
+legacy-visible equivalence, and the unchanged Microwire A55A oracle. Its selected
+unseen initialization workload matches 1,302,050 model/RTL cycles but fails one
+precommitted malformed-input case. Reproduce it with
+`python -m tools.generalization --gate 3 --baseline v2`, then
+`python -m tools.unseen_result` to verify the preserved negative. The independent
+oracle remains failed; regression success means faithful reproduction.
+
+`python -m tools.accounting` writes current v2 accounting to ignored build output;
+it preserves historical `reports/motif_usage.json`. Generate training traces
+with Gates 1/2 before rebuilding detailed accounting. Registered PC observations,
+possible chained dependencies, semantic state and support/control costs are
+labeled separately. See the [full report](../experiments/exchange_decomposition/report.md).
+
 Run `python -m pip install -e '.[test]'` and `python -m pytest -q` from the repository
 root. Python 3.11 or later is supported. Tests operate wires through the frontend,
 not through protocol-specific receive shortcuts.
@@ -31,7 +45,7 @@ and one FIFO enqueue. At the tested spacing both architectures sustain identical
 wire throughput; the reference enqueues a completed RX byte one cycle later.
 These results do not establish a multi-protocol area or throughput advantage.
 
-The current accounting deduplicates byte-exchange suboperations into one motif
+The historical accounting deduplicates byte-exchange suboperations into one motif
 firing per type per cycle. It includes address-constant matching and UART byte
 validation storage in byte routes and lists host FIFO routes separately. Named
 model event-interface groups are not physical wire or selector counts. Per-motif
@@ -46,7 +60,7 @@ then verify target-held low through setup for both first-bit values. The earlier
 test pulled controller SCL low again and missed premature target release. The
 corrected mapping reuses timed sampling for the setup interval and reruns the
 full suite with an independent controller that honors stretched clock periods.
-The current suite has 83 tests. Adversarial requests also cover receive-only
+The legacy suite had 83 tests, all retained in v2. Adversarial requests also cover receive-only
 ownership, aliased target outputs, delayed self-generated START after abort,
 own clock truncation and own SDA activity attempting to postpone timeout.
 The sequential SPI reference now also passes the same reset, partial-abort,
@@ -59,5 +73,6 @@ The frozen campaign adds manifest-integrity and independent Microwire-oracle
 checks. `python -m tools.generalization --gate 1` compares 88,287 I²C cycles;
 `--gate 2` reproduces six failing Microwire configurations with model/RTL
 agreement. Reproducing a negative architectural result is a passing regression.
-The campaign stops before Gate 3, and integrity checks prohibit changing the
-frozen hardware to make the workload pass.
+That historical campaign stops before Gate 3. The separate v2 campaign qualifies
+I²C/Microwire, freezes, then attempts its subsequently selected third workload.
+Integrity checks prohibit changing either frozen circuit to make its workload pass.

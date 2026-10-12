@@ -46,7 +46,7 @@ def synthesize(top, destination, library=None):
         report.update(library=library.name, area_units="square micrometres", register_count=sum(count for name, count in types.items() if name in sequential),
                       sequential_area=seq_area, combinational_area=report['design']['area'] - seq_area,
                       mux_cells={name: count for name, count in types.items() if "mux" in name},
-                      allocated_configuration_bits=78,
+                      allocated_configuration_bits=1096 if Path("src/motif_transaction.sv").exists() else 78,
                       limitations="Nominal typical-cell mapping only; no CTS, placement, routing, extracted timing or silicon evidence")
     report["source_sha"] = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     report["rtl_source_hashes"] = {p.as_posix(): hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()

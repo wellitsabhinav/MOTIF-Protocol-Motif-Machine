@@ -4,7 +4,7 @@ from motif import Config
 from motif.guardian import Request
 
 
-@pytest.mark.parametrize("parameters", [{"period": 3.5}, {"rx_pin": True}, {"watchdog": 65536}, {"transmit": 2}, {"address": -1}])
+@pytest.mark.parametrize("parameters", [{"period": 3.5}, {"rx_pin": True}, {"watchdog": 65536}, {"transmit": 2}, {"program": (-1,) * 16}])
 def test_configuration_has_a_bounded_encoding(parameters):
     with pytest.raises(ValueError):
         Config(**parameters)

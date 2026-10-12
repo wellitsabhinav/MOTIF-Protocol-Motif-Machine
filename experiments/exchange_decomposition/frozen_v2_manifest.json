@@ -1,0 +1,404 @@
+{
+  "schema_version": 2,
+  "source_sha": "f0da6a72cb62b6083196872e4f3f140cceb9135d",
+  "source_hashes": {
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "38dab717590705351d7e76e5a600aeb1e9e2758ce5e689aa087dd0d34f6a001d",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/motifs/transaction.py": "bde241b20c9a716547144f7242e4927916cf69f215ae8e530f3650afd4853a82",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "motif/transaction.py": "1422b0caad1bc60ade3de34f708ac2afb7b421f9961a31fcf25247203b86f5bb",
+    "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+    "src/motif_core.sv": "2d79a90df6022f269069444b7f41423d85abb0ea12b5753d2d9e3ef38083bb98",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "4670966fae26e6db5211f639672f714555126a853adcbc5402dda7c6152f6821",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "7cc7d3cb3dc32bde3620500bafb2dae9b897d47c6b1bece676c8478025cfc18c"
+  },
+  "rtl_hashes": {
+    "src/motif_core.sv": "2d79a90df6022f269069444b7f41423d85abb0ea12b5753d2d9e3ef38083bb98",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "4670966fae26e6db5211f639672f714555126a853adcbc5402dda7c6152f6821",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "7cc7d3cb3dc32bde3620500bafb2dae9b897d47c6b1bece676c8478025cfc18c"
+  },
+  "model_hashes": {
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "38dab717590705351d7e76e5a600aeb1e9e2758ce5e689aa087dd0d34f6a001d",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/motifs/transaction.py": "bde241b20c9a716547144f7242e4927916cf69f215ae8e530f3650afd4853a82",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "motif/transaction.py": "1422b0caad1bc60ade3de34f708ac2afb7b421f9961a31fcf25247203b86f5bb"
+  },
+  "trace_compiler_hashes": {
+    "bench": "923f31f237e992e6d01fedb4aa343f03f4df66ab42062c3a821c4a850909306c",
+    "compare_rtl": "2cdae5342a7c3430b5c3c4a82bac0682c00035056fe12ca5b0c54e8623e4da00",
+    "FIELDS": "773f21aac6a34fdc6c1021d92afa95315371e56198658d5f0fd9474bf5ca52d5",
+    "MOTIFS": "21cd99b1bb27c281810bcc43061b41aa3e22458ccc8658497dc0074e2f7d569e",
+    "EVENTS": "f87f2fa902cda5ff0c7806306082464d391a39ea8d8b37f8419c11bdc7d27eb0"
+  },
+  "preregistration_sha256": "161f6887a2afe4dc301f6958a5af29a7747e2b9a4dd9fd31bb19e5fbcd0e1f2f",
+  "preregistered_commit": "d3ca35e2221f8e7654f4c42fa79ab7992e8ee8d8",
+  "primitives": [
+    "FRAME_ACQUIRE",
+    "FRAME_RELEASE",
+    "RESET_COUNTER",
+    "SHIFT_RX_COUNT",
+    "SHIFT_TX",
+    "TIMED_SAMPLE",
+    "FIELD_DECISION",
+    "DIRECTION_HANDOFF",
+    "BOUNDARY_RESPONSE",
+    "WAIT_POLICY"
+  ],
+  "new_primitive_contracts": {
+    "FIELD_DECISION": {
+      "semantics": "Qualify a registered 1..16-bit field by masked equality and configured enable/readiness/permission predicates; optionally enqueue its low byte; select desired direction by retain, constant RX, constant TX or any configured field bit.",
+      "state_bits": {
+        "pending_field": 16,
+        "accepted": 1,
+        "desired_role": 1
+      },
+      "inputs": [
+        "field_complete",
+        "field[15:0]",
+        "rx_full",
+        "transmit_permission"
+      ],
+      "outputs": [
+        "accepted",
+        "desired_role",
+        "rx_push",
+        "decision_event"
+      ]
+    },
+    "DIRECTION_HANDOFF": {
+      "semantics": "Transfer current ownership to retained desired role or a configured constant role. RX releases data/hold. TX loads one pre-edge FIFO head and presents its first bit; an empty or disallowed load is a fatal composition fault. Readiness waiting is separately composed. TX may request the existing registered setup timer start.",
+      "state_bits": {
+        "current_role": 1,
+        "drive_enable_shared": 1,
+        "drive_value_shared": 1
+      },
+      "inputs": [
+        "trigger",
+        "desired_role",
+        "tx_head[7:0]",
+        "tx_empty",
+        "serial_order",
+        "transmit_permission"
+      ],
+      "outputs": [
+        "role",
+        "tx_load",
+        "data_request",
+        "timer_start_request"
+      ]
+    },
+    "BOUNDARY_RESPONSE": {
+      "semantics": "On a configured event emit a constant or accepted-derived bit, release output, or capture an optionally inverted bit. Captured responses may be resampled until a separately configured completion event; sample has priority over completion if simultaneous. Completion branches on the pre-edge captured response. No mandatory clock slot exists.",
+      "state_bits": {
+        "captured_response": 1
+      },
+      "inputs": [
+        "trigger",
+        "completion_event",
+        "accepted",
+        "input_bit"
+      ],
+      "outputs": [
+        "data_request",
+        "captured_response",
+        "conditional_continuation"
+      ]
+    },
+    "WAIT_POLICY": {
+      "semantics": "Wait for desired-TX FIFO readiness (RX passes immediately), RX space, timer sample or input level. Optional hold requests apply only to desired TX and require configured clock ownership. Timer wait may compare the captured resolved level with the TX bit; mismatch releases the frame. A completed wait releases hold except readiness may retain it through the configured TX handoff.",
+      "state_bits": {
+        "hold_request": 1
+      },
+      "inputs": [
+        "readiness",
+        "timer_sample",
+        "resolved_bit",
+        "tx_bit",
+        "desired_role"
+      ],
+      "outputs": [
+        "hold_request",
+        "continue",
+        "mismatch",
+        "frame_abort"
+      ]
+    }
+  },
+  "program": {
+    "entries": 16,
+    "entry_bits": 64,
+    "byte_order": "little endian",
+    "fields": {
+      "opcode": [
+        0,
+        2
+      ],
+      "trigger": [
+        3,
+        4
+      ],
+      "next": [
+        5,
+        8
+      ],
+      "alternate": [
+        9,
+        12
+      ],
+      "argument": [
+        13,
+        20
+      ],
+      "value": [
+        21,
+        36
+      ],
+      "mask": [
+        37,
+        52
+      ],
+      "flags": [
+        53,
+        63
+      ]
+    },
+    "opcodes": {
+      "0": "SHIFT_RX_COUNT",
+      "1": "FIELD_DECISION",
+      "2": "BOUNDARY_RESPONSE",
+      "3": "DIRECTION_HANDOFF",
+      "4": "WAIT_POLICY",
+      "5": "SHIFT_TX",
+      "6": "TERMINATE",
+      "7": "CONTINUE"
+    },
+    "triggers": {
+      "0": "always",
+      "1": "clock_rising",
+      "2": "clock_falling",
+      "3": "registered_timer_sample"
+    },
+    "chain_flag": 1024,
+    "maximum_entries_executed_per_cycle": 4,
+    "execution": "Execute current entry when triggered. RX/TX advance only at their configured event and complete only at the configured boundary. A successor executes this cycle only when the prior entry has CHAIN and the successor trigger is ALWAYS. Every entry executes at most once per cycle. Repeated entry or a fifth immediate execution is a fatal composition fault. Otherwise the successor waits for a future cycle. Outputs and FIFO operations commit atomically; all readiness/decision predicates use pre-edge state. FIFO/TX load conflicts are fatal, not silently prioritized.",
+    "reset": "pc=0; halted=false; desired/current role=RX; acceptance/captured response/pending field/data requests/hold=0",
+    "opcode_arguments": {
+      "SHIFT_RX_COUNT": "argument[4:0] is length 1..16; next selected on terminal; other operands unused; emits field_complete and low-byte diagnostic on terminal",
+      "FIELD_DECISION": "argument[1:0]: 0 retain desired role, 1 RX, 2 TX, 3 field bit; argument[5:2] selects bit. flags[0] enable acceptance, [1] enqueue accepted low byte, [2] require RX space, [3] require TX permission if selected role TX, [4] branch on acceptance. Compare (field & mask)==(value & mask). When not branching, next is used even on rejection.",
+      "BOUNDARY_RESPONSE": "argument[1:0]: 0 constant bit value[0], 1 accepted bit, 2 capture, 3 release. flags[0] invert, [1] branch on acceptance, [2] branch on captured response. Capture trigger samples; value[1:0] chooses completion event, which branches on stored captured response. Other modes execute only on trigger. RELEASE clears data enable. Emit modes request selected bit. Open-drain generated logical one maps to release before guardian.",
+      "DIRECTION_HANDOFF": "argument[1:0]: 0 desired role, 1 RX, 2 TX, 3 release. flags[0] requests timer start after a TX load. TX selects next; RX/release selects alternate. RX/release clears data enable and hold. TX load uses pre-edge FIFO, presents selected first bit and retains current hold.",
+      "WAIT_POLICY": "argument[1:0]: 0 TX-ready-or-desired-RX, 1 RX space, 2 timer sample, 3 input equals value[0]. flags[0] request hold when desired role TX, [1] validate sampled level against TX bit for timer wait. Timer mismatch is fatal; completion selects next, successful non-readiness waits clear hold; readiness retains configured hold only for desired TX.",
+      "SHIFT_TX": "flags[0] boundary after last-bit presentation rather than consumption, [1] release data at boundary, [2] clear captured response at boundary. Shift on trigger, update driven next bit, next on configured boundary. Zero remaining is fatal.",
+      "TERMINATE": "flags[0] release entire frame, [1] retain current output while halted. Otherwise release data and hold. Remain halted until frame acquisition/release/reset.",
+      "CONTINUE": "argument[2:0] predicate: 0 true, 1 accepted, 2 captured response, 3 desired TX, 4 RX full, 5 TX empty. next/alternate selected by predicate; no datapath action. Invalid predicate is rejected."
+    }
+  },
+  "integration": {
+    "frame_modes": [
+      "active-level with selectable polarity",
+      "falling-edge acquire",
+      "data edge with previously and currently stable-high clock"
+    ],
+    "raw_level_frame_kill": "immediate release when raw frame pin differs from configured active level",
+    "receive_transmit_pins": "shared or separate, eight-pin mapping; independent push-pull output permitted only on unprotected pins; shared data must be open drain",
+    "hold_clock": "explicit one-bit permission; distinct clock/data and open-drain clock required; ownership additionally requires transmit permission",
+    "pad_timing_check": "explicit one-bit configured own-pad timing validation; unchanged provenance suppression for edge-qualified acquisition and external-clock progress",
+    "timer": "existing period, start/stop validation and registered event timing; acquisition starts timer for timer sampling; handoff timer request starts on following cycle; timer wait consumes registered sample on subsequent cycle, preserving period+2 setup",
+    "priority": [
+      "reset/disable/raw kill/abort/release/watchdog expiry/own-pad fault",
+      "acquisition including repeated acquisition",
+      "transaction actions",
+      "guardian authorization"
+    ],
+    "fifo_contract": "four byte entries; reset clears, frame release preserves; host pulse commits after actor decision against pre-edge flags; no empty-TX same-edge bypass and no full-RX same-edge acceptance rescue"
+  },
+  "configuration_bits_rtl": 1096,
+  "table_bits": 1024,
+  "transaction_state_bits_declared": 28,
+  "shared_receive_state_bits_declared": 21,
+  "shared_transmit_state_bits_declared": 12,
+  "configuration_widths": {
+    "control": 7,
+    "pins": 12,
+    "period": 16,
+    "watchdog": 16,
+    "fill": 8,
+    "open_drain": 8,
+    "transaction_control": 5,
+    "program": 1024
+  },
+  "state_widths_declared": {
+    "configuration": 1096,
+    "frontend": 26,
+    "receive": 21,
+    "transmit": 12,
+    "timer": 26,
+    "watchdog": 17,
+    "fifos": 82,
+    "transaction": 28,
+    "host_spi": 47,
+    "core_lifecycle_provenance_diagnostics": 23,
+    "host_diagnostics": 2
+  },
+  "input_events": {
+    "0": "always",
+    "1": "clock_rising",
+    "2": "clock_falling",
+    "3": "registered_timer_sample"
+  },
+  "output_events": {
+    "FIELD_DECISION": {
+      "semantics": "Qualify a registered 1..16-bit field by masked equality and configured enable/readiness/permission predicates; optionally enqueue its low byte; select desired direction by retain, constant RX, constant TX or any configured field bit.",
+      "state_bits": {
+        "pending_field": 16,
+        "accepted": 1,
+        "desired_role": 1
+      },
+      "inputs": [
+        "field_complete",
+        "field[15:0]",
+        "rx_full",
+        "transmit_permission"
+      ],
+      "outputs": [
+        "accepted",
+        "desired_role",
+        "rx_push",
+        "decision_event"
+      ]
+    },
+    "DIRECTION_HANDOFF": {
+      "semantics": "Transfer current ownership to retained desired role or a configured constant role. RX releases data/hold. TX loads one pre-edge FIFO head and presents its first bit; an empty or disallowed load is a fatal composition fault. Readiness waiting is separately composed. TX may request the existing registered setup timer start.",
+      "state_bits": {
+        "current_role": 1,
+        "drive_enable_shared": 1,
+        "drive_value_shared": 1
+      },
+      "inputs": [
+        "trigger",
+        "desired_role",
+        "tx_head[7:0]",
+        "tx_empty",
+        "serial_order",
+        "transmit_permission"
+      ],
+      "outputs": [
+        "role",
+        "tx_load",
+        "data_request",
+        "timer_start_request"
+      ]
+    },
+    "BOUNDARY_RESPONSE": {
+      "semantics": "On a configured event emit a constant or accepted-derived bit, release output, or capture an optionally inverted bit. Captured responses may be resampled until a separately configured completion event; sample has priority over completion if simultaneous. Completion branches on the pre-edge captured response. No mandatory clock slot exists.",
+      "state_bits": {
+        "captured_response": 1
+      },
+      "inputs": [
+        "trigger",
+        "completion_event",
+        "accepted",
+        "input_bit"
+      ],
+      "outputs": [
+        "data_request",
+        "captured_response",
+        "conditional_continuation"
+      ]
+    },
+    "WAIT_POLICY": {
+      "semantics": "Wait for desired-TX FIFO readiness (RX passes immediately), RX space, timer sample or input level. Optional hold requests apply only to desired TX and require configured clock ownership. Timer wait may compare the captured resolved level with the TX bit; mismatch releases the frame. A completed wait releases hold except readiness may retain it through the configured TX handoff.",
+      "state_bits": {
+        "hold_request": 1
+      },
+      "inputs": [
+        "readiness",
+        "timer_sample",
+        "resolved_bit",
+        "tx_bit",
+        "desired_role"
+      ],
+      "outputs": [
+        "hold_request",
+        "continue",
+        "mismatch",
+        "frame_abort"
+      ]
+    }
+  },
+  "data_interfaces": {
+    "initial_field": 16,
+    "fifo_data": 8,
+    "tx_value": 8,
+    "pad_data": 8,
+    "pad_oe": 8
+  },
+  "routing_interfaces": {
+    "instruction_entries": 16,
+    "instruction_bits": 64,
+    "successor_bits": 4,
+    "trigger_selector_bits": 2,
+    "pin_selector_bits": 3
+  },
+  "current_users": [
+    "spi_target",
+    "uart_rx",
+    "timed_stream",
+    "i2c_target",
+    "bounded_93LC46_x16_READ"
+  ],
+  "qualification_sha256": {
+    "i2c": "b92d3e625a6fe39240445a8b8085153fe5564fe631c4eab5b0fcb4fc7fc581b4",
+    "microwire": "b29516e3a979bd44f8922c338d6ed2748c45bc8eb7de127a2b8c6578ec5846db"
+  },
+  "allowed_after_freeze": "New declarative configuration data and independent oracle/controller/test/report files; no model, RTL, host decoder, configuration compiler or physical input changes",
+  "third_protocol": {
+    "status": "UNSELECTED",
+    "research_started": false
+  },
+  "counting_contract": "Declared state includes diagnostic-only bits that synthesis may remove or recode. Physical register cells are reported separately. Primitive firings count once per type per cycle; four-entry immediate execution is a separate control bound."
+}

@@ -127,6 +127,11 @@ def main():
     if args.freeze:
         freeze(INITIAL if args.freeze == "initial" else PROMOTED, None if args.freeze == "initial" else INITIAL)
     else:
+        if not args.historical and Path("experiments/exchange_decomposition/frozen_v2_manifest.json").exists():
+            from tools.v2_inventory import verify as verify_v2
+            verify_v2()
+            print("PASS frozen v2 boundary")
+            return
         path = PROMOTED if PROMOTED.exists() else INITIAL
         verify(path, historical=args.historical)
         print("PASS frozen boundary", path)

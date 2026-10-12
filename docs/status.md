@@ -1,12 +1,13 @@
 # Status
 
-Current coverage: M0/M1 digital model behavior is qualified; integrated
-SPI/UART/timed-stream RTL is qualified; early CMOS5L physical checks pass for that
-subset and the expanded I²C implementation. The suite has 83 model/control-boundary/oracle tests, the existing 34,351 subset
-comparison cycles, and 88,287 I²C model/RTL cycles. The I²C RTL promotion is
-logically and physically qualified. Frozen BYTE_EXCHANGE fails bounded Microwire
-READ; the campaign stops before Gate 3. No general cost advantage or unseen-
-protocol generalization is established.
+Current v2 coverage: SPI/UART/timed-stream regressions pass; I²C retains 48 cases
+and 88,287 cycles of legacy visible equivalence. Bounded Microwire READ returns
+A55A through the four preregistered operations. The suite has 109 tests. Frozen
+v2 matches model/RTL on 1,302,050 unseen initialization cycles but fails the
+interrupted-short-pulse oracle: `MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL`.
+The campaign stops without another repair. V2 synthesis passes; v2 physical
+qualification is not reached. No general cost advantage or unrestricted protocol
+generalization is established. The entries below preserve earlier scopes.
 
 2026-10-12 — M0 executable model established. The suite independently verifies
 shared SPI target and UART receive behavior, framing, compound receive/count,
@@ -60,4 +61,13 @@ The promoted vocabulary and integration are frozen independently of the initial
 inventory. Six framing/order configurations fail bounded Microwire READ; the
 closest returns A5FF instead of A55A because controller ACK is mandatory after
 eight TX bits. BYTE_EXCHANGE is classified as a protocol-specific macro. Gate 3
-is unattempted under the campaign stop condition; frozen sources are unchanged.
+is unattempted under that historical campaign's stop condition; frozen sources are unchanged.
+
+2026-10-12 — One controlled v2 decomposition separates field decision, direction
+handoff, boundary response and waiting. Audit and immutable preregistration
+precede the independent model and RTL. I²C retains legacy behavior and the unchanged
+Microwire oracle passes. After freeze, a separately committed 1-Wire initialization
+subset passes eight of nine cases. Timer fields miss a one-microsecond high
+interruption and produce false presence. No frozen source changes; the PARTIAL
+result stops the physical gate. See the
+[decomposition report](../experiments/exchange_decomposition/report.md).

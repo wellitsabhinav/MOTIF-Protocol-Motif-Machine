@@ -1,5 +1,14 @@
 # RTL verification and comparison
 
+Current v2 qualification preserves the subset regressions described here.
+It additionally passes all 48 I²C cases and the bounded Microwire A55A workload,
+with three runtime host tests. After freeze, the independent 1-Wire initialization
+oracle fails interrupted short pulses despite exact model/RTL agreement on all
+1,302,050 cycles. CI checks that negative against committed normalized hashes.
+No v2 routed-netlist result exists; the historical physical measurements below
+apply to their recorded circuits. See the
+[decomposition report](../experiments/exchange_decomposition/report.md).
+
 `python -m tools.rtl_check` generates identical model/RTL stimuli in ignored
 build output. It checks 2,000 RX/TX primitive vectors (seed 322), 4,000 guardian
 vectors (seed 141), and cycle traces for SPI (5,401 cycles, seed 117), UART

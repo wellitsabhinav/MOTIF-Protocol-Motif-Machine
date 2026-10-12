@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from .events import Frontend
 from .guardian import Guardian, Request
 from .motifs import ShiftRXCount, ShiftTX, TimedSample
-from .motifs.exchange import ByteExchange
+from .motifs.transaction import Transaction, FieldShift
+from .transaction import validate, Entry, HALT, WAIT
 from .pad_history import PadHistory
 
 
@@ -24,14 +25,18 @@ class Config:
     open_drain: int = 0
     watchdog: int = 0
     fill: int = 255
-    exchange: bool = False
-    address: int = 0x52
-    ack_address: bool = True
-    ack_data: bool = True
+    program: tuple = ()
+    frame_active_high: bool = False
+    hold_clock: bool = False
+    pad_timing_check: bool = False
+
+    @property
+    def exchange(self):
+        return bool(self.program)
 
     def __post_init__(self):
-        integer_fields = ("frame_pin", "clock_pin", "rx_pin", "tx_pin", "period", "open_drain", "watchdog", "fill", "address")
-        boolean_fields = ("transmit", "lsb_first", "validate_start", "validate_stop", "exchange", "ack_address", "ack_data")
+        integer_fields = ("frame_pin", "clock_pin", "rx_pin", "tx_pin", "period", "open_drain", "watchdog", "fill")
+        boolean_fields = ("transmit", "lsb_first", "validate_start", "validate_stop", "frame_active_high", "hold_clock", "pad_timing_check")
         if any(type(getattr(self, name)) is not int for name in integer_fields) or any(type(getattr(self, name)) is not bool for name in boolean_fields):
             raise ValueError("Configuration must use bounded integer and Boolean fields")
         if self.frame not in ("level", "falling", "two_wire") or self.sample not in ("rising", "timer"):
@@ -42,18 +47,24 @@ class Config:
             raise ValueError("Timer outside sixteen-bit range")
         if not 0 <= self.fill <= 255 or not 0 <= self.open_drain <= 255:
             raise ValueError("Byte configuration outside range")
-        if not 0 <= self.address < 128:
-            raise ValueError("Address outside seven-bit range")
-        if self.exchange and (self.rx_pin != self.tx_pin or self.sample != "rising"):
-            raise ValueError("Byte exchange requires a shared data pin and external clock")
+        if type(self.program) is not tuple:
+            raise ValueError("Program must use immutable bounded entries")
+        if self.program:
+            validate(self.program)
         if self.transmit and not self.exchange and self.tx_pin in (self.rx_pin, self.clock_pin, self.frame_pin):
             raise ValueError("Target output must not alias protected protocol inputs")
         if self.exchange and self.clock_pin == self.rx_pin:
-            raise ValueError("Byte exchange requires distinct clock and data pins")
+            raise ValueError("Transaction requires distinct clock and data pins")
         if self.frame == "two_wire" and not self.exchange:
             raise ValueError("Two-wire framing requires byte exchange")
-        if self.exchange and self.open_drain & ((1 << self.rx_pin) | (1 << self.clock_pin)) != ((1 << self.rx_pin) | (1 << self.clock_pin)):
-            raise ValueError("Two-wire data and clock must be open drain")
+        if self.exchange and self.rx_pin == self.tx_pin and not self.open_drain & (1 << self.rx_pin):
+            raise ValueError("Shared data output must be open drain")
+        if self.exchange and self.tx_pin in (self.clock_pin, self.frame_pin):
+            raise ValueError("Data output must not alias clock or frame input")
+        if self.hold_clock and not self.open_drain & (1 << self.clock_pin):
+            raise ValueError("Hold output must be open drain")
+        if self.exchange and not self.hold_clock and any(Entry.decode(w).opcode == WAIT and Entry.decode(w).flags & 1 for w in self.program):
+            raise ValueError("Program hold requests require explicit ownership permission")
 
 
 class Engine:
@@ -71,11 +82,11 @@ class Engine:
             raise RuntimeError("Disable engine before configuration")
         self.config = config
         self.frontend = Frontend()
-        self.rx = ShiftRXCount(config.lsb_first)
+        self.rx = FieldShift(config.lsb_first) if config.exchange else ShiftRXCount(config.lsb_first)
         self.tx = ShiftTX(config.lsb_first)
         self.timer = TimedSample(config.period, config.validate_start, config.validate_stop)
         self.guardian = Guardian(config.open_drain, config.watchdog)
-        self.exchange = ByteExchange(config.address, config.ack_address, config.ack_data, config.transmit)
+        self.exchange = Transaction(config.program or (Entry(HALT).encode(),) * 16, config.transmit)
         self.pad_history = PadHistory()
         self.last_oe = 0
         self.active = False
@@ -123,9 +134,10 @@ class Engine:
         self.pending_timer_start = False
         sampled_bit = self.pending_bit if previous_pending == "sample" else bool(edge.level & (1 << cfg.rx_pin))
         self.pending = None
-        framed_level = not bool(edge.level & (1 << cfg.frame_pin))
+        framed_level = bool(edge.level & (1 << cfg.frame_pin)) == cfg.frame_active_high
         release = cfg.frame == "level" and self.active and not framed_level
-        acquire = bool(edge.falling & (1 << cfg.frame_pin)) and not self.active
+        frame_edge = edge.rising if cfg.frame == "level" and cfg.frame_active_high else edge.falling
+        acquire = bool(frame_edge & (1 << cfg.frame_pin)) and not self.active
         if cfg.frame == "two_wire":
             clock_high = bool(edge.level & (1 << cfg.clock_pin))
             clock_was_high = clock_high and not bool(edge.rising & (1 << cfg.clock_pin))
@@ -144,7 +156,7 @@ class Engine:
             self_clock_fall = bool(edge.falling & (1 << cfg.clock_pin)) and bool(own_changes & own.current & 1)
             self_data_edge = bool((edge.rising | edge.falling) & (1 << cfg.rx_pin)) and bool(own_changes & 2)
             clock_stable_high = bool(edge.level & (1 << cfg.clock_pin)) and not bool(edge.rising & (1 << cfg.clock_pin))
-            pad_timing = self.active and not self.guardian.tripped and (self_clock_fall or (clock_stable_high and self_data_edge))
+            pad_timing = cfg.pad_timing_check and self.active and not self.guardian.tripped and (self_clock_fall or (clock_stable_high and self_data_edge))
             if pad_timing:
                 self.faults.add("pad_timing")
                 events.append("pad_timing_fault")
@@ -179,16 +191,16 @@ class Engine:
                     self.rx_fifo, self.tx_fifo, self.fifo_depth, previous_pending == "sample", self.pending_bit)
                 fires += exchange_fires
                 events += exchange_events
-                if "data_mismatch" in exchange_events:
-                    self.faults.add("data_mismatch")
+                if set(exchange_events) & {"data_mismatch", "composition_fault", "frame_terminate"}:
+                    self.faults.update(set(exchange_events) & {"data_mismatch", "composition_fault"})
                     self._release()
                     fires += ["FRAME_RELEASE", "RESET_COUNTER"]
-                self.pending_timer_start = "turnaround_begin" in exchange_events
-                if previous_pending == "sample":
+                self.pending_timer_start = self.active and "turnaround_begin" in exchange_events
+                if previous_pending == "sample" and cfg.sample != "timer":
                     self.timer.stop()
-            if previous_timer_start and cfg.exchange:
+            if previous_timer_start and cfg.exchange and self.active:
                 self.timer.start()
-            elif cfg.sample == "timer" or (cfg.exchange and self.exchange.phase == "settle"):
+            elif cfg.sample == "timer" or (cfg.exchange and self.exchange.waiting_timer):
                 self.pending = self.timer.tick(bool(edge.level & (1 << cfg.rx_pin)))
                 self.pending_bit = bool(edge.level & (1 << cfg.rx_pin))
                 if self.pending:
@@ -223,13 +235,13 @@ class Engine:
         ownership = {0: 1 << cfg.tx_pin} if self.active and cfg.transmit else {}
         if cfg.exchange:
             generated = []
-            ownership = {0: (1 << cfg.tx_pin) | ((1 << cfg.clock_pin) if cfg.transmit else 0)} if self.active else {}
-            if self.active and self.exchange.drive_low:
-                generated.append(Request(0, cfg.tx_pin, 0))
-            if self.active and self.exchange.stretch:
+            ownership = {0: (1 << cfg.tx_pin) | ((1 << cfg.clock_pin) if cfg.transmit and cfg.hold_clock else 0)} if self.active else {}
+            if self.active and self.exchange.drive_enable and (not cfg.open_drain & (1 << cfg.tx_pin) or not self.exchange.drive_value):
+                generated.append(Request(0, cfg.tx_pin, int(self.exchange.drive_value)))
+            if self.active and self.exchange.hold:
                 generated.append(Request(0, cfg.clock_pin, 0))
         requested = generated if requests is None else requests
-        raw_kill = reset or not self.enabled or abort or (cfg.frame == "level" and bool(pins & (1 << cfg.frame_pin)))
+        raw_kill = reset or not self.enabled or abort or (cfg.frame == "level" and bool(pins & (1 << cfg.frame_pin)) != cfg.frame_active_high)
         data, oe = self.guardian.apply(requested, ownership, raw_kill)
         self.last_oe = oe
         self.cycle += 1

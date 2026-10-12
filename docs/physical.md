@@ -1,5 +1,12 @@
 # Historical CMOS5L subset qualification
 
+Current v2 has synthesis evidence only: 12,546 typical-library cells,
+1,385 sequential cells and 194,376.3318 µm². Its unseen logical gate failed,
+so no v2 placement, STA, routing, DRC, LVS, official precheck or routed-netlist
+host tests were run. The measurements below and the expanded historical I²C
+run apply to their recorded sources, not the decomposed circuit. See the
+[v2 report](../experiments/exchange_decomposition/report.md).
+
 This page preserves the original SPI/UART/timed-stream measurements. The
 [expanded I²C qualification](generalization.md) has separate measurements and
 passes the same pinned official flow, precheck and routed-netlist tests.

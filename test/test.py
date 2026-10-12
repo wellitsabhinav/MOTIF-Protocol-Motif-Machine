@@ -1,5 +1,17 @@
 import cocotb
 from cocotb.triggers import Timer
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from motif.protocols.i2c import target
+from motif.transaction import host_bytes, Entry, RX, RISING
+from tools.exchange_decomposition import microwire_config
+
+
+async def load_table(driver, words, start=0, end=128):
+    data=host_bytes(words)
+    for index in range(start,end):
+        await driver.transaction(2,128+index,data[index])
 
 
 class Driver:
@@ -224,10 +236,12 @@ async def runtime_i2c_qualification(dut):
     await driver.tick(4)
     dut.rst_n.value = 1
     await driver.tick()
-    assert await driver.transaction(1, 9) == 12
-    assert await driver.transaction(1, 10) == 0x52
-    # Invalid shared-data assignment cannot enable exchange.
-    await driver.transaction(2, 9, 15)
+    assert await driver.transaction(1, 21) == 2
+    assert await driver.transaction(1, 9) == 0
+    assert await driver.transaction(1, 10) == 0
+    await load_table(driver,target().program)
+    # Invalid hold ownership cannot enable the generic transaction path.
+    await driver.transaction(2, 22, 27)
     await driver.transaction(2, 0, 9)
     assert await driver.transaction(1, 0) == 8
     assert await driver.transaction(1, 18) & 1
@@ -235,8 +249,12 @@ async def runtime_i2c_qualification(dut):
     await driver.transaction(2, 6, 6)
     await driver.transaction(2, 3, 63)
     await driver.transaction(2, 4, 0)
-    await driver.transaction(2, 0, 13)
-    assert await driver.transaction(1, 0) == 8, "Invalid timed exchange enabled"
+    invalid_first=Entry(RX,RISING,1,argument=0).encode().to_bytes(8,"little")
+    for index,value in enumerate(invalid_first):
+        await driver.transaction(2,128+index,value)
+    await driver.transaction(2, 0, 9)
+    assert await driver.transaction(1, 0) == 8, "Invalid receive length enabled"
+    await load_table(driver,target().program,0,8)
     await driver.transaction(2, 0, 9)
     bus = I2CController(driver)
     await bus.hold(16)
@@ -263,10 +281,11 @@ async def runtime_i2c_qualification(dut):
     await bus.stop()
     assert await driver.transaction(1, 17) == 37
     assert await driver.transaction(1, 20) == 0
-    await driver.transaction(2, 10, 0x11)
-    assert await driver.transaction(1, 10) == 0x52, "Enabled configuration changed"
+    original_byte=await driver.transaction(1,128)
+    await driver.transaction(2,128,original_byte ^ 255)
+    assert await driver.transaction(1,128)==original_byte, "Enabled configuration changed"
     await driver.transaction(2, 0, 8)
-    await driver.transaction(2, 9, 7)  # Data ACK disabled.
+    await load_table(driver,target(ack_data=False).program,64,72)
     await driver.transaction(2, 0, 9)
     await bus.start()
     assert await bus.write(0xa4) and not await bus.write(85)
@@ -280,5 +299,55 @@ async def runtime_i2c_qualification(dut):
     assert int(dut.uio_oe.value) == 0
     dut.rst_n.value = 1
     await driver.tick()
-    assert await driver.transaction(1, 9) == 12
+    assert await driver.transaction(1, 21) == 2
+    assert await driver.transaction(1, 22) == 0
     assert await driver.transaction(1, 19) == 0
+
+
+@cocotb.test()
+async def runtime_microwire_qualification(dut):
+    driver=Driver(dut)
+    dut.rst_n.value=0;dut.ena.value=1
+    driver.pins=252
+    await driver.tick(4)
+    dut.rst_n.value=1
+    await driver.tick()
+    await load_table(driver,microwire_config().program)
+    await driver.transaction(2,22,5)
+    await driver.transaction(2,0,9)
+
+    def resolve(current):
+        oe=int(dut.uio_oe.value);value=int(dut.uio_out.value)
+        assert oe & ~8==0, "Microwire target acquired a controller pin"
+        level=(value>>3)&1 if oe&8 else 1
+        current.pins=(current.pins & ~8)|(level<<3)
+
+    driver.on_tick=resolve
+    for _ in range(2):
+        await driver.transaction(2,16,0xa5)
+        await driver.transaction(2,16,0x5a)
+        driver.pins |= 1
+        await driver.tick(32)
+        for bit in [1,1,0,0,0,0,0,0,0]:
+            driver.pins=(driver.pins & ~6)|(bit<<2)
+            await driver.tick(32)
+            driver.pins |= 2
+            await driver.tick(32)
+            driver.pins &= ~2
+            await driver.tick(32)
+        assert int(dut.uio_oe.value)&8 and not int(dut.uio_out.value)&8, "Missing dummy zero"
+        word=0
+        for _bit in range(16):
+            driver.pins |= 6
+            await driver.tick(32)
+            assert int(dut.uio_oe.value)&8, "Interrupted continuous response"
+            value=int(dut.uio_out.value)&8
+            word=(word<<1)|int(bool(value))
+            driver.pins &= ~2
+            await driver.tick(32)
+            assert int(dut.uio_out.value)&8==value, "Falling edge advanced response"
+        assert word==0xa55a
+        driver.pins &= ~1
+        await driver.tick(8)
+        assert int(dut.uio_oe.value)==0
+    assert await driver.transaction(1,20)==0

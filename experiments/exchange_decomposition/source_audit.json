@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source_sha": "d639a9aa8bf8e51f99c514a05a477a0b3c582d91",
+  "legacy_snapshot": "7a74a1772dd178e498228667b54ec6a2fd39373a",
+  "inputs": {
+    "src/motif_byte_exchange.sv": "b30e7bb2f7c4b847b3b6ad1f0db2470acf82358bafa31f1628889c950c62e73b",
+    "src/motif_core.sv": "1d0d5551e758f253033e9bbb0922b67db811830dcf3b90ed57c18a96f35100e8",
+    "src/tt_um_wellitsabhinav_motif.sv": "705698780ec52627434191afdcc6bbd5abd16ba67f364f41d70fa6e827d19302",
+    "motif/motifs/exchange.py": "944a2e1180645abbcdaf8eb70aaf129dea8cf53e97814f25b35cf6889e1961c4",
+    "motif/engine.py": "84ccfb7b593e411bb32e538c33e3884688cfcacb6e8b4701ca4ec7d56f87ebc7",
+    "experiments/generalization/promoted_motif_vocabulary.json": "e78a3157a7b2f237b3d1bd163dd5fe6b26ca993154f8e38c15603c0e8f4fb3c6",
+    "experiments/generalization/microwire_workload.json": "5a8629efd9f3925bf103f116b4f78e26b186bf1b2be47177d3467bd08e6b1c2e",
+    "experiments/generalization/gate2_result.json": "1e58ec29039a8bc5abb3bd63743577acd06d85365f9b939d2fb54a4e81384823"
+  },
+  "ignored_artifacts": {
+    "build/generalization": "Reproducible complete gate1/gate2 vectors and normalized traces; retain, do not delete",
+    "build": "Generated physical results and tool outputs; retain provenance, never commit binaries indiscriminately",
+    ".local-research": "Intentional private notes and API helpers; remain private",
+    ".tools": "Local runtime dependencies; not experimental evidence",
+    "caches": "Disposable test/interpreter caches"
+  },
+  "untracked_nonignored": [
+    "experiments/exchange_decomposition/source_audit.md"
+  ]
+}
