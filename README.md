@@ -15,7 +15,18 @@ flowchart LR
   Guardian --> Pads
 ```
 
-Current status: initialization. Protocol behavior and implementation results are
-published only after their corresponding checks complete.
+Current status: M0 executable model established. SPI mode-0 target and UART 8N1
+receive behavior exercise the shared actors. I²C qualification is next; RTL and
+physical results are pending.
+
+```sh
+python -m pip install -e '.[test]'
+python -m pytest -q
+```
+
+`motif/` contains the model and configuration helpers; `tests/` contains wire-level
+and adversarial checks; `docs/` defines behavior and evidence. See
+[architecture](docs/architecture.md), [execution semantics](docs/execution-model.md),
+[protocol support](docs/protocol-support.md), and [verification](docs/verification.md).
 
 License: Apache-2.0. See LICENSE.
