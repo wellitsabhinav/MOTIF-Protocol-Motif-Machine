@@ -24,7 +24,10 @@ def _plotting():
 
 
 def _save(fig, directory, name):
-    fig.savefig(Path(directory) / f"{name}.svg", metadata={"Date": None})
+    svg = Path(directory) / f"{name}.svg"
+    fig.savefig(svg, metadata={"Date": None})
+    svg.write_text("\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines()) + "\n",
+                   encoding="utf-8", newline="\n")
     fig.savefig(Path(directory) / f"{name}.png", dpi=160,
                 metadata={"Software": "MOTIF identified simulation renderer"})
 
@@ -42,13 +45,16 @@ def _changes(values):
     return xs, ys
 
 
-def waveform(rows, directory, title, pins, cycle_ns=20, window=None, outputs=(), controller=None):
+def waveform(rows, directory, title, pins, cycle_ns=20, window=None, outputs=(), controller=None, annotations=None):
     """Transition compression retains every transition, including one-cycle pulses."""
     plt = _plotting()
     start, end = window or (0, len(rows))
     signals = [(label, [(r["pins"] >> pin) & 1 for r in rows]) for label, pin in pins]
     if controller is not None:
         signals.insert(0, ("controller DQ", controller))
+    annotations = annotations or {}
+    if "rx_pin" in annotations:
+        signals.append(("synchronized RX", [(r["levels"] >> annotations["rx_pin"]) & 1 for r in rows]))
     for pin in outputs:
         signals += [(f"target OE pin {pin}", [(r["oe"] >> pin) & 1 for r in rows]),
                     (f"target DATA pin {pin}", [(r["data"] >> pin) & 1 for r in rows])]
@@ -69,6 +75,9 @@ def waveform(rows, directory, title, pins, cycle_ns=20, window=None, outputs=(),
         ax.set_ylim(-.15, 1.2)
         ax.set_ylabel(name, rotation=0, ha="right", va="center", fontsize=8)
         ax.grid(axis="x", color="#e3e9ee")
+        if annotations.get("highlight"):
+            first, last, _ = annotations["highlight"]
+            ax.axvspan(first, last, color="#e8af46", alpha=.24)
     ax = axes[-1]
     if has_count:
         xs, ys = _changes([r["temporal_count"] for r in rows])
@@ -77,10 +86,24 @@ def waveform(rows, directory, title, pins, cycle_ns=20, window=None, outputs=(),
         if not any(ys):
             ax.set_ylim(-.1, 1.1)
             ax.set_yticks([0, 1])
+        if annotations.get("reset_threshold"):
+            threshold = annotations["reset_threshold"]
+            ax.axhline(threshold, color="#a95327", linestyle="--", linewidth=.9)
+            ax.set_ylim(-threshold * .03, threshold * 1.18)
+            ax.text(.01, .88, f"Configured reset threshold: {threshold:,} observations ({threshold * cycle_ns / 1000:g} µs)",
+                    transform=ax.transAxes, fontsize=8, color="#8c421d")
     ax.grid(color="#e3e9ee")
     ax.set_xlabel(f"core cycle (1 cycle = {cycle_ns} ns)")
     ax.set_xlim(start, max(start + 1, end))
-    fig.tight_layout(rect=(.04, 0, 1, .96))
+    if annotations.get("highlight"):
+        first, last, label = annotations["highlight"]
+        axes[0].annotate(label, xy=((first + last) / 2, 1), xycoords="data",
+                         xytext=(.55, .45), textcoords="axes fraction", fontsize=8, color="#865314",
+                         arrowprops={"arrowstyle": "->", "color": "#a66d1e"})
+    notes = annotations.get("notes", "")
+    if notes:
+        fig.text(.17, .012, notes, fontsize=9, color="#205b8f")
+    fig.tight_layout(rect=(.04, .035 if notes else 0, 1, .96))
     suffix = "waveform" if window is None else f"waveform_{start}_{end}"
     _save(fig, directory, suffix)
     plt.close(fig)

@@ -21,6 +21,7 @@ PROTOCOLS = ("i2c", "microwire", "one_wire", "spi", "uart", "timed_stream")
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "build/demo"
 NAMES = ("RX", "DECIDE", "RESPOND", "HANDOFF", "WAIT", "TX", "HALT", "CONTINUE")
+DISPLAY = {"i2c": "I²C", "microwire": "Microwire", "one_wire": "1-Wire", "spi": "SPI", "uart": "UART RX", "timed_stream": "Timed stream"}
 
 
 def sha(path):
@@ -222,9 +223,38 @@ def demonstrate(protocol, name, engine, expected, observed, pins, reuse=False, e
         if not result["passed"]:
             raise AssertionError(result["errors"])
     outputs = (engine.config.tx_pin, engine.config.clock_pin) if engine.config.hold_clock else (engine.config.tx_pin,)
-    waveform(rows, directory, protocol + "/" + name, pins, outputs=outputs,
-             controller=extra.get("controller_dq") if extra else None)
-    timeline(rows, directory, protocol + "/" + name, executed_entries)
+    title = DISPLAY.get(protocol, protocol)
+    annotations = {}
+    if protocol == "one_wire" and extra:
+        from motif.transaction import Entry, WAIT
+        entries = [Entry.decode(word) for word in engine.config.program]
+        thresholds = [e.mask for e in entries if e.opcode == WAIT and e.flags & 4 and e.argument == 3 and e.value == 0]
+        if thresholds:
+            annotations["reset_threshold"] = thresholds[0]
+        annotations["rx_pin"] = engine.config.rx_pin
+        pulses = sum(bool(r["oe"] & (1 << engine.config.tx_pin)) and
+                     (i == 0 or not rows[i - 1]["oe"] & (1 << engine.config.tx_pin)) for i, r in enumerate(rows))
+        annotations["notes"] = "No presence pulse observed in RTL." if pulses == 0 else f"Observed presence pulses in RTL: {pulses}."
+        if name == "interrupted_non_reset":
+            durations = " / ".join(f"{us} µs" for _, us in extra["case"]["segments_us"][1:4])
+            title += ": interrupted LOW (" + durations + ")"
+            controller = extra["controller_dq"]
+            rises = [i for i in range(1, len(controller)) if controller[i] and not controller[i - 1]]
+            for first in rises:
+                last = next((i for i in range(first + 1, len(controller)) if not controller[i]), None)
+                if last is not None:
+                    annotations["highlight"] = (first, last, f"HIGH interruption: {(last - first) * .02:g} µs")
+                    break
+        else:
+            title += ": valid reset / presence"
+    waveform(rows, directory, title, pins, outputs=outputs,
+             controller=extra.get("controller_dq") if extra else None, annotations=annotations)
+    if annotations.get("highlight"):
+        first, last, _ = annotations["highlight"]
+        waveform(rows, directory, title + " — interruption zoom", pins, outputs=outputs,
+                 controller=extra["controller_dq"], annotations=annotations,
+                 window=(max(0, first - 10), min(len(rows), last + 10)))
+    timeline(rows, directory, title, executed_entries)
     interesting = [i for i, r in enumerate(rows) if r.get("events") or r.get("temporal_done")]
     if not interesting:
         interesting = [i for i, r in enumerate(rows) if r.get("motifs")]
@@ -422,8 +452,8 @@ def unseen_demonstrations():
     input_directory = ROOT / "experiments/temporal_qualification/unseen"
     result_path, config_path = input_directory / "result.json", input_directory / "config.json"
     qualified = json.loads(result_path.read_text())
-    if qualified.get("passed") is not True or qualified.get("frozen_before_after_identical") is not True:
-        raise RuntimeError("Unseen qualification did not pass; its failure remains campaign evidence")
+    if type(qualified.get("passed")) is not bool or qualified.get("frozen_before_after_identical") is not True:
+        raise RuntimeError("Unseen result lacks an identified unchanged semantic boundary")
     if qualified.get("frozen_manifest_sha256_lf") != sha(ROOT / MANIFEST):
         raise RuntimeError("Unseen evidence identifies another semantic freeze")
     descriptions = qualified.get("demonstrations", [])
@@ -435,8 +465,10 @@ def unseen_demonstrations():
         name = item.get("name", "")
         if not re.fullmatch(r"[A-Za-z0-9_][A-Za-z0-9_-]{0,79}", name):
             raise RuntimeError("Unseen demonstration name must be a bounded filename component")
-        if item.get("oracle", {}).get("passed") is not True or item.get("expected") != item.get("observed"):
-            raise RuntimeError(f"Unseen independent oracle failed: {name}")
+        if type(item.get("oracle", {}).get("passed")) is not bool or "expected" not in item or "observed" not in item:
+            raise RuntimeError(f"Unseen independent oracle evidence is incomplete: {name}")
+        passed = qualified["passed"] and item["oracle"]["passed"] and item["expected"] == item["observed"]
+        label = "PASS" if passed else "FAIL"
         trace_directory = (ROOT / item["trace_directory"]).resolve()
         trace_directory.relative_to((ROOT / "build").resolve())
         hashes = item.get("evidence_sha256_lf", {})
@@ -457,8 +489,8 @@ def unseen_demonstrations():
         pins = item.get("pins", [["frame input", cfg.frame_pin], ["clock input", cfg.clock_pin], ["RX input", cfg.rx_pin]])
         if any(not isinstance(label, str) or type(pin) is not int or not 0 <= pin < 8 for label, pin in pins):
             raise RuntimeError("Unseen plot pin labels must identify actual eight-pin inputs")
-        waveform(rows, directory, "Frozen v3 unseen / " + name, pins, outputs=(cfg.tx_pin,))
-        timeline(rows, directory, "Frozen v3 unseen / " + name, executed_entries)
+        waveform(rows, directory, "Frozen v3 unseen " + label + " / " + name, pins, outputs=(cfg.tx_pin,))
+        timeline(rows, directory, "Frozen v3 unseen " + label + " / " + name, executed_entries)
         for filename in required:
             shutil.copyfile(trace_directory / filename, directory / filename)
         indices = sorted(set([0, len(rows) - 1, *[i for i, row in enumerate(rows) if row["events"]][:12]]))
@@ -468,19 +500,21 @@ def unseen_demonstrations():
         (directory / "trace_excerpt.json").write_text(json.dumps(excerpt, indent=2) + "\n")
         output = {"schema_version": 1, "protocol": "unseen", "case": name, "cycles": len(rows),
                   "expected": item["expected"], "observed": item["observed"], "oracle": item["oracle"],
-                  "model_rtl_agreement": True, "passed": True, "source_hashes": identity(),
+                  "model_rtl_agreement": True, "passed": passed, "source_hashes": identity(),
                   "stimulus_sha256": hashes["inputs.txt"], "rtl_trace_sha256": digest(rows),
                   "configuration": config_summary(cfg), "trace_excerpt": excerpt, "campaign": campaign_status(),
                   "late_input_hashes_lf": {result_path.relative_to(ROOT).as_posix(): sha(result_path),
                                            config_path.relative_to(ROOT).as_posix(): sha(config_path)},
                   "artifact_hashes": hashes, "frozen_manifest_sha256_lf": sha(ROOT / MANIFEST)}
         (directory / "result.json").write_text(json.dumps(output, indent=2) + "\n")
-        (directory / "README.md").write_text(f"# Unseen: {name}\n\nPASS: {len(rows):,} complete model/RTL cycles. "
-            "Independent post-freeze oracle and input artifact identities were verified.\n\n"
+        (directory / "README.md").write_text(f"# Unseen: {name}\n\n{label}: {len(rows):,} complete model/RTL cycles. "
+            "The recorded independent oracle outcome and input artifact identities were verified.\n\n"
+            f"Expected: `{json.dumps(item['expected'])}`\n\nObserved: `{json.dumps(item['observed'])}`\n\n"
+            f"Oracle: `{json.dumps(item['oracle'])}`\n\n"
             "[Result](result.json), [configuration](configuration.json), [excerpt](trace_excerpt.json).\n\n"
             "![RTL waveform](waveform.svg)\n\n![Ordered executor observations](timeline.svg)\n")
         outputs.append(output)
-        print(f"PASS unseen/{name}: {len(rows):,} identified post-freeze RTL cycles", flush=True)
+        print(f"{label} unseen/{name}: {len(rows):,} identified post-freeze RTL cycles; oracle preserved", flush=True)
     if verify() != before:
         raise RuntimeError("Frozen semantic manifest changed while rendering unseen evidence")
     return outputs
@@ -532,18 +566,22 @@ def report(results):
              "<table><tr><th>Protocol/case</th><th>Cycles</th><th>Result</th><th>Evidence</th></tr>"]
     for item in results:
         base = item["protocol"] + "/" + item["case"]
-        parts.append(f"<tr><td>{html.escape(base)}</td><td>{item['cycles']:,}</td><td>PASS</td>"
+        label = "PASS" if item["passed"] else "FAIL"
+        parts.append(f"<tr><td>{html.escape(base)}</td><td>{item['cycles']:,}</td><td>{label}</td>"
                      f"<td><a href='{base}/result.json'>Result and identities</a></td></tr>")
     parts.append("</table>")
     for item in results:
         base = item["protocol"] + "/" + item["case"]
         parts.extend([f"<h2>{html.escape(base)}</h2>",
-            "<p>Expected and observed: " + html.escape(json.dumps(item["observed"])) + "</p>",
+            "<p>Expected: " + html.escape(json.dumps(item["expected"])) + "</p>",
+            "<p>Observed: " + html.escape(json.dumps(item["observed"])) + "</p>",
             f"<p><a href='{base}/configuration.json'>Configuration</a> · "
             f"<a href='{base}/trace_excerpt.json'>Trace excerpt</a> · "
             f"<a href='{base}/simulation.log'>Simulation log</a></p>",
             f"<img alt='Real RTL waveform' src='{base}/waveform.svg'>",
             f"<img alt='Actual ordered executor entries' src='{base}/timeline.svg'>"])
+        if "oracle" in item:
+            parts.append("<p>Recorded independent oracle:</p><pre>" + html.escape(json.dumps(item["oracle"], indent=2)) + "</pre>")
     if (OUTPUT / "architecture/architecture.svg").exists():
         parts.append("<h2>Actual elaborated structure</h2><p>These are Yosys-derived connectivity views. "
                      "They are unrelated to placement or routing.</p>")
@@ -602,7 +640,12 @@ def main(argv=None):
     for protocol in protocols if args.all else (args.protocol,):
         try:
             if protocol == "unseen":
-                results.extend(unseen_demonstrations())
+                unseen = unseen_demonstrations()
+                results.extend(unseen)
+                for item in unseen:
+                    if not item["passed"]:
+                        failures.append({"protocol": "unseen", "case": item["case"], "kind": "oracle_failure",
+                                         "error": "Recorded independent unseen oracle/campaign did not pass"})
             elif protocol == "one_wire":
                 for name, engine, expected, observed, pins, extra in one_wire_cases():
                     results.append(demonstrate(protocol, name, engine, expected, observed, pins, args.reuse, extra))
@@ -633,7 +676,7 @@ def main(argv=None):
             failures.append({"protocol": "frozen_source_verification", "error": str(exc)})
             print(f"FAIL frozen source verification: {exc}", file=sys.stderr)
     report(results)
-    if args.publish_figures and not failures:
+    if args.publish_figures and (not failures or all(f.get("kind") == "oracle_failure" for f in failures)):
         publish_figures(results)
     (OUTPUT / "result.json").write_text(json.dumps({"campaign": campaign_status(), "passed": not failures,
         "demonstrations": [{"protocol": r["protocol"], "case": r["case"], "passed": r["passed"]} for r in results],
