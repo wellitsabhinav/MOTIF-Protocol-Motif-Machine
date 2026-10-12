@@ -33,7 +33,7 @@ class ByteExchange:
             self.drive_low = False
             fires.append("STRETCH_UNTIL_READY")
 
-    def tick(self, rising, falling, bit, rx, tx, rx_fifo, tx_fifo, capacity, settled=False):
+    def tick(self, rising, falling, bit, rx, tx, rx_fifo, tx_fifo, capacity, settled=False, settled_bit=0):
         fires, events = [], []
         byte = None
         if self.phase == "stretch":
@@ -42,8 +42,11 @@ class ByteExchange:
                 fires.append("STRETCH_UNTIL_READY")
         elif self.phase == "settle":
             if settled:
-                self.phase = "tx"
+                self.phase = "tx" if settled_bit == tx.bit else "idle"
                 self.stretch = False
+                if settled_bit != tx.bit:
+                    self.drive_low = False
+                    events.append("data_mismatch")
                 fires.append("STRETCH_UNTIL_READY")
         elif self.phase == "rx" and rising:
             byte = rx.fire(bit)

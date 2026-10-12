@@ -49,6 +49,9 @@ rise time plus data setup at that point. `setup_cycles` is configurable; digital
 tests also exercise a 13-cycle interval with ideal instantaneous wire transitions.
 Analog rise time and voltage thresholds still require physical qualification.
 The controller driver waits for resolved SCL high before starting its high period.
+At expiry the timer samples resolved SDA. A first-bit mismatch aborts the
+transaction, reports `data_mismatch`, releases outputs and allows a fresh START.
+This is a check at the transmit handoff, not complete bus-collision detection.
 
 The default watchdog is disabled, allowing indefinite I²C waits; an explicitly
 enabled inactivity watchdog releases outputs on expiry. Unrelated pin activity

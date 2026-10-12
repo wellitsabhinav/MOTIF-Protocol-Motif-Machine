@@ -30,13 +30,13 @@
     "validated_byte": 8,
     "active": 1,
     "guardian_age_trip": 17,
-    "diagnostics": 9,
+    "diagnostics": 10,
     "fifos": 78,
     "byte_exchange": 18,
     "pending_timer_start": 1
   },
   "allocated_config_bits": 77,
-  "allocated_state_bits": 207,
+  "allocated_state_bits": 208,
   "configurations": {
     "spi_target": {
       "motif_firings": {

@@ -155,9 +155,13 @@ class Engine:
                 exchange_fires, exchange_events, byte = self.exchange.tick(
                     bool(edge.rising & (1 << cfg.clock_pin)), bool(edge.falling & (1 << cfg.clock_pin)),
                     bool(edge.level & (1 << cfg.rx_pin)), self.rx, self.tx,
-                    self.rx_fifo, self.tx_fifo, self.fifo_depth, previous_pending == "sample")
+                    self.rx_fifo, self.tx_fifo, self.fifo_depth, previous_pending == "sample", self.pending_bit)
                 fires += exchange_fires
                 events += exchange_events
+                if "data_mismatch" in exchange_events:
+                    self.faults.add("data_mismatch")
+                    self._release()
+                    fires += ["FRAME_RELEASE", "RESET_COUNTER"]
                 self.pending_timer_start = "turnaround_begin" in exchange_events
                 if previous_pending == "sample":
                     self.timer.stop()
