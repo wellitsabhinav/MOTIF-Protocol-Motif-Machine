@@ -1,0 +1,159 @@
+from collections import deque
+from dataclasses import dataclass
+
+from .events import Frontend
+from .guardian import Guardian, Request
+from .motifs import ShiftRXCount, ShiftTX, TimedSample
+
+
+@dataclass(frozen=True)
+class Config:
+    frame: str = "level"
+    frame_pin: int = 0
+    clock_pin: int = 1
+    rx_pin: int = 2
+    tx_pin: int = 3
+    sample: str = "rising"
+    transmit: bool = True
+    lsb_first: bool = False
+    period: int = 434
+    validate_start: bool = False
+    validate_stop: bool = False
+    open_drain: int = 0
+    watchdog: int = 0
+    fill: int = 255
+
+    def __post_init__(self):
+        if self.frame not in ("level", "falling") or self.sample not in ("rising", "timer"):
+            raise ValueError("Unsupported event source")
+        if any(not 0 <= pin < 8 for pin in (self.frame_pin, self.clock_pin, self.rx_pin, self.tx_pin)):
+            raise ValueError("Pin outside eight-pin engine")
+        if not 2 <= self.period <= 65535 or not 0 <= self.watchdog <= 65535:
+            raise ValueError("Timer outside sixteen-bit range")
+        if not 0 <= self.fill <= 255 or not 0 <= self.open_drain <= 255:
+            raise ValueError("Byte configuration outside range")
+
+
+class Engine:
+    fifo_depth = 4
+
+    def __init__(self, config):
+        self.enabled = False
+        self.tx_fifo = deque()
+        self.rx_fifo = deque()
+        self.configure(config)
+        self.enabled = True
+
+    def configure(self, config):
+        if self.enabled:
+            raise RuntimeError("Disable engine before configuration")
+        self.config = config
+        self.frontend = Frontend()
+        self.rx = ShiftRXCount(config.lsb_first)
+        self.tx = ShiftTX(config.lsb_first)
+        self.timer = TimedSample(config.period, config.validate_start, config.validate_stop)
+        self.guardian = Guardian(config.open_drain, config.watchdog)
+        self.active = False
+        self.pending = None
+        self.pending_bit = 0
+        self.cycle = 0
+        self.faults = set()
+
+    def push_tx(self, byte):
+        if not 0 <= byte <= 255:
+            raise ValueError("TX byte outside range")
+        if len(self.tx_fifo) == self.fifo_depth:
+            raise OverflowError("TX FIFO full")
+        self.tx_fifo.append(byte)
+
+    def pop_rx(self):
+        return self.rx_fifo.popleft() if self.rx_fifo else None
+
+    def _load_tx(self):
+        if not self.tx_fifo:
+            self.faults.add("tx_underflow")
+        self.tx.load(self.tx_fifo.popleft() if self.tx_fifo else self.config.fill)
+
+    def _release(self):
+        self.active = False
+        self.rx.clear()
+        self.tx.remaining = 0
+        self.timer.stop()
+        self.pending = None
+
+    def step(self, pins, reset=False, abort=False, requests=None):
+        cfg = self.config
+        edge = self.frontend.step(pins)
+        fires = []
+        events = []
+        byte = None
+        previous_pending = self.pending
+        sampled_bit = self.pending_bit if previous_pending == "sample" else bool(edge.level & (1 << cfg.rx_pin))
+        self.pending = None
+        framed_level = not bool(edge.level & (1 << cfg.frame_pin))
+        release = cfg.frame == "level" and self.active and not framed_level
+        acquire = (cfg.frame == "level" and framed_level and not self.active and self.frontend.warmup >= 2) or (cfg.frame == "falling" and bool(edge.falling & (1 << cfg.frame_pin)) and not self.active)
+        progress = bool(edge.rising | edge.falling)
+        timed_out = self.guardian.tick(self.active, acquire, progress, abort)
+        if reset or not self.enabled or abort or release or timed_out:
+            self._release()
+            fires += ["FRAME_RELEASE", "RESET_COUNTER"]
+            if reset:
+                self.frontend = Frontend()
+                self.guardian = Guardian(cfg.open_drain, cfg.watchdog)
+                self.tx_fifo.clear()
+                self.rx_fifo.clear()
+                self.faults.clear()
+        elif acquire:
+            self.active = True
+            self.rx.clear()
+            fires += ["FRAME_ACQUIRE", "RESET_COUNTER"]
+            events.append("frame_start")
+            if cfg.sample == "timer":
+                self.timer.start()
+            if cfg.transmit:
+                self._load_tx()
+                fires.append("SHIFT_TX_LOAD")
+        elif self.active:
+            if cfg.sample == "timer":
+                self.pending = self.timer.tick(bool(edge.level & (1 << cfg.rx_pin)))
+                self.pending_bit = bool(edge.level & (1 << cfg.rx_pin))
+                if self.pending:
+                    fires.append("TIMED_SAMPLE")
+            sample = (cfg.sample == "rising" and bool(edge.rising & (1 << cfg.clock_pin))) or previous_pending == "sample"
+            if sample:
+                byte = self.rx.fire(sampled_bit)
+                fires.append("SHIFT_RX_COUNT")
+                if byte is not None:
+                    events.append("byte_complete")
+                    if cfg.validate_stop:
+                        self.assembled = byte
+                    elif len(self.rx_fifo) < self.fifo_depth:
+                        self.rx_fifo.append(byte)
+                    else:
+                        self.faults.add("rx_overflow")
+            if previous_pending in ("invalid_start", "invalid_stop", "stop_valid"):
+                if previous_pending == "stop_valid" and len(self.rx_fifo) < self.fifo_depth:
+                    self.rx_fifo.append(self.assembled)
+                elif previous_pending != "stop_valid":
+                    self.faults.add(previous_pending)
+                else:
+                    self.faults.add("rx_overflow")
+                self._release()
+                fires += ["FRAME_RELEASE", "RESET_COUNTER"]
+            if cfg.transmit and edge.falling & (1 << cfg.clock_pin):
+                if self.tx.fire():
+                    events.append("tx_complete")
+                    self._load_tx()
+                fires.append("SHIFT_TX")
+        generated = [Request(0, cfg.tx_pin, self.tx.bit)] if self.active and cfg.transmit else []
+        requested = generated if requests is None else requests
+        ownership = {0: 1 << cfg.tx_pin} if self.active else {}
+        raw_kill = reset or not self.enabled or abort or (cfg.frame == "level" and bool(pins & (1 << cfg.frame_pin)))
+        data, oe = self.guardian.apply(requested, ownership, raw_kill)
+        self.cycle += 1
+        return {"cycle": self.cycle, "events": events, "fires": fires, "levels": edge.level,
+                "rising": edge.rising, "falling": edge.falling, "rx_value": self.rx.value,
+                "rx_count": self.rx.count, "byte": byte, "tx_value": self.tx.value,
+                "tx_remaining": self.tx.remaining, "active": self.active, "data": data,
+                "oe": oe, "faults": sorted(self.faults | self.guardian.faults)}
