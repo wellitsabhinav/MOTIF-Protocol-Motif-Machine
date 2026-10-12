@@ -13,42 +13,76 @@ module motif_core #(parameter REFERENCE=0) (
     output wire [7:0] status_o,
     output reg active_o,
     output wire [7:0] rx_value_o,
-    output wire [2:0] rx_count_o
+    output wire [2:0] rx_count_o,
+    input wire exchange_i, two_wire_i, ack_address_i, ack_data_i,
+    input wire [6:0] address_i,
+    output wire [1:0] exchange_status_o
 );
     wire [7:0] levels, rising, falling;
     wire valid;
     motif_event_frontend frontend(clk, rst_n, pins_i, levels, rising, falling, valid);
-    wire release_event = active_o && !frame_falling_i && levels[frame_pin_i];
-    wire acquire = valid && !active_o && falling[frame_pin_i];
-    wire progress = rising[rx_pin_i] || falling[rx_pin_i] ||
+    reg [1:0] own_first, own_second, own_previous;
+    always @(posedge clk) begin
+        if (!rst_n) begin own_first<=0; own_second<=0; own_previous<=0; end
+        else begin
+            own_first<={pad_oe_o[rx_pin_i],pad_oe_o[clock_pin_i]};
+            own_second<=own_first; own_previous<=own_second;
+        end
+    end
+    wire clock_stable_high = levels[clock_pin_i] && !rising[clock_pin_i];
+    wire release_event = two_wire_i ? clock_stable_high && rising[rx_pin_i] :
+                         active_o && !frame_falling_i && levels[frame_pin_i];
+    wire acquire = valid && (two_wire_i ? clock_stable_high && falling[rx_pin_i] &&
+                   !(own_second[1] || own_previous[1]) : !active_o && falling[frame_pin_i]);
+    wire pin_progress = rising[rx_pin_i] || falling[rx_pin_i] ||
                     rising[frame_pin_i] || falling[frame_pin_i] ||
                     (!timer_mode_i && (rising[clock_pin_i] || falling[clock_pin_i]));
+    wire progress = exchange_i ? (rising[clock_pin_i] || falling[clock_pin_i]) &&
+                    !(own_second[0] || own_previous[0]) : pin_progress;
     wire tripped, expire;
-    motif_watchdog watchdog(clk, rst_n, active_o, acquire, progress, abort_i, watchdog_i, tripped, expire);
+    wire [1:0] own_changes = own_second ^ own_previous;
+    wire pad_timing = exchange_i && active_o && !tripped &&
+        ((falling[clock_pin_i] && own_changes[0] && own_second[0]) ||
+         (clock_stable_high && (rising[rx_pin_i] || falling[rx_pin_i]) && own_changes[1]));
+    motif_watchdog watchdog(clk, rst_n, active_o, acquire, progress, abort_i || pad_timing, watchdog_i, tripped, expire);
     wire [2:0] timer_event;
     wire timer_bit;
     wire end_sample = timer_event == 2 || timer_event == 4 || timer_event == 5;
-    wire inhibit = !enable_i || abort_i || release_event || (tripped && !acquire) || expire;
-    wire clear = inhibit || acquire || end_sample;
-    motif_timed_sample timer(clk, rst_n, inhibit || end_sample, acquire && !inhibit && enable_i && timer_mode_i,
+    wire inhibit = !enable_i || abort_i || pad_timing || release_event || (tripped && !acquire) || expire;
+    wire mismatch;
+    wire clear = inhibit || acquire || end_sample || mismatch;
+    wire ex_rx_fire, ex_tx_fire, ex_tx_load, ex_rx_push, turnaround, drive_low, stretch;
+    wire [3:0] exchange_phase;
+    wire [7:0] exchange_rx_data;
+    reg pending_timer_start;
+    always @(posedge clk) begin
+        if (!rst_n || clear) pending_timer_start<=0;
+        else pending_timer_start<=exchange_i && turnaround;
+    end
+    wire timer_start = enable_i && !inhibit && (exchange_i ? pending_timer_start : acquire && timer_mode_i);
+    motif_timed_sample timer(clk, rst_n, inhibit || end_sample || mismatch || (exchange_i && timer_event == 3), timer_start,
                             levels[rx_pin_i], validate_start_i, validate_stop_i, period_i, timer_event, timer_bit);
-    wire rx_fire = active_o && !clear && (timer_mode_i ? timer_event == 3 : rising[clock_pin_i]);
+    wire rx_fire = exchange_i ? ex_rx_fire : active_o && !clear && (timer_mode_i ? timer_event == 3 : rising[clock_pin_i]);
     wire [7:0] rx_next;
     wire rx_terminal, rx_complete;
-    wire tx_fire = active_o && !clear && transmit_i && falling[clock_pin_i];
+    wire tx_fire = exchange_i ? ex_tx_fire : active_o && !clear && transmit_i && falling[clock_pin_i];
     wire [7:0] tx_value, tx_head;
     wire [3:0] tx_remaining;
     wire tx_bit, tx_terminal, tx_empty, tx_full;
-    wire tx_load = enable_i && !inhibit && transmit_i && (acquire || tx_terminal);
+    wire tx_load = exchange_i ? ex_tx_load : enable_i && !inhibit && transmit_i && (acquire || tx_terminal);
+    motif_byte_exchange exchange(clk,rst_n,clear,exchange_i && active_o && !inhibit,
+        rising[clock_pin_i],falling[clock_pin_i],levels[rx_pin_i],lsb_i,address_i,ack_address_i,ack_data_i,transmit_i,
+        rx_next,tx_value,tx_head,rx_count_o,tx_remaining,rx_full,tx_empty,timer_event == 3,timer_bit,
+        ex_rx_fire,ex_tx_fire,ex_tx_load,ex_rx_push,exchange_rx_data,turnaround,mismatch,drive_low,stretch,exchange_phase);
     wire collision;
     generate if(REFERENCE)begin: sequential
-        motif_sequential_shift shifts(clk,rst_n,clear,inhibit || end_sample,rx_fire,tx_fire,tx_load,
+        motif_sequential_shift shifts(clk,rst_n,clear,inhibit || end_sample || mismatch,rx_fire,tx_fire,tx_load,
             timer_mode_i ? timer_bit : levels[rx_pin_i],lsb_i,tx_empty ? fill_i : tx_head,
             rx_value_o,tx_value,rx_count_o,tx_remaining,rx_next,rx_terminal,tx_terminal,tx_bit,rx_complete,collision);
     end else begin: compound
         motif_shift_rx_count rx(clk,rst_n,clear,rx_fire,timer_mode_i ? timer_bit : levels[rx_pin_i],
                                 lsb_i,rx_value_o,rx_count_o,rx_next,rx_terminal,rx_complete);
-        motif_shift_tx tx(clk,rst_n,inhibit || end_sample,tx_load,tx_fire,lsb_i,
+        motif_shift_tx tx(clk,rst_n,inhibit || end_sample || mismatch,tx_load,tx_fire,lsb_i,
                           tx_empty ? fill_i : tx_head,tx_value,tx_remaining,tx_bit,tx_terminal);
         assign collision=0;
     end endgenerate
@@ -56,16 +90,17 @@ module motif_core #(parameter REFERENCE=0) (
     motif_fifo tx_fifo(clk, rst_n, host_tx_push_i, tx_load && !tx_empty, host_tx_data_i,
                        tx_head, tx_fifo_count_o, tx_full, tx_empty, tx_overflow, tx_underflow);
     reg [7:0] validated_byte;
-    wire rx_push = enable_i && !inhibit && ((rx_terminal && !validate_stop_i) || (active_o && timer_event == 4));
+    wire rx_push = enable_i && !inhibit && (exchange_i ? ex_rx_push :
+                   (rx_terminal && !validate_stop_i) || (active_o && timer_event == 4));
     motif_fifo rx_fifo(clk, rst_n, rx_push, host_rx_pop_i,
-                       validate_stop_i ? validated_byte : rx_next, host_rx_data_o,
+                       exchange_i ? exchange_rx_data : validate_stop_i ? validated_byte : rx_next, host_rx_data_o,
                        rx_fifo_count_o, rx_full, rx_empty, rx_overflow, rx_underflow);
     reg framing_error, fill_underflow, timeout_status;
     always @(posedge clk) begin
         if (!rst_n) begin
             active_o <= 0; validated_byte <= 0; framing_error <= 0; fill_underflow <= 0; timeout_status <= 0;
         end else begin
-            if (inhibit || end_sample) active_o <= 0;
+            if (inhibit || end_sample || mismatch) active_o <= 0;
             else if (acquire) active_o <= 1;
             if (rx_terminal) validated_byte <= rx_next;
             if (timer_event == 2 || timer_event == 5) framing_error <= 1;
@@ -73,20 +108,33 @@ module motif_core #(parameter REFERENCE=0) (
             if (expire) timeout_status <= 1;
         end
     end
-    wire [7:0] requests = active_o && transmit_i ? (8'b1 << tx_pin_i) : 8'b0;
-    wire [7:0] requested_data = tx_bit ? requests : 8'b0;
+    wire [7:0] requests = exchange_i ? (active_o ?
+        ((drive_low ? (8'b1 << tx_pin_i) : 8'b0) | (stretch ? (8'b1 << clock_pin_i) : 8'b0)) : 8'b0) :
+        active_o && transmit_i ? (8'b1 << tx_pin_i) : 8'b0;
+    wire [7:0] requested_data = !exchange_i && tx_bit ? requests : 8'b0;
     wire safe_output_assignment = tx_pin_i != frame_pin_i && tx_pin_i != clock_pin_i && tx_pin_i != rx_pin_i;
-    wire [7:0] ownership = active_o && transmit_i && safe_output_assignment ? (8'b1 << tx_pin_i) : 8'b0;
-    wire raw_kill = !rst_n || !enable_i || abort_i || (!frame_falling_i && pins_i[frame_pin_i]);
+    wire [7:0] ownership = exchange_i ? (active_o ? ((8'b1 << tx_pin_i) |
+        (transmit_i ? (8'b1 << clock_pin_i) : 8'b0)) : 8'b0) :
+        active_o && transmit_i && safe_output_assignment ? (8'b1 << tx_pin_i) : 8'b0;
+    wire raw_kill = !rst_n || !enable_i || abort_i || (!two_wire_i && !frame_falling_i && pins_i[frame_pin_i]);
     wire [2:0] violations;
     motif_pad_guardian guardian(requested_data, requests, ownership, open_drain_i, 8'b0,
                                 raw_kill, tripped, pad_data_o, pad_oe_o, violations);
     reg guard_fault;
+    reg mismatch_status, pad_timing_status;
+    always @(posedge clk) begin
+        if (!rst_n) begin mismatch_status<=0; pad_timing_status<=0; end
+        else begin
+            if (mismatch) mismatch_status<=1;
+            if (pad_timing) pad_timing_status<=1;
+        end
+    end
+    assign exchange_status_o={pad_timing_status,mismatch_status};
     always @(posedge clk) begin
         if(!rst_n)guard_fault<=0;
         else if(|violations)guard_fault<=1;
     end
     assign status_o = {collision, timeout_status, framing_error, fill_underflow, rx_overflow,
                        tx_overflow, rx_underflow, guard_fault};
-    wire _unused = &{rx_complete, tx_value, tx_remaining, tx_full, tx_underflow, rx_full, rx_empty, 1'b0};
+    wire _unused = &{rx_complete, tx_value, tx_remaining, tx_full, tx_underflow, rx_full, rx_empty, exchange_phase, 1'b0};
 endmodule

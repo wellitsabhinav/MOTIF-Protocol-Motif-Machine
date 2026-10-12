@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(CURDIR)/../src
-PROJECT_SOURCES = motif_core.sv motif_event_frontend.sv motif_fifo.sv motif_host_spi.sv motif_pad_guardian.sv motif_sequential_shift.sv motif_shift_rx_count.sv motif_shift_tx.sv motif_timed_sample.sv motif_watchdog.sv tt_um_wellitsabhinav_motif.sv
+PROJECT_SOURCES = motif_byte_exchange.sv motif_core.sv motif_event_frontend.sv motif_fifo.sv motif_host_spi.sv motif_pad_guardian.sv motif_sequential_shift.sv motif_shift_rx_count.sv motif_shift_tx.sv motif_timed_sample.sv motif_watchdog.sv tt_um_wellitsabhinav_motif.sv
 
 ifneq ($(GATES),yes)
 
