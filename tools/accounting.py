@@ -30,6 +30,9 @@ def normalize(name):
 
 
 def report():
+    if Path('experiments/exchange_decomposition/frozen_v2_manifest.json').exists():
+        from tools.v2_inventory import accounting
+        return accounting()
     result = {"schema_version": 1, "kind": "bounded_model_encoding_estimate",
               "configuration_widths": CONFIG_WIDTHS, "state_widths": STATE_WIDTHS,
               "allocated_config_bits": sum(CONFIG_WIDTHS.values()),
@@ -114,7 +117,12 @@ def report():
 
 
 if __name__ == "__main__":
-    destination = Path("reports/motif_usage.json")
-    destination.parent.mkdir(exist_ok=True)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    current_v2 = Path('experiments/exchange_decomposition/frozen_v2_manifest.json').exists()
+    destination = args.output or Path('build/exchange_decomposition/accounting.json' if current_v2 else 'reports/motif_usage.json')
+    destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(report(), indent=2) + "\n", encoding="utf-8")
     print(destination)
