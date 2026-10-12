@@ -33,3 +33,9 @@ drive. `tools/prepare_gate_models.py` generates an ignored functional copy with
 those wires connected to the corresponding ports, preserving PDK attribution
 and logic. Gate tests are zero-delay functional simulation; extracted timing
 is qualified separately by the flow's STA reports.
+
+After downloading the workflow's `GDS_logs` artifact to ignored build output,
+`python -m tools.physical_report <run-directory> --run-id <id> --source-sha <sha>`
+extracts the compact report. Supply the directory containing `final/metrics.json`.
+It separates standard-cell area from the full tile and filler area, reports
+corner slacks, checks and routing layers, and records the qualified source.

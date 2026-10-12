@@ -43,6 +43,8 @@ then verify target-held low through setup for both first-bit values. The earlier
 test pulled controller SCL low again and missed premature target release. The
 corrected mapping reuses timed sampling for the setup interval and reruns the
 full suite with an independent controller that honors stretched clock periods.
-The current suite has 69 tests. Adversarial requests also cover receive-only
+The current suite has 70 tests. Adversarial requests also cover receive-only
 ownership, aliased target outputs, delayed self-generated START after abort,
 own clock truncation and own SDA activity attempting to postpone timeout.
+The sequential SPI reference now also passes the same reset, partial-abort,
+completed-RX/queued-TX preservation, watchdog and fresh-frame rearm contract.

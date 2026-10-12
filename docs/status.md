@@ -24,7 +24,7 @@ testing exposed an empty-read race; response validity is now captured with the
 data so a late-arriving byte remains queued. The corrected RTL passes both
 comparison variants and Linux CI. Physical qualification is in progress.
 
-2026-10-12 — The model suite passes 69 tests. I²C stretched-clock setup now uses
+2026-10-12 — The model suite passes 70 tests. I²C stretched-clock setup now uses
 the shared timer and samples resolved SDA before release. Guarded drive history
 rejects delayed self-generated START and detects own clock/data timing faults.
 Only external SCL activity resets an enabled I²C inactivity watchdog. RTL output

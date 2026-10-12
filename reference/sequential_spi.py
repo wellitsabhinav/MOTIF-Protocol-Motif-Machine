@@ -21,6 +21,7 @@ class SequentialSPI:
         self.rx, self.tx = ShiftRXCount(config.lsb_first), ShiftTX(config.lsb_first)
         self.rx_fifo, self.tx_fifo, self.operations = deque(), deque(), deque()
         self.active = False
+        self.enabled = True
         self.issued = self.cycle = 0
         self.max_backlog = 0
 
@@ -32,16 +33,25 @@ class SequentialSPI:
     def pop_rx(self):
         return self.rx_fifo.popleft() if self.rx_fifo else None
 
-    def step(self, pins):
+    def step(self, pins, reset=False, abort=False):
         edge = self.frontend.step(pins)
         cfg = self.config
         selected = not bool(edge.level & (1 << cfg.frame_pin))
-        if self.active and not selected:
+        acquire = bool(edge.falling & (1 << cfg.frame_pin)) and not self.active
+        progress = bool((edge.rising | edge.falling) & ((1 << cfg.frame_pin) | (1 << cfg.clock_pin) | (1 << cfg.rx_pin)))
+        timed_out = self.guardian.tick(self.active, acquire, progress, abort)
+        if reset or not self.enabled or abort or timed_out or (self.active and not selected):
             self.active = False
             self.operations.clear()
             self.rx.clear()
             self.tx.remaining = 0
-        elif selected and not self.active and self.frontend.warmup >= 2:
+            self.tx.value = 0
+            if reset:
+                self.frontend = Frontend()
+                self.guardian = Guardian(cfg.open_drain, cfg.watchdog)
+                self.rx_fifo.clear()
+                self.tx_fifo.clear()
+        elif acquire:
             self.active = True
             self.rx.clear()
             self.operations.append(("load", None))
@@ -69,6 +79,7 @@ class SequentialSPI:
             else:
                 self.tx.load(self.tx_fifo.popleft() if self.tx_fifo else cfg.fill)
         requests = [Request(0, cfg.tx_pin, self.tx.bit)] if self.active else []
-        data, oe = self.guardian.apply(requests, {0: 1 << cfg.tx_pin} if self.active else {}, bool(pins & (1 << cfg.frame_pin)))
+        data, oe = self.guardian.apply(requests, {0: 1 << cfg.tx_pin} if self.active else {}, reset or not self.enabled or abort or bool(pins & (1 << cfg.frame_pin)))
         self.cycle += 1
-        return {"data": data, "oe": oe, "cycle": self.cycle}
+        return {"data": data, "oe": oe, "cycle": self.cycle, "active": self.active,
+                "faults": sorted(self.guardian.faults)}
