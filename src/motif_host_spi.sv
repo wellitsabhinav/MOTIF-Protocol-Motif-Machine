@@ -2,8 +2,10 @@
 module motif_host_spi (
     input wire clk, rst_n, sclk_i, cs_n_i, mosi_i,
     input wire [7:0] read_data_i,
+    input wire read_valid_i,
     output reg miso_o, write_o, read_o,
     output reg [7:0] address_o,
+    output reg read_valid_o,
     output wire [7:0] write_data_o
 );
     reg [2:0] first, second;
@@ -19,7 +21,7 @@ module motif_host_spi (
         write_o <= 0; read_o <= 0;
         if (!rst_n) begin
             first <= 3'b010; second <= 3'b010; previous <= 0;
-            receive <= 0; transmit <= 0; command <= 0; count <= 0; address_o <= 0; miso_o <= 0;
+            receive <= 0; transmit <= 0; command <= 0; count <= 0; address_o <= 0; miso_o <= 0; read_valid_o <= 0;
         end else begin
             first <= {mosi_i, cs_n_i, sclk_i}; second <= first; previous <= second[0];
             if (second[1]) begin count <= 0; receive <= 0; miso_o <= 0; end
@@ -31,7 +33,7 @@ module motif_host_spi (
                     if (count == 23) begin write_o <= command == 2; read_o <= command == 1; end
                 end
                 if (falling) begin
-                    if (count == 16) begin transmit <= read_data_i[6:0]; miso_o <= read_data_i[7]; end
+                    if (count == 16) begin transmit <= read_data_i[6:0]; miso_o <= read_data_i[7]; read_valid_o <= read_valid_i; end
                     else if (count > 16 && count < 24) begin
                         transmit <= {transmit[5:0], 1'b0}; miso_o <= transmit[6];
                     end

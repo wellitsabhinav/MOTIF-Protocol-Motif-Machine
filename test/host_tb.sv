@@ -50,6 +50,19 @@ module tb;
         for(index=0;index<8;index=index+1)begin pins[2]=(8'h25>>index)&1;tick(32);end
         pins[2]=1;tick(40);host_read(8'h11,result);if(result!==8'h25)$fatal(1,"UART RX %h",result);
         if(pad_oe!==0)$fatal(1,"UART receive drove pads");
+        host_write(0,0);host_write(3,4);host_write(0,8'h77);
+        fork
+            begin host_read(17,result);end
+            begin
+                repeat(420)@(negedge clk);pins[2]=0;repeat(4)@(negedge clk);
+                for(integer inject_bit=0;inject_bit<8;inject_bit=inject_bit+1)begin
+                    pins[2]=(8'h25>>inject_bit)&1;repeat(4)@(negedge clk);
+                end
+                pins[2]=1;repeat(8)@(negedge clk);
+            end
+        join
+        if(result!==0)$fatal(1,"empty read snapshot changed");
+        host_read(17,result);if(result!==8'h25)$fatal(1,"RX byte arriving during empty host read was lost: %h",result);
         host_write(0,0);host_write(1,8);host_write(3,16);host_write(0,5);
         pins[0]=1;tick(8);pins[0]=0;tick(4);
         for(index=7;index>=0;index=index-1)begin pins[2]=(8'haa>>index)&1;tick(16);end

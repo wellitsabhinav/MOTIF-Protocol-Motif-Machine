@@ -7,13 +7,19 @@ class Driver:
         self.dut = dut
         self.ui = 2
         self.pins = 255
+        self.cycle = 0
+        self.on_tick = None
 
     async def tick(self, count=8):
         self.dut.ui_in.value = self.ui
         self.dut.uio_in.value = self.pins
         for _ in range(count):
+            if self.on_tick:
+                self.on_tick(self)
+            self.dut.uio_in.value = self.pins
             self.dut.clk.value = 0
             await Timer(10, unit="ns")
+            self.cycle += 1
             self.dut.clk.value = 1
             await Timer(10, unit="ns")
         self.dut.clk.value = 0
@@ -99,6 +105,21 @@ async def runtime_protocol_configurations(dut):
     await driver.tick(40)
     assert await driver.transaction(1, 17) == 37
     assert int(dut.uio_oe.value) == 0
+    await driver.transaction(2, 0, 0)
+    await driver.transaction(2, 3, 4)
+    await driver.transaction(2, 0, 119)
+    inject_start = driver.cycle + 420
+    def inject_uart(controller):
+        offset = controller.cycle - inject_start
+        if 0 <= offset < 36:
+            bit = 0 if offset < 4 else (37 >> ((offset - 4) // 4)) & 1
+            controller.pins = (controller.pins & ~4) | (bit << 2)
+        elif offset >= 36:
+            controller.pins |= 4
+    driver.on_tick = inject_uart
+    assert await driver.transaction(1, 17) == 0
+    driver.on_tick = None
+    assert await driver.transaction(1, 17) == 37
     await driver.transaction(2, 0, 0)
     await driver.transaction(2, 1, 8)
     await driver.transaction(2, 3, 16)

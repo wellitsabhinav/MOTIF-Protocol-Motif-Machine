@@ -17,5 +17,10 @@ mapped results exclude placement, CTS, routing and timing. Host/configuration,
 core control, timers, protection, FIFOs and shifters are reported separately;
 the numbers do not establish a general architecture advantage.
 
+The current typical mapping reports 1,690 cells and 30,251.0754 µm² for MOTIF,
+versus 1,718 cells and 30,448.6182 µm² for the reference. MOTIF has 309 registers,
+67 configuration bits, 15,137.5392 µm² sequential area and 15,113.5362 µm²
+combinational area. The small difference is not an established cost advantage.
+
 Initial placement/routing qualification is in progress. Routed timing,
 congestion and precheck outcomes will be recorded after the workflow completes.
