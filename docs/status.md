@@ -2,8 +2,10 @@
 
 Current coverage: M0/M1 digital model behavior is qualified; integrated
 SPI/UART/timed-stream RTL is qualified; early CMOS5L physical checks pass for that
-subset. The suite has 73 model tests and 34,351 equivalent model/RTL comparison
-cycles. I²C remains model-only. No general cost advantage is established.
+subset. The suite has 78 model/control-boundary tests, the existing 34,351 subset
+comparison cycles, and 88,287 I²C model/RTL cycles. The I²C RTL promotion is
+logically qualified; its expanded physical qualification is in progress. No
+general cost advantage or unseen-protocol generalization is established.
 
 2026-10-12 — M0 executable model established. The suite independently verifies
 shared SPI target and UART receive behavior, framing, compound receive/count,
@@ -44,3 +46,11 @@ Linux gate retest against the same layout after checking physical source equalit
 Nominal component comparison and routed measurements are published separately.
 Residual max-fanout reports, timing-repair cost and I²C model-only coverage remain
 explicit limitations. Submission and fabrication are future milestones.
+
+2026-10-12 — The frozen-vocabulary campaign records an immutable initial
+inventory and promotes the existing nine-phase I²C model into shared RTL.
+Forty-eight deterministic cases cover exchange policies, causal protection,
+FIFO timing and recovery without changing the independent model. A repeated
+acquisition watchdog discrepancy was corrected in RTL. A declaration-order
+compatibility repair passed Linux CI and was merged separately. Expanded
+CMOS5L qualification is running; BYTE_EXCHANGE reuse is not yet established.

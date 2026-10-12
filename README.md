@@ -21,7 +21,10 @@ ACK/NACK, turnaround, clock stretching and recovery. The SPI/UART RTL subset
 matches model traces and accepts runtime host configuration. Guardian formal
 properties and synthesis are available. The routed CMOS5L SPI/UART/timed-stream
 subset meets the internal 50 MHz timing target and passes layout precheck and
-functional gate simulation. I²C remains model-only. See
+functional gate simulation. I²C RTL now passes 48 deterministic cases and 88,287
+normalized model/RTL cycles; its expanded physical qualification is in progress.
+The [frozen-vocabulary campaign](docs/generalization.md) records the control
+boundary, evidence and remaining gates. See
 [physical qualification](docs/physical.md) for measurements and limits.
 
 ```sh
