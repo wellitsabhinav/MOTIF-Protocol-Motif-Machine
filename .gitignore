@@ -1,0 +1,41 @@
+# Private working material and credentials
+.local-research/
+.tools/
+.env
+.env.*
+*.key
+*.pem
+# Python and editors
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+venv/
+.venv/
+*.egg-info/
+.vscode/
+.idea/
+# Generated simulation and implementation results
+build/
+dist/
+waveforms/
+*.vcd
+*.fst
+*.log
+*.out
+*.vvp
+obj_dir/
+runs/
+tt/
+tt_submission/
+pdks/
+oss-cad-suite/
+generated/
+*.netlist.v
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
