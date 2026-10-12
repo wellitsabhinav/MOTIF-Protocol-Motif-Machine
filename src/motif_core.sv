@@ -52,6 +52,7 @@ module motif_core #(parameter REFERENCE=0) (
     wire mismatch;
     wire clear = inhibit || acquire || end_sample || mismatch;
     wire ex_rx_fire, ex_tx_fire, ex_tx_load, ex_rx_push, turnaround, drive_low, stretch;
+    wire tx_overflow, tx_underflow, rx_full, rx_empty, rx_overflow, rx_underflow;
     wire [3:0] exchange_phase;
     wire [7:0] exchange_rx_data;
     reg pending_timer_start;
@@ -86,7 +87,6 @@ module motif_core #(parameter REFERENCE=0) (
                           tx_empty ? fill_i : tx_head,tx_value,tx_remaining,tx_bit,tx_terminal);
         assign collision=0;
     end endgenerate
-    wire tx_overflow, tx_underflow, rx_full, rx_empty, rx_overflow, rx_underflow;
     motif_fifo tx_fifo(clk, rst_n, host_tx_push_i, tx_load && !tx_empty, host_tx_data_i,
                        tx_head, tx_fifo_count_o, tx_full, tx_empty, tx_overflow, tx_underflow);
     reg [7:0] validated_byte;
