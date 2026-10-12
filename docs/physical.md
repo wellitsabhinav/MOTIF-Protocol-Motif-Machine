@@ -10,8 +10,11 @@ I²C remains model-only. A successful subset build cannot establish complete
 multi-protocol physical qualification. Physical artifacts are workflow outputs,
 not tracked source files or local PDK installations.
 
-`python -m tools.synthesis --cmos5l` reproduces a small typical-corner mapping
-comparison using the pinned 1.20 V, 25 °C library. It publishes cell area,
+`python -m tools.synthesis --cmos5l` maps the current source using the pinned
+1.20 V, 25 °C library and writes ignored `build/synthesis/current` output. Use
+`--output-dir` to retain a separate current report. Reproduce the historical
+subset comparison by checking out its recorded revision first; the command no
+longer overwrites historical checked-in reports. It publishes cell area,
 sequential/combinational area, register count, mux cells and hierarchy. These
 mapped results exclude placement, CTS, routing and timing. Host/configuration,
 core control, timers, protection, FIFOs and shifters are reported separately;

@@ -3,6 +3,7 @@ import os
 import subprocess
 import re
 import argparse
+import hashlib
 import urllib.request
 from pathlib import Path
 
@@ -45,9 +46,13 @@ def synthesize(top, destination, library=None):
         report.update(library=library.name, area_units="square micrometres", register_count=sum(count for name, count in types.items() if name in sequential),
                       sequential_area=seq_area, combinational_area=report['design']['area'] - seq_area,
                       mux_cells={name: count for name, count in types.items() if "mux" in name},
-                      allocated_configuration_bits=67,
+                      allocated_configuration_bits=78,
                       limitations="Nominal typical-cell mapping only; no CTS, placement, routing, extracted timing or silicon evidence")
-    Path(destination).parent.mkdir(exist_ok=True)
+    report["source_sha"] = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    report["rtl_source_hashes"] = {p.as_posix(): hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+                                   for p in sorted(Path("src").glob("*.sv"))}
+    report["scope"] = "Current connected implementation; synthesis alone does not qualify protocol behavior or a matched reference"
+    Path(destination).parent.mkdir(parents=True, exist_ok=True)
     Path(destination).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(top, report["design"].get("num_cells"), "cells", report["design"].get("area", "unmapped"))
 
@@ -55,6 +60,8 @@ def synthesize(top, destination, library=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--cmos5l", action="store_true")
+    parser.add_argument("--output-dir", type=Path, default=Path("build/synthesis/current"),
+                        help="Current-source reports; historical checked-in subset reports are not overwritten")
     args = parser.parse_args()
     library = None
     if args.cmos5l:
@@ -64,5 +71,5 @@ if __name__ == "__main__":
         url = "https://raw.githubusercontent.com/IHP-GmbH/IHP-Open-PDK/" + lock["pdk"]["revision"] + "/ihp-sg13cmos5l/libs.ref/sg13cmos5l_stdcell/lib/" + library.name
         urllib.request.urlretrieve(url, library)
     prefix = "mapped" if library else "synthesis"
-    synthesize("tt_um_wellitsabhinav_motif", "reports/" + prefix + "_motif.json", library)
-    synthesize("motif_reference_top", "reports/" + prefix + "_reference.json", library)
+    synthesize("tt_um_wellitsabhinav_motif", args.output_dir / (prefix + "_motif.json"), library)
+    synthesize("motif_reference_top", args.output_dir / (prefix + "_reference.json"), library)
