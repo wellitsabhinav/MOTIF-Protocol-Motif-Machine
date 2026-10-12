@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "selected_at_utc": "2026-10-12 15:46:47 UTC",
+  "frozen_commit": "b5675757c7a8405fd8dd40168a2370b3edd69a65",
+  "frozen_manifest_sha256_lf": "9e95be597dbbab1fa267d5936b878386eedba972884acd8a8e5d653e22aadfd7",
+  "workload": "one_wire_reset_presence_target",
+  "scope": "Initialization only; no ROM, data slots, temperature, analog or parasite-power claims",
+  "core_period_ns": 20,
+  "timing_us": {
+    "reset_low_min": 480,
+    "reset_low_experimental_max": 960,
+    "presence_delay_min": 15,
+    "presence_delay_max": 60,
+    "presence_low_min": 60,
+    "presence_low_max": 240,
+    "idle_high_min": 480
+  },
+  "source": {
+    "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf",
+    "revision": "Rev 6, July 2019",
+    "pages_one_based": [
+      3,
+      10,
+      15
+    ],
+    "byte_sha256": null
+  },
+  "candidate_source_hashes": {
+    "AN4453.pdf": "207082d581668d39b9b837e92cb7ee5ec1b99cb6f9470b81eda68725df62ca5f",
+    "doc1235.pdf": null
+  },
+  "pin_mapping": {
+    "DQ_frame_sense": 0,
+    "DQ_edge_sense": 1,
+    "DQ_rx_and_target_open_drain": 2,
+    "output_ownership_mask": 4,
+    "unused_inputs_high": true
+  },
+  "allowed_host_activity": "Configuration and four FF FIFO tokens before traffic only; none during active frames",
+  "malformed_contract": "No presence without a continuous controller low >=480us; high interruptions restart qualification. This is campaign robustness beyond the source's legal timing descriptions.",
+  "cases": [
+    {
+      "name": "nominal",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          500
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "expected_presence": 1
+    },
+    {
+      "name": "shortest_legal",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          480
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "expected_presence": 1
+    },
+    {
+      "name": "longest_bounded",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          960
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "expected_presence": 1
+    },
+    {
+      "name": "back_to_back",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          500
+        ],
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          500
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "expected_presence": 2
+    },
+    {
+      "name": "unusual_legal_idle",
+      "segments_us": [
+        [
+          1,
+          2000
+        ],
+        [
+          0,
+          700
+        ],
+        [
+          1,
+          1800
+        ]
+      ],
+      "expected_presence": 1
+    },
+    {
+      "name": "short_pulse",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          100
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "expected_presence": 0
+    },
+    {
+      "name": "interrupted_non_reset",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          200
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          300
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "expected_presence": 0
+    },
+    {
+      "name": "system_reset",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          500
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "reset_us_from_start": 1200,
+      "expected_presence": 0
+    },
+    {
+      "name": "watchdog_abort",
+      "segments_us": [
+        [
+          1,
+          1000
+        ],
+        [
+          0,
+          500
+        ],
+        [
+          1,
+          1000
+        ]
+      ],
+      "watchdog_cycles": 1000,
+      "expected_presence": 0,
+      "require_timeout": true
+    }
+  ],
+  "termination": "First architectural insufficiency ends this campaign; all declared cases remain recorded, no hardware/model/compiler change or post-result refreeze",
+  "oracle_input_sha256": "924fe4aa4f89e2fe3808fcea199ba350721114e80874010ac2a7ed7c3753a836"
+}
