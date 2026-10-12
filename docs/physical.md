@@ -49,7 +49,9 @@ current source requires a new physical run before qualification.
 The pinned CMOS5L cells use delayed timing-check wires that Icarus does not
 drive. `tools/prepare_gate_models.py` generates an ignored functional copy with
 those wires connected to the corresponding ports, preserving PDK attribution
-and logic. Gate tests are zero-delay functional simulation; extracted timing
+and logic. Timing-check specify blocks are removed from that functional copy
+to prevent simulator-dependent bidirectional port coercion. Gate tests are
+zero-delay functional simulation; extracted timing
 is qualified separately by the flow's STA reports.
 
 After downloading the workflow's `GDS_logs` artifact to ignored build output,
@@ -57,3 +59,6 @@ After downloading the workflow's `GDS_logs` artifact to ignored build output,
 extracts the compact report. Supply the directory containing `final/metrics.json`.
 It separates standard-cell area from the full tile and filler area, reports
 corner slacks, checks and routing layers, and records the qualified source.
+The manually dispatched `gate-test` workflow can retest an existing layout
+artifact after test-tool repairs. It first verifies that synthesizable sources,
+flow configuration, tile description and version lock match the completed build.

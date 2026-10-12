@@ -1,8 +1,9 @@
 """Prepare pinned PDK cells for zero-delay Icarus functional simulation.
 
 Icarus does not drive delayed timing-check arguments from $setuphold/$recrem.
-Connect those internal wires to their ports. Keep the original model, license,
-UDP logic and timing blocks; the generated copy stays in simulation output.
+Connect those internal wires to their ports and remove specify blocks from
+the functional copy. Keep the original license and UDP logic; the generated
+copy stays in simulation output.
 This adapter provides functional evidence only. Routed timing uses separate STA.
 """
 import re
@@ -18,6 +19,7 @@ def prepare(source, destination):
     text, count = re.subn(r"\bwire\s+delayed_[^;]+;", connect, text)
     if not count:
         raise ValueError("Pinned cell model has no delayed timing-check wires")
+    text = re.sub(r"\bspecify\b.*?\bendspecify\b", "", text, flags=re.S)
     destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(text, encoding="utf-8")
