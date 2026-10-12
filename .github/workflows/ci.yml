@@ -26,6 +26,7 @@ jobs:
       - run: python -m pytest -q
       - run: python -m tools.frozen_manifest --historical
       - run: python -m tools.exchange_decomposition --check-preregistration
+      - run: if [ -f experiments/exchange_decomposition/frozen_v2_manifest.json ]; then python -m tools.exchange_decomposition --check-freeze; fi
   rtl:
     runs-on: ubuntu-24.04
     steps:
@@ -47,6 +48,7 @@ jobs:
       - run: python -m tools.generalization --gate 2
       - run: python -m tools.generalization --gate 1 --baseline v2
       - run: python -m tools.generalization --gate 2 --baseline v2
+      - run: if [ -f experiments/exchange_decomposition/third_protocol_selection.json ]; then python -m tools.generalization --gate 3 --baseline v2; fi
       - run: python -m tools.synthesis --output-dir build/exchange_decomposition/synthesis
       - uses: actions/upload-artifact@v7
         if: always()

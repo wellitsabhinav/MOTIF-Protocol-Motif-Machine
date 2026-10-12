@@ -318,6 +318,9 @@ if __name__ == "__main__":
     parser.add_argument("--model-only",action="store_true")
     parser.add_argument("--gate",type=int,choices=(1,2,3))
     parser.add_argument("--check-preregistration",action="store_true")
+    parser.add_argument("--freeze",action="store_true")
+    parser.add_argument("--check-freeze",action="store_true")
+    parser.add_argument("--accounting",action="store_true")
     parser.add_argument("--output",type=Path,default=Path("build/exchange_decomposition/model.json"))
     args=parser.parse_args()
     if args.model_only: model_validation(args.output)
@@ -327,3 +330,14 @@ if __name__ == "__main__":
         historical=subprocess.check_output(["git","show","d3ca35e2221f8e7654f4c42fa79ab7992e8ee8d8:"+path.as_posix()])
         if path.read_bytes().replace(b"\r\n",b"\n")!=historical: raise SystemExit("Preregistration changed")
         print("PASS immutable preregistration")
+    elif args.freeze:
+        from tools.v2_inventory import freeze
+        freeze()
+    elif args.check_freeze:
+        from tools.v2_inventory import verify
+        verify();print("PASS frozen v2 implementation and trace compiler")
+    elif args.accounting:
+        from tools.v2_inventory import accounting
+        result=accounting()
+        args.output.parent.mkdir(parents=True,exist_ok=True)
+        args.output.write_text(json.dumps(result,indent=2)+"\n")
