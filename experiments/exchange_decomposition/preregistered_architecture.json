@@ -1,0 +1,323 @@
+{
+  "schema_version": 2,
+  "campaign": "one_controlled_exchange_decomposition",
+  "architecture_version": 2,
+  "repair_cycles_permitted": 1,
+  "legacy_snapshot": "7a74a1772dd178e498228667b54ec6a2fd39373a",
+  "third_protocol": {
+    "selected": false,
+    "researched": false,
+    "selection_requires_v2_freeze": true
+  },
+  "primitives": {
+    "FIELD_DECISION": {
+      "semantics": "Qualify a registered 1..16-bit field by masked equality and configured enable/readiness/permission predicates; optionally enqueue its low byte; select desired direction by retain, constant RX, constant TX or any configured field bit.",
+      "state_bits": {
+        "pending_field": 16,
+        "accepted": 1,
+        "desired_role": 1
+      },
+      "inputs": [
+        "field_complete",
+        "field[15:0]",
+        "rx_full",
+        "transmit_permission"
+      ],
+      "outputs": [
+        "accepted",
+        "desired_role",
+        "rx_push",
+        "decision_event"
+      ]
+    },
+    "DIRECTION_HANDOFF": {
+      "semantics": "Transfer current ownership to retained desired role or a configured constant role. RX releases data/hold. TX loads one pre-edge FIFO head and presents its first bit; an empty or disallowed load is a fatal composition fault. Readiness waiting is separately composed. TX may request the existing registered setup timer start.",
+      "state_bits": {
+        "current_role": 1,
+        "drive_enable_shared": 1,
+        "drive_value_shared": 1
+      },
+      "inputs": [
+        "trigger",
+        "desired_role",
+        "tx_head[7:0]",
+        "tx_empty",
+        "serial_order",
+        "transmit_permission"
+      ],
+      "outputs": [
+        "role",
+        "tx_load",
+        "data_request",
+        "timer_start_request"
+      ]
+    },
+    "BOUNDARY_RESPONSE": {
+      "semantics": "On a configured event emit a constant or accepted-derived bit, release output, or capture an optionally inverted bit. Captured responses may be resampled until a separately configured completion event; sample has priority over completion if simultaneous. Completion branches on the pre-edge captured response. No mandatory clock slot exists.",
+      "state_bits": {
+        "captured_response": 1
+      },
+      "inputs": [
+        "trigger",
+        "completion_event",
+        "accepted",
+        "input_bit"
+      ],
+      "outputs": [
+        "data_request",
+        "captured_response",
+        "conditional_continuation"
+      ]
+    },
+    "WAIT_POLICY": {
+      "semantics": "Wait for desired-TX FIFO readiness (RX passes immediately), RX space, timer sample or input level. Optional hold requests apply only to desired TX and require configured clock ownership. Timer wait may compare the captured resolved level with the TX bit; mismatch releases the frame. A completed wait releases hold except readiness may retain it through the configured TX handoff.",
+      "state_bits": {
+        "hold_request": 1
+      },
+      "inputs": [
+        "readiness",
+        "timer_sample",
+        "resolved_bit",
+        "tx_bit",
+        "desired_role"
+      ],
+      "outputs": [
+        "hold_request",
+        "continue",
+        "mismatch",
+        "frame_abort"
+      ]
+    }
+  },
+  "support_state": {
+    "program_counter": 4,
+    "halted": 1,
+    "total_transaction_bits_including_shared_outputs": 28,
+    "pending_timer_start_existing": 1
+  },
+  "shared_receive": {
+    "value_bits": 16,
+    "counter_bits": 4,
+    "length_range": [
+      1,
+      16
+    ],
+    "msb_shift": "((value << 1) | bit) & ((1 << length) - 1)",
+    "lsb_shift": "(value >> 1) | (bit << (length - 1))",
+    "counter_terminal": "pre-edge count == length-1; terminal resets count to zero",
+    "pending_field_capture": "terminal shifted value",
+    "fifo_data_bits": 8
+  },
+  "shared_transmit": {
+    "value_bits": 8,
+    "remaining_bits": 4,
+    "load_priority_over_shift": true,
+    "load_remaining": 8,
+    "boundary_modes": {
+      "consumed": "pre-edge remaining == 1",
+      "presented": "pre-edge remaining == 2; shifted last bit remains driven"
+    },
+    "no_word_size_16_special_case": true
+  },
+  "program": {
+    "entries": 16,
+    "entry_bits": 64,
+    "byte_order": "little endian",
+    "fields": {
+      "opcode": [
+        0,
+        2
+      ],
+      "trigger": [
+        3,
+        4
+      ],
+      "next": [
+        5,
+        8
+      ],
+      "alternate": [
+        9,
+        12
+      ],
+      "argument": [
+        13,
+        20
+      ],
+      "value": [
+        21,
+        36
+      ],
+      "mask": [
+        37,
+        52
+      ],
+      "flags": [
+        53,
+        63
+      ]
+    },
+    "opcodes": {
+      "0": "SHIFT_RX_COUNT",
+      "1": "FIELD_DECISION",
+      "2": "BOUNDARY_RESPONSE",
+      "3": "DIRECTION_HANDOFF",
+      "4": "WAIT_POLICY",
+      "5": "SHIFT_TX",
+      "6": "TERMINATE",
+      "7": "CONTINUE"
+    },
+    "triggers": {
+      "0": "always",
+      "1": "clock_rising",
+      "2": "clock_falling",
+      "3": "registered_timer_sample"
+    },
+    "chain_flag": 1024,
+    "maximum_entries_executed_per_cycle": 4,
+    "execution": "Execute current entry when triggered. RX/TX advance only at their configured event and complete only at the configured boundary. A successor executes this cycle only when the prior entry has CHAIN and the successor trigger is ALWAYS. Every entry executes at most once per cycle. Repeated entry or a fifth immediate execution is a fatal composition fault. Otherwise the successor waits for a future cycle. Outputs and FIFO operations commit atomically; all readiness/decision predicates use pre-edge state. FIFO/TX load conflicts are fatal, not silently prioritized.",
+    "reset": "pc=0; halted=false; desired/current role=RX; acceptance/captured response/pending field/data requests/hold=0",
+    "opcode_arguments": {
+      "SHIFT_RX_COUNT": "argument[4:0] is length 1..16; next selected on terminal; other operands unused; emits field_complete and low-byte diagnostic on terminal",
+      "FIELD_DECISION": "argument[1:0]: 0 retain desired role, 1 RX, 2 TX, 3 field bit; argument[5:2] selects bit. flags[0] enable acceptance, [1] enqueue accepted low byte, [2] require RX space, [3] require TX permission if selected role TX, [4] branch on acceptance. Compare (field & mask)==(value & mask). When not branching, next is used even on rejection.",
+      "BOUNDARY_RESPONSE": "argument[1:0]: 0 constant bit value[0], 1 accepted bit, 2 capture, 3 release. flags[0] invert, [1] branch on acceptance, [2] branch on captured response. Capture trigger samples; value[1:0] chooses completion event, which branches on stored captured response. Other modes execute only on trigger. RELEASE clears data enable. Emit modes request selected bit. Open-drain generated logical one maps to release before guardian.",
+      "DIRECTION_HANDOFF": "argument[1:0]: 0 desired role, 1 RX, 2 TX, 3 release. flags[0] requests timer start after a TX load. TX selects next; RX/release selects alternate. RX/release clears data enable and hold. TX load uses pre-edge FIFO, presents selected first bit and retains current hold.",
+      "WAIT_POLICY": "argument[1:0]: 0 TX-ready-or-desired-RX, 1 RX space, 2 timer sample, 3 input equals value[0]. flags[0] request hold when desired role TX, [1] validate sampled level against TX bit for timer wait. Timer mismatch is fatal; completion selects next, successful non-readiness waits clear hold; readiness retains configured hold only for desired TX.",
+      "SHIFT_TX": "flags[0] boundary after last-bit presentation rather than consumption, [1] release data at boundary, [2] clear captured response at boundary. Shift on trigger, update driven next bit, next on configured boundary. Zero remaining is fatal.",
+      "TERMINATE": "flags[0] release entire frame, [1] retain current output while halted. Otherwise release data and hold. Remain halted until frame acquisition/release/reset.",
+      "CONTINUE": "argument[2:0] predicate: 0 true, 1 accepted, 2 captured response, 3 desired TX, 4 RX full, 5 TX empty. next/alternate selected by predicate; no datapath action. Invalid predicate is rejected."
+    }
+  },
+  "integration": {
+    "frame_modes": [
+      "active-level with selectable polarity",
+      "falling-edge acquire",
+      "data edge with previously and currently stable-high clock"
+    ],
+    "raw_level_frame_kill": "immediate release when raw frame pin differs from configured active level",
+    "receive_transmit_pins": "shared or separate, eight-pin mapping; independent push-pull output permitted only on unprotected pins; shared data must be open drain",
+    "hold_clock": "explicit one-bit permission; distinct clock/data and open-drain clock required; ownership additionally requires transmit permission",
+    "pad_timing_check": "explicit one-bit configured own-pad timing validation; unchanged provenance suppression for edge-qualified acquisition and external-clock progress",
+    "timer": "existing period, start/stop validation and registered event timing; acquisition starts timer for timer sampling; handoff timer request starts on following cycle; timer wait consumes registered sample on subsequent cycle, preserving period+2 setup",
+    "priority": [
+      "reset/disable/raw kill/abort/release/watchdog expiry/own-pad fault",
+      "acquisition including repeated acquisition",
+      "transaction actions",
+      "guardian authorization"
+    ],
+    "fifo_contract": "four byte entries; reset clears, frame release preserves; host pulse commits after actor decision against pre-edge flags; no empty-TX same-edge bypass and no full-RX same-edge acceptance rescue"
+  },
+  "host_interface": {
+    "version_address": 21,
+    "version_value": 2,
+    "preserved_addresses": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "retired_addresses": [
+      9,
+      10
+    ],
+    "retired_write_behavior": "set configuration rejection; no legacy translation",
+    "transaction_control_address": 22,
+    "transaction_control_bits": {
+      "enable": 0,
+      "edge_qualified_frame": 1,
+      "active_high_frame": 2,
+      "hold_clock_permission": 3,
+      "pad_timing_check": 4
+    },
+    "table_address_range": [
+      128,
+      255
+    ],
+    "writes": "program/control/pin/timer configuration only while disabled; table byte writes use little-endian entry packing; FIFO host I/O remains available while active",
+    "invalid_config": "reject invalid enable requests with sticky rejection; disabled configurations may be assembled incrementally; invalid RX length, predicates or pin ownership are rejected before enabling"
+  },
+  "expected_i2c_composition": {
+    "0": "RX 8 rising ->1",
+    "1": "DECIDE address mask FE expected address<<1, direction bit0, address policy and TX permission ->2",
+    "2": "RESPOND inverted accepted on falling ->3",
+    "3": "RELEASE on falling, accepted?4:15, CHAIN",
+    "4": "WAIT TX-ready-or-RX, hold for desired TX ->5, CHAIN",
+    "5": "HANDOFF desired role, timer start on TX, TX->6 RX->7, CHAIN",
+    "6": "WAIT timer, hold, resolved TX-bit validation ->10",
+    "7": "RX 8 rising ->8",
+    "8": "DECIDE retain role, data policy, pre-edge RX space, enqueue accepted ->9",
+    "9": "RESPOND inverted accepted on falling ->11",
+    "10": "TX falling, consumed boundary, release and clear captured response ->12",
+    "11": "RELEASE on falling, accepted?4:15, CHAIN",
+    "12": "CAPTURE inverted rising input, falling completion stored response?4:15, CHAIN",
+    "13_14_15": "HALT releasing requests, frame remains active until controller framing"
+  },
+  "expected_microwire_composition": {
+    "pins": {
+      "cs": 0,
+      "clock": 1,
+      "di": 2,
+      "do": 3
+    },
+    "framing": "active-high level, no clock ownership, separate push-pull DO",
+    "0": "RX 9 rising ->1",
+    "1": "DECIDE full field mask1FF expected180, fixed desired TX, accepted?2:15, CHAIN",
+    "2": "RESPOND constant dummy zero immediately ->3, CHAIN",
+    "3": "WAIT TX-ready without hold ->4, CHAIN",
+    "4": "HANDOFF TX on first response rising edge, present first byte bit7 ->5",
+    "5": "TX rising, presented boundary, retain output ->6",
+    "6": "HANDOFF TX on next rising edge, present second byte bit7 ->7",
+    "7": "TX rising, presented boundary, retain output ->8",
+    "8": "HALT retaining last output until CS falls",
+    "9_to_15": "HALT releasing output",
+    "oracle": "unchanged bounded command bits and A55A response; dummy zero occurs during final command high phase; data changes after qualified rising edges only; neither ACK slot nor target clock drive exists"
+  },
+  "forbidden_assumptions": [
+    "protocol-name branches",
+    "fixed seven-bit address",
+    "fixed direction bit",
+    "mandatory ninth clock",
+    "mandatory per-byte response",
+    "mandatory stretching",
+    "special sixteen-bit TX",
+    "protocol-specific wrapper FSM",
+    "host sequencing of missing target behavior",
+    "new semantics after preregistration",
+    "third-workload design influence"
+  ],
+  "anticipated_failure_modes": [
+    "four-entry immediate chain insufficient",
+    "fixed 16-entry graph insufficient",
+    "I2C malformed-event behavior not preserved",
+    "setup timer alignment regression",
+    "FIFO pre-edge decisions not preserved",
+    "Microwire dummy or output-edge alignment wrong",
+    "guardian/provenance routing insufficient",
+    "future workload requires unregistered semantic operation"
+  ],
+  "correction_policy": "Model/RTL/test/tool defects may be corrected only to restore this exact contract. A semantic insufficiency produces the applicable stop classification. Every correction records its cause and preregistered clause. No second redesign.",
+  "gate3_policy": "freeze all runtime model/RTL, host decoder, compiler and routing first; afterward only declarative configuration/constants/pin/timer/FIFO policies and independent oracle/test stimulus may change; PARTIAL for one isolated missing generic operation, REJECTED for protocol-specific hardware requirements; implement neither",
+  "source_commit": "67962e1ad3f3982c4b2984573dce5d3fc50ece7f",
+  "timestamp_utc": "2026-10-12T12:43:07.174652+00:00",
+  "input_sha256": {
+    "experiments/exchange_decomposition/source_audit.md": "522b3d248f6f58816420b7c2f81df64f2a11e15dba5b36e571612f7b3a10936f",
+    "experiments/exchange_decomposition/source_audit.json": "a4dbffddb2a11b23c0ec4e11cbe682f573b74c3271163a4a368a7208ce55eefd",
+    "experiments/generalization/promoted_motif_vocabulary.json": "e78a3157a7b2f237b3d1bd163dd5fe6b26ca993154f8e38c15603c0e8f4fb3c6",
+    "experiments/generalization/microwire_workload.json": "5a8629efd9f3925bf103f116b4f78e26b186bf1b2be47177d3467bd08e6b1c2e",
+    "experiments/generalization/gate2_result.json": "1e58ec29039a8bc5abb3bd63743577acd06d85365f9b939d2fb54a4e81384823",
+    "src/motif_byte_exchange.sv": "b30e7bb2f7c4b847b3b6ad1f0db2470acf82358bafa31f1628889c950c62e73b",
+    "src/motif_core.sv": "1d0d5551e758f253033e9bbb0922b67db811830dcf3b90ed57c18a96f35100e8",
+    "motif/motifs/exchange.py": "944a2e1180645abbcdaf8eb70aaf129dea8cf53e97814f25b35cf6889e1961c4",
+    "motif/engine.py": "84ccfb7b593e411bb32e538c33e3884688cfcacb6e8b4701ca4ec7d56f87ebc7"
+  }
+}
