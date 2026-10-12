@@ -424,8 +424,14 @@ def main():
     destination = args.output or Path(f"build/generalization/gate{args.gate}/result.json")
     if args.gate == 1:
         gate1(destination, args.synthesize)
+    elif args.gate == 2:
+        from tools.byte_exchange_falsification import run
+        run(destination)
     else:
-        raise SystemExit("Later gates require a qualified promoted baseline")
+        result = Path("experiments/generalization/gate2_result.json")
+        if result.exists() and json.loads(result.read_text())["classification"] == "MOTIF_BYTE_EXCHANGE_PROTOCOL_SPECIFIC":
+            raise SystemExit("Gate 3 unattempted: campaign stopped by demonstrated Gate 2 failure")
+        raise SystemExit("Gate 3 requires successful Gates 1 and 2 and an independently selected workload")
 
 
 if __name__ == "__main__":

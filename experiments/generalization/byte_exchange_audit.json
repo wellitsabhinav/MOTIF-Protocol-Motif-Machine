@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "source": "src/motif_byte_exchange.sv",
+  "module": "motif_byte_exchange",
+  "state_bits_declared": 18,
+  "states": ["RX", "DECIDE", "ACK_SETUP", "ACK_HOLD", "TX", "CONTROLLER_ACK", "STRETCH", "SETTLE", "IDLE"],
+  "state_variables": {"phase_o": 4, "header": 1, "next_role": 1, "ack": 1, "controller_ack": 1, "pending_byte": 8, "drive_low_o": 1, "stretch_o": 1},
+  "structural_assumptions": [
+    "The first eight-bit word is seven address bits plus a bit-zero direction selector",
+    "Target ACK occupies the clock after eight received bits",
+    "Every eight transmitted bits are followed by an active-low controller ACK slot",
+    "Controller NACK ends TX even if another FIFO byte is ready",
+    "Preparing a ready TX byte still asserts stretch during resolved first-bit setup",
+    "Core integration requires shared open-drain RX/TX data and a distinct external clock"
+  ],
+  "configurable_decisions": ["address constant", "address/data ACK policy", "read enable", "serial order", "setup period", "pin assignments", "existing frame mode", "watchdog"],
+  "unavailable_controls": ["first-word mask/format", "direction-bit position", "word length", "skip controller ACK", "disable setup clock drive", "active-high CS framing", "separate exchange DI/DO"],
+  "interpretation": "Generic event port names coexist with a fixed protocol transaction graph; ready/data decisions operate within that graph"
+}
