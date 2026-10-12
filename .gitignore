@@ -39,6 +39,18 @@ pdks/
 oss-cad-suite/
 generated/
 *.netlist.v
+*.nl.v
+*.pnl.v
+*.gds
+*.gds.gz
+*.oas
+*.odb
+*.spef
+*.sdf
+*.def
+*.lef
+*.mag
+*.spice
 # Operating system files
 .DS_Store
 Thumbs.db

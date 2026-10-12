@@ -1,5 +1,6 @@
 import random
 from dataclasses import replace
+import pytest
 
 from motif import Engine
 from motif.protocols.spi import target
@@ -40,3 +41,13 @@ def test_reference_matches_abort_timeout_and_reset_contract():
         assert "timeout" in wire.trace[-1]["faults"]
         engine.step(wire.pins, reset=True)
         assert not engine.rx_fifo and not engine.tx_fifo and not engine.active
+
+
+@pytest.mark.parametrize("spacing", [2, 3, 4])
+def test_spi_spacing_boundaries(spacing):
+    for implementation in (Engine, SequentialSPI):
+        engine = implementation(target())
+        wire = Wires(engine, spacing=spacing)
+        for byte in (0, 255, 85, 170):
+            assert wire.spi(byte, byte ^ 255) == byte ^ 255
+            assert engine.pop_rx() == byte

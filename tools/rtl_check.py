@@ -107,9 +107,9 @@ class RecordedEngine(Engine):
         return trace
 
 
-def core_vectors(config, name, reference=False):
+def core_vectors(config, name, reference=False, spacing=8):
     engine = RecordedEngine(config)
-    wire = Wires(engine)
+    wire = Wires(engine, spacing=spacing)
     if name == "spi":
         rng = random.Random(117)
         for _ in range(24):
@@ -218,6 +218,9 @@ def run():
     simulate("watchdog_core", core_vectors(replace(spi.target(), watchdog=32), "spi"))
     simulate("concurrent_core", core_vectors(replace(timed_stream.receiver(16), transmit=True), "concurrent"))
     simulate("concurrent_reference", core_vectors(replace(timed_stream.receiver(16), transmit=True), "concurrent", reference=True))
+    for spacing in (2, 3, 4):
+        for reference in (False, True):
+            simulate(f"spi_spacing_{spacing}_{int(reference)}", core_vectors(spi.target(), "spi", reference=reference, spacing=spacing))
 
 
 if __name__ == "__main__":

@@ -44,12 +44,16 @@ and placement/routing are a separate qualification step. I²C remains model-only
 Additional qualification checks 1,200 randomized FIFO transactions (seed 73),
 including reset, simultaneous push/pop, full and empty conditions. A 5,525-cycle
 SPI trace with a 32-cycle watchdog confirms timeout suppression and rearm only
-after a fresh frame edge. Total integration comparisons now cover 22,195 cycles,
+after a fresh frame edge. Total integration comparisons now cover 34,351 cycles,
 in addition to primitive vectors and the host transactions.
 The extra 180-cycle compound trace has ten coincident timed RX/clock-driven TX
 firings. A separate 180-cycle reference trace checks RX-priority handling and
 collision reporting; its TX output is outside equivalent coverage. Integration
 comparisons include the corresponding sticky RTL fault/status bits.
+Spacing fixtures add SPI traces of 1,351, 2,026 and 2,701 cycles per RTL variant
+at two, three and four cycles per fixture phase. MOSI setup, high clock and low
+clock each occupy one phase; clock low therefore spans two phases. These are
+digital schedules and do not qualify a maximum external silicon clock rate.
 
 A concurrent host/protocol test reproduces an empty-read race: a byte arriving
 after the read snapshot was previously consumed without being returned. The

@@ -22,6 +22,24 @@ versus 1,721 cells and 30,508.4556 µm² for the reference. MOTIF has 309 regist
 67 configuration bits, 15,137.5392 µm² sequential area and 15,292.5570 µm²
 combinational area. The small difference is not an established cost advantage.
 
+The MOTIF hierarchy has the following typical-corner cell areas. The two FIFO
+instances are included; module-local glue is separate from child modules.
+
+| Component | Cell area (µm²) |
+|---|---:|
+| RX/TX shifters and counts | 2,315.0988 |
+| Event frontend | 1,756.3392 |
+| Two four-byte FIFOs | 7,036.2432 |
+| Dedicated host SPI | 3,759.4368 |
+| Pad guardian and watchdog | 3,129.3108 |
+| Timed sampling | 3,152.8980 |
+| Core selection/control glue | 2,828.6118 |
+| Configuration/top-level glue | 6,452.1576 |
+
+Core selection, timed control and configuration/top-level glue occupy about 41%
+of this mapping; the shifters occupy about 8%. These groups include required
+configuration and connected routing, rather than isolated actor estimates.
+
 Initial placement/routing qualification is in progress. Routed timing,
 congestion and precheck outcomes will be recorded after the workflow completes.
 The first completed layout passed DRC/LVS and precheck. Gate-level elaboration
