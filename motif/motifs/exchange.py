@@ -19,25 +19,31 @@ class ByteExchange:
         self.controller_ack = False
         self.pending_byte = 0
 
-    def _transmit(self, tx, fifo, fires):
+    def _transmit(self, tx, fifo, fires, events):
         if fifo:
             tx.load(fifo.popleft())
-            self.phase = "tx"
+            self.phase = "settle"
             self.drive_low = not tx.bit
-            self.stretch = False
+            self.stretch = True
             fires.append("SHIFT_TX_LOAD")
+            events.append("turnaround_begin")
         else:
             self.phase = "stretch"
             self.stretch = True
             self.drive_low = False
             fires.append("STRETCH_UNTIL_READY")
 
-    def tick(self, rising, falling, bit, rx, tx, rx_fifo, tx_fifo, capacity):
+    def tick(self, rising, falling, bit, rx, tx, rx_fifo, tx_fifo, capacity, settled=False):
         fires, events = [], []
         byte = None
         if self.phase == "stretch":
             if tx_fifo:
-                self._transmit(tx, tx_fifo, fires)
+                self._transmit(tx, tx_fifo, fires, events)
+                fires.append("STRETCH_UNTIL_READY")
+        elif self.phase == "settle":
+            if settled:
+                self.phase = "tx"
+                self.stretch = False
                 fires.append("STRETCH_UNTIL_READY")
         elif self.phase == "rx" and rising:
             byte = rx.fire(bit)
@@ -70,7 +76,7 @@ class ByteExchange:
             if not self.ack:
                 self.phase = "idle"
             elif self.next_role == "tx":
-                self._transmit(tx, tx_fifo, fires)
+                self._transmit(tx, tx_fifo, fires, events)
             else:
                 self.phase = "rx"
         elif self.phase == "tx" and falling:
@@ -91,7 +97,7 @@ class ByteExchange:
             elif falling:
                 fires.append("TURNAROUND")
                 if self.controller_ack:
-                    self._transmit(tx, tx_fifo, fires)
+                    self._transmit(tx, tx_fifo, fires, events)
                 else:
                     self.phase = "idle"
                     events.append("transmit_nack")

@@ -18,7 +18,7 @@ CONFIG_WIDTHS = {"frame": 2, "frame_pin": 3, "clock_pin": 3, "rx_pin": 3,
 STATE_WIDTHS = {"frontend": 26, "rx": 11, "tx": 12, "timer": 22,
                 "pending_sample": 4, "validated_byte": 8, "active": 1,
                 "guardian_age_trip": 17, "diagnostics": 9, "fifos": 78,
-                "byte_exchange": 17}
+                "byte_exchange": 18, "pending_timer_start": 1}
 
 
 def normalize(name):
@@ -38,7 +38,7 @@ def report():
         "spi_target": [("frame", "acquire/release"), ("rise", "rx"), ("fall", "tx"), ("rx_complete", "rx_fifo"), ("tx_complete", "tx_load"), ("acquire", "tx_load"), ("release", "guardian")],
         "uart_rx": [("fall", "acquire"), ("acquire", "timer"), ("timer_sample", "rx"), ("timer_stop", "rx_fifo/release"), ("release", "guardian")],
         "timed_stream": [("frame", "acquire/release"), ("acquire", "timer"), ("timer_sample", "rx"), ("rx_complete", "rx_fifo"), ("release", "guardian")],
-        "i2c_target": [("sda_edge/scl_level", "acquire/release"), ("rise", "rx/exchange"), ("fall", "tx/exchange"), ("rx_complete", "exchange_decision"), ("fifo_ready", "stretch_release"), ("release", "guardian")],
+        "i2c_target": [("sda_edge/scl_level", "acquire/release"), ("rise", "rx/exchange"), ("fall", "tx/exchange"), ("rx_complete", "exchange_decision"), ("fifo_ready", "tx_prepare"), ("turnaround_begin", "timer_start"), ("timer_sample", "stretch_release"), ("release", "guardian")],
     }
     for name, config in [("spi_target", spi.target()), ("uart_rx", uart.receiver(32)), ("timed_stream", timed_stream.receiver(16)), ("i2c_target", i2c.target())]:
         engine = Engine(config)
@@ -73,6 +73,7 @@ def report():
             "host_data_routes": ["host->tx_fifo", "rx_fifo->host"],
             "maximum_observed_firings_per_cycle": max(len({normalize(name) for name in row["fires"]}) for row in wire.trace),
             "qualified_event_to_rx_action_cycles": 0 if config.sample == "rising" else 1,
+            "configured_tx_prepare_to_scl_release_cycles": config.period + 2 if config.exchange else None,
             "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
             "protocol_specific_hardware": ["bounded ninth-clock byte exchange"] if config.exchange else [],
         }
@@ -93,7 +94,7 @@ def report():
               "FRAME_RELEASE": ("active", ["frame", "frame_pin"], ["frame_stop", "abort", "timeout"], ["release"], [], []),
               "RESET_COUNTER": ("rx", [], ["acquire", "release"], [], [], []),
               "TIMED_SAMPLE": ("timer", ["period", "validate_start", "validate_stop"], ["acquire", "timer expiry"], ["sample", "validation"], ["pin bit"], ["captured bit"]),
-              "BYTE_EXCHANGE": ("byte_exchange", ["address", "ack_address", "ack_data", "exchange"], ["clock edges", "byte_complete", "fifo_ready"], ["response", "turnaround", "stretch"], ["received byte", "address_constant"], ["accepted byte", "drive requests"])}
+              "BYTE_EXCHANGE": ("byte_exchange", ["address", "ack_address", "ack_data", "exchange", "period"], ["clock edges", "byte_complete", "fifo_ready", "timer sample"], ["response", "turnaround", "stretch", "timer start"], ["received byte", "address_constant"], ["accepted byte", "drive requests"])}
     result["motifs"] = {name: {"instances": 1, "protocols": result["reuse"][name], "storage_group": group,
                               "state_bits_in_shared_group": STATE_WIDTHS[group], "configuration_fields": fields,
                               "configuration_bits_in_referenced_fields": sum(CONFIG_WIDTHS[field] for field in fields),

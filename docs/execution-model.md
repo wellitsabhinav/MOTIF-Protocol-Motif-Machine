@@ -41,6 +41,15 @@ An address miss or configured rejection leaves SDA released through the ninth
 clock and disables further exchange until a framing boundary. A full RX FIFO
 NACKs and discards the new byte. On reads, an empty TX FIFO stretches SCL low at
 a byte boundary until data arrives. Controller NACK terminates transmission.
+TX preparation holds SCL low while the first data bit settles. A registered
+turnaround event arms the shared timer; its registered expiry releases SCL.
+The default setup interval is 63 core cycles, plus two event-pipeline cycles:
+1.3 µs at the 50 MHz reference point. This conservatively covers Standard-mode
+rise time plus data setup at that point. `setup_cycles` is configurable; digital
+tests also exercise a 13-cycle interval with ideal instantaneous wire transitions.
+Analog rise time and voltage thresholds still require physical qualification.
+The controller driver waits for resolved SCL high before starting its high period.
+
 The default watchdog is disabled, allowing indefinite I²C waits; an explicitly
 enabled inactivity watchdog releases outputs on expiry. Unrelated pin activity
 does not reset that watchdog. Automatic rearm requires a qualified new START.

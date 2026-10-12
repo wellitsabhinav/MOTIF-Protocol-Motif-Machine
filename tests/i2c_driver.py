@@ -40,24 +40,34 @@ class Bus:
     def write(self, byte):
         for index in range(7, -1, -1):
             self.hold(scl=0, sda=(byte >> index) & 1)
-            self.hold(scl=1)
+            self.clock_high()
         self.hold(scl=0, sda=1)
-        self.hold(scl=1)
+        self.clock_high()
         acknowledged = not self.data
         self.hold(scl=0)
         return acknowledged
+
+    def clock_high(self):
+        self.scl = 1
+        waited = 0
+        while self.output["oe"] & 2:
+            self.hold(1)
+            waited += 1
+            if waited > 4096:
+                raise RuntimeError("Controller waiting for stretched SCL; supply target data")
+        self.hold(self.spacing, scl=1)
 
     def read(self, ack=False):
         result = 0
         self.hold(sda=1)
         for _ in range(8):
-            self.hold(scl=1)
+            self.clock_high()
             if self.output["oe"] & 2:
                 raise RuntimeError("Controller must wait for stretched SCL")
             result = (result << 1) | int(self.data)
             self.hold(scl=0)
         self.hold(sda=0 if ack else 1)
-        self.hold(scl=1)
+        self.clock_high()
         self.hold(scl=0)
         self.hold(sda=1)
         return result

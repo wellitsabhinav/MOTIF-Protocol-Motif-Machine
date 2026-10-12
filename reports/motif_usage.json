@@ -32,10 +32,11 @@
     "guardian_age_trip": 17,
     "diagnostics": 9,
     "fifos": 78,
-    "byte_exchange": 17
+    "byte_exchange": 18,
+    "pending_timer_start": 1
   },
   "allocated_config_bits": 77,
-  "allocated_state_bits": 205,
+  "allocated_state_bits": 207,
   "configurations": {
     "spi_target": {
       "motif_firings": {
@@ -88,6 +89,7 @@
       ],
       "maximum_observed_firings_per_cycle": 3,
       "qualified_event_to_rx_action_cycles": 0,
+      "configured_tx_prepare_to_scl_release_cycles": null,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
       "protocol_specific_hardware": []
     },
@@ -133,6 +135,7 @@
       ],
       "maximum_observed_firings_per_cycle": 2,
       "qualified_event_to_rx_action_cycles": 1,
+      "configured_tx_prepare_to_scl_release_cycles": null,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
       "protocol_specific_hardware": []
     },
@@ -177,19 +180,21 @@
       ],
       "maximum_observed_firings_per_cycle": 2,
       "qualified_event_to_rx_action_cycles": 1,
+      "configured_tx_prepare_to_scl_release_cycles": null,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
       "protocol_specific_hardware": []
     },
     "i2c_target": {
       "motif_firings": {
-        "BYTE_EXCHANGE": 11,
+        "BYTE_EXCHANGE": 12,
         "FRAME_ACQUIRE": 2,
         "FRAME_RELEASE": 1,
         "RESET_COUNTER": 3,
         "SHIFT_RX_COUNT": 25,
-        "SHIFT_TX": 9
+        "SHIFT_TX": 9,
+        "TIMED_SAMPLE": 1
       },
-      "unique_motif_types": 6,
+      "unique_motif_types": 7,
       "event_routes": [
         [
           "sda_edge/scl_level",
@@ -209,6 +214,14 @@
         ],
         [
           "fifo_ready",
+          "tx_prepare"
+        ],
+        [
+          "turnaround_begin",
+          "timer_start"
+        ],
+        [
+          "timer_sample",
           "stretch_release"
         ],
         [
@@ -216,7 +229,7 @@
           "guardian"
         ]
       ],
-      "event_route_count": 6,
+      "event_route_count": 8,
       "data_routes": [
         "rx->first_word_match",
         "address_constant->first_word_match",
@@ -229,6 +242,7 @@
       ],
       "maximum_observed_firings_per_cycle": 2,
       "qualified_event_to_rx_action_cycles": 0,
+      "configured_tx_prepare_to_scl_release_cycles": 65,
       "pin_to_action_cycles": "2..3 with input phase; timer adds one registered event cycle",
       "protocol_specific_hardware": [
         "bounded ninth-clock byte exchange"
@@ -279,7 +293,8 @@
     ],
     "TIMED_SAMPLE": [
       "uart_rx",
-      "timed_stream"
+      "timed_stream",
+      "i2c_target"
     ]
   },
   "motifs": {
@@ -421,7 +436,8 @@
       "instances": 1,
       "protocols": [
         "uart_rx",
-        "timed_stream"
+        "timed_stream",
+        "i2c_target"
       ],
       "storage_group": "timer",
       "state_bits_in_shared_group": 22,
@@ -453,23 +469,26 @@
         "i2c_target"
       ],
       "storage_group": "byte_exchange",
-      "state_bits_in_shared_group": 17,
+      "state_bits_in_shared_group": 18,
       "configuration_fields": [
         "address",
         "ack_address",
         "ack_data",
-        "exchange"
+        "exchange",
+        "period"
       ],
-      "configuration_bits_in_referenced_fields": 10,
+      "configuration_bits_in_referenced_fields": 26,
       "input_events": [
         "clock edges",
         "byte_complete",
-        "fifo_ready"
+        "fifo_ready",
+        "timer sample"
       ],
       "output_events": [
         "response",
         "turnaround",
-        "stretch"
+        "stretch",
+        "timer start"
       ],
       "data_inputs": [
         "received byte",

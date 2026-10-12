@@ -75,6 +75,7 @@ class Engine:
         self.pending = None
         self.exchange.clear()
         self.pending_bit = 0
+        self.pending_timer_start = False
         self.cycle = 0
         self.faults = set()
 
@@ -101,6 +102,7 @@ class Engine:
         self.timer.stop()
         self.pending = None
         self.exchange.clear()
+        self.pending_timer_start = False
 
     def step(self, pins, reset=False, abort=False, requests=None):
         cfg = self.config
@@ -109,6 +111,8 @@ class Engine:
         events = []
         byte = None
         previous_pending = self.pending
+        previous_timer_start = self.pending_timer_start
+        self.pending_timer_start = False
         sampled_bit = self.pending_bit if previous_pending == "sample" else bool(edge.level & (1 << cfg.rx_pin))
         self.pending = None
         framed_level = not bool(edge.level & (1 << cfg.frame_pin))
@@ -151,10 +155,15 @@ class Engine:
                 exchange_fires, exchange_events, byte = self.exchange.tick(
                     bool(edge.rising & (1 << cfg.clock_pin)), bool(edge.falling & (1 << cfg.clock_pin)),
                     bool(edge.level & (1 << cfg.rx_pin)), self.rx, self.tx,
-                    self.rx_fifo, self.tx_fifo, self.fifo_depth)
+                    self.rx_fifo, self.tx_fifo, self.fifo_depth, previous_pending == "sample")
                 fires += exchange_fires
                 events += exchange_events
-            if cfg.sample == "timer":
+                self.pending_timer_start = "turnaround_begin" in exchange_events
+                if previous_pending == "sample":
+                    self.timer.stop()
+            if previous_timer_start and cfg.exchange:
+                self.timer.start()
+            elif cfg.sample == "timer" or (cfg.exchange and self.exchange.phase == "settle"):
                 self.pending = self.timer.tick(bool(edge.level & (1 << cfg.rx_pin)))
                 self.pending_bit = bool(edge.level & (1 << cfg.rx_pin))
                 if self.pending:

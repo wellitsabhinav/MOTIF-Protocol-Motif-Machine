@@ -37,3 +37,8 @@ model event-interface groups are not physical wire or selector counts. Per-motif
 metadata identifies shared storage/configuration groups so they are not summed
 twice. RTL mux cells and hierarchy area provide separate implementation evidence.
 Configuration and pad-request validation reject values without bounded encodings.
+Clock-stretch tests keep controller SCL released high as TX data becomes ready,
+then verify target-held low through setup for both first-bit values. The earlier
+test pulled controller SCL low again and missed premature target release. The
+corrected mapping reuses timed sampling for the setup interval and reruns the
+full suite with an independent controller that honors stretched clock periods.
