@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "kind": "routed_cmos5l_i2c_promotion",
+  "source_sha": "2aa8829ee393908384d0e180fd3ab57f1e5dc002",
+  "workflow_run_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38230818123",
+  "clock_period_ns": 20,
+  "tile_size": "6x4",
+  "die_bbox_um": "0.0 0.0 1289.28 710.64",
+  "scope": "SPI target, UART receive, timed stream and seven-bit I2C target; no routed reference",
+  "measurements": {
+    "stdcell_count": 3209,
+    "stdcell_area_um2": 47805.8,
+    "register_count": 350,
+    "core_area_um2": 902417,
+    "stdcell_utilization": 0.0529753,
+    "detailed_wirelength_um": 98152,
+    "global_wirelength_um": 144144,
+    "vias": 18424,
+    "detailed_route_drc": 0,
+    "magic_drc": 0,
+    "lvs_errors": 0,
+    "max_fanout_violations": 22,
+    "max_slew_violations": 0,
+    "max_cap_violations": 0,
+    "hold_buffer_count": 542,
+    "timing_repair_buffer_area_um2": 10360.2
+  },
+  "corners": {
+    "nom_fast_1p32V_m40C": {
+      "setup_worst_slack_ns": 9.627912961621032,
+      "hold_worst_slack_ns": 0.1256141615168045,
+      "setup_wns_ns": 0,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": 0,
+      "hold_tns_ns": 0,
+      "setup_violations": 0,
+      "hold_violations": 0,
+      "first_reported_setup_path": {
+        "startpoint": "rst_n (input port clocked by clk)",
+        "endpoint": "uio_out[3] (output port clocked by clk)"
+      }
+    },
+    "nom_slow_1p08V_125C": {
+      "setup_worst_slack_ns": 6.501034561354756,
+      "hold_worst_slack_ns": 0.6608011547207961,
+      "setup_wns_ns": 0,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": 0,
+      "hold_tns_ns": 0,
+      "setup_violations": 0,
+      "hold_violations": 0,
+      "first_reported_setup_path": {
+        "startpoint": "rst_n (input port clocked by clk)",
+        "endpoint": "uio_out[3] (output port clocked by clk)"
+      }
+    },
+    "nom_typ_1p20V_25C": {
+      "setup_worst_slack_ns": 8.47855765149632,
+      "hold_worst_slack_ns": 0.3215114931956094,
+      "setup_wns_ns": 0,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": 0,
+      "hold_tns_ns": 0,
+      "setup_violations": 0,
+      "hold_violations": 0,
+      "first_reported_setup_path": {
+        "startpoint": "rst_n (input port clocked by clk)",
+        "endpoint": "uio_out[3] (output port clocked by clk)"
+      }
+    }
+  },
+  "global_route_layers": {
+    "Metal1": {
+      "resources": 0,
+      "demand": 0,
+      "usage_percent": 0.0,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Metal2": {
+      "resources": 159079,
+      "demand": 4617,
+      "usage_percent": 2.9,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Metal3": {
+      "resources": 194422,
+      "demand": 8586,
+      "usage_percent": 4.42,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Metal4": {
+      "resources": 156558,
+      "demand": 23,
+      "usage_percent": 0.01,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    },
+    "Total": {
+      "resources": 510059,
+      "demand": 13226,
+      "usage_percent": 2.59,
+      "maximum_horizontal_overflow": 0,
+      "maximum_vertical_overflow": 0,
+      "total_overflow": 0
+    }
+  },
+  "placement_weighted_congestion": 0.8001,
+  "limitations": "STA under official template constraints; zero-delay gate simulation is separate. Average layer usage does not bound local concentration. Cell area excludes filler; tile allocation is not optimized.",
+  "checks": {
+    "gds_build": "success",
+    "zero_delay_gate_test": "success",
+    "official_precheck": "success"
+  },
+  "flow_lock": {
+    "schema_version": 1,
+    "template": {
+      "repository": "TinyTapeout/ttihp-verilog-template",
+      "revision": "b86a2a781484bcab7ba522dc5de540086695a430"
+    },
+    "gds_action": {
+      "repository": "TinyTapeout/tt-gds-action",
+      "revision": "3412659307918422f3f0727917cf9b499aaca588"
+    },
+    "support_tools": {
+      "repository": "TinyTapeout/tt-support-tools",
+      "revision": "d66cf179e7bc4d296362ab7e2e3b344dc3c4f665"
+    },
+    "pdk": {
+      "name": "ihp-sg13cmos5l",
+      "repository": "IHP-GmbH/IHP-Open-PDK",
+      "revision": "2bbec755dc67ca3db0261c3d6163e15735d66710"
+    },
+    "librelane": "3.1.0.dev3",
+    "oss_cad_suite": "2026-10-11",
+    "oss_cad_action": "c7845bc0d335c8076aa22047e85972caa8a916df",
+    "python": "3.12",
+    "pytest": "8.3.5",
+    "cocotb": "2.0.1",
+    "cocotb_python": "3.11",
+    "cocotb_iverilog": "TinyTapeout/iverilog v13.0, iverilog_13.0-1_amd64.deb",
+    "local_tools": {
+      "iverilog": "12.0 devel s20150603-1391-gd480c4d7d",
+      "verilator": "5.020",
+      "yosys": "0.30+48 b5b0b7e83"
+    }
+  },
+  "artifact": {
+    "id": 11740048600,
+    "name": "GDS_logs",
+    "sha256": "896e5fed346ce1021f2544079badeb6dad172eac7ee2616df83cfd2cb8cbbb87"
+  },
+  "classification": "MOTIF_I2C_PHYSICAL_QUALIFICATION_PASSED",
+  "circuit_correspondence_report": "experiments/generalization/physical_correspondence.json",
+  "zero_delay_gate_test_cases": [
+    "runtime_protocol_configurations",
+    "runtime_i2c_qualification"
+  ]
+}
