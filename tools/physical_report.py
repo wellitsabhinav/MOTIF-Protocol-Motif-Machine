@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 
-def summarize(root, run_id, source_sha):
+def summarize(root, run_id, source_sha, scope=None):
     root = Path(root)
     metrics = json.loads((root / "final/metrics.json").read_text())
     placement = next(root.glob("*-openroad-globalplacement/openroad-globalplacement.log")).read_text()
@@ -43,7 +43,7 @@ def summarize(root, run_id, source_sha):
     result = {"schema_version": 1, "kind": "routed_cmos5l_subset", "source_sha": source_sha,
               "workflow_run_url": f"https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/{run_id}",
               "clock_period_ns": 20, "tile_size": "6x4", "die_bbox_um": metrics["design__die__bbox"],
-              "scope": "SPI target, UART receive and externally framed timed stream; I2C model only; reference has no routed comparison",
+              "scope": scope or "SPI target, UART receive and externally framed timed stream; I2C model only; reference has no routed comparison",
               "measurements": {field: metrics[key] for field, key in fields.items()}, "corners": corners,
               "global_route_layers": layers,
               "placement_weighted_congestion": float(re.search(r"final weighted congestion: ([\d.]+)", placement)[1]),
@@ -58,7 +58,8 @@ if __name__ == "__main__":
     parser.add_argument("--run-id", required=True, type=int)
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--output", default="reports/physical_motif.json")
+    parser.add_argument("--scope", help="Explicit tested protocol scope; does not change historical reports")
     args = parser.parse_args()
-    result = summarize(args.run_directory, args.run_id, args.source_sha)
+    result = summarize(args.run_directory, args.run_id, args.source_sha, args.scope)
     Path(args.output).write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     print(args.output)

@@ -7,6 +7,7 @@ project:
   tiles: "6x4"
   top_module: "tt_um_wellitsabhinav_motif"
   source_files:
+    - "motif_byte_exchange.sv"
     - "motif_core.sv"
     - "motif_event_frontend.sv"
     - "motif_fifo.sv"

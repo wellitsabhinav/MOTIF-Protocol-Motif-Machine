@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "physical_source_sha": "2aa8829ee393908384d0e180fd3ab57f1e5dc002",
+  "current_source_sha": "13dc0c506908464ecdb56bc06e36a8c05fe71211",
+  "raw_source_equality": false,
+  "all_other_boundary_sources_equal": true,
+  "permitted_difference": "One existing uninitialized wire declaration moved before its first use",
+  "declaration_insensitive_source_equality": true,
+  "original_core_sha256": "1c5d41890e95115b377ad5f89a21c9a91e7ed831d8ea654fe2ec32e041f3a505",
+  "current_core_sha256": "1d0d5551e758f253033e9bbb0922b67db811830dcf3b90ed57c18a96f35100e8",
+  "limitations": "Circuit correspondence for this specific declaration-only repair. Not raw source identity and not permission to bypass the CI gate-retest source-equality requirement."
+}

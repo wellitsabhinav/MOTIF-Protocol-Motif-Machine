@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "baseline": "initial_model_and_rtl_subset",
+  "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+  "hash_convention": "SHA-256 of text with CRLF normalized to LF",
+  "control_boundary": "All motif/model sources, synthesizable integration, pin/configuration logic and physical flow inputs; existing interface only",
+  "motifs": [
+    {
+      "name": "SHIFT_RX_COUNT",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/motifs/shift.py",
+      "model_actor": "ShiftRXCount.fire",
+      "rtl_source": "src/motif_shift_rx_count.sv",
+      "rtl_module": "motif_shift_rx_count",
+      "configuration_fields": [
+        "rx_pin",
+        "sample",
+        "lsb_first"
+      ],
+      "state_groups": [
+        "rx"
+      ],
+      "input_events": [
+        "sample"
+      ],
+      "output_events": [
+        "byte_complete"
+      ],
+      "data_inputs": [
+        "pin bit"
+      ],
+      "data_outputs": [
+        "received byte"
+      ],
+      "protocol_users": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": false,
+      "assumptions": []
+    },
+    {
+      "name": "SHIFT_TX",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/motifs/shift.py",
+      "model_actor": "ShiftTX",
+      "rtl_source": "src/motif_shift_tx.sv",
+      "rtl_module": "motif_shift_tx",
+      "configuration_fields": [
+        "tx_pin",
+        "transmit",
+        "lsb_first",
+        "fill"
+      ],
+      "state_groups": [
+        "tx"
+      ],
+      "input_events": [
+        "falling clock",
+        "load"
+      ],
+      "output_events": [
+        "tx_complete"
+      ],
+      "data_inputs": [
+        "tx_fifo",
+        "constant"
+      ],
+      "data_outputs": [
+        "pad bit"
+      ],
+      "protocol_users": [
+        "spi_target",
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": false,
+      "assumptions": []
+    },
+    {
+      "name": "FRAME_ACQUIRE",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/engine.py",
+      "model_actor": "Engine.step",
+      "rtl_source": "src/motif_core.sv",
+      "rtl_module": "motif_core",
+      "configuration_fields": [
+        "frame",
+        "frame_pin"
+      ],
+      "state_groups": [
+        "active"
+      ],
+      "input_events": [
+        "frame_start"
+      ],
+      "output_events": [
+        "acquire"
+      ],
+      "data_inputs": [],
+      "data_outputs": [],
+      "protocol_users": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": true,
+      "assumptions": [
+        "fixed level/falling acquisition modes; two-wire framing exists in model only"
+      ]
+    },
+    {
+      "name": "FRAME_RELEASE",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/engine.py",
+      "model_actor": "Engine._release/step",
+      "rtl_source": "src/motif_core.sv",
+      "rtl_module": "motif_core",
+      "configuration_fields": [
+        "frame",
+        "frame_pin"
+      ],
+      "state_groups": [
+        "active"
+      ],
+      "input_events": [
+        "frame_stop",
+        "abort",
+        "timeout"
+      ],
+      "output_events": [
+        "release"
+      ],
+      "data_inputs": [],
+      "data_outputs": [],
+      "protocol_users": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": true,
+      "assumptions": [
+        "fixed level/falling acquisition modes; two-wire framing exists in model only"
+      ]
+    },
+    {
+      "name": "RESET_COUNTER",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/motifs/shift.py",
+      "model_actor": "ShiftRXCount.clear",
+      "rtl_source": "src/motif_shift_rx_count.sv",
+      "rtl_module": "motif_shift_rx_count",
+      "configuration_fields": [],
+      "state_groups": [
+        "rx"
+      ],
+      "input_events": [
+        "acquire",
+        "release"
+      ],
+      "output_events": [],
+      "data_inputs": [],
+      "data_outputs": [],
+      "protocol_users": [
+        "spi_target",
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": false,
+      "assumptions": []
+    },
+    {
+      "name": "TIMED_SAMPLE",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/motifs/timed.py",
+      "model_actor": "TimedSample",
+      "rtl_source": "src/motif_timed_sample.sv",
+      "rtl_module": "motif_timed_sample",
+      "configuration_fields": [
+        "period",
+        "validate_start",
+        "validate_stop"
+      ],
+      "state_groups": [
+        "timer"
+      ],
+      "input_events": [
+        "acquire",
+        "timer expiry"
+      ],
+      "output_events": [
+        "sample",
+        "validation"
+      ],
+      "data_inputs": [
+        "pin bit"
+      ],
+      "data_outputs": [
+        "captured bit"
+      ],
+      "protocol_users": [
+        "uart_rx",
+        "timed_stream",
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": true,
+      "assumptions": [
+        "optional low start and high stop validation around eight samples"
+      ]
+    },
+    {
+      "name": "BYTE_EXCHANGE",
+      "source_sha": "cecd76bc4eabab27c8df5aa00675dec05b1bf78c",
+      "model_source": "motif/motifs/exchange.py",
+      "model_actor": "ByteExchange",
+      "rtl_source": null,
+      "rtl_module": null,
+      "configuration_fields": [
+        "address",
+        "ack_address",
+        "ack_data",
+        "exchange",
+        "period"
+      ],
+      "state_groups": [
+        "byte_exchange"
+      ],
+      "input_events": [
+        "clock edges",
+        "byte_complete",
+        "fifo_ready",
+        "timer sample"
+      ],
+      "output_events": [
+        "response",
+        "turnaround",
+        "stretch",
+        "timer start"
+      ],
+      "data_inputs": [
+        "received byte",
+        "address_constant"
+      ],
+      "data_outputs": [
+        "accepted byte",
+        "drive requests"
+      ],
+      "protocol_users": [
+        "i2c_target"
+      ],
+      "contains_protocol_specific_assumptions": true,
+      "assumptions": [
+        "seven-bit first-word match with bit zero selecting direction",
+        "fixed eight-bit data and ninth-clock ACK",
+        "active-low controller ACK continues TX; NACK terminates",
+        "shared open-drain data and distinct external clock",
+        "FIFO readiness stretches clock; resolved first bit checked after shared timer expiry"
+      ]
+    }
+  ],
+  "firing_aliases": {
+    "SHIFT_TX_LOAD": "SHIFT_TX",
+    "MATCH_FIRST_WORD": "BYTE_EXCHANGE",
+    "OPEN_DRAIN_ACK": "BYTE_EXCHANGE",
+    "OPEN_DRAIN_ACK_SAMPLE": "BYTE_EXCHANGE",
+    "TURNAROUND": "BYTE_EXCHANGE",
+    "STRETCH_UNTIL_READY": "BYTE_EXCHANGE"
+  },
+  "configuration_widths": {
+    "frame": 2,
+    "frame_pin": 3,
+    "clock_pin": 3,
+    "rx_pin": 3,
+    "tx_pin": 3,
+    "sample": 1,
+    "transmit": 1,
+    "lsb_first": 1,
+    "period": 16,
+    "validate_start": 1,
+    "validate_stop": 1,
+    "open_drain": 8,
+    "watchdog": 16,
+    "fill": 8,
+    "exchange": 1,
+    "address": 7,
+    "ack_address": 1,
+    "ack_data": 1
+  },
+  "state_groups_model_estimates": {
+    "frontend": 26,
+    "rx": 11,
+    "tx": 12,
+    "timer": 22,
+    "pending_sample": 4,
+    "validated_byte": 8,
+    "active": 1,
+    "guardian_age_trip": 17,
+    "diagnostics": 11,
+    "fifos": 78,
+    "byte_exchange": 18,
+    "pending_timer_start": 1,
+    "own_drive_history": 6
+  },
+  "source_hashes": {
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    "info.yaml": "6b5f3fb7794e1196d797a212a311cb85ab5866e2fae5ef6971024f57da5f1d64",
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "84ccfb7b593e411bb32e538c33e3884688cfcacb6e8b4701ca4ec7d56f87ebc7",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/exchange.py": "944a2e1180645abbcdaf8eb70aaf129dea8cf53e97814f25b35cf6889e1961c4",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "809824f17397c5230b913bc7eccb6103ba8c01750b4adb8923700e926d68d6c5",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+    "src/motif_core.sv": "eddd2e38ec33c922c0361af8b7686c6fc7fedf35af20863b066568b9d86f147a",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5421356328e70857cc85622ffd9de519526136478f46f770db2078cbf1b599a",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_watchdog.sv": "663573a962481e08ea55440a16f22bf4873f49098c1df36209fdf7fd135d4d75",
+    "src/tt_um_wellitsabhinav_motif.sv": "088a0f7a6a9993298f5cae629f1d3df91ab43a2be55ed12b8d5502e0b8a8a908"
+  },
+  "support_components": [
+    "frontend",
+    "fixed event/data integration",
+    "FIFO",
+    "guardian",
+    "watchdog",
+    "host/configuration",
+    "guarded drive history"
+  ],
+  "exchange_phases": [
+    "rx",
+    "decide",
+    "ack_setup",
+    "ack_hold",
+    "tx",
+    "controller_ack",
+    "stretch",
+    "settle",
+    "idle"
+  ],
+  "counting_contract": "Motif suboperations count once per type per cycle. Storage groups and configuration fields can be shared and must not be summed across motif entries. Event routes are named model interface groups, not physical wire or selector counts. Byte routes include validation/match storage; host routes are reported separately."
+}

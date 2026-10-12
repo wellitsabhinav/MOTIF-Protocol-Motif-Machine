@@ -46,7 +46,7 @@ then verify target-held low through setup for both first-bit values. The earlier
 test pulled controller SCL low again and missed premature target release. The
 corrected mapping reuses timed sampling for the setup interval and reruns the
 full suite with an independent controller that honors stretched clock periods.
-The current suite has 73 tests. Adversarial requests also cover receive-only
+The current suite has 83 tests. Adversarial requests also cover receive-only
 ownership, aliased target outputs, delayed self-generated START after abort,
 own clock truncation and own SDA activity attempting to postpone timeout.
 The sequential SPI reference now also passes the same reset, partial-abort,
@@ -54,3 +54,10 @@ completed-RX/queued-TX preservation, watchdog and fresh-frame rearm contract.
 SPI boundary patterns additionally compare both models at two, three and four
 cycles per fixture phase, with MOSI setup, clock high and clock low held in
 separate phases. This exercises synchronization and spacing boundaries.
+
+The frozen campaign adds manifest-integrity and independent Microwire-oracle
+checks. `python -m tools.generalization --gate 1` compares 88,287 I²C cycles;
+`--gate 2` reproduces six failing Microwire configurations with model/RTL
+agreement. Reproducing a negative architectural result is a passing regression.
+The campaign stops before Gate 3, and integrity checks prohibit changing the
+frozen hardware to make the workload pass.

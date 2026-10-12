@@ -13,9 +13,11 @@ Protocol helpers construct configurations of the same engine. Configuration is
 accepted only while disabled. The guardian receives pad requests and ownership
 information independently of shifter contents. It controls all final DATA/OE.
 Open-drain requests can pull low or release. Conflicting requests release a pad.
-Receive-only configurations grant no transmit ownership. A target transmit pin
-must be separate from protected input roles; the RTL guardian independently
-clamps host-loaded assignments that violate this rule.
+Non-exchange receive-only configurations grant no transmit ownership. Their
+target transmit pin must be separate from protected input roles; the RTL guardian
+independently clamps host-loaded assignments that violate this rule. Exchange
+shares one data pin for RX/TX and may own a separate clock for stretching. Read
+disable still permits acknowledgement of write transactions on SDA.
 
 The current model has one sample timer. Additional timer instances are not yet
 needed by the qualified configurations. Pin levels are digital; analog thresholds,
@@ -26,8 +28,10 @@ response, bidirectional handoff and FIFO-readiness stretching. Its nine phases
 are fixed implementation state; configuration cannot add states or transitions.
 It uses the same receive/transmit shifters and FIFOs as other configurations.
 This motif currently serves only I²C and therefore remains protocol-specific
-machinery in the accounting report. Its usefulness beyond that mapping is not
-established. No general-purpose sequencing escape mechanism was introduced.
+machinery in the accounting report. The frozen RTL fails bounded Microwire READ
+because first-word interpretation and per-byte controller acknowledgement are
+structural; no generic reuse is established. No general-purpose sequencing
+escape mechanism was introduced. See [qualification results](generalization.md).
 The existing timed-sample actor also supplies the data-setup interval before
 releasing stretched SCL. This adds a fixed event connection and a settle phase,
 without a new timing actor or arbitrary state-transition table.

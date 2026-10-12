@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "workload": "bounded_93LC46_x16_READ",
+  "specification": "https://ww1.microchip.com/downloads/en/devicedoc/21712B.pdf",
+  "specification_sections": ["Table 1-1", "2.1", "2.2", "2.4", "Figure 2-1"],
+  "memory_address": 0,
+  "response_word": 42330,
+  "command": {"start_bits": [1], "opcode_bits": [1, 0], "address_bits": 6, "serial_order": "MSB first"},
+  "response": {"dummy_zero_at_final_address_clock": true, "data_bits": 16, "serial_order": "MSB first", "inter_byte_ack": false},
+  "pins": {"cs": 0, "clock": 1, "shared_data_diagnostic": 2},
+  "clock_owner": "controller only",
+  "cs_active_level": 1,
+  "bounded_scope": "One READ of one preloaded word; no EEPROM memory or programming",
+  "independence": "CS framing, nine-bit command and continuous sixteen-bit response differ from I2C address/direction bytes and per-byte ninth-clock acknowledgement",
+  "diagnostic_relaxations": "A shared open-drain data line and prearmed falling-frame receiver are tested as generous alternatives; they do not constitute a compliant Microwire implementation"
+}

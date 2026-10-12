@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "definition": "protocol_reuse(protocol,motif) = the same frozen RTL implementation is exercised in validated model/RTL and host protocol tests; failed attempts are not users",
+  "frozen_source_sha": "47954e79ab912415c554d6577f53524ada25415b",
+  "manifest_sha256": "e78a3157a7b2f237b3d1bd163dd5fe6b26ca993154f8e38c15603c0e8f4fb3c6",
+  "physical_source_sha": "2aa8829ee393908384d0e180fd3ab57f1e5dc002",
+  "protocols": {
+    "spi_target": {
+      "motifs": [
+        "FRAME_ACQUIRE",
+        "FRAME_RELEASE",
+        "RESET_COUNTER",
+        "SHIFT_RX_COUNT",
+        "SHIFT_TX"
+      ],
+      "event_routes": 7,
+      "data_routes": 3,
+      "host_data_routes": 2,
+      "validated_against_frozen_implementation": true,
+      "physical": true,
+      "new_rtl_required_relative_to_initial": false
+    },
+    "uart_rx": {
+      "motifs": [
+        "FRAME_ACQUIRE",
+        "FRAME_RELEASE",
+        "RESET_COUNTER",
+        "SHIFT_RX_COUNT",
+        "TIMED_SAMPLE"
+      ],
+      "event_routes": 5,
+      "data_routes": 2,
+      "host_data_routes": 2,
+      "validated_against_frozen_implementation": true,
+      "physical": true,
+      "new_rtl_required_relative_to_initial": false
+    },
+    "timed_stream": {
+      "motifs": [
+        "FRAME_ACQUIRE",
+        "FRAME_RELEASE",
+        "RESET_COUNTER",
+        "SHIFT_RX_COUNT",
+        "TIMED_SAMPLE"
+      ],
+      "event_routes": 5,
+      "data_routes": 1,
+      "host_data_routes": 2,
+      "validated_against_frozen_implementation": true,
+      "physical": true,
+      "new_rtl_required_relative_to_initial": false
+    },
+    "i2c_target": {
+      "motifs": [
+        "BYTE_EXCHANGE",
+        "FRAME_ACQUIRE",
+        "FRAME_RELEASE",
+        "RESET_COUNTER",
+        "SHIFT_RX_COUNT",
+        "SHIFT_TX",
+        "TIMED_SAMPLE"
+      ],
+      "event_routes": 8,
+      "data_routes": 4,
+      "host_data_routes": 2,
+      "validated_against_frozen_implementation": true,
+      "physical": true,
+      "new_rtl_required_relative_to_initial": true
+    }
+  },
+  "motif_centric": {
+    "SHIFT_RX_COUNT": {
+      "spi_target": true,
+      "uart_rx": true,
+      "timed_stream": true,
+      "i2c_target": true
+    },
+    "SHIFT_TX": {
+      "spi_target": true,
+      "uart_rx": false,
+      "timed_stream": false,
+      "i2c_target": true
+    },
+    "FRAME_ACQUIRE": {
+      "spi_target": true,
+      "uart_rx": true,
+      "timed_stream": true,
+      "i2c_target": true
+    },
+    "FRAME_RELEASE": {
+      "spi_target": true,
+      "uart_rx": true,
+      "timed_stream": true,
+      "i2c_target": true
+    },
+    "RESET_COUNTER": {
+      "spi_target": true,
+      "uart_rx": true,
+      "timed_stream": true,
+      "i2c_target": true
+    },
+    "TIMED_SAMPLE": {
+      "spi_target": false,
+      "uart_rx": true,
+      "timed_stream": true,
+      "i2c_target": true
+    },
+    "BYTE_EXCHANGE": {
+      "spi_target": false,
+      "uart_rx": false,
+      "timed_stream": false,
+      "i2c_target": true
+    }
+  },
+  "protocols_per_motif": {
+    "SHIFT_RX_COUNT": 4,
+    "SHIFT_TX": 2,
+    "FRAME_ACQUIRE": 4,
+    "FRAME_RELEASE": 4,
+    "RESET_COUNTER": 4,
+    "TIMED_SAMPLE": 3,
+    "BYTE_EXCHANGE": 1
+  },
+  "motif_types_shared_by_at_least_two_protocols": 6,
+  "motif_types_total": 7,
+  "configuration_only_existing_protocols": [
+    "spi_target",
+    "uart_rx",
+    "timed_stream"
+  ],
+  "i2c_status": "Existing model machinery required RTL promotion before freezing",
+  "unseen_protocol_status": "UNATTEMPTED: Gate 2 stop condition",
+  "rtl_area_fraction_shared": null,
+  "shared_state_fraction": null,
+  "unavailable_metrics_reason": "Integrated control/support cannot be attributed by motif without arbitrary allocation; per-motif group state estimates share storage and must not be summed",
+  "allocated_configuration_bits_rtl": 78,
+  "route_count_contract": "Named logical interface groups, not programmable selectors or physical wires; host routes separate",
+  "state_count_contract": "Shared groups counted once; BYTE_EXCHANGE has eighteen declared bits. Model estimates, nominal mapping and routed sequential counts remain separate"
+}

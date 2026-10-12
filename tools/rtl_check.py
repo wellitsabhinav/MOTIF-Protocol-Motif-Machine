@@ -24,7 +24,9 @@ def simulate(name, source):
         command += ["-B", os.environ["IVERILOG_BASE"]]
     command += ["-g2012", "-s", "tb", "-o", str(output)]
     command += [str(path) for path in sorted(Path("src").glob("*.sv"))] + [str(tb)]
-    subprocess.run(command, check=True, capture_output=True, text=True)
+    compiled = subprocess.run(command, capture_output=True, text=True)
+    if compiled.returncode:
+        raise RuntimeError(compiled.stdout + compiled.stderr)
     result = subprocess.run([os.environ.get("VVP", "vvp"), str(output)], capture_output=True, text=True)
     if result.returncode:
         raise AssertionError(result.stdout + result.stderr)
@@ -166,8 +168,8 @@ def core_vectors(config, name, reference=False, spacing=8):
     header = f"""module tb;
 reg clk=0,rst_n=0,abort_in=0,push=0,pop=0;reg [7:0] pins=255,host_data=0;
 wire [7:0] rx_head,pad_data,pad_oe,status,rx_value;
-wire [2:0] rx_count,tx_count,bit_count;wire active;
-motif_core #(.REFERENCE({int(reference)})) core(clk,rst_n,1'b1,abort_in,pins,1'b{int(config.frame=='falling')},1'b{int(config.sample=='timer')},1'b{int(config.transmit)},1'b{int(config.lsb_first)},1'b{int(config.validate_start)},1'b{int(config.validate_stop)},3'd{config.frame_pin},3'd{config.clock_pin},3'd{config.rx_pin},3'd{config.tx_pin},16'd{config.period},16'd{config.watchdog},8'd{config.fill},8'd{config.open_drain},push,pop,host_data,rx_head,pad_data,pad_oe,rx_count,tx_count,status,active,rx_value,bit_count);
+wire [2:0] rx_count,tx_count,bit_count;wire active;wire [1:0] ex_status;
+motif_core #(.REFERENCE({int(reference)})) core(clk,rst_n,1'b1,abort_in,pins,1'b{int(config.frame=='falling')},1'b{int(config.sample=='timer')},1'b{int(config.transmit)},1'b{int(config.lsb_first)},1'b{int(config.validate_start)},1'b{int(config.validate_stop)},3'd{config.frame_pin},3'd{config.clock_pin},3'd{config.rx_pin},3'd{config.tx_pin},16'd{config.period},16'd{config.watchdog},8'd{config.fill},8'd{config.open_drain},push,pop,host_data,rx_head,pad_data,pad_oe,rx_count,tx_count,status,active,rx_value,bit_count,1'b0,1'b0,1'b1,1'b1,7'h52,ex_status);
 initial begin #4;clk=1;#1;clk=0;rst_n=1;
 """
     label = "reference collision/RX contract" if name == "concurrent" and reference else name + " core"
