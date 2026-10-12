@@ -88,6 +88,14 @@ def report():
                                       "limitation": "Fixed SPI reference; not equivalent multi-protocol programmability or RTL area evidence"}
     result["reuse"] = {motif: [name for name, cfg in result["configurations"].items() if motif in cfg["motif_firings"]]
                        for motif in sorted({key for cfg in result["configurations"].values() for key in cfg["motif_firings"]})}
+    result["provisioned_model_routes"] = {
+        "event_interface_groups": sorted({tuple(route) for cfg in result["configurations"].values() for route in cfg["event_routes"]}),
+        "byte_connections": sorted({route for cfg in result["configurations"].values() for route in cfg["data_routes"]}),
+        "host_connections": ["host->tx_fifo", "rx_fifo->host"],
+        "meaning": "Union of statically defined model interface groups; not physical selector or wire counts"}
+    for cfg in result["configurations"].values():
+        cfg["active_byte_route_count"] = len(cfg["data_routes"])
+        cfg["active_event_interface_group_count"] = len(cfg["event_routes"])
     groups = {"SHIFT_RX_COUNT": ("rx", ["rx_pin", "sample", "lsb_first"], ["sample"], ["byte_complete"], ["pin bit"], ["received byte"]),
               "SHIFT_TX": ("tx", ["tx_pin", "transmit", "lsb_first", "fill"], ["falling clock", "load"], ["tx_complete"], ["tx_fifo", "constant"], ["pad bit"]),
               "FRAME_ACQUIRE": ("active", ["frame", "frame_pin"], ["frame_start"], ["acquire"], [], []),

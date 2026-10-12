@@ -37,6 +37,9 @@ validation storage in byte routes and lists host FIFO routes separately. Named
 model event-interface groups are not physical wire or selector counts. Per-motif
 metadata identifies shared storage/configuration groups so they are not summed
 twice. RTL mux cells and hierarchy area provide separate implementation evidence.
+The union of defined model mappings provisions 18 named event-interface groups,
+seven byte connections and two host connections. Active mappings use 5..8 event
+groups and 1..4 byte connections. These estimates are not physical routing counts.
 Configuration and pad-request validation reject values without bounded encodings.
 Clock-stretch tests keep controller SCL released high as TX data becomes ready,
 then verify target-held low through setup for both first-bit values. The earlier

@@ -9,6 +9,10 @@ Acquisition clears partial receive state and arms configured actors. A terminal
 receive firing samples and shifts the eighth bit, resets the bit count and emits
 byte completion together. Timed sampling captures its input bit with its event;
 the receive actor consumes that registered event on the following cycle.
+For unvalidated RX, FIFO deposit participates in the same compound terminal
+firing using the precomputed next byte. UART stop validation and byte-exchange
+decisions consume registered completion state on a later tick. Terminal TX
+advance and refill likewise commit together as one compound firing.
 
 Release discards partial receive assembly and in-flight transmit state. Completed
 RX bytes and queued TX bytes remain available. Loading a TX shifter consumes its
