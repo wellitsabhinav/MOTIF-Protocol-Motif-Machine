@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "starting_source": "5601be5c15a844e4a1ebdb13c15ea17034f38fa5",
+  "historical_v2_source": "490a50c3e03f1be96784fd27f9d64b718c2aa5cc",
+  "classification": "MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL",
+  "starting_tests": 109,
+  "starting_working_tree_clean": true,
+  "historical_evidence_sha256_lf": {
+    "frozen_v2_manifest.json": "9e95be597dbbab1fa267d5936b878386eedba972884acd8a8e5d653e22aadfd7",
+    "preregistered_architecture.json": "161f6887a2afe4dc301f6958a5af29a7747e2b9a4dd9fd31bb19e5fbcd0e1f2f",
+    "third_workload.json": "b2d3cf5b331bc8440806521ae8e083fa292319b49b13a984d81e95cfc4f2b309",
+    "third_result.json": "ed61601096ac02c40155f0ca0668f0ffbe3c830015ee9bb14c70319e2785d2c8",
+    "third_counterexample.json": "dd2ff68349d12e3f0cfd855401f4609e245acefcb352938ec46baf29e5868ae4",
+    "configurations/one_wire_reset_presence.json": "800b6db75c107c1d8bbc24ff1be1d849530a7819cffc3cac732f1e7c949e031d"
+  },
+  "review_findings": [
+    {
+      "name": "handoff_wait_preedge_bit",
+      "type": "model_correspondence",
+      "cycle": 25,
+      "qualified_profiles_affected": false
+    },
+    {
+      "name": "terminating_halt_fifo_cancellation",
+      "type": "model_correspondence",
+      "cycle": 18,
+      "qualified_profiles_affected": false
+    }
+  ]
+}
