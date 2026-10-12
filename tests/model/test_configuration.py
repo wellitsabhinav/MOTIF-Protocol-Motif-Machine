@@ -14,3 +14,9 @@ def test_configuration_has_a_bounded_encoding(parameters):
 def test_request_cannot_address_nonexistent_pads(arguments):
     with pytest.raises(ValueError):
         Request(*arguments)
+
+
+@pytest.mark.parametrize("pin", [0, 1, 2])
+def test_target_output_cannot_alias_protected_inputs(pin):
+    with pytest.raises(ValueError):
+        Config(tx_pin=pin)

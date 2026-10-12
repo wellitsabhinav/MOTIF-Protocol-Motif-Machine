@@ -54,5 +54,10 @@ transaction, reports `data_mismatch`, releases outputs and allows a fresh START.
 This is a check at the transmit handoff, not complete bus-collision detection.
 
 The default watchdog is disabled, allowing indefinite I²C waits; an explicitly
-enabled inactivity watchdog releases outputs on expiry. Unrelated pin activity
-does not reset that watchdog. Automatic rearm requires a qualified new START.
+enabled inactivity watchdog releases outputs on expiry. Only external SCL edges
+reset that I²C watchdog. Own SDA activity and unrelated pin activity do not.
+Six bits of guarded drive history align own clock/data requests with synchronized
+pin edges. A delayed self-generated START cannot rearm after abort. A detected
+own SCL truncation or own SDA transition during stable SCL high trips protection
+and reports `pad_timing`. This digital causality check does not prove complete
+protocol timing or bus arbitration. Automatic rearm requires a qualified new START.

@@ -17,10 +17,19 @@ mapped results exclude placement, CTS, routing and timing. Host/configuration,
 core control, timers, protection, FIFOs and shifters are reported separately;
 the numbers do not establish a general architecture advantage.
 
-The current typical mapping reports 1,690 cells and 30,251.0754 µm² for MOTIF,
-versus 1,718 cells and 30,448.6182 µm² for the reference. MOTIF has 309 registers,
-67 configuration bits, 15,137.5392 µm² sequential area and 15,113.5362 µm²
+The current typical mapping reports 1,736 cells and 30,430.0962 µm² for MOTIF,
+versus 1,721 cells and 30,508.4556 µm² for the reference. MOTIF has 309 registers,
+67 configuration bits, 15,137.5392 µm² sequential area and 15,292.5570 µm²
 combinational area. The small difference is not an established cost advantage.
 
 Initial placement/routing qualification is in progress. Routed timing,
 congestion and precheck outcomes will be recorded after the workflow completes.
+The first completed layout passed DRC/LVS and precheck. Gate-level elaboration
+required adding the pinned PDK's `sg13cmos5l_udp.v` primitive models to the test
+source list. A later ownership correction supersedes that RTL snapshot; the
+current source requires a new physical run before qualification.
+The pinned CMOS5L cells use delayed timing-check wires that Icarus does not
+drive. `tools/prepare_gate_models.py` generates an ignored functional copy with
+those wires connected to the corresponding ports, preserving PDK attribution
+and logic. Gate tests are zero-delay functional simulation; extracted timing
+is qualified separately by the flow's STA reports.

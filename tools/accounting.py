@@ -17,8 +17,8 @@ CONFIG_WIDTHS = {"frame": 2, "frame_pin": 3, "clock_pin": 3, "rx_pin": 3,
                  "address": 7, "ack_address": 1, "ack_data": 1}
 STATE_WIDTHS = {"frontend": 26, "rx": 11, "tx": 12, "timer": 22,
                 "pending_sample": 4, "validated_byte": 8, "active": 1,
-                "guardian_age_trip": 17, "diagnostics": 10, "fifos": 78,
-                "byte_exchange": 18, "pending_timer_start": 1}
+                "guardian_age_trip": 17, "diagnostics": 11, "fifos": 78,
+                "byte_exchange": 18, "pending_timer_start": 1, "own_drive_history": 6}
 
 
 def normalize(name):

@@ -5,10 +5,11 @@ class ByteExchange:
     RX/TX data remains in the shared shifters and FIFOs.
     """
 
-    def __init__(self, address, ack_address=True, ack_data=True):
+    def __init__(self, address, ack_address=True, ack_data=True, transmit_enabled=True):
         self.address = address
         self.ack_address = ack_address
         self.ack_data = ack_data
+        self.transmit_enabled = transmit_enabled
         self.clear()
 
     def clear(self):
@@ -57,7 +58,7 @@ class ByteExchange:
                 self.phase = "decide"
         elif self.phase == "decide":
                 if self.header:
-                    self.ack = (self.pending_byte >> 1) == self.address and self.ack_address
+                    self.ack = (self.pending_byte >> 1) == self.address and self.ack_address and (self.transmit_enabled or not (self.pending_byte & 1))
                     self.next_role = "tx" if self.pending_byte & 1 else "rx"
                     self.header = False
                     fires.append("MATCH_FIRST_WORD")

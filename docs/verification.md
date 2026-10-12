@@ -11,8 +11,9 @@ owners, open-drain requests, timeout, partial-frame abort, FIFO bounds, reset,
 UART stop failure and recovery without reset.
 
 CI installs the package and runs the same tests. RTL differential verification,
-formal proofs, synthesis and physical qualification are future milestones. No
-formal result is implied by simulation. Heavy physical jobs will be manually
+formal proof coverage and synthesis are recorded separately in
+`rtl-verification.md`; physical coverage is recorded in `physical.md`. No
+formal result is implied by simulation. Heavy physical jobs are manually
 dispatched. Generated runs, traces and waveforms remain untracked.
 
 I²C random seeds are 19 and 20261012, with 80 write/read transaction pairs per
@@ -42,3 +43,6 @@ then verify target-held low through setup for both first-bit values. The earlier
 test pulled controller SCL low again and missed premature target release. The
 corrected mapping reuses timed sampling for the setup interval and reruns the
 full suite with an independent controller that honors stretched clock periods.
+The current suite has 69 tests. Adversarial requests also cover receive-only
+ownership, aliased target outputs, delayed self-generated START after abort,
+own clock truncation and own SDA activity attempting to postpone timeout.

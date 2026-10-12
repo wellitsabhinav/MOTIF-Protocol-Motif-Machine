@@ -57,6 +57,17 @@ async def runtime_protocol_configurations(dut):
     await driver.tick(8)
     assert int(dut.uio_oe.value) == 0
     assert await driver.transaction(1, 3) == 178
+    await driver.transaction(2, 2, 2)
+    await driver.transaction(2, 0, 9)
+    driver.pins &= ~3
+    await driver.tick()
+    assert int(dut.uio_oe.value) == 0
+    assert await driver.transaction(1, 18) & 1
+    dut.rst_n.value = 0
+    await driver.tick(4)
+    driver.pins = 255
+    dut.rst_n.value = 1
+    await driver.tick()
     await driver.transaction(2, 0, 9)
     await driver.transaction(2, 16, 165)
     driver.pins &= ~2

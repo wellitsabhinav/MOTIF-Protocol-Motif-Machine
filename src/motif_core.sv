@@ -75,7 +75,8 @@ module motif_core #(parameter REFERENCE=0) (
     end
     wire [7:0] requests = active_o && transmit_i ? (8'b1 << tx_pin_i) : 8'b0;
     wire [7:0] requested_data = tx_bit ? requests : 8'b0;
-    wire [7:0] ownership = active_o ? (8'b1 << tx_pin_i) : 8'b0;
+    wire safe_output_assignment = tx_pin_i != frame_pin_i && tx_pin_i != clock_pin_i && tx_pin_i != rx_pin_i;
+    wire [7:0] ownership = active_o && transmit_i && safe_output_assignment ? (8'b1 << tx_pin_i) : 8'b0;
     wire raw_kill = !rst_n || !enable_i || abort_i || (!frame_falling_i && pins_i[frame_pin_i]);
     wire [2:0] violations;
     motif_pad_guardian guardian(requested_data, requests, ownership, open_drain_i, 8'b0,

@@ -3,7 +3,8 @@ module tb;
     reg clk=0,rst_n=0,ena=1;
     reg [7:0] ui=8'h02,pins=8'hff;
     wire [7:0] uo,pad_data,pad_oe;
-    tt_um_wellitsabhinav_motif dut(ui,pins,uo,pad_data,pad_oe,ena,clk,rst_n);
+    tt_um_wellitsabhinav_motif dut(.ui_in(ui),.uio_in(pins),.uo_out(uo),.uio_out(pad_data),
+                                 .uio_oe(pad_oe),.ena(ena),.clk(clk),.rst_n(rst_n));
     reg [7:0] discard,result,protocol_rx;
     integer index;
     task tick(input integer cycles);
@@ -31,6 +32,11 @@ module tb;
         tick(4);rst_n=1;tick(8);
         if(pad_oe!==0)$fatal(1,"reset/disabled pad state");
         host_read(3,result);if(result!==8'hb2)$fatal(1,"host configuration read %h",result);
+        host_write(2,2);host_write(0,9);
+        pins[1]=0;pins[0]=0;tick(8);
+        if(pad_oe!==0)$fatal(1,"aliased output gained ownership");
+        host_read(18,result);if(!result[0])$fatal(1,"aliased output fault not retained");
+        rst_n=0;tick(4);pins=8'hff;rst_n=1;tick(8);
         host_write(0,9);host_write(8'h10,8'ha5);
         pins[1]=0;tick(8);pins[0]=0;tick(8);protocol_rx=0;
         for(index=7;index>=0;index=index-1)begin

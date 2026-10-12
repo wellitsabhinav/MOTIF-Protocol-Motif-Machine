@@ -29,6 +29,8 @@ remains available while running. Periods below two inhibit engine enable.
 Reset initializes SPI pin assignments, a 434-cycle period, fill 255, watchdog
 disabled, and the engine disabled. Configuration registers allocate 67 meaningful
 bits, including enable. Other encodings belong to the model-only I²C extension.
+The guardian releases an output assigned to a protected frame, clock or RX pin
+and reports a guard fault. Receive-only configurations grant no output ownership.
 
 Examples: SPI control 9 with default pin assignments; UART control 119, frame/RX
 pin 2, sample period appropriate to baud; external timed stream control 5,

@@ -36,8 +36,8 @@ and simulator passed assertions but crashed at shutdown, so they are not used
 for cocotb qualification.
 
 `python -m tools.synthesis` reproduces generic Boolean cell counts by hierarchy.
-These counts are not technology area or timing. The current local result has 1,437
-compound-design cells and 1,422 reference cells. That small difference and equal
+These counts are not technology area or timing. The current local result has 1,467
+compound-design cells and 1,455 reference cells. That small difference and equal
 tested throughput do not establish an implementation advantage. CMOS5L mapping
 and placement/routing are a separate qualification step. I²C remains model-only.
 
@@ -52,3 +52,5 @@ after the read snapshot was previously consumed without being returned. The
 host now captures data validity with the response and commits a FIFO pop only
 for a valid snapshot. The test confirms the late byte is retained for the next
 read in both RTL variants. The cocotb version exercises the same case.
+Host tests also load an output assignment that aliases the framing input and
+confirm released pads with a retained guardian fault in both RTL variants.

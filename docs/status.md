@@ -19,7 +19,15 @@ Synthesis produces generic cell counts, without technology-area/timing claims.
 A stale framing-level reacquisition bug was fixed and regression-tested.
 
 2026-10-12 — Nominal CMOS5L mapping and a manually gated physical flow are
-reproducible. The current model suite passes 58 tests. Concurrent host/protocol
+reproducible. Concurrent host/protocol
 testing exposed an empty-read race; response validity is now captured with the
 data so a late-arriving byte remains queued. The corrected RTL passes both
 comparison variants and Linux CI. Physical qualification is in progress.
+
+2026-10-12 — The model suite passes 69 tests. I²C stretched-clock setup now uses
+the shared timer and samples resolved SDA before release. Guarded drive history
+rejects delayed self-generated START and detects own clock/data timing faults.
+Only external SCL activity resets an enabled I²C inactivity watchdog. RTL output
+ownership requires transmit enable and a separate output pin. The corrected
+source passes native trace, host and lint checks; physical qualification is being
+repeated because the previous completed layout used the earlier ownership rule.
