@@ -22,7 +22,10 @@ matches model traces and accepts runtime host configuration. Guardian formal
 properties and synthesis are available. The routed CMOS5L SPI/UART/timed-stream
 subset meets the internal 50 MHz timing target and passes layout precheck and
 functional gate simulation. I²C RTL now passes 48 deterministic cases and 88,287
-normalized model/RTL cycles; its expanded physical qualification is in progress.
+normalized model/RTL cycles and passes the expanded CMOS5L flow, including
+official precheck and routed-netlist host tests. Frozen BYTE_EXCHANGE reuse fails
+the bounded Microwire workload; its fixed per-byte acknowledgement remains
+protocol-specific. The campaign stops before the unseen-protocol gate.
 The [frozen-vocabulary campaign](docs/generalization.md) records the control
 boundary, evidence and remaining gates. See
 [physical qualification](docs/physical.md) for measurements and limits.

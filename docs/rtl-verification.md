@@ -36,10 +36,12 @@ and simulator passed assertions but crashed at shutdown, so they are not used
 for cocotb qualification.
 
 `python -m tools.synthesis` reproduces generic Boolean cell counts by hierarchy.
-These counts are not technology area or timing. The current local result has 1,467
+These counts are not technology area or timing. The historical subset result has 1,467
 compound-design cells and 1,455 reference cells. That small difference and equal
 tested throughput do not establish an implementation advantage. CMOS5L mapping
-and placement/routing are a separate qualification step. I²C remains model-only.
+and placement/routing are separate evidence. The expanded I²C RTL is now logically
+and physically qualified; see [the frozen campaign](generalization.md). Current
+synthesis output is separate from these historical subset measurements.
 
 Additional qualification checks 1,200 randomized FIFO transactions (seed 73),
 including reset, simultaneous push/pop, full and empty conditions. A 5,525-cycle

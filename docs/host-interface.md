@@ -38,8 +38,10 @@ The engine rejects enabling exchange unless RX and TX share a data pin, clock
 and data differ, both are open drain, and sampling uses the external clock.
 Two-wire framing requires exchange. Invalid enable requests retain the disabled
 control value and set configuration rejection status.
-The guardian releases an output assigned to a protected frame, clock or RX pin
-and reports a guard fault. Receive-only configurations grant no output ownership.
+For non-exchange configurations the guardian releases an output assigned to a
+protected frame, clock or RX pin and reports a guard fault. Exchange deliberately
+shares RX/TX on SDA and may own a distinct clock for stretching. Disabling read
+transmission still permits SDA acknowledgement of write transactions.
 
 Examples: SPI control 9 with default pin assignments; UART control 119, frame/RX
 pin 2, sample period appropriate to baud; external timed stream control 5,

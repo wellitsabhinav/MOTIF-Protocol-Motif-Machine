@@ -29,7 +29,17 @@ area; otherwise it reports generic cell counts. This command does not run P&R.
 
 `gate1_synthesis.json` is a nominal typical-library mapping, not a routed-area
 measurement or a matched-reference comparison. Historical subset reports remain
-separate. I2C physical qualification is running through the pinned `gds` workflow.
+separate. `gate1_physical.json` records the fully passing pinned official flow
+at its original source SHA, plus artifact digest and the declaration-only circuit
+correspondence. `promoted_motif_vocabulary.json` freezes the resulting hardware
+and integration without overwriting the initial inventory.
+
+`python -m tools.generalization --gate 2` reproduces six configuration-only
+Microwire attempts and their negative counterexamples. `gate2_result.json` records
+model/RTL agreement and `MOTIF_BYTE_EXCHANGE_PROTOCOL_SPECIFIC`. The closest
+configuration returns A5FF rather than A55A because per-byte controller ACK is
+mandatory. `reuse.json` counts validated users only. Gate 3 is unattempted under
+the stop condition. No source changes were made to rescue the failed workload.
 
 The trace harness schedules host actions synchronously after the unchanged
 model's actor tick. Full-at-decision RX NACK and delayed empty-TX readiness are
