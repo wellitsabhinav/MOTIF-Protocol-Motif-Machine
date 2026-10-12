@@ -1,5 +1,6 @@
 """A fixed independent Microwire oracle against the frozen existing interface."""
 import json
+import os
 import platform
 import subprocess
 from dataclasses import asdict, replace
@@ -27,10 +28,15 @@ def run(destination):
         raise ValueError("Gate 1 physical qualification incomplete")
     workload_path = Path("experiments/generalization/microwire_workload.json")
     workload = json.loads(workload_path.read_text())
+    version_command = [os.environ.get("IVERILOG", "iverilog")]
+    if os.environ.get("IVERILOG_BASE"):
+        version_command += ["-B", os.environ["IVERILOG_BASE"]]
+    version = subprocess.run(version_command + ["-V"], capture_output=True, text=True, check=True).stdout.splitlines()[0]
     command, expected_bits = oracle(workload["memory_address"], workload["response_word"])
     result = {"schema_version": 1, "gate": 2, "source_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
               "frozen_source_sha": frozen["source_sha"], "manifest_sha256": digest(PROMOTED.read_bytes()),
               "source_hashes": inventory(), "workload_sha256": digest(workload_path.read_bytes()), "python": platform.python_version(),
+              "iverilog": version, "seed": None,
               "oracle": {"command_bits": command, "response_bits": expected_bits, "word_hex": hex(workload["response_word"])},
               "new_rtl": False, "existing_rtl_modified": False, "configuration_rejections": [], "attempts": [],
               "scope": "Existing configuration interface; diagnostic relaxations are not compliant implementations"}
