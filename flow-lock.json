@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "template": {
+    "repository": "TinyTapeout/ttihp-verilog-template",
+    "revision": "b86a2a781484bcab7ba522dc5de540086695a430"
+  },
+  "gds_action": {
+    "repository": "TinyTapeout/tt-gds-action",
+    "revision": "3412659307918422f3f0727917cf9b499aaca588"
+  },
+  "support_tools": {
+    "repository": "TinyTapeout/tt-support-tools",
+    "revision": "d66cf179e7bc4d296362ab7e2e3b344dc3c4f665"
+  },
+  "pdk": {
+    "name": "ihp-sg13cmos5l",
+    "repository": "IHP-GmbH/IHP-Open-PDK",
+    "revision": "2bbec755dc67ca3db0261c3d6163e15735d66710"
+  },
+  "librelane": "3.1.0.dev3",
+  "oss_cad_suite": "2026-10-11",
+  "oss_cad_action": "c7845bc0d335c8076aa22047e85972caa8a916df",
+  "python": "3.12",
+  "pytest": "8.3.5",
+  "cocotb": "2.0.1",
+  "local_tools": {
+    "iverilog": "12.0 devel s20150603-1391-gd480c4d7d",
+    "verilator": "5.020",
+    "yosys": "0.30+48 b5b0b7e83"
+  }
+}

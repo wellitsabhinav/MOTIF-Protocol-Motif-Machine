@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "kind": "generic_unmapped_cell_count",
+  "top": "tt_um_wellitsabhinav_motif",
+  "yosys": "Yosys 0.30+48 (git sha1 b5b0b7e83, x86_64-w64-mingw32-g++ 13.1.0 -march=nocona -msahf -mtune=generic -O2 -Os)",
+  "modules": {
+    "$paramod\\motif_core\\REFERENCE=s32'00000000000000000000000000000000": {
+      "num_wire_bits": 392,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 187,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 15,
+        "$_AND_": 46,
+        "$_MUX_": 74,
+        "$_NAND_": 7,
+        "$_NOR_": 10,
+        "$_NOT_": 1,
+        "$_ORNOT_": 5,
+        "$_OR_": 8,
+        "$_SDFFE_PN0P_": 12,
+        "$_SDFFE_PP0P_": 1,
+        "motif_event_frontend": 1,
+        "motif_fifo": 2,
+        "motif_pad_guardian": 1,
+        "motif_shift_rx_count": 1,
+        "motif_shift_tx": 1,
+        "motif_timed_sample": 1,
+        "motif_watchdog": 1
+      }
+    },
+    "\\motif_event_frontend": {
+      "num_wire_bits": 82,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 62,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 17,
+        "$_AND_": 16,
+        "$_NOT_": 2,
+        "$_SDFFE_PN0P_": 2,
+        "$_SDFF_PN1_": 24,
+        "$_XOR_": 1
+      }
+    },
+    "\\motif_fifo": {
+      "num_wire_bits": 124,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 108,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 5,
+        "$_AND_": 16,
+        "$_DFFE_PP_": 32,
+        "$_MUX_": 26,
+        "$_NAND_": 3,
+        "$_NOR_": 1,
+        "$_NOT_": 5,
+        "$_OR_": 4,
+        "$_SDFFE_PN0P_": 9,
+        "$_SDFF_PN0_": 2,
+        "$_XNOR_": 4,
+        "$_XOR_": 1
+      }
+    },
+    "\\motif_host_spi": {
+      "num_wire_bits": 126,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 92,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 11,
+        "$_AND_": 16,
+        "$_MUX_": 7,
+        "$_NAND_": 2,
+        "$_NOR_": 5,
+        "$_NOT_": 1,
+        "$_ORNOT_": 1,
+        "$_SDFFE_PN0P_": 23,
+        "$_SDFFE_PP0P_": 14,
+        "$_SDFF_PN0_": 5,
+        "$_SDFF_PN1_": 2,
+        "$_SDFF_PP0_": 2,
+        "$_XOR_": 3
+      }
+    },
+    "\\motif_pad_guardian": {
+      "num_wire_bits": 137,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 95,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 16,
+        "$_AND_": 51,
+        "$_NAND_": 19,
+        "$_NOR_": 1,
+        "$_ORNOT_": 8
+      }
+    },
+    "\\motif_shift_rx_count": {
+      "num_wire_bits": 39,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 30,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 1,
+        "$_AND_": 3,
+        "$_MUX_": 8,
+        "$_NOT_": 2,
+        "$_ORNOT_": 1,
+        "$_OR_": 1,
+        "$_SDFFE_PP0P_": 11,
+        "$_SDFF_PP0_": 1,
+        "$_XOR_": 2
+      }
+    },
+    "\\motif_shift_tx": {
+      "num_wire_bits": 84,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 69,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 3,
+        "$_AND_": 11,
+        "$_MUX_": 1,
+        "$_NAND_": 30,
+        "$_NOR_": 2,
+        "$_NOT_": 1,
+        "$_ORNOT_": 2,
+        "$_OR_": 5,
+        "$_SDFFE_PP0P_": 12,
+        "$_XNOR_": 2
+      }
+    },
+    "\\motif_timed_sample": {
+      "num_wire_bits": 240,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 213,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 18,
+        "$_AND_": 35,
+        "$_DFF_P_": 3,
+        "$_MUX_": 13,
+        "$_NAND_": 66,
+        "$_NOR_": 11,
+        "$_NOT_": 3,
+        "$_ORNOT_": 15,
+        "$_OR_": 10,
+        "$_SDFFE_PN0P_": 17,
+        "$_SDFFE_PP0P_": 3,
+        "$_SDFF_PN0_": 1,
+        "$_SDFF_PP0_": 3,
+        "$_XNOR_": 4,
+        "$_XOR_": 11
+      }
+    },
+    "\\motif_watchdog": {
+      "num_wire_bits": 259,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 221,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 23,
+        "$_AND_": 45,
+        "$_MUX_": 1,
+        "$_NAND_": 58,
+        "$_NOR_": 3,
+        "$_NOT_": 1,
+        "$_ORNOT_": 10,
+        "$_OR_": 19,
+        "$_SDFFE_PN0P_": 1,
+        "$_SDFFE_PP0P_": 16,
+        "$_XNOR_": 30,
+        "$_XOR_": 14
+      }
+    },
+    "\\tt_um_wellitsabhinav_motif": {
+      "num_wire_bits": 405,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_cells": 310,
+      "num_cells_by_type": {
+        "$_ANDNOT_": 9,
+        "$_AND_": 117,
+        "$_NAND_": 101,
+        "$_NOR_": 11,
+        "$_ORNOT_": 1,
+        "$_OR_": 1,
+        "$_SDFFE_PN0P_": 50,
+        "$_SDFFE_PN1P_": 18,
+        "$paramod\\motif_core\\REFERENCE=s32'00000000000000000000000000000000": 1,
+        "motif_host_spi": 1
+      }
+    }
+  },
+  "design": {
+    "num_wires": 1270,
+    "num_wire_bits": 2012,
+    "num_pub_wires": 229,
+    "num_pub_wire_bits": 904,
+    "num_memories": 0,
+    "num_memory_bits": 0,
+    "num_processes": 0,
+    "num_cells": 1485,
+    "num_cells_by_type": {
+      "$_ANDNOT_": 123,
+      "$_AND_": 372,
+      "$_DFFE_PP_": 64,
+      "$_DFF_P_": 3,
+      "$_MUX_": 156,
+      "$_NAND_": 289,
+      "$_NOR_": 45,
+      "$_NOT_": 21,
+      "$_ORNOT_": 43,
+      "$_OR_": 52,
+      "$_SDFFE_PN0P_": 123,
+      "$_SDFFE_PN1P_": 18,
+      "$_SDFFE_PP0P_": 57,
+      "$_SDFF_PN0_": 10,
+      "$_SDFF_PN1_": 26,
+      "$_SDFF_PP0_": 6,
+      "$_XNOR_": 44,
+      "$_XOR_": 33
+    }
+  },
+  "limitations": "Generic Boolean mapping; no technology area, critical path, placed timing or routing evidence"
+}

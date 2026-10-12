@@ -1,0 +1,36 @@
+# RTL verification and comparison
+
+`python -m tools.rtl_check` generates identical model/RTL stimuli in ignored
+build output. It checks 2,000 RX/TX primitive vectors (seed 322), 4,000 guardian
+vectors (seed 141), and cycle traces for SPI (5,401 cycles, seed 117), UART
+(2,568 cycles) and a timed stream (276 cycles). Both the compound datapath and
+single-issue reference receive the same integration traces. A pin-level host test
+loads all three configurations into unchanged RTL and exchanges FIFO data.
+
+`python -m tools.formal_check` proves six guardian combinational assertions for
+unrestricted request/ownership/mode/conflict inputs. Reset, frame release and
+fatal suppression are modeled by the guardian's trusted kill inputs. The proof
+does not establish that an arbitrary source of ownership is itself trustworthy.
+The top-level framing path is separately exercised by simulation.
+
+The watchdog result is a 24-step bounded proof with stable nonzero limits 1..15,
+continuous active framing and no progress/reset after initialization. It is not
+an unbounded liveness proof for all sixteen-bit limits. The first harness run
+failed because SAT assumptions were not enabled; enabling the harness assumptions
+resolved that tooling issue without changing the watchdog implementation.
+
+The RTL reference shares one shift datapath between RX and TX and can issue only
+one shift/load per cycle. It retains competent fused receive/count and automatic
+FIFO enqueue. Clock-driven SPI edges cannot request RX and TX shifts together;
+the tested receive-only timed mappings also avoid collisions. Other mixed timed
+RX/TX configurations can collide and are outside its qualified coverage. A
+collision reports status. Host, frontend, FIFOs, configuration and guardian are
+identical between RTL variants. The RTL reference improves on the initial Python
+reference's separate FIFO operation; no enqueue latency advantage is claimed
+against this refined reference.
+
+`python -m tools.synthesis` reproduces generic Boolean cell counts by hierarchy.
+These counts are not technology area or timing. The current local result has 1,485
+compound-design cells and 1,472 reference cells. That small difference and equal
+tested throughput do not establish an implementation advantage. CMOS5L mapping
+and placement/routing are a separate qualification step. I²C remains model-only.

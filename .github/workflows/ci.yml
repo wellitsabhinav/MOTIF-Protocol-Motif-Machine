@@ -10,3 +10,19 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -e '.[test]'
       - run: python -m pytest -q
+  rtl:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: YosysHQ/setup-oss-cad-suite@c7845bc0d335c8076aa22047e85972caa8a916df
+        with:
+          version: '2026-10-11'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: python -m pip install -e '.[test]' -r test/requirements.txt
+      - run: verilator --lint-only --top-module tt_um_wellitsabhinav_motif -Wall src/*.sv
+      - run: python -m tools.rtl_check
+      - run: python -m tools.formal_check
+      - run: make -C test

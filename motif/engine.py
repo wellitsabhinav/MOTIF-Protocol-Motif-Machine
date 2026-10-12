@@ -92,6 +92,7 @@ class Engine:
     def _release(self):
         self.active = False
         self.rx.clear()
+        self.tx.value = 0
         self.tx.remaining = 0
         self.timer.stop()
         self.pending = None
@@ -108,7 +109,7 @@ class Engine:
         self.pending = None
         framed_level = not bool(edge.level & (1 << cfg.frame_pin))
         release = cfg.frame == "level" and self.active and not framed_level
-        acquire = (cfg.frame == "level" and framed_level and not self.active and self.frontend.warmup >= 2) or (cfg.frame == "falling" and bool(edge.falling & (1 << cfg.frame_pin)) and not self.active)
+        acquire = bool(edge.falling & (1 << cfg.frame_pin)) and not self.active
         if cfg.frame == "two_wire":
             clock_high = bool(edge.level & (1 << cfg.clock_pin))
             clock_was_high = clock_high and not bool(edge.rising & (1 << cfg.clock_pin))

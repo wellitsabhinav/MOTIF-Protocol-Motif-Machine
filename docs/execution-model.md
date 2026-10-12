@@ -19,7 +19,9 @@ new byte and reports overflow. Reset empties FIFOs and clears diagnostics.
 
 SPI raw deselection gates OE immediately, independently of synchronized engine
 release. Ownership acquisition remains synchronized. Reset and disable suppress
-OE. The watchdog observes frontend pin activity, not executor progress claims.
+OE. Acquisition requires a fresh qualified falling frame edge; an asserted
+framing level cannot reacquire a timed-out transaction. The watchdog observes
+frontend pin activity, not executor progress claims.
 An enabled watchdog trips after its configured number of inactive cycles during
 an active frame. A new qualified frame acquisition rearms it. Status is sticky
 until reset and is separate from the transaction trip state.
