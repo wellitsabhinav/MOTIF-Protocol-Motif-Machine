@@ -66,8 +66,8 @@ layer utilization does not bound every local route concentration.
 
 Detailed-route DRC, Magic DRC and LVS report zero errors. Residual reports include
 19 max-fanout violations, with zero max-slew/capacitance violations. The template
-uses fallback SDC; KLayout DRC is disabled in that template and is not claimed.
-The official precheck passed. The original workflow retains its failed gate-job
+uses fallback SDC; its build-time KLayout DRC step is disabled. The official
+precheck separately ran KLayout DRC and passed. The original workflow retains its failed gate-job
 history; the successful linked gate retest supersedes that simulation-tool failure.
 
 The [Linux gate retest](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38224260567)
