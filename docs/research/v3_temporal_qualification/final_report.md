@@ -323,6 +323,12 @@ match, every local HTML link resolves, and all eleven demonstrations pass.
 This package identifies source head `052beae`; it predates the terminal physical
 diagnosis. [Delivery verification](../../../experiments/temporal_qualification/delivery.json).
 
+The later [prepared-revision HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38426446635/artifacts/11829931300)
+identifies head `7d3b0a9` and includes the terminal physical diagnosis and
+attempt-2 intent. All 473 manifest-listed files match their downloaded bytes,
+all local HTML links resolve, and all eleven demonstrations pass.
+[Later download verification](../../../experiments/temporal_qualification/delivery_7d3b0a9.json).
+
 ## S. Architecture diagrams
 
 Actual module/interface inventories generate the connected core, top-level and

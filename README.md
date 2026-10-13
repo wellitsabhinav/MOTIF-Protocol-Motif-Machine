@@ -84,9 +84,9 @@ Open `build/delivery/plain_html/index.html`. The unseen CI workflow publishes
 the same identified HTML package; complete traces and physical outputs remain
 separate CI artifacts.
 
-The [verified CI HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38385913225/artifacts/11806692626)
+The [verified CI HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38426446635/artifacts/11829931300)
 contains all eleven passing demonstrations and linked public sources. Its
-[download verification receipt](experiments/temporal_qualification/delivery.json)
+[download verification receipt](experiments/temporal_qualification/delivery_7d3b0a9.json)
 binds the archive, manifest, file inventory and resolved HTML links.
 
 ```sh
