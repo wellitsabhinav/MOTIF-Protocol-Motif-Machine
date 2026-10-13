@@ -296,6 +296,14 @@ result is claimed while this run is active.
 [active physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310),
 [attempt 2 intent](../../../experiments/temporal_qualification/physical/attempt_2_intent.json).
 
+A separately identified read-only snapshot confirms OpenROAD receives argument
+`4` and placement uses target density `0.4500`. The initial completed log is
+also preserved in the snapshot CI artifact and matches the retained terminal
+log byte-for-byte. The active log is partial; its capture time does not identify
+the current execution stage or establish effective thread count, speedup or
+closure. [Snapshot observations](physical_attempt_2_observations.md),
+[verified snapshot receipt](../../../experiments/temporal_qualification/physical/job_snapshot_38435430815.json).
+
 ## Q. PPA comparison
 
 Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this

@@ -1,0 +1,89 @@
+{
+  "schema_version": 3,
+  "kind": "verified_read_only_physical_snapshots",
+  "observer_run_id": 38435430815,
+  "observer_source_sha": "d69f99d71f589dc51fcf109ee37ffdc4c9237624",
+  "artifact_id": 11832269523,
+  "archive_sha256_raw": "e9436796571b642dd77317f7c3e2230f389a96f9d6103f187d833625a026430c",
+  "archive_bytes": 823998,
+  "all_snapshot_file_hashes_verified": true,
+  "initial_completed_log_equals_retained_terminal_log": true,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "snapshots": [
+    {
+      "schema_version": 3,
+      "kind": "read_only_physical_job_snapshot",
+      "captured_at_utc": "2026-10-13T17:02:41.167637+00:00",
+      "workflow_run_id": 38349981124,
+      "source_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+      "workflow_status": "completed",
+      "workflow_conclusion": "cancelled",
+      "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+      "preregistration": {
+        "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+        "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+      },
+      "jobs": [
+        {
+          "job_id": 115139931872,
+          "status": "completed",
+          "conclusion": "cancelled",
+          "log_available": true,
+          "log_file": "job_115139931872.log",
+          "log_bytes": 4547178
+        }
+      ],
+      "files_sha256_raw": {
+        "workflow.json": "d49c2fd167f987eca033a2a9f9c0eae988e8a4ad43def4e54c9651fd37de5def",
+        "jobs.json": "99bf40af6c5b2513e373bfa972035e706a623079ebc084221933d44feb7d891a",
+        "job_115139931872.log": "7e27c87dca1bbe559a3cfa6974aeb688cb33ee575717b0382afdefe8aaf3ece9"
+      },
+      "scope": "Job metadata and downloaded log contents only; active logs may be partial; no latest-stage, final metric, archive correspondence or physical qualification claim"
+    },
+    {
+      "schema_version": 3,
+      "kind": "read_only_physical_job_snapshot",
+      "captured_at_utc": "2026-10-13T17:02:42.875268+00:00",
+      "workflow_run_id": 38429471310,
+      "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+      "workflow_status": "in_progress",
+      "workflow_conclusion": null,
+      "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+      "preregistration": {
+        "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+        "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+      },
+      "jobs": [
+        {
+          "job_id": 115407553588,
+          "status": "in_progress",
+          "conclusion": null,
+          "log_available": true,
+          "log_file": "job_115407553588.log",
+          "log_bytes": 4233075
+        }
+      ],
+      "files_sha256_raw": {
+        "workflow.json": "0cf4c7aa01239711dae4ed52b07474f2395adfc47c8bca61dbe34a9e74092e2b",
+        "jobs.json": "d71e6252769e0c2d1e16e9df9a2ff0014f57943098cd8ff6be80996ffbded658",
+        "job_115407553588.log": "f4f6983f7140c8119820d3a8f6329d896a672421d7fa7b18aaaed65e66139482"
+      },
+      "scope": "Job metadata and downloaded log contents only; active logs may be partial; no latest-stage, final metric, archive correspondence or physical qualification claim"
+    }
+  ],
+  "observed_attempt_2_settings": {
+    "openroad_argument_values": [
+      "4"
+    ],
+    "openroad_argument_messages": 8,
+    "placement_target_density_values": [
+      "0.4500"
+    ],
+    "last_visible_log_line": "2026-10-13T16:29:05.3912244Z \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Detailed Placement \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+  },
+  "scope": "Identified log contents only; argument values are not effective thread-count measurements; active log tail is not proof of current stage, speedup or physical closure"
+}
