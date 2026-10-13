@@ -1,0 +1,46 @@
+[
+  {
+    "cycle": 0,
+    "pins": 253,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 11,
+    "pins": 252,
+    "oe": 8,
+    "data": 8,
+    "active": 1,
+    "events": 1,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 203,
+    "pins": 248,
+    "oe": 8,
+    "data": 8,
+    "active": 1,
+    "events": 2048,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  },
+  {
+    "cycle": 217,
+    "pins": 249,
+    "oe": 0,
+    "data": 0,
+    "active": 0,
+    "events": 0,
+    "executed_entries": [],
+    "temporal_count": 0,
+    "temporal_done": 0
+  }
+]

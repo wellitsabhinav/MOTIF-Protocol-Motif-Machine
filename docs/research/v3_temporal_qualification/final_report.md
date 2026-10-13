@@ -1,0 +1,328 @@
+# MOTIF v3 controlled temporal qualification
+
+## A. Executive classification
+
+The logical and local matched-cost qualification gates pass. V3 maps to
+210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
+is frozen; unseen evaluation and physical qualification remain unreached in this interim
+report. Logical repair does not establish unseen generalization or physical
+closure. [Gate receipts](../../../experiments/temporal_qualification/),
+[cost receipt](../../../experiments/temporal_qualification/synthesis.json).
+
+## B. Starting frozen state
+
+Established fact: work started from clean `490a50c3e03f1be96784fd27f9d64b718c2aa5cc`
+with 109 passing tests and both historical freeze checks. PR #10 was reviewed
+against its green head, with two out-of-profile model discrepancies documented,
+then merged as `5601be5c15a844e4a1ebdb13c15ea17034f38fa5`. The v3 branch starts
+there. [Starting evidence](../../../experiments/temporal_qualification/starting_state.json).
+
+The legacy BYTE_EXCHANGE result remains A5FF rather than A55A. Frozen v2 retains
+`MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL`, including eight passing
+1-Wire cases and one false-presence failure. No historical oracle, configuration,
+result or manifest was rewritten. [Legacy boundary](../../../experiments/generalization/promoted_motif_vocabulary.json),
+[v2 boundary](../../../experiments/exchange_decomposition/frozen_v2_manifest.json),
+[v2 result](../../../experiments/exchange_decomposition/third_result.json).
+
+## C. v2 temporal failure diagnosis
+
+Measured result: after LOW 200 µs, the frontend observes HIGH at cycle 60002.
+The active timer-triggered RX ignores that observable interruption; subsequent
+sampled fields remain zero and permit false presence. This is a loss of
+transaction history, rather than an unobserved input pulse.
+[Cycle audit](diagnosis.md), [historical counterexample](../../../experiments/exchange_decomposition/third_counterexample.json).
+
+A new configuration using existing dual-source response capture passes all
+nine original cases in both model and RTL, over 1,302,050 cycles. It fails
+startup interruption, restarted-valid-low and release-relative timing probes,
+also with exact model/RTL agreement, over another 387,550 cycles. These are
+comparison results, not a proof that every possible v2 configuration fails.
+[Identified comparison](../../../experiments/temporal_qualification/v2_composition_baseline.json).
+
+## D. Architectural alternatives considered
+
+Separate temporal instructions offer a clear responsibility, but all eight
+opcodes are occupied and widening conflicts with the configuration budget.
+Guarding the shared timer reduces potential counter duplication but couples
+qualification to validation, handoff, phase and registered expiry. Persistent
+WAIT reuses operands and bounded sequencing while isolating continuity from
+sampling. It was chosen before implementation.
+[Comparison and rationale](architectural_options.md).
+
+## E. Preregistered temporal abstraction
+
+Established fact: immutable preregistration commit
+`637aeb947e7726ce0ef6347f0788c2803149f091` precedes the model change. Its JSON
+SHA-256 with CRLF normalized to LF is
+`2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522`.
+[Machine contract](preregistration.json), [readable rationale](preregistration.md).
+
+Tagged WAIT qualifies T consecutive synchronized observations, counting the
+first as one. RX-level mode and constant-true delay are the only predicates.
+An interrupted partial interval restarts or branches; initially false waits.
+Success is registered and consumed next executor cycle. Acquisition may count
+its observation but suppresses ordinary actions. Chaining counts at most once
+per cycle and defers a second temporal entry. Lifecycle/fatal clearing removes
+stale progress and completion. Pulses unobservable to the frontend are outside
+the claim.
+
+## F. Implementation
+
+The table remains sixteen 64-bit entries with eight opcodes. WAIT flag bit 2
+selects temporal semantics; argument 3 selects RX persistence, argument 2 delay,
+mask specifies 1–65,535 observations, and flag bit 3 selects alternate branching.
+Temporal entries require ALWAYS and reject reserved operands. Public helpers
+and host validation agree; register 21 reports version 3. Formerly ignored
+tag bits acquire meaning, so arbitrary old ignored-bit binaries are not a
+compatibility claim. [Encoding and helpers](../../../motif/transaction.py),
+[transaction RTL](../../../src/motif_transaction.sv), [host interface](../../host-interface.md).
+
+One 16-bit count and two lifecycle bits have one sequential writer. Generic RTL
+contains no workload names, reset/presence timing constants or protocol-specific
+FSM. The four-entry chain bound, guardian, configuration immutability and
+pre-edge FIFO choices remain. Three inherited model correspondence corrections
+are documented separately, with original negative traces. The third correction
+is explicitly recorded as an interpretation of the preregistered matching
+model/RTL requirement; the preregistration was not revised.
+[Correspondence record](implementation_correspondence.md).
+
+## G. Temporal edge-case verification
+
+Measured result: 55 independent wire-marker fixtures pass exact augmented
+model/RTL comparison over 395,249 cycles. They cover both levels; thresholds
+1, 2, 4, 16 and 65,535 below/equal/above; interruption positions and policies;
+long idle; delay; reset, abort, disable, watchdog and release; chained entries;
+and registered timer-end/acquisition priority.
+[Temporal receipt](../../../experiments/temporal_qualification/temporal.json),
+[independent fixture expectations](../../../tools/temporal_vectors.py).
+
+The model exhausts all 128 seven-observation bit sequences at thresholds 1–4
+for both levels: 1,024 sequences checked by a run-length oracle. Bounded RTL
+properties prove the stated safety properties at thresholds 1–4 over 12 steps.
+They are bounded safety evidence, not an unbounded proof or a proof for every
+table. Existing guardian and watchdog proofs also pass.
+[Model tests](../../../tests/model/test_temporal.py), [properties](../../../formal/temporal.sv),
+[regression receipt](../../../experiments/temporal_qualification/regression.json).
+
+The first Linux CI attempt failed before SAT because its newer Yosys retained
+clock-triggered assertion cells. Compatible lowering preserves the same clocked
+checks and bounds; corrected CI passes them. No assertion or RTL was weakened.
+[Failure record](../../../experiments/temporal_qualification/review/ci_formal_lowering.json),
+[formal driver](../../../tools/formal_check.py).
+
+## H. 1-Wire repair result
+
+Measured result: all 18 repair cases pass, including the nine unchanged
+historical stimuli/oracles, over 2,167,672 compared cycles. LOW 200 µs / HIGH
+1 µs / LOW 300 µs emits no presence. Startup interruption, restarted valid reset,
+590 µs reset and six deterministic legal-length/release-phase probes pass.
+[Repair receipt](../../../experiments/temporal_qualification/repair.json).
+
+Configuration composes LOW qualification for 24,000 observations, release
+waiting, 1,500-observation delay, existing LOW response, 6,000-observation pulse
+delay, release and termination. It contains no alignment or FIFO timer-start
+tokens. At the bounded 50 MHz workload, nominal presence begins 30.04 µs after
+release and lasts 120.02 µs, satisfying the unchanged wire oracle. These are
+measured wire intervals, distinct from internal observation counts.
+[Configuration](../../../experiments/temporal_qualification/configurations/one_wire_reset_presence.json).
+This is training/repair evidence, not an unseen generalization result.
+
+## I. I²C regression
+
+Measured result: the original 48 cases retain identical stimulus and match
+frozen v2 visible traces over 88,287 cycles, with full v3 model/RTL agreement.
+The pinned reproduction also preserves the legacy external-equivalence gate.
+Coverage retains repeated START, ACK/ninth clock, pressure, starvation,
+malformed clocks, lifecycle, first-bit and concurrent host/FIFO behavior.
+[Regression receipt](../../../experiments/temporal_qualification/regression.json),
+[historical gate](../../../experiments/exchange_decomposition/i2c_logical.json).
+
+## J. Microwire regression
+
+Measured result: the independent bounded READ oracle observes exact A55A,
+dummy zero, uninterrupted sixteen-bit output and correct rising-edge advance
+over 1,970 compared cycles. DI/DO remain separate and the target never drives
+CLK. Runtime tests retain back-to-back operations.
+[Regression receipt](../../../experiments/temporal_qualification/regression.json),
+[runtime receipt](../../../experiments/temporal_qualification/cocotb.json).
+
+## K. SPI/UART/timed-stream regression
+
+Measured result: existing RTL mode comparisons, FIFO/concurrency and protection
+checks, lint, bounded checks and all five runtime host tests pass. Selected
+demonstrations receive SPI 3C while returning A6, UART 55 A6 and timed stream
+55 AA. These are bounded profiles, not complete protocol stacks.
+[Regression receipt](../../../experiments/temporal_qualification/regression.json),
+[demonstration expectations and observations](../../demo/demonstrations.json).
+
+## L. v3 synthesis/accounting
+
+Measured result: matched mapping passes. Declared accounting measures 18 added state bits
+and zero added configuration bits. Configuration remains 1,096 bits, including
+the 1,024-bit table; declared total state is 1,398 bits versus v2's 1,380.
+Mapped cell counts are a separate measurement. The hard cap remains
+213,813.96498 µm² and at most 1.10 times the matched v2 mapping.
+[Accounting receipt](../../../experiments/temporal_qualification/accounting.json),
+[synthesis receipt](../../../experiments/temporal_qualification/synthesis.json).
+
+| Measurement | Frozen v2 | V3 | Delta |
+|---|---:|---:|---:|
+| Typical mapped area (µm²) | 194,376.3318 | 210,241.9746 | +15,865.6428 (+8.1623%) |
+| Total mapped cells | 12,546 | 13,332 | +786 |
+| Sequential cells | 1,385 | 1,403 | +18 |
+| Combinational cells | 11,161 | 11,929 | +768 |
+| Declared register bits | 1,380 | 1,398 | +18 |
+| Configuration bits | 1,096 | 1,096 | 0 |
+| Table bits | 1,024 | 1,024 | 0 |
+
+The pair uses identical Yosys 0.30+48 `b5b0b7e83`, identical ABC executable,
+top module and pinned typical CMOS5L Liberty SHA-256
+`34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad`.
+Executable, source and netlist hashes are recorded. Frozen v2's historical area
+is reproduced exactly. No cost-evading optimization was performed.
+
+Independent Linux CI at source `383e494` passes all required jobs, including
+matched cost. Its separately pinned OSS suite maps v3/v2 to 198,921.933 /
+187,638.4062 µm². This additional pair has different tool conditions from the
+historical local baseline; it does not replace the local 8.1623% cap decision.
+Full simulation/netlist artifacts are published by the identified run.
+[CI receipt](../../../experiments/temporal_qualification/ci_qualification.json),
+[green run](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293882738).
+
+## M. v3 freeze identity
+
+Established fact: separate immutable freeze commit
+`638c2ee4e7c9f53c64e6f660331747e5a79b570d` records manifest LF SHA-256
+`71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047`.
+Creation followed a clean committed source tree, complete passing qualification
+receipts and budgets satisfied. Original executed source identities, byte-equal
+dependency checks and narrowly scoped evidence bindings remain in the receipts.
+Validation rejects truncated/duplicate case
+sets, model-only receipts and stale source hashes. Initial physical inputs are
+identified separately from the semantic boundary.
+[Immutable manifest](../../../experiments/temporal_qualification/frozen_v3_manifest.json),
+[freeze machinery](../../../tools/v3_inventory.py), [preregistered freeze rule](preregistration.json).
+
+## N. New unseen protocol selection
+
+Selection is unreached. Independently delegated primary-source research began
+only after the recorded freeze; no workload is selected yet. Candidate research,
+ranking and a committed independent oracle contract are allowed only after a
+qualified v3 freeze. [Selection rule](preregistration.json).
+
+## O. Unseen protocol result
+
+Unavailable: no selected unseen workload or evaluated configuration exists.
+The repaired 1-Wire result cannot establish unseen generalization. After a
+future eligible freeze, any necessary semantic repair must preserve its
+counterexample and stop, without candidate substitution.
+[Preregistered stop rule](preregistration.json).
+
+## P. Physical qualification
+
+Unreached: no v3 physical attempt, routed-netlist test, official precheck, source
+correspondence check, DRC/LVS or antenna result exists. Setup/hold WNS/TNS,
+utilization, wirelength, vias and overflow are unavailable. Synthesis cannot
+establish physical closure. The allowed later flow remains pinned CMOS5L,
+6×4 allocation and 20 ns target, with initial run plus at most two diagnosed
+flow-setting revisions. [Flow identity](../../../flow-lock.json),
+[physical restriction](preregistration.json).
+
+## Q. PPA comparison
+
+Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this
+matched mapping, principally additional combinational logic: +768 combinational
+cells versus +18 sequential cells. No v3 power, placed timing, routed area or maximum frequency is
+available. Earlier routed results retain their earlier source scope and cannot
+qualify v3. [Historical physical scope](../../physical.md).
+
+## R. Demonstration artifacts
+
+Measured result: seven demonstrations pass over 257,390 compared cycles.
+`python -m tools.demo --all --schematics` produces plain HTML at
+`build/demo/index.html`, real waveforms, ordered execution timelines,
+configuration summaries, expected/observed results and concise trace excerpts.
+Cache reuse requires matching source, stimulus and artifact identities; failed
+validation exits nonzero. Selected editable and rendered artifacts are committed;
+full traces, caches, simulator outputs and netlists remain ignored build outputs
+and reproducible CI artifacts. [Demonstration inventory](../../demo/demonstrations.json),
+[guide](../../GETTING_STARTED.md).
+
+## S. Architecture diagrams
+
+Actual module/interface inventories generate the connected core, top-level and
+legacy→v2→v3 views. JSON connectivity/inventory sources and SVG/PNG renders are
+provided together. These are views of the identified circuit, not measured
+layout. [Core](../../demo/figures/architecture/architecture.svg),
+[top](../../demo/figures/architecture/top.svg), [evolution](../../demo/figures/architecture/evolution.svg),
+[identities](../../demo/figures/architecture/identity.json).
+
+## T. Protocol waveforms
+
+Waveforms derive from RTL simulation and timelines from actual ordered executor
+observations. Both valid 1-Wire presence and interrupted-low silence are shown.
+A cycle-level zoom shows synchronized HIGH, cleared progress and fresh restart.
+The historical false presence and new v2 composition negatives have separate
+identities and labels. [Protocol figure index](../../demo/README.md),
+[interruption zoom](../../demo/figures/one_wire/interrupted_non_reset/waveform_59990_60060.svg),
+[historical failure](../../demo/figures/historical/v2_interrupted_low/waveform.svg).
+
+## U. Synthesized schematics
+
+Yosys proc/opt-derived views show real elaborated top-level, PC and temporal
+connectivity; they are explicitly labeled elaborated, rather than technology
+mapped. Separate measured CMOS5L views show actual mapped hierarchy counts and
+PC/counter bit-0 neighborhoods, with exact cell types, port directions, net-bit
+links and explicit omitted logic. The renderer validates measured source,
+netlist and library hashes and does not rerun synthesis.
+[Transaction view](../../demo/figures/architecture/transaction.svg),
+[temporal view](../../demo/figures/architecture/temporal.svg),
+[mapped hierarchy](../../demo/figures/mapped/hierarchy.svg),
+[mapped PC](../../demo/figures/mapped/transaction_bit0.svg),
+[mapped counter](../../demo/figures/mapped/temporal_bit0.svg),
+[mapped identities](../../demo/figures/mapped/identity.json),
+[reproduction script](../../demo/render_mapped.py).
+
+## V. GDS/floorplan/routing visuals
+
+Unavailable for v3 because the physical eligibility gate is unreached. No
+historical layout is presented as a v3 result and no physical view is fabricated.
+[Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
+
+## W. Negative evidence
+
+Permanent negatives include legacy A5FF and frozen v2 false presence. New
+comparison negatives establish three failures of one configuration, without
+claiming exhaustive impossibility. Three inherited model correspondence
+counterexamples and the diagnosed CI lowering failure are also retained.
+[Historical report](../../../experiments/exchange_decomposition/report.md),
+[comparison evidence](../../../experiments/temporal_qualification/v2_composition_baseline.json),
+[correspondence record](implementation_correspondence.md).
+
+## X. Evidence strength
+
+Established facts are commit order, immutable bytes and actual interfaces.
+Measured results are independent bounded wire-oracle outcomes, exact
+model/RTL comparisons, bounded properties and source-identified accounting.
+Interpretation: tagged WAIT cleanly separates sampled persistence from timer
+sampling and repairs the known training failures. Hypothesis: the responsibility
+may compose with other temporal workloads. Unverified possibilities include
+debounce, BREAK/wake-up detection, unsampled analog behavior, complete protocol
+support and physical closure. None is claimed as validated here.
+[Preregistration](preregistration.json), [qualification sources](../../../tools/temporal_campaign.py).
+
+## Y. Competition relevance
+
+Interpretation: the bounded result tests whether a small vocabulary can express
+another responsibility while preserving different serial behaviors. It does
+not prove an area advantage, universal protocol support or practical physical
+closure. Fixed cost and attempt gates make an unfavorable result meaningful.
+[Architectural rationale](architectural_options.md), [fixed budgets](preregistration.json).
+
+## Z. Recommended next step
+
+Review the post-freeze independent candidate matrix and commit exactly one
+selection, timing bounds and bounded oracle contract before configuration. The later
+unseen and physical gates remain mandatory; any reached stop condition must
+retain its negative result without changing acceptance rules.
+[Stop conditions](preregistration.json).

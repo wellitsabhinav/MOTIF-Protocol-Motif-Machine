@@ -1,0 +1,22 @@
+{
+  "frame": "level",
+  "frame_pin": 0,
+  "clock_pin": 1,
+  "rx_pin": 2,
+  "tx_pin": 3,
+  "sample": "rising",
+  "transmit": true,
+  "lsb_first": false,
+  "period": 434,
+  "validate_start": false,
+  "validate_stop": false,
+  "open_drain": 0,
+  "watchdog": 0,
+  "fill": 255,
+  "program": [],
+  "frame_active_high": false,
+  "hold_clock": false,
+  "pad_timing_check": false,
+  "entries": [],
+  "program_host_bytes": ""
+}

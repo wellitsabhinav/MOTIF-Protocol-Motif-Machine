@@ -1,0 +1,2197 @@
+{
+  "kind": "selected_measured_technology_mapped_connectivity",
+  "netlist_sha256": "b96b2246771ee4ed54ffbc513a0150c1ebe3eb0ace3cbaec6727c257dcc1e803",
+  "measurement_report_sha256": "047b2e7033d5ab26b55892e182db9c6f6f90b74061aaad5614ebd0703d339ea1",
+  "rtl_source_hashes": {
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+  },
+  "source_sha": "383e494610deec2edc99aac0bca7215f735dbcdf",
+  "tools": {
+    "yosys": {
+      "command": "yosys",
+      "sha256": "da2209de850fff3546f3fc7fb4203e62c611fda7d5103785a1a453e16566aaa5"
+    },
+    "abc": {
+      "command": "abc.exe",
+      "sha256": "1394d146474be249f241cc8d98eafd1d73d56e0d5d40af0d1532ebb7997686db"
+    }
+  },
+  "yosys": "Yosys 0.30+48 (git sha1 b5b0b7e83, x86_64-w64-mingw32-g++ 13.1.0 -march=nocona -msahf -mtune=generic -O2 -Os)",
+  "library_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "renderer_sha256": "ce01f6321e211405c4e581f9a32f82f043d7b4c56ecdc0b20c64701cb71d85d4",
+  "scope": "Measured nominal mapped logic; no placement, routing, timing closure or physical qualification claim",
+  "module": "motif_transaction",
+  "focus_net": "pc_o",
+  "bit_index": 0,
+  "bit_id": 1164,
+  "owner": "$auto$ff.cc:266:slice$164365",
+  "owner_output": "Q",
+  "selected_cells": {
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358289": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_nor2b_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1165
+        ],
+        "B_N": [
+          1164
+        ],
+        "Y": [
+          1267
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B_N": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358290": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_nand2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1164
+        ],
+        "B": [
+          1242
+        ],
+        "Y": [
+          1268
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358291": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_nor2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1164
+        ],
+        "B": [
+          1165
+        ],
+        "Y": [
+          1269
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358292": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_mux4_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A0": [
+          784
+        ],
+        "A1": [
+          848
+        ],
+        "A2": [
+          912
+        ],
+        "A3": [
+          976
+        ],
+        "S0": [
+          1164
+        ],
+        "S1": [
+          1165
+        ],
+        "X": [
+          1270
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A0": "input",
+        "A1": "input",
+        "A2": "input",
+        "A3": "input",
+        "S0": "input",
+        "S1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358293": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_mux4_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A0": [
+          528
+        ],
+        "A1": [
+          592
+        ],
+        "A2": [
+          656
+        ],
+        "A3": [
+          720
+        ],
+        "S0": [
+          1164
+        ],
+        "S1": [
+          1165
+        ],
+        "X": [
+          1271
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A0": "input",
+        "A1": "input",
+        "A2": "input",
+        "A3": "input",
+        "S0": "input",
+        "S1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358294": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_mux4_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A0": [
+          272
+        ],
+        "A1": [
+          336
+        ],
+        "A2": [
+          400
+        ],
+        "A3": [
+          464
+        ],
+        "S0": [
+          1164
+        ],
+        "S1": [
+          1165
+        ],
+        "X": [
+          1272
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A0": "input",
+        "A1": "input",
+        "A2": "input",
+        "A3": "input",
+        "S0": "input",
+        "S1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358295": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_mux4_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A0": [
+          16
+        ],
+        "A1": [
+          80
+        ],
+        "A2": [
+          144
+        ],
+        "A3": [
+          208
+        ],
+        "S0": [
+          1164
+        ],
+        "S1": [
+          1165
+        ],
+        "X": [
+          1273
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A0": "input",
+        "A1": "input",
+        "A2": "input",
+        "A3": "input",
+        "S0": "input",
+        "S1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358297": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_mux4_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A0": [
+          783
+        ],
+        "A1": [
+          847
+        ],
+        "A2": [
+          911
+        ],
+        "A3": [
+          975
+        ],
+        "S0": [
+          1164
+        ],
+        "S1": [
+          1165
+        ],
+        "X": [
+          1275
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A0": "input",
+        "A1": "input",
+        "A2": "input",
+        "A3": "input",
+        "S0": "input",
+        "S1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362916": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_nor2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          5683
+        ],
+        "B": [
+          5888
+        ],
+        "Y": [
+          5889
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input"
+      }
+    },
+    "$auto$ff.cc:266:slice$164365": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_dfrbpq_1",
+      "parameters": {},
+      "attributes": {
+        "src": "src/motif_transaction.sv:294.5-308.8"
+      },
+      "connections": {
+        "CLK": [
+          2
+        ],
+        "D": [
+          5889
+        ],
+        "Q": [
+          1164
+        ],
+        "RESET_B": [
+          "1"
+        ]
+      },
+      "port_directions": {
+        "Q": "output",
+        "CLK": "input",
+        "D": "input",
+        "RESET_B": "input"
+      }
+    }
+  },
+  "edges": [
+    {
+      "source": "$abc$358251$auto$blifparse.cc:386:parse_blif$362916",
+      "output": "Y",
+      "target": "$auto$ff.cc:266:slice$164365",
+      "input": "D",
+      "bit_ids": [
+        5889
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358289",
+      "input": "B_N",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358290",
+      "input": "A",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358291",
+      "input": "A",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "input": "S0",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "input": "S0",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "input": "S0",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "input": "S0",
+      "bit_ids": [
+        1164
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$164365",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "input": "S0",
+      "bit_ids": [
+        1164
+      ]
+    }
+  ],
+  "direct_fanin_cells": [
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362916"
+  ],
+  "selected_fanout_cells": [
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358289",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358290",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358291",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358297"
+  ],
+  "total_direct_fanout_cells": 274,
+  "omitted_module_cells": 5507,
+  "boundary_ports": [
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358289",
+      "port": "A",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358289",
+      "port": "Y",
+      "direction": "output",
+      "bit": 1267,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358966",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358798",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358952",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358970",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358692",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358688",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359026",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358861",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358790",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358895",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360311",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358962",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358696",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358914",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358948",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358899",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358956",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358906",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359022",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358857",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358849",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359030",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358891",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358794",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360326",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358290",
+      "port": "B",
+      "direction": "input",
+      "bit": 1242,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358264",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358290",
+      "port": "Y",
+      "direction": "output",
+      "bit": 1268,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360299",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360267",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358291",
+      "port": "B",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358291",
+      "port": "Y",
+      "direction": "output",
+      "bit": 1269,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358899",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358956",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358906",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358857",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359022",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358849",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360265",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358891",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358794",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359030",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360296",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360266",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358798",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358952",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360323",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358966",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358970",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358692",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358688",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359026",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358861",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358790",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358895",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358962",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358696",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358914",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358948",
+          "B1"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "port": "A0",
+      "direction": "input",
+      "bit": 784,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "port": "A1",
+      "direction": "input",
+      "bit": 848,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "port": "A2",
+      "direction": "input",
+      "bit": 912,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "port": "A3",
+      "direction": "input",
+      "bit": 976,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "port": "S1",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358292",
+      "port": "X",
+      "direction": "output",
+      "bit": 1270,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358296",
+          "A3"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "port": "A0",
+      "direction": "input",
+      "bit": 528,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "port": "A1",
+      "direction": "input",
+      "bit": 592,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "port": "A2",
+      "direction": "input",
+      "bit": 656,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "port": "A3",
+      "direction": "input",
+      "bit": 720,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "port": "S1",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358293",
+      "port": "X",
+      "direction": "output",
+      "bit": 1271,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358296",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "port": "A0",
+      "direction": "input",
+      "bit": 272,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "port": "A1",
+      "direction": "input",
+      "bit": 336,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "port": "A2",
+      "direction": "input",
+      "bit": 400,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "port": "A3",
+      "direction": "input",
+      "bit": 464,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "port": "S1",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358294",
+      "port": "X",
+      "direction": "output",
+      "bit": 1272,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358296",
+          "A1"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "port": "A0",
+      "direction": "input",
+      "bit": 16,
+      "public_aliases": [
+        "first_word",
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "port": "A1",
+      "direction": "input",
+      "bit": 80,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "port": "A2",
+      "direction": "input",
+      "bit": 144,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "port": "A3",
+      "direction": "input",
+      "bit": 208,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "port": "S1",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358295",
+      "port": "X",
+      "direction": "output",
+      "bit": 1273,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358296",
+          "A0"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "port": "A0",
+      "direction": "input",
+      "bit": 783,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "port": "A1",
+      "direction": "input",
+      "bit": 847,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "port": "A2",
+      "direction": "input",
+      "bit": 911,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "port": "A3",
+      "direction": "input",
+      "bit": 975,
+      "public_aliases": [
+        "program_i"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "port": "S1",
+      "direction": "input",
+      "bit": 1165,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$164366",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358297",
+      "port": "X",
+      "direction": "output",
+      "bit": 1275,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358301",
+          "A3"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362916",
+      "port": "A",
+      "direction": "input",
+      "bit": 5683,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362710",
+          "X"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362916",
+      "port": "B",
+      "direction": "input",
+      "bit": 5888,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362915",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "cell": "$auto$ff.cc:266:slice$164365",
+      "port": "CLK",
+      "direction": "input",
+      "bit": 2,
+      "public_aliases": [
+        "clk"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$auto$ff.cc:266:slice$164365",
+      "port": "Q",
+      "direction": "output",
+      "bit": 1164,
+      "public_aliases": [
+        "pc_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358439",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358593",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358894",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358532",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358564",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358646",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358951",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358954",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358361",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358373",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358388",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358622",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358322",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358394",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358937",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358443",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358451",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358370",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358433",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358592",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358323",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358635",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358613",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358581",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358331",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358582",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358960",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358399",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358402",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358424",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358375",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358419",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358572",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358429",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358569",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358393",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358430",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358625",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358528",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358368",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358376",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358571",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360286",
+          "A_N"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358788",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358420",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358436",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358612",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358636",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358840",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358698",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359024",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358859",
+          "S"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358346",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358889",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358396",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358645",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358955",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358398",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358299",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358521",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358691",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358332",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358391",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358392",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358570",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358579",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358372",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358566",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358539",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358565",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358898",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358687",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358298",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358422",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358401",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358431",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358574",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358629",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358617",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358537",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358851",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358630",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359020",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358300",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358408",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358591",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358901",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358841",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358342",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358366",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358597",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358463",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359048",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358367",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358607",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358603",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358327",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358596",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358347",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358556",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358897",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358797",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358414",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358587",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358590",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359028",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358480",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359032",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358308",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358561",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358567",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360258",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358632",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358494",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358328",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358438",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358533",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358538",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358644",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358950",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358619",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358842",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358964",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358855",
+          "S"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358601",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358526",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358340",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358313",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358513",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358525",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358647",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358534",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358440",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358389",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358462",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358325",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358575",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358602",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358618",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358600",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358551",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358333",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358796",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358481",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358588",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358397",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358378",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358315",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358321",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358912",
+          "S"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358933",
+          "B1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358946",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358546",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358358",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358409",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358309",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358694",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358792",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358387",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358415",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358586",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358598",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358413",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358639",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358620",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358890",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358958",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358383",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358307",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358377",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358344",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358474",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358961",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358522",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358339",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358341",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358381",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358382",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358631",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358640",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358641",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358418",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358926",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358520",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358320",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358527",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359029",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358924",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358634",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358531",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358623",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358434",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358314",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358580",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358425",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358326",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358445",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358595",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358428",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358514",
+          "S1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358412",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358624",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358386",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358316",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358452",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358359",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358585",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358512",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358642",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358972",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358523",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360276",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358690",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358450",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358380",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358789",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358410",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358893",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358577",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358909",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358609",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358310",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358441",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358615",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358334",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358904",
+          "S"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358917",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358365",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358423",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358536",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358965",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358404",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358608",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359021",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358446",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363440",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358495",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359025",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358637",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358435",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358576",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358947",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358968",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359117",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360280",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358417",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358506",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358695",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358843",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358610",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$360291",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358444",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358482",
+          "S1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358371",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358403",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358407",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358793",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358453",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358800",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358847",
+          "S"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358686",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358360",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358941",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358969",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358345",
+          "S0"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358614",
+          "S0"
+        ]
+      ]
+    },
+    {
+      "cell": "$auto$ff.cc:266:slice$164365",
+      "port": "RESET_B",
+      "direction": "input",
+      "bit": "1",
+      "public_aliases": [
+        "stage"
+      ],
+      "omitted_connected_ports": []
+    }
+  ]
+}

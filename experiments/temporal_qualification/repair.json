@@ -1,0 +1,2084 @@
+{
+  "schema_version": 3,
+  "stage": "repair",
+  "source_sha": "358555b7f3ae5c52e193ada483b93e1a5bab35c0",
+  "source_sha_role": "Final expanded source/input inventory; measured execution identities and both narrow identity bindings are preserved",
+  "working_tree_dirty": false,
+  "source_hashes": {
+    ".github/workflows/ci.yml": "2a5561bb9d40df14fa9e7e2e0bfe4598f1e6af567564c7b38fcc4e1eae704003",
+    "docs/research/v3_temporal_qualification/preregistration.json": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522",
+    "experiments/exchange_decomposition/third_workload.json": "b2d3cf5b331bc8440806521ae8e083fa292319b49b13a984d81e95cfc4f2b309",
+    "experiments/generalization/microwire_workload.json": "5a8629efd9f3925bf103f116b4f78e26b186bf1b2be47177d3467bd08e6b1c2e",
+    "experiments/temporal_qualification/configurations/one_wire_reset_presence.json": "da02c34b1de4882a6645bb56ffdf03becf7e7f706464aa6db781d6da43ab3e2e",
+    "experiments/temporal_qualification/configurations/v2_dual_source_response.json": "9d895955ba1b057dc30bdd2b86b6a6dfd5202351924ebcbe5b111ac0ee2dd8f6",
+    "formal/guardian.sv": "b2845122acce3b5dc013f192b968c80a7844d681312b1f3367d29b8e5af07008",
+    "formal/temporal.sv": "9a6c74a39a655df1df2635eddb2ef7d8836e5fc863189de8797356bf68a9bf83",
+    "formal/watchdog.sv": "99bee078d2ce2c1dce766a660ea9497dfed9e9982b31104d22e6d298c2c5bb96",
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "903acafd55b300cf3eaf0323298b982c9d20395a8500f621be4b143cec4f1090",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/motifs/transaction.py": "7409f397a496b76e30b56e8ba3499ef81b3a59be5136a67623420e0b9788aab1",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "motif/transaction.py": "e5d789ea8f5cc98b195fc20177969e9a4da2c8362c59c1d492bb838c5269f2bb",
+    "pyproject.toml": "54f14bba12226efbc2a6c5b4499863f2b94f25fdef3513dd288f717556dbddea",
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4",
+    "test/host_tb.sv": "6742b858d49064e45930bd1295b291164117b235ce30fc1d1ac3f647f694b4d8",
+    "test/Makefile": "5c04d9e7a3286bc4e853eecf3c75b6b794c3468af5560a627e4107201b53e6be",
+    "test/requirements.txt": "9bc997c473bd44c93f41772d3a19c723a1a538dbf93f870ffb09c63c66267491",
+    "test/tb.v": "e082f6163dbcd3a409b8f5c3bffa6b9cce71e60b6746e35e2252bfb713f2306a",
+    "test/test.py": "a3730f32cc0a9ae12008c46b5e26c4203d6742023cb8bb21679a4f4170f21f6f",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/adversarial/test_direction.py": "e33f4c688d0282389cad006df33953e20efca5df09ca5647b3b81f5ef0cd42f0",
+    "tests/adversarial/test_guardian.py": "636028f6e1bc42f73408c41acff1087c1705ec5035a0631e4c148975eb8e2d73",
+    "tests/adversarial/test_i2c_provenance.py": "479358668398c9d1899601d8ce293a78f1de6b01487a7a06e2034a6aec38ab9e",
+    "tests/adversarial/test_timeout_frame.py": "6e99eb270b2a80078cf914e06cbb708f424bbeb8d845735337a4f3796936d764",
+    "tests/drivers.py": "08ddbe5992a8aad5cca763a2be2bc3e2af959e1e405987f8f91d6448bbee3eb1",
+    "tests/i2c_driver.py": "c95f2355f45f10cb56a79a7f8431674edb589f417189cd2846e24a5a8ec093cf",
+    "tests/model/test_configuration.py": "8d453f526d1704b7f52fba6edda66dd3b014ed6221ed1d8d41efd5c9cedc138f",
+    "tests/model/test_frozen_manifest.py": "f2a6d7aa3f79b598558068df70167cab0e41d725b7157132650a926fff285fe5",
+    "tests/model/test_i2c.py": "3eeb447e7a33747bc9b3a50e5cb1e6eb8dbce54e74957026742e4806d8cc9919",
+    "tests/model/test_i2c_setup.py": "b819d62b86e9fc21c660ebc6735758f45cf63b9b52504eecd77723d51563592e",
+    "tests/model/test_m0.py": "e6d985245602cddaa83e57f09729358f8f1ffedba3eccbd7448670d4220eaa8c",
+    "tests/model/test_microwire_oracle.py": "d3325e70e0c734440fe49dbb3746d54b19e81769411bc151a84e853fe707d533",
+    "tests/model/test_one_wire_oracle.py": "2be4e30763deef3b3b49e04ae66fad63d3cf0aac6f7fe2a99445348af49f46f2",
+    "tests/model/test_reference.py": "8cb321677e445a7b19d5fe6ec36bd932462663f1f4b2b00b6922a3684d853d68",
+    "tests/model/test_temporal.py": "73065b153b4062a1f43bc60d9cfe429462388f0e641107747d6274eaa717c771",
+    "tests/model/test_timed_stream.py": "96a036b9ad60284fbf5eee285652baf6fa121d2eedfcb2469335ba5c87064d24",
+    "tests/model/test_transaction.py": "92e817ceb8d72b77a019cb8c0c68a1c3962b2ff53d60a09faf0cec8ea704053d",
+    "tests/tooling/test_v3_evidence.py": "b80fd5f91c246b15b88f4102e929aaf7410c0b726f9809c7dbab4c4083e2e4d2",
+    "tools/__init__.py": "d854eb40e756b998a7f3abfe7862f3c0faa5bf17fed7a1c689e4e6694fa8d22e",
+    "tools/accounting.py": "53051f0297220ae19b1fdb270f149f4cb1e848a953916ee14e91c387e3be455f",
+    "tools/byte_exchange_falsification.py": "849159ea0a7834356ef0ec070f97060c62d13563d23a8b0703a45df0b3bc1caf",
+    "tools/campaign_report.py": "29e9842fb033243c5feb8a7efc10691f4c348193f11f7b13bad34cea5a43f4cf",
+    "tools/demo.py": "bde12609f9344197eb29c1130b278e6e0a4e65b77e5880064b6572627973b8ab",
+    "tools/demo_render.py": "0af75f2ac80f7baa98a4806264c7dfd413e3c818795d5ede46b6e75e65baa22f",
+    "tools/exchange_decomposition.py": "8c681010888f46a72e1581349ce86514776a2234d2691eebf99fc6535ceb75e5",
+    "tools/formal_check.py": "bb099115b00f66cfd16913222c9dfd6d2f9fb800892f8969c33dc72858b8b1f0",
+    "tools/frozen_manifest.py": "dc63a04ffc725b3461f61835282934bd148bc62c64793a77a37c6ecb2dabf67b",
+    "tools/generalization.py": "41f7d1e24c0e46ff4cdfbef40bde34ad2a967336d2068c4adaf00294e9cdf72a",
+    "tools/historical_snapshot.py": "969ed34474d705dcf74474543338392db5995b8c0bc39425e9948a03674fc4b4",
+    "tools/host_check.py": "ae16fc24b9d5896cbbe37edc49eb3a9d47d91c5efeaeda423c711cd0705929a6",
+    "tools/legacy_baseline.py": "1825f04efdc9d0158f469cad58bee7902a7b2a1818689e28c90fb056e910b4cc",
+    "tools/physical_correspondence.py": "1964131c2980a60aabf41e3e6202b7837b4f47cdc00ba198c3361e04947a9c62",
+    "tools/physical_report.py": "78f8aa0fdd4ed4d92b8195d6005ec6434aec9768d66125af8ca4c48e10df720b",
+    "tools/prepare_gate_models.py": "b243488995c4e235425e22da96d7ebabb962dfcc10d73ee3822a6ca5ceca398d",
+    "tools/rtl_check.py": "0f073739c15925f14536a89491d50c7e810652e8c6a9b917f4ca010d86847da7",
+    "tools/synthesis.py": "a96d0e4a437946705d28b6f905cb591f1c45b8bea89b3d8d495c1346e85fb489",
+    "tools/temporal_baseline.py": "37a46104eca60da4b3bbfa3bbe9105fad15357aa7b509e091d9b28fc28ef778c",
+    "tools/temporal_campaign.py": "a0776e0ed15b23e45ef7a91a23f4e7101367c243bca5ea1035f7291a702059cc",
+    "tools/temporal_vectors.py": "e9fd5a3aab2ad43a6d0358bffecc5e0affe388f403f91ee287ae675c474a35a2",
+    "tools/unseen_protocol.py": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
+    "tools/unseen_result.py": "193a71cbb19d91e0642316d7d19e7e71cce8800d832be4029b8ec5279852135b",
+    "tools/v2_inventory.py": "09a441b1b5d89e637697c93bf39540cbd6c6fe25ca5de2937c1be55ba4f3cbc7",
+    "tools/v3_inventory.py": "3fc01d585438764b3abadb8deadf993c6e6ce775728e9de24941289762af7fcf",
+    "tools/v3_trace.py": "d9b21ce33b8e208725dec47b751cbd2281f8e55bbbc809885c0f79207b0d5945"
+  },
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "physical_input_hashes": {
+    "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+    "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+  },
+  "training_workload": "one_wire_reset_presence_target",
+  "historical_unseen_relabelled_training": true,
+  "historical_wire_stimuli_sha256_lf": "b2d3cf5b331bc8440806521ae8e083fa292319b49b13a984d81e95cfc4f2b309",
+  "independent_oracle_source_sha256_lf": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
+  "host_actions_during_traffic": 0,
+  "cases": [
+    {
+      "name": "nominal",
+      "cycles": 125000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 32501,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000
+        ],
+        "observed_presence_cycles": [
+          [
+            76502,
+            82503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000
+        ],
+        "observed_presence_cycles": [
+          [
+            76502,
+            82503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "16ddb39c6acd040cb677cf27a0e2aeba240f4329e5de62fb3a19366f76ff01a1",
+        "model.jsonl": "00ff299dbe422ec59a437fd8757f2e2e065ea2ae26bd9472f49d8e0f2799371b",
+        "rtl.jsonl": "00ff299dbe422ec59a437fd8757f2e2e065ea2ae26bd9472f49d8e0f2799371b"
+      }
+    },
+    {
+      "name": "shortest_legal",
+      "cycles": 124000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 31502,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          74000
+        ],
+        "observed_presence_cycles": [
+          [
+            75503,
+            81504
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1510.06,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          74000
+        ],
+        "observed_presence_cycles": [
+          [
+            75503,
+            81504
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1510.06,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "5cff831b1e239f5ca57db314515e687c4e79c0e1295651697323096bfb5fcf55",
+        "model.jsonl": "a22feddaa9f535acf393deab9ec2f9cd418e00a721f354a349f6c59fc2b9a3e8",
+        "rtl.jsonl": "a22feddaa9f535acf393deab9ec2f9cd418e00a721f354a349f6c59fc2b9a3e8"
+      }
+    },
+    {
+      "name": "longest_bounded",
+      "cycles": 148000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 55501,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          98000
+        ],
+        "observed_presence_cycles": [
+          [
+            99502,
+            105503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1990.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          98000
+        ],
+        "observed_presence_cycles": [
+          [
+            99502,
+            105503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1990.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "cfcc10bd24a2106520e2551002239bb7ef8fcdc65cba3bef3875a2d526c736b8",
+        "model.jsonl": "ccc23ede7b5e6b6d1ee03883bceb4ea811e0952d7fdd86448c5a8209b57ac030",
+        "rtl.jsonl": "ccc23ede7b5e6b6d1ee03883bceb4ea811e0952d7fdd86448c5a8209b57ac030"
+      }
+    },
+    {
+      "name": "back_to_back",
+      "cycles": 200000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 2,
+        "FRAME_RELEASE": 2,
+        "RESET_COUNTER": 4,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 4,
+        "WAIT_POLICY": 65002,
+        "TEMPORAL_QUALIFY": 63006
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000,
+          150000
+        ],
+        "observed_presence_cycles": [
+          [
+            76502,
+            82503
+          ],
+          [
+            151502,
+            157503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.04,
+            "low": 120.02
+          },
+          {
+            "start": 3030.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000,
+          150000
+        ],
+        "observed_presence_cycles": [
+          [
+            76502,
+            82503
+          ],
+          [
+            151502,
+            157503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.04,
+            "low": 120.02
+          },
+          {
+            "start": 3030.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "c360a55cd980fb9585cf09f33651f04268e903ee39af005c109639cf87da8467",
+        "model.jsonl": "a78b34a40c411e6c23f000a9db052de2910dea4de12547c2c365e76fa9338551",
+        "rtl.jsonl": "a78b34a40c411e6c23f000a9db052de2910dea4de12547c2c365e76fa9338551"
+      }
+    },
+    {
+      "name": "unusual_legal_idle",
+      "cycles": 225000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 42501,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          135000
+        ],
+        "observed_presence_cycles": [
+          [
+            136502,
+            142503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 2730.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          135000
+        ],
+        "observed_presence_cycles": [
+          [
+            136502,
+            142503
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 2730.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "89dfc4e33adf1fbb5923339f0138cbca785d3efda614ca4638af3464a900ec64",
+        "model.jsonl": "f242abebaa8d3b04da44f4f4a8f960092303d2f59cd1ba316df223f5f5d59bf4",
+        "rtl.jsonl": "f242abebaa8d3b04da44f4f4a8f960092303d2f59cd1ba316df223f5f5d59bf4"
+      }
+    },
+    {
+      "name": "short_pulse",
+      "cycles": 105000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 0,
+        "RESET_COUNTER": 1,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 0,
+        "WAIT_POLICY": 54997,
+        "TEMPORAL_QUALIFY": 54998
+      },
+      "maximum_primitive_types_per_cycle": 3,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3037b5bff110b33f1ea39ea8b12cd65bff982282703e17d49088d05c85bb9547",
+        "model.jsonl": "25b9d02daa65d5df344221e85b89b9b21cfc62ff62ace88783b6f4422615114a",
+        "rtl.jsonl": "25b9d02daa65d5df344221e85b89b9b21cfc62ff62ace88783b6f4422615114a"
+      }
+    },
+    {
+      "name": "interrupted_non_reset",
+      "cycles": 125050,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 0,
+        "RESET_COUNTER": 1,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 0,
+        "WAIT_POLICY": 75047,
+        "TEMPORAL_QUALIFY": 75048
+      },
+      "maximum_primitive_types_per_cycle": 3,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "ee783d77da99b54bcf43394d7e4c82248ddddeb0457f600ae6eace0a1f9cfbbb",
+        "model.jsonl": "f0105ee910f9c3cf0bfaa78ed697df177d1fd4ae2496b6cd4cf223c7fe2b92dc",
+        "rtl.jsonl": "f0105ee910f9c3cf0bfaa78ed697df177d1fd4ae2496b6cd4cf223c7fe2b92dc"
+      }
+    },
+    {
+      "name": "system_reset",
+      "cycles": 125000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 2,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 3,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 0,
+        "WAIT_POLICY": 74993,
+        "TEMPORAL_QUALIFY": 74995
+      },
+      "maximum_primitive_types_per_cycle": 3,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "6a6b90914d5c901c1e962d9c9c3d7d72b0f7bf188b67962759a4debb8bb239b6",
+        "model.jsonl": "5c7e0b518d170d2cd5f4a3258e7478986e0ec1aa21f5eb2ab0678f144e9264fd",
+        "rtl.jsonl": "5c7e0b518d170d2cd5f4a3258e7478986e0ec1aa21f5eb2ab0678f144e9264fd"
+      }
+    },
+    {
+      "name": "watchdog_abort",
+      "cycles": 125000,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 1000,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 73998,
+        "RESET_COUNTER": 73999,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 0,
+        "WAIT_POLICY": 999,
+        "TEMPORAL_QUALIFY": 1000
+      },
+      "maximum_primitive_types_per_cycle": 3,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "7346e5d6b9aa65ca07ff2bcaa6c06199c02efa098575ad93190d51188eddad06",
+        "model.jsonl": "e323fbdaf75fa7c1b76a434cc96d42c4d915f9271deab798bafe323564b49d0f",
+        "rtl.jsonl": "e323fbdaf75fa7c1b76a434cc96d42c4d915f9271deab798bafe323564b49d0f"
+      }
+    },
+    {
+      "name": "startup_interrupted_non_reset",
+      "cycles": 84013,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 0,
+        "RESET_COUNTER": 1,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 0,
+        "WAIT_POLICY": 84002,
+        "TEMPORAL_QUALIFY": 84003
+      },
+      "maximum_primitive_types_per_cycle": 3,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "ea37a97450fa0f52961e2a85576e6db0380736a0342522cb2e93b664b1c43f0a",
+        "model.jsonl": "fb9d664b4159aafbf6e364319e0f4248d0b88e6e33118befd2be5216c0c00f89",
+        "rtl.jsonl": "fb9d664b4159aafbf6e364319e0f4248d0b88e6e33118befd2be5216c0c00f89"
+      }
+    },
+    {
+      "name": "restart_then_valid",
+      "cycles": 89058,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 36552,
+        "TEMPORAL_QUALIFY": 36553
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29058
+        ],
+        "observed_presence_cycles": [
+          [
+            30561,
+            36562
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 611.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29058
+        ],
+        "observed_presence_cycles": [
+          [
+            30561,
+            36562
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 611.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4aba73a0a8f280935f0e7c127d71559f749ad3be7e2949435f8e2d728f5c8428",
+        "model.jsonl": "cbef6eb86a458747ab671afc0c9ae99a6aecb5d0196264b61136e3010e188f40",
+        "rtl.jsonl": "cbef6eb86a458747ab671afc0c9ae99a6aecb5d0196264b61136e3010e188f40"
+      }
+    },
+    {
+      "name": "valid_590us",
+      "cycles": 129500,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 37001,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          79500
+        ],
+        "observed_presence_cycles": [
+          [
+            81002,
+            87003
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1620.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          79500
+        ],
+        "observed_presence_cycles": [
+          [
+            81002,
+            87003
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1620.04,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4c2d6d12d4bbdbdf4789b5285af8809af911058ead317c8d8e8b98d8a450a24d",
+        "model.jsonl": "0aedeabfa71ace18e25820ea6473a1b9491b5a6dfffcb19ecf8f929bec04938d",
+        "rtl.jsonl": "0aedeabfa71ace18e25820ea6473a1b9491b5a6dfffcb19ecf8f929bec04938d"
+      }
+    },
+    {
+      "name": "legal_phase_low24000_idle8",
+      "cycles": 84008,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 31502,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          24008
+        ],
+        "observed_presence_cycles": [
+          [
+            25511,
+            31512
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 510.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          24008
+        ],
+        "observed_presence_cycles": [
+          [
+            25511,
+            31512
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 510.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "ff46aa635b97387e274c05fb47e3edaa542610f66a9f407d1d734c1f98054042",
+        "model.jsonl": "3f12cf9648759836bec29040e757ca40f5a4d0086bc3ff7f373067006c31c523",
+        "rtl.jsonl": "3f12cf9648759836bec29040e757ca40f5a4d0086bc3ff7f373067006c31c523"
+      }
+    },
+    {
+      "name": "legal_phase_low24000_idle9",
+      "cycles": 84009,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 31502,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          24009
+        ],
+        "observed_presence_cycles": [
+          [
+            25512,
+            31513
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 510.24,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          24009
+        ],
+        "observed_presence_cycles": [
+          [
+            25512,
+            31513
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 510.24,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "672822ea30165fb9b046f6df12484ff7bd64201242df68180e3138aae2b7a474",
+        "model.jsonl": "e23064e4ec8a928a489470dfd6db7f6888d5b70939d81e520cad77a3889c0ab3",
+        "rtl.jsonl": "e23064e4ec8a928a489470dfd6db7f6888d5b70939d81e520cad77a3889c0ab3"
+      }
+    },
+    {
+      "name": "legal_phase_low29500_idle8",
+      "cycles": 89508,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 37001,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29508
+        ],
+        "observed_presence_cycles": [
+          [
+            31010,
+            37011
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 620.2,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29508
+        ],
+        "observed_presence_cycles": [
+          [
+            31010,
+            37011
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 620.2,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "8a912efe26d3bcf509d9ea8117631aedf85d5e196d6b0e42c4763b2cc83793a6",
+        "model.jsonl": "7a91cc8a72d9a1de60cd71da07c4c382cf8daa29c2e87924b693d4fdd19694e5",
+        "rtl.jsonl": "7a91cc8a72d9a1de60cd71da07c4c382cf8daa29c2e87924b693d4fdd19694e5"
+      }
+    },
+    {
+      "name": "legal_phase_low29500_idle9",
+      "cycles": 89509,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 37001,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29509
+        ],
+        "observed_presence_cycles": [
+          [
+            31011,
+            37012
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 620.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29509
+        ],
+        "observed_presence_cycles": [
+          [
+            31011,
+            37012
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 620.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4449d44dde4efa01ae9e0a96ccb0250b63763da234b69bac28874834de9a2cc1",
+        "model.jsonl": "ab0d5c135848406b4eb46cd969e856d2f817d7c95aa1d89099da22fc7e9419a4",
+        "rtl.jsonl": "ab0d5c135848406b4eb46cd969e856d2f817d7c95aa1d89099da22fc7e9419a4"
+      }
+    },
+    {
+      "name": "legal_phase_low48000_idle8",
+      "cycles": 108008,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 55501,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          48008
+        ],
+        "observed_presence_cycles": [
+          [
+            49510,
+            55511
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 990.2,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          48008
+        ],
+        "observed_presence_cycles": [
+          [
+            49510,
+            55511
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 990.2,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "88846870f591efcad829024b737064cc7bb86ccdcd88b46805bbb3524fb1491c",
+        "model.jsonl": "0dc59a8bb43c2b1382a5de00efd01082457466765f3fce318cc3cc44c5fc840a",
+        "rtl.jsonl": "0dc59a8bb43c2b1382a5de00efd01082457466765f3fce318cc3cc44c5fc840a"
+      }
+    },
+    {
+      "name": "legal_phase_low48000_idle9",
+      "cycles": 108009,
+      "configuration": {
+        "frame": "falling",
+        "frame_pin": 0,
+        "clock_pin": 1,
+        "rx_pin": 2,
+        "tx_pin": 2,
+        "sample": "rising",
+        "transmit": false,
+        "lsb_first": false,
+        "period": 434,
+        "validate_start": false,
+        "validate_stop": false,
+        "open_drain": 4,
+        "watchdog": 0,
+        "fill": 255,
+        "program": [
+          9262699368757100068,
+          9223372036856905284,
+          9259606992303971940,
+          9223372036854783618,
+          9260225467594596004,
+          9223372036854808258,
+          9007199254749158,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166,
+          8166
+        ],
+        "frame_active_high": false,
+        "hold_clock": false,
+        "pad_timing_check": false
+      },
+      "primitive_firings": {
+        "FRAME_ACQUIRE": 1,
+        "FRAME_RELEASE": 1,
+        "RESET_COUNTER": 2,
+        "SHIFT_RX_COUNT": 0,
+        "SHIFT_TX": 0,
+        "TIMED_SAMPLE": 0,
+        "FIELD_DECISION": 0,
+        "DIRECTION_HANDOFF": 0,
+        "BOUNDARY_RESPONSE": 2,
+        "WAIT_POLICY": 55501,
+        "TEMPORAL_QUALIFY": 31503
+      },
+      "maximum_primitive_types_per_cycle": 5,
+      "ordered_execution_observations": true,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          48009
+        ],
+        "observed_presence_cycles": [
+          [
+            49511,
+            55512
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 990.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          48009
+        ],
+        "observed_presence_cycles": [
+          [
+            49511,
+            55512
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 990.22,
+            "low": 120.02
+          }
+        ]
+      },
+      "model_rtl_agreement": true,
+      "original_historical_case": false,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3a4a15c0eb9298c608e69405897ba9a1879de1f9863186a61213433aae248066",
+        "model.jsonl": "7a0dcc921967eeef34eb68402e564abbbabd35ae2428cfa99ff21d71c6bc3091",
+        "rtl.jsonl": "7a0dcc921967eeef34eb68402e564abbbabd35ae2428cfa99ff21d71c6bc3091"
+      }
+    }
+  ],
+  "passed": true,
+  "total_compared_cycles": 2167672,
+  "qualification_provenance": {
+    "executed_check_source_identity": {
+      "source_sha": "cc72d539a0714f163be22181226f20d774e5ca1e",
+      "source_sha_role": "Parent commit of measured working-tree sources; source_hashes identify the tested bytes",
+      "working_tree_dirty": true,
+      "source_hashes": {
+        ".github/workflows/ci.yml": "2a5561bb9d40df14fa9e7e2e0bfe4598f1e6af567564c7b38fcc4e1eae704003",
+        "docs/research/v3_temporal_qualification/preregistration.json": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522",
+        "experiments/temporal_qualification/configurations/one_wire_reset_presence.json": "da02c34b1de4882a6645bb56ffdf03becf7e7f706464aa6db781d6da43ab3e2e",
+        "experiments/temporal_qualification/configurations/v2_dual_source_response.json": "9d895955ba1b057dc30bdd2b86b6a6dfd5202351924ebcbe5b111ac0ee2dd8f6",
+        "formal/guardian.sv": "b2845122acce3b5dc013f192b968c80a7844d681312b1f3367d29b8e5af07008",
+        "formal/temporal.sv": "9a6c74a39a655df1df2635eddb2ef7d8836e5fc863189de8797356bf68a9bf83",
+        "formal/watchdog.sv": "99bee078d2ce2c1dce766a660ea9497dfed9e9982b31104d22e6d298c2c5bb96",
+        "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+        "motif/engine.py": "903acafd55b300cf3eaf0323298b982c9d20395a8500f621be4b143cec4f1090",
+        "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+        "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+        "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+        "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+        "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+        "motif/motifs/transaction.py": "7409f397a496b76e30b56e8ba3499ef81b3a59be5136a67623420e0b9788aab1",
+        "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+        "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+        "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+        "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+        "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+        "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+        "motif/transaction.py": "e5d789ea8f5cc98b195fc20177969e9a4da2c8362c59c1d492bb838c5269f2bb",
+        "pyproject.toml": "54f14bba12226efbc2a6c5b4499863f2b94f25fdef3513dd288f717556dbddea",
+        "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+        "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+        "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+        "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+        "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+        "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+        "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+        "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+        "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+        "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+        "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+        "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+        "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4",
+        "test/host_tb.sv": "6742b858d49064e45930bd1295b291164117b235ce30fc1d1ac3f647f694b4d8",
+        "test/Makefile": "5c04d9e7a3286bc4e853eecf3c75b6b794c3468af5560a627e4107201b53e6be",
+        "test/requirements.txt": "9bc997c473bd44c93f41772d3a19c723a1a538dbf93f870ffb09c63c66267491",
+        "test/tb.v": "e082f6163dbcd3a409b8f5c3bffa6b9cce71e60b6746e35e2252bfb713f2306a",
+        "test/test.py": "a3730f32cc0a9ae12008c46b5e26c4203d6742023cb8bb21679a4f4170f21f6f",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/adversarial/test_direction.py": "e33f4c688d0282389cad006df33953e20efca5df09ca5647b3b81f5ef0cd42f0",
+        "tests/adversarial/test_guardian.py": "636028f6e1bc42f73408c41acff1087c1705ec5035a0631e4c148975eb8e2d73",
+        "tests/adversarial/test_i2c_provenance.py": "479358668398c9d1899601d8ce293a78f1de6b01487a7a06e2034a6aec38ab9e",
+        "tests/adversarial/test_timeout_frame.py": "6e99eb270b2a80078cf914e06cbb708f424bbeb8d845735337a4f3796936d764",
+        "tests/drivers.py": "08ddbe5992a8aad5cca763a2be2bc3e2af959e1e405987f8f91d6448bbee3eb1",
+        "tests/i2c_driver.py": "c95f2355f45f10cb56a79a7f8431674edb589f417189cd2846e24a5a8ec093cf",
+        "tests/model/test_configuration.py": "8d453f526d1704b7f52fba6edda66dd3b014ed6221ed1d8d41efd5c9cedc138f",
+        "tests/model/test_frozen_manifest.py": "f2a6d7aa3f79b598558068df70167cab0e41d725b7157132650a926fff285fe5",
+        "tests/model/test_i2c.py": "3eeb447e7a33747bc9b3a50e5cb1e6eb8dbce54e74957026742e4806d8cc9919",
+        "tests/model/test_i2c_setup.py": "b819d62b86e9fc21c660ebc6735758f45cf63b9b52504eecd77723d51563592e",
+        "tests/model/test_m0.py": "e6d985245602cddaa83e57f09729358f8f1ffedba3eccbd7448670d4220eaa8c",
+        "tests/model/test_microwire_oracle.py": "d3325e70e0c734440fe49dbb3746d54b19e81769411bc151a84e853fe707d533",
+        "tests/model/test_one_wire_oracle.py": "2be4e30763deef3b3b49e04ae66fad63d3cf0aac6f7fe2a99445348af49f46f2",
+        "tests/model/test_reference.py": "8cb321677e445a7b19d5fe6ec36bd932462663f1f4b2b00b6922a3684d853d68",
+        "tests/model/test_temporal.py": "73065b153b4062a1f43bc60d9cfe429462388f0e641107747d6274eaa717c771",
+        "tests/model/test_timed_stream.py": "96a036b9ad60284fbf5eee285652baf6fa121d2eedfcb2469335ba5c87064d24",
+        "tests/model/test_transaction.py": "92e817ceb8d72b77a019cb8c0c68a1c3962b2ff53d60a09faf0cec8ea704053d",
+        "tools/__init__.py": "d854eb40e756b998a7f3abfe7862f3c0faa5bf17fed7a1c689e4e6694fa8d22e",
+        "tools/accounting.py": "53051f0297220ae19b1fdb270f149f4cb1e848a953916ee14e91c387e3be455f",
+        "tools/byte_exchange_falsification.py": "849159ea0a7834356ef0ec070f97060c62d13563d23a8b0703a45df0b3bc1caf",
+        "tools/campaign_report.py": "29e9842fb033243c5feb8a7efc10691f4c348193f11f7b13bad34cea5a43f4cf",
+        "tools/demo.py": "bde12609f9344197eb29c1130b278e6e0a4e65b77e5880064b6572627973b8ab",
+        "tools/demo_render.py": "0af75f2ac80f7baa98a4806264c7dfd413e3c818795d5ede46b6e75e65baa22f",
+        "tools/exchange_decomposition.py": "8c681010888f46a72e1581349ce86514776a2234d2691eebf99fc6535ceb75e5",
+        "tools/formal_check.py": "57801308c8e2fd54fbc947e148c1ec10b4f3ec68893c61919d9d514457508ec3",
+        "tools/frozen_manifest.py": "dc63a04ffc725b3461f61835282934bd148bc62c64793a77a37c6ecb2dabf67b",
+        "tools/generalization.py": "41f7d1e24c0e46ff4cdfbef40bde34ad2a967336d2068c4adaf00294e9cdf72a",
+        "tools/historical_snapshot.py": "969ed34474d705dcf74474543338392db5995b8c0bc39425e9948a03674fc4b4",
+        "tools/host_check.py": "ae16fc24b9d5896cbbe37edc49eb3a9d47d91c5efeaeda423c711cd0705929a6",
+        "tools/legacy_baseline.py": "1825f04efdc9d0158f469cad58bee7902a7b2a1818689e28c90fb056e910b4cc",
+        "tools/physical_correspondence.py": "1964131c2980a60aabf41e3e6202b7837b4f47cdc00ba198c3361e04947a9c62",
+        "tools/physical_report.py": "78f8aa0fdd4ed4d92b8195d6005ec6434aec9768d66125af8ca4c48e10df720b",
+        "tools/prepare_gate_models.py": "b243488995c4e235425e22da96d7ebabb962dfcc10d73ee3822a6ca5ceca398d",
+        "tools/rtl_check.py": "0f073739c15925f14536a89491d50c7e810652e8c6a9b917f4ca010d86847da7",
+        "tools/synthesis.py": "a96d0e4a437946705d28b6f905cb591f1c45b8bea89b3d8d495c1346e85fb489",
+        "tools/temporal_baseline.py": "37a46104eca60da4b3bbfa3bbe9105fad15357aa7b509e091d9b28fc28ef778c",
+        "tools/temporal_campaign.py": "a0776e0ed15b23e45ef7a91a23f4e7101367c243bca5ea1035f7291a702059cc",
+        "tools/temporal_vectors.py": "e9fd5a3aab2ad43a6d0358bffecc5e0affe388f403f91ee287ae675c474a35a2",
+        "tools/unseen_protocol.py": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
+        "tools/unseen_result.py": "193a71cbb19d91e0642316d7d19e7e71cce8800d832be4029b8ec5279852135b",
+        "tools/v2_inventory.py": "09a441b1b5d89e637697c93bf39540cbd6c6fe25ca5de2937c1be55ba4f3cbc7",
+        "tools/v3_inventory.py": "8014394351df15217399004928b16fb731476d14b7bc95908b2ea95511e899f1",
+        "tools/v3_trace.py": "d9b21ce33b8e208725dec47b751cbd2281f8e55bbbc809885c0f79207b0d5945"
+      },
+      "preregistration": {
+        "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+        "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+      },
+      "physical_input_hashes": {
+        "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+        "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+        "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+        ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+      }
+    },
+    "changed_protected_files": [
+      "tests/tooling/test_v3_evidence.py",
+      "tools/formal_check.py",
+      "tools/v3_inventory.py"
+    ],
+    "reason": "Only formal-backend portability/receipt validation/new tooling guard tests changed; runtime RTL/model/configuration/controllers/oracles/comparison harness bytes are unchanged",
+    "byte_equal_verified_dependencies": [
+      ".github/workflows/ci.yml",
+      "docs/research/v3_temporal_qualification/preregistration.json",
+      "experiments/temporal_qualification/configurations/one_wire_reset_presence.json",
+      "experiments/temporal_qualification/configurations/v2_dual_source_response.json",
+      "formal/guardian.sv",
+      "formal/temporal.sv",
+      "formal/watchdog.sv",
+      "motif/__init__.py",
+      "motif/engine.py",
+      "motif/events.py",
+      "motif/guardian.py",
+      "motif/motifs/__init__.py",
+      "motif/motifs/shift.py",
+      "motif/motifs/timed.py",
+      "motif/motifs/transaction.py",
+      "motif/pad_history.py",
+      "motif/protocols/__init__.py",
+      "motif/protocols/i2c.py",
+      "motif/protocols/spi.py",
+      "motif/protocols/timed_stream.py",
+      "motif/protocols/uart.py",
+      "motif/transaction.py",
+      "pyproject.toml",
+      "src/motif_core.sv",
+      "src/motif_event_frontend.sv",
+      "src/motif_fifo.sv",
+      "src/motif_host_spi.sv",
+      "src/motif_pad_guardian.sv",
+      "src/motif_reference_top.sv",
+      "src/motif_sequential_shift.sv",
+      "src/motif_shift_rx_count.sv",
+      "src/motif_shift_tx.sv",
+      "src/motif_timed_sample.sv",
+      "src/motif_transaction.sv",
+      "src/motif_watchdog.sv",
+      "src/tt_um_wellitsabhinav_motif.sv",
+      "test/Makefile",
+      "test/host_tb.sv",
+      "test/requirements.txt",
+      "test/tb.v",
+      "test/test.py",
+      "tests/__init__.py",
+      "tests/adversarial/test_direction.py",
+      "tests/adversarial/test_guardian.py",
+      "tests/adversarial/test_i2c_provenance.py",
+      "tests/adversarial/test_timeout_frame.py",
+      "tests/drivers.py",
+      "tests/i2c_driver.py",
+      "tests/model/test_configuration.py",
+      "tests/model/test_frozen_manifest.py",
+      "tests/model/test_i2c.py",
+      "tests/model/test_i2c_setup.py",
+      "tests/model/test_m0.py",
+      "tests/model/test_microwire_oracle.py",
+      "tests/model/test_one_wire_oracle.py",
+      "tests/model/test_reference.py",
+      "tests/model/test_temporal.py",
+      "tests/model/test_timed_stream.py",
+      "tests/model/test_transaction.py",
+      "tools/__init__.py",
+      "tools/accounting.py",
+      "tools/byte_exchange_falsification.py",
+      "tools/campaign_report.py",
+      "tools/demo.py",
+      "tools/demo_render.py",
+      "tools/exchange_decomposition.py",
+      "tools/frozen_manifest.py",
+      "tools/generalization.py",
+      "tools/historical_snapshot.py",
+      "tools/host_check.py",
+      "tools/legacy_baseline.py",
+      "tools/physical_correspondence.py",
+      "tools/physical_report.py",
+      "tools/prepare_gate_models.py",
+      "tools/rtl_check.py",
+      "tools/synthesis.py",
+      "tools/temporal_baseline.py",
+      "tools/temporal_campaign.py",
+      "tools/temporal_vectors.py",
+      "tools/unseen_protocol.py",
+      "tools/unseen_result.py",
+      "tools/v2_inventory.py",
+      "tools/v3_trace.py"
+    ],
+    "local_formal_commands_identical": true,
+    "local_formal_checks": [
+      {
+        "name": "guardian",
+        "command_sha256": "7434e709fee02e9ed2a94dee0ab1ec1cdb5463a721cc3ef040b3f5e5187de23f",
+        "proof_log_sha256_lf": "bfd011cad223dafa2036bf449c6f389e478d95200a1800eee412d801b96d8b8d",
+        "passed": true
+      },
+      {
+        "name": "watchdog",
+        "command_sha256": "c93be8fc888bdc8e84e4c30cfc95f31f91bae66746ba3edbeaf97baeb7280836",
+        "proof_log_sha256_lf": "d5b03a1e179b761542c2657b3d5771fa232f48f21d6a21e65b3932d9be6aafeb",
+        "passed": true
+      },
+      {
+        "name": "temporal_1",
+        "command_sha256": "4d1035dc151ef650c51b10e5ca8b163702d61d811ae0b2eb64e8cdfb3bf86205",
+        "proof_log_sha256_lf": "8302313b0bb62792b88a024b3e3fbaa617e4dcde388dfb5e664271d844df085f",
+        "passed": true
+      },
+      {
+        "name": "temporal_2",
+        "command_sha256": "c0e11bfa6d20a68502180f017f51578c13032b62722c9a30178f88088e350be5",
+        "proof_log_sha256_lf": "6e1883f23190e8ab3fe48cf9e8024409807cafedb66fc7fdb7703a066b0d41e0",
+        "passed": true
+      },
+      {
+        "name": "temporal_3",
+        "command_sha256": "9585a01cbbe510fbcfffc166e82a92f648d6e20ad68f2cb8dd74f8a23aa4c28d",
+        "proof_log_sha256_lf": "638f443346176c6eac9625ebba6939851c8f8b061603f7e4a91a2f86b7afb495",
+        "passed": true
+      },
+      {
+        "name": "temporal_4",
+        "command_sha256": "a86e3718644bff6772798da7e63bfe322bf62b1ca2f7ca4c5630c9eeb6665f3b",
+        "proof_log_sha256_lf": "7e4e36eb2f97e9ab25e8db7174126ce56fa36b49def3c1ab77b388c55085ea98",
+        "passed": true
+      }
+    ],
+    "modern_formal_confirmation": {
+      "workflow_run_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293348349",
+      "source_sha": "c694f65361257d9763b2591ee1d62a28a173a5be",
+      "formal_step": "success",
+      "evidence_origin": "Parent independently inspected completed formal step; source is identical apart from subsequently strengthened validator/tests"
+    },
+    "final_full_pytest_receipt_sha256_lf": "17798efdab79615a254201ba5b46b61060d60babaf01521d09da5299d441b6d4"
+  },
+  "qualification_input_identity_binding": {
+    "prior_evidence_commit": "8147582a38877322476675b458629068042e238c",
+    "prior_report_sha256_lf": "e5723cc59cfdb4c9a371aae8e45c6f4ea13b0f7aae4e2748d1e3173dcc5c8a0e",
+    "changed_inventory_implementation_only": "tools/v3_inventory.py adds these two inputs to inventory; validation/runtime semantics unchanged",
+    "added_workload_hashes": {
+      "experiments/exchange_decomposition/third_workload.json": "b2d3cf5b331bc8440806521ae8e083fa292319b49b13a984d81e95cfc4f2b309",
+      "experiments/generalization/microwire_workload.json": "5a8629efd9f3925bf103f116b4f78e26b186bf1b2be47177d3467bd08e6b1c2e"
+    },
+    "qualification_inputs_equal_to_pinned_490a50c": true,
+    "every_other_previously_protected_dependency_byte_equal": true
+  }
+}

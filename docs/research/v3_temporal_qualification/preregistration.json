@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "campaign": "one_controlled_continuous_temporal_responsibility",
+  "architecture_version": 3,
+  "starting_source": "5601be5c15a844e4a1ebdb13c15ea17034f38fa5",
+  "historical_v2_source": "490a50c3e03f1be96784fd27f9d64b718c2aa5cc",
+  "historical_classification": "MOTIF_V2_UNSEEN_PROTOCOL_GENERALIZATION_PARTIAL",
+  "question": "Can one compact generic continuous-predicate qualification responsibility repair demonstrated sampled-persistence gaps, preserve qualified protocols, and survive a subsequently selected frozen unseen workload?",
+  "responsibility": "TEMPORAL_QUALIFY: qualify T consecutive synchronized observations of a configured RX level or constant-true predicate; register success, restart in place or branch on an interrupted partial qualification.",
+  "encoding": {
+    "entries": 16,
+    "entry_bits": 64,
+    "opcode_bits": 3,
+    "opcode": 4,
+    "temporal_flag_bit": 2,
+    "interrupt_branch_flag_bit": 3,
+    "level_argument": 3,
+    "delay_argument": 2,
+    "threshold_operand": "mask[15:0], 1..65535",
+    "level_operand": "value[0]",
+    "trigger": "ALWAYS only",
+    "success": "next",
+    "interrupted_partial_branch": "alternate",
+    "allowed_flags": [2, 3, 10],
+    "reserved": "argument[7:2], value[15:1] and flags[9:4]/flags[1:0] must be zero; constant-true delay requires value==0 and branch flag==0",
+    "host_version": 3,
+    "host_addresses_and_byte_order": "unchanged",
+    "compatibility": "Previously qualified v2 profiles remain unchanged. Accepted v2 binary tables using formerly ignored temporal-tag bits acquire v3 meaning; arbitrary ignored-bit compatibility is not claimed."
+  },
+  "timing_contract": [
+    "Actors consume existing synchronized frontend observations; unsampled analog/subcycle pulses are outside the claim.",
+    "T matching observations qualify. The first matching observation counts as one; T=1 qualifies on that observation.",
+    "When entry zero is temporal, acquisition counts its matching observation after clearing the old epoch. Acquisition suppresses ordinary actions/output responses.",
+    "A newly entered temporal entry through an allowed chain can count that cycle's observation.",
+    "Temporal state advances at most once per core cycle. A second temporal entry reached by chaining is deferred until the next cycle.",
+    "A false observation on the would-be T-th observation prevents qualification. False before qualification resets count immediately.",
+    "Initially false predicates wait without interruption branching. Restart waits in place for a fresh matching interval; branch mode takes alternate when a started partial qualification is interrupted.",
+    "Success is registered on the T-th matching observation and consumed on the following executor cycle. A false observation after registered success does not revoke it.",
+    "Completion consumption and interruption branching clear temporal state before leaving the entry.",
+    "Reset/disable/abort/release/watchdog/fatal condition clears stale temporal progress/completion before normal execution. Fresh acquisition clears the old epoch and may seed entry zero.",
+    "Keep four distinct immediate entries maximum, existing guardian output suppression and pre-edge FIFO/readiness decisions."
+  ],
+  "permitted_changes": [
+    "One tagged WAIT temporal family with one separate 16-bit qualification counter and minimal lifecycle state.",
+    "Matching model/RTL/host validation, public packing helpers, configuration, independent tests and instrumentation.",
+    "Existing model correspondence correction: WAIT compares the pre-edge TX bit, matching existing RTL and preregistered pre-edge predicate responsibility.",
+    "Existing model correspondence correction: terminating HALT cancels same-cycle FIFO operations, matching the original RTL. Record the original counterexample and exact cancellation contract.",
+    "Historical snapshot dispatch so original frozen v2 sources and evidence continue to be verified unchanged.",
+    "Synthesis/accounting/manifest improvements, reproducible diagrams/demos and documentation without protocol-specific generic RTL."
+  ],
+  "prohibited_changes": [
+    "Protocol-name branches, dedicated protocol FSMs/counters/wrappers, hardcoded reset/presence constants or assumptions tied to DQ in generic RTL.",
+    "Shared timed-sampling, existing WAIT, frontend, guardian or watchdog semantic redesign.",
+    "Additional predicate families, duration upper bounds, opcode widening, table growth or configuration storage growth.",
+    "Changing historical workload/oracle/results/manifests to accommodate new evidence.",
+    "Researching/selecting the unseen workload before v3 freeze, or semantic repair/candidate switching after its selection."
+  ],
+  "budgets": {
+    "maximum_added_declared_state_bits": 24,
+    "planned_temporal_state_bits": 18,
+    "planned_state": {"count": 16, "started": 1, "registered_complete": 1},
+    "maximum_added_configuration_bits": 0,
+    "configuration_bits": 1096,
+    "table_bits": 1024,
+    "baseline_mapped_area_um2": 194376.3318,
+    "maximum_area_ratio": 1.1,
+    "maximum_mapped_area_um2": 213813.96498,
+    "mapping_comparison": "Same pinned Yosys/ABC, CMOS5L typical library and top; remap frozen v2 and v3, retain library/tool/source identities.",
+    "optimization_before_cost_gate": false
+  },
+  "success_criteria": {
+    "temporal": "Independent exhaustive small-threshold expectations and model/RTL comparison; both levels, delay, below/equal/above, interruptions before/on/after completion, threshold1/65535, acquisition/chaining, lifecycle and back-to-back cases.",
+    "training": "All nine original unchanged 1-Wire wire-level stimuli/oracles pass; no presence after LOW200us/HIGH1us/LOW300us. Added startup interruption, restarted valid low, 590us legal reset and deterministic legal reset/release-phase sweeps pass.",
+    "regression": "Original48 I2C cases with identical stimuli and legacy externally visible equivalence; exact Microwire A55A including runtime back-to-back; SPI/UART/timed stream/FIFO/host/guardian/watchdog, lint, existing formal/bounded checks and cocotb runtime tests all pass.",
+    "freeze": "Clean committed sources, complete fresh logical/synthesis/accounting evidence, within budgets, immutable manifest/source/model/compiler/harness/tool/test/oracle/report hashes before future workload research.",
+    "unseen": "One new timing-sensitive workload selected and committed after freeze; independently preregistered wire oracle passes with configuration only and unchanged semantic manifest.",
+    "physical": "Only after unseen logical pass, pinned official6x4/20ns flow, precheck and routed functional/source-correspondence checks; capture metrics honestly.",
+    "demonstration": "Real protocol waveforms and execution traces linked to architecture/netlist views, and physical views only if identified artifacts exist; reproducible CLI/HTML/public guides."
+  },
+  "future_unseen_rule": {
+    "research_started": false,
+    "selected": false,
+    "selection": "After freeze only: primary-source candidate matrix, exclude electrically unobservable/no accessible timing/no independent bounded oracle; rank structural independence then temporal falsification value then smaller bounded scope, finally workload-name ordering.",
+    "selection_commit_precedes_configuration": true,
+    "allowed_changes": ["configuration", "testbench", "independent oracle", "stimulus", "rendering", "documentation"],
+    "frozen": ["RTL semantics", "model semantics", "encoding/compiler", "frontend", "timer", "architectural state"]
+  },
+  "physical_limits": {"tile": "6x4", "clock_period_ns": 20, "initial_attempts": 1, "maximum_flow_setting_revisions": 2, "semantic_changes": false},
+  "stop_conditions": [
+    "Repair requires protocol-specific RTL or a second architectural responsibility.",
+    "A previously qualified workload regresses and no simple generic correction within this contract resolves it.",
+    "Added state/configuration or mapped area exceeds the fixed budget; do not optimize to evade the measured result.",
+    "Frozen unseen workload requires any semantic architecture repair; retain negative result, no candidate substitution.",
+    "Physical closure fails after initial run plus at most two diagnosed flow-setting revisions at6x4/20ns, or evidence establishes impracticality."
+  ],
+  "reporting": "Keep historical negative evidence, distinguish facts/measurements/interpretation/hypotheses; report logical, cost and physical classifications separately. Complete reached demonstrations and requested A-Z final report even after a stop."
+}

@@ -4,7 +4,8 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from motif.protocols.i2c import target
-from motif.transaction import host_bytes, Entry, RX, RISING
+from motif.transaction import (host_bytes, Entry, RX, RISING, WAIT, HALT, program,
+                               temporal_wait, TEMPORAL, INTERRUPT_BRANCH)
 from tools.exchange_decomposition import microwire_config
 
 
@@ -12,6 +13,82 @@ async def load_table(driver, words, start=0, end=128):
     data=host_bytes(words)
     for index in range(start,end):
         await driver.transaction(2,128+index,data[index])
+
+
+@cocotb.test()
+async def runtime_temporal_validation(dut):
+    driver = Driver(dut)
+    dut.rst_n.value = 0
+    dut.ena.value = 1
+    await driver.tick(4)
+    dut.rst_n.value = 1
+    await driver.tick()
+    assert await driver.transaction(1, 21) == 3
+    await load_table(driver, program([Entry(HALT)]))
+    await driver.transaction(2, 22, 1)
+    invalid = [Entry(WAIT, flags=TEMPORAL, argument=3),
+               Entry(WAIT, RISING, flags=TEMPORAL, argument=3, mask=1),
+               Entry(WAIT, flags=TEMPORAL, argument=1, mask=1),
+               Entry(WAIT, flags=TEMPORAL | 1, argument=3, mask=1),
+               Entry(WAIT, flags=TEMPORAL | 16, argument=3, mask=1),
+               Entry(WAIT, flags=TEMPORAL, argument=7, mask=1),
+               Entry(WAIT, flags=TEMPORAL, argument=3, value=2, mask=1),
+               Entry(WAIT, flags=TEMPORAL | INTERRUPT_BRANCH, argument=2, mask=1),
+               Entry(WAIT, flags=TEMPORAL, argument=2, value=1, mask=1)]
+    for entry in invalid:
+        for index, value in enumerate(entry.encode().to_bytes(8, 'little')):
+            await driver.transaction(2, 128+index, value)
+        await driver.transaction(2, 0, 1)
+        assert await driver.transaction(1, 0) == 8, "Invalid temporal entry enabled"
+        assert await driver.transaction(1, 18) & 1
+    await load_table(driver, program([temporal_wait(0,4,next=1,chain=True),
+                                      Entry(2,next=2), Entry(HALT,flags=2)]))
+    await driver.transaction(2, 0, 1)
+    driver.pins = 250
+    await driver.tick(12)
+    assert int(dut.uio_oe.value) == 8
+    assert not int(dut.uio_out.value) & 8
+    await driver.transaction(2, 3, 99)
+    assert await driver.transaction(1, 3) == (434 & 255), "Enabled configuration write changed timer"
+    await driver.transaction(2, 0, 0)
+    assert int(dut.uio_oe.value) == 0
+
+
+@cocotb.test()
+async def runtime_one_wire_training(dut):
+    from tools.temporal_campaign import repair_specification
+    from tools.unseen_protocol import oracle
+    workload, config = repair_specification()
+    driver = Driver(dut)
+    dut.rst_n.value = 0
+    dut.ena.value = 1
+    await driver.tick(4)
+    dut.rst_n.value = 1
+    await driver.tick()
+    await load_table(driver, config.program)
+    await driver.transaction(2, 2, 18)
+    await driver.transaction(2, 6, 4)
+    await driver.transaction(2, 22, 1)
+    await driver.transaction(2, 0, 3)
+    level = [1]
+    controller, low, data, enables = [], [], [], []
+    def resolve_line(current):
+        ownership = int(dut.uio_oe.value)
+        current.pins = 248 | (7 if level[0] and not ownership & 4 else 0)
+        controller.append(level[0]); low.append(bool(ownership & 4))
+        data.append(int(dut.uio_out.value)); enables.append(ownership)
+    driver.on_tick = resolve_line
+    for case in ([(1,100),(0,24000),(1,10000)],
+                 [(1,100),(0,10000),(1,50),(0,15000),(1,10000)]):
+        controller.clear(); low.clear(); data.clear(); enables.clear()
+        for value, cycles in case:
+            level[0] = value
+            await driver.tick(cycles)
+        expected = 1 if len(case) == 3 else 0
+        result = oracle(controller, low, data, enables, workload,
+                        {"expected_presence":expected})
+        assert result['passed'], result['errors']
+    driver.on_tick = None
 
 
 class Driver:
@@ -236,7 +313,7 @@ async def runtime_i2c_qualification(dut):
     await driver.tick(4)
     dut.rst_n.value = 1
     await driver.tick()
-    assert await driver.transaction(1, 21) == 2
+    assert await driver.transaction(1, 21) == 3
     assert await driver.transaction(1, 9) == 0
     assert await driver.transaction(1, 10) == 0
     await load_table(driver,target().program)
@@ -299,7 +376,7 @@ async def runtime_i2c_qualification(dut):
     assert int(dut.uio_oe.value) == 0
     dut.rst_n.value = 1
     await driver.tick()
-    assert await driver.transaction(1, 21) == 2
+    assert await driver.transaction(1, 21) == 3
     assert await driver.transaction(1, 22) == 0
     assert await driver.transaction(1, 19) == 0
 

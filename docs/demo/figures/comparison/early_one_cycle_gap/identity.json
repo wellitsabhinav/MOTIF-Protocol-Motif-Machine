@@ -1,0 +1,27 @@
+{
+  "kind": "new_configuration_only_comparison",
+  "source_commit": "490a50c3e03f1be96784fd27f9d64b718c2aa5cc",
+  "report_sha256_lf": "fa39924ff4e4ac1fbe79ea8f35d24fda6df54b72da4a6480a0032752a84a252f",
+  "rtl_trace_sha256_lf": "bc62bb8d828a0f18d90428f3149ef5aca61254f3a14b8c7c33dc283095e02f20",
+  "oracle": {
+    "passed": false,
+    "errors": [
+      "Expected 0 presence pulse(s), observed 1"
+    ],
+    "qualified_controller_releases_cycles": [],
+    "observed_presence_cycles": [
+      [
+        77000,
+        82999
+      ]
+    ],
+    "timings_us": [
+      {
+        "start": 1540.0,
+        "low": 119.98
+      }
+    ]
+  },
+  "responsibility": "Observe a one-cycle HIGH interruption during alignment; neither individual LOW interval is long enough",
+  "interpretation": "Bounded comparison evidence; historical classification remains unchanged"
+}

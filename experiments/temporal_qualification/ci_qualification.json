@@ -1,0 +1,40 @@
+{
+  "schema_version": 3,
+  "source_sha": "383e494610deec2edc99aac0bca7215f735dbcdf",
+  "workflow_run_id": 38293882738,
+  "workflow_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293882738",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "model",
+      "job_id": 114960193445,
+      "conclusion": "success"
+    },
+    {
+      "name": "rtl",
+      "job_id": 114960193119,
+      "conclusion": "success"
+    },
+    {
+      "name": "cocotb",
+      "job_id": 114960193369,
+      "conclusion": "success"
+    },
+    {
+      "name": "cost",
+      "job_id": 114964687693,
+      "conclusion": "success"
+    }
+  ],
+  "optional_gate_test": "skipped because no v3 physical artifact exists",
+  "linux_mapping": {
+    "pinned_oss_cad_suite": "2026-10-11",
+    "v3_area_um2": 198921.933,
+    "v2_area_um2": 187638.4062,
+    "area_growth_percent": 6.013442039138361,
+    "area_and_ratio_gates_passed": true,
+    "full_tool_library_source_and_netlist_identities": "matched-v3-synthesis-evidence CI artifact",
+    "comparison_scope": "Additional independent pinned Linux pair; does not replace the frozen local Yosys0.30 baseline/cap measurement"
+  },
+  "large_artifacts": "i2c-logical-traces, runtime-cocotb-evidence, matched-v3-synthesis-evidence; published by this identified CI run"
+}

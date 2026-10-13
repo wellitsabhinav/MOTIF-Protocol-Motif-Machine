@@ -1,0 +1,19 @@
+{
+  "kind": "new_configuration_only_comparison",
+  "source_commit": "490a50c3e03f1be96784fd27f9d64b718c2aa5cc",
+  "report_sha256_lf": "fa39924ff4e4ac1fbe79ea8f35d24fda6df54b72da4a6480a0032752a84a252f",
+  "rtl_trace_sha256_lf": "cfd6fb27bc90ad3e4e1ba36e628841bf8969a5ed10447493930469bd80f2e03d",
+  "oracle": {
+    "passed": false,
+    "errors": [
+      "Expected 1 presence pulse(s), observed 0"
+    ],
+    "qualified_controller_releases_cycles": [
+      84050
+    ],
+    "observed_presence_cycles": [],
+    "timings_us": []
+  },
+  "responsibility": "Restart within the active epoch and accept the later continuous 480us LOW interval",
+  "interpretation": "Bounded comparison evidence; historical classification remains unchanged"
+}

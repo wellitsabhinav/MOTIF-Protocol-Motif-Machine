@@ -1,9 +1,33 @@
-"""The preregistered v2 instruction encoding; no protocol dispatch."""
+"""Bounded v3 encoding: temporal qualification is a tagged generic WAIT."""
 from dataclasses import dataclass
 
 RX, DECIDE, RESPOND, HANDOFF, WAIT, TX, HALT, CONTINUE = range(8)
 ALWAYS, RISING, FALLING, TIMER = range(4)
 CHAIN = 1024
+TEMPORAL = 4
+INTERRUPT_BRANCH = 8
+
+
+def is_temporal(entry):
+    return entry.opcode == WAIT and bool(entry.flags & TEMPORAL)
+
+
+def temporal_wait(level, cycles, on_interrupt="restart", next=15, alternate=15, chain=False):
+    if type(level) is not int or level not in (0, 1):
+        raise ValueError("Temporal level must be zero or one")
+    if on_interrupt not in ("restart", "branch"):
+        raise ValueError("Temporal interruption must restart or branch")
+    entry = Entry(WAIT, next=next, alternate=alternate, argument=3, value=level,
+                  mask=cycles, flags=TEMPORAL | (INTERRUPT_BRANCH if on_interrupt == "branch" else 0) | (CHAIN if chain else 0))
+    validate(program([entry]))
+    return entry
+
+
+def delay_wait(cycles, next=15, chain=False):
+    entry = Entry(WAIT, next=next, argument=2, mask=cycles,
+                  flags=TEMPORAL | (CHAIN if chain else 0))
+    validate(program([entry]))
+    return entry
 
 
 @dataclass(frozen=True)
@@ -57,6 +81,11 @@ def validate(words):
             raise ValueError("Receive field outside 1..16-bit range")
         if e.opcode == CONTINUE and (e.argument & 7) > 5:
             raise ValueError("Unsupported continuation predicate")
+        if is_temporal(e):
+            if (e.trigger != ALWAYS or e.argument not in (2, 3) or not e.mask or
+                    e.value > 1 or e.flags & ~(TEMPORAL | INTERRUPT_BRANCH | CHAIN) or
+                    (e.argument == 2 and (e.value or e.flags & INTERRUPT_BRANCH))):
+                raise ValueError("Invalid temporal WAIT encoding")
     return words
 
 

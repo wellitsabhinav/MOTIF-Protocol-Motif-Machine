@@ -124,6 +124,7 @@ class Engine:
 
     def step(self, pins, reset=False, abort=False, requests=None):
         cfg = self.config
+        self.exchange.executed_entries = []
         edge = self.frontend.step(pins)
         own = self.pad_history.step(int(bool(self.last_oe & (1 << cfg.clock_pin))) | (int(bool(self.last_oe & (1 << cfg.rx_pin))) << 1))
         fires = []
@@ -161,7 +162,20 @@ class Engine:
                 self.faults.add("pad_timing")
                 events.append("pad_timing_fault")
         timed_out = self.guardian.tick(self.active, acquire, progress, abort or pad_timing)
-        if reset or not self.enabled or abort or release or timed_out:
+        end_sample = previous_pending in ("invalid_start", "invalid_stop", "stop_valid")
+        externally_inhibited = reset or not self.enabled or abort or release or timed_out
+        if externally_inhibited or end_sample:
+            # Registered validation end is higher priority than acquisition in
+            # the existing RTL. Validated-byte deposit belongs to the ordinary
+            # receive route; table transactions never enqueue UART assembly.
+            if end_sample and not reset:
+                if previous_pending in ("invalid_start", "invalid_stop"):
+                    self.faults.add(previous_pending)
+                elif not externally_inhibited and self.active and not cfg.exchange:
+                    if len(self.rx_fifo) < self.fifo_depth:
+                        self.rx_fifo.append(self.assembled)
+                    else:
+                        self.faults.add("rx_overflow")
             self._release()
             fires += ["FRAME_RELEASE", "RESET_COUNTER"]
             if reset:
@@ -175,11 +189,11 @@ class Engine:
         elif acquire:
             self.active = True
             self.rx.clear()
-            self.exchange.clear()
+            temporal_fires, temporal_events = self.exchange.acquire(bool(edge.level & (1 << cfg.rx_pin)))
+            fires += temporal_fires
+            events += temporal_events
             fires += ["FRAME_ACQUIRE", "RESET_COUNTER"]
             events.append("frame_start")
-            if cfg.sample == "timer":
-                self.timer.start()
             if cfg.transmit and not cfg.exchange:
                 self._load_tx()
                 fires.append("SHIFT_TX_LOAD")
@@ -196,15 +210,6 @@ class Engine:
                     self._release()
                     fires += ["FRAME_RELEASE", "RESET_COUNTER"]
                 self.pending_timer_start = self.active and "turnaround_begin" in exchange_events
-                if previous_pending == "sample" and cfg.sample != "timer":
-                    self.timer.stop()
-            if previous_timer_start and cfg.exchange and self.active:
-                self.timer.start()
-            elif cfg.sample == "timer" or (cfg.exchange and self.exchange.waiting_timer):
-                self.pending = self.timer.tick(bool(edge.level & (1 << cfg.rx_pin)))
-                self.pending_bit = bool(edge.level & (1 << cfg.rx_pin))
-                if self.pending:
-                    fires.append("TIMED_SAMPLE")
             sample = not cfg.exchange and ((cfg.sample == "rising" and bool(edge.rising & (1 << cfg.clock_pin))) or previous_pending == "sample")
             if sample:
                 byte = self.rx.fire(sampled_bit)
@@ -217,20 +222,31 @@ class Engine:
                         self.rx_fifo.append(byte)
                     else:
                         self.faults.add("rx_overflow")
-            if previous_pending in ("invalid_start", "invalid_stop", "stop_valid"):
-                if previous_pending == "stop_valid" and len(self.rx_fifo) < self.fifo_depth:
-                    self.rx_fifo.append(self.assembled)
-                elif previous_pending != "stop_valid":
-                    self.faults.add(previous_pending)
-                else:
-                    self.faults.add("rx_overflow")
-                self._release()
-                fires += ["FRAME_RELEASE", "RESET_COUNTER"]
             if cfg.transmit and not cfg.exchange and edge.falling & (1 << cfg.clock_pin):
                 if self.tx.fire():
                     events.append("tx_complete")
                     self._load_tx()
                 fires.append("SHIFT_TX")
+        # The original RTL timer runs autonomously while armed. Its registered
+        # start wins over clear (except reset), including an end/acquire overlap
+        # that clears the frame but restarts the timer. Model that routing exactly
+        # rather than inferring timer enable from the post-action PC or active bit.
+        fatal = bool(set(events) & {"data_mismatch", "composition_fault", "frame_terminate"})
+        timer_start = (not externally_inhibited and not fatal and
+                       ((cfg.exchange and previous_timer_start) or (acquire and cfg.sample == "timer")))
+        timer_clear = (externally_inhibited or end_sample or fatal or
+                       (cfg.exchange and cfg.sample != "timer" and previous_pending == "sample"))
+        if reset:
+            self.timer.stop()
+        elif timer_start:
+            self.timer.start()
+        elif timer_clear:
+            self.timer.stop()
+        else:
+            self.pending = self.timer.tick(bool(edge.level & (1 << cfg.rx_pin)))
+            self.pending_bit = bool(edge.level & (1 << cfg.rx_pin))
+            if self.pending:
+                fires.append("TIMED_SAMPLE")
         generated = [Request(0, cfg.tx_pin, self.tx.bit)] if self.active and cfg.transmit else []
         ownership = {0: 1 << cfg.tx_pin} if self.active and cfg.transmit else {}
         if cfg.exchange:

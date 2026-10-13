@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "core_period_ns": 20,
+  "purpose": "Additional known-workload audit probes; no future unseen protocol is selected or investigated.",
+  "oracle": "Unmodified tools/unseen_protocol.py and third_workload.json from immutable v2 commit 490a50c3e03f1be96784fd27f9d64b718c2aa5cc",
+  "host_activity": "Four FF tokens at cycles 8 through 11; no host activity during traffic",
+  "cases": [
+    {
+      "name": "early_one_cycle_gap",
+      "segments_cycles": [[1, 50000], [0, 1], [1, 1], [0, 23998], [1, 50000]],
+      "expected_presence": 0,
+      "expected_oracle_pass": false,
+      "responsibility": "Observe a one-cycle HIGH interruption during alignment; neither individual LOW interval is long enough",
+      "windows_cycles": {"interruption": [49999, 50008], "false_presence": [76997, 77004]}
+    },
+    {
+      "name": "interrupt_then_valid_low",
+      "segments_cycles": [[1, 50000], [0, 10000], [1, 50], [0, 24000], [1, 50000]],
+      "expected_presence": 1,
+      "expected_oracle_pass": false,
+      "responsibility": "Restart within the active epoch and accept the later continuous 480us LOW interval",
+      "windows_cycles": {"rise": [59999, 60006], "fall": [60049, 60056], "rejection": [62003, 62009], "valid_release": [84049, 84056]}
+    },
+    {
+      "name": "valid_590_us",
+      "segments_cycles": [[1, 50000], [0, 29500], [1, 50000]],
+      "expected_presence": 1,
+      "expected_oracle_pass": false,
+      "responsibility": "Honor 15us through 60us presence delay for a valid reset duration between the original selected durations",
+      "windows_cycles": {"release": [79499, 79506], "presence": [79996, 80003]}
+    }
+  ]
+}

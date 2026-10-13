@@ -1,7 +1,7 @@
 `default_nettype none
-// Four protocol-neutral operations, composed by the preregistered bounded table.
+// Protocol-neutral operations, including one tagged continuous-predicate WAIT.
 module motif_transaction (
-    input wire clk, rst_n, clear_i, run_i, rising_i, falling_i, bit_i, lsb_i, transmit_i,
+    input wire clk, rst_n, clear_i, acquire_i, run_i, rising_i, falling_i, bit_i, lsb_i, transmit_i,
     input wire [1023:0] program_i,
     input wire [15:0] rx_value_i,
     input wire [3:0] rx_count_i,
@@ -16,19 +16,25 @@ module motif_transaction (
     output reg [7:0] rx_data_o,
     output reg turnaround_o, mismatch_o, fault_o, terminate_o, field_complete_o,
     output reg [15:0] completed_field_o,
-    output reg [9:0] fires_o,
-    output reg [16:0] events_o,
+    output reg [10:0] fires_o,
+    output reg [19:0] events_o,
     output reg [3:0] pc_o,
     output reg desired_role_o, role_o, accepted_o, response_o,
     output reg [15:0] pending_field_o,
     output reg drive_enable_o, drive_value_o, hold_o, halted_o,
-    output wire waiting_timer_o
+    output wire waiting_timer_o,
+    output reg [15:0] temporal_count_o,
+    output reg temporal_started_o, temporal_done_o,
+    output reg [15:0] executed_pcs_o,
+    output reg [2:0] executed_count_o
 );
     localparam RX=3'd0, DECIDE=3'd1, RESPOND=3'd2, HANDOFF=3'd3,
                WAIT=3'd4, TX=3'd5, HALT=3'd6, CONTINUE=3'd7;
     reg [3:0] pc_next;
     reg desired_next, role_next, accepted_next, response_next, enable_next, value_next, hold_next, halted_next;
     reg [15:0] pending_next;
+    reg [15:0] temporal_count_next;
+    reg temporal_started_next, temporal_done_next, temporal_seen, temporal_match;
     reg [63:0] word;
     reg [2:0] op;
     reg [1:0] trigger;
@@ -46,7 +52,8 @@ module motif_transaction (
     integer stage;
     integer loads, pushes, shifts;
     wire [63:0] current_word = program_i[pc_o*64 +: 64];
-    assign waiting_timer_o = !halted_o && current_word[2:0] == WAIT && current_word[14:13] == 2;
+    wire [63:0] first_word = program_i[63:0];
+    assign waiting_timer_o = !halted_o && current_word[2:0] == WAIT && !current_word[55] && current_word[14:13] == 2;
 
     function event_active;
         input [1:0] source;
@@ -133,6 +140,8 @@ module motif_transaction (
     always @* begin
         pc_next=pc_o;desired_next=desired_role_o;role_next=role_o;accepted_next=accepted_o;response_next=response_o;
         pending_next=pending_field_o;enable_next=drive_enable_o;value_next=drive_value_o;hold_next=hold_o;halted_next=halted_o;
+        temporal_count_next=temporal_count_o;temporal_started_next=temporal_started_o;temporal_done_next=temporal_done_o;
+        temporal_seen=0;temporal_match=0;executed_pcs_o=0;executed_count_o=0;
         rx_fire_o=0;tx_fire_o=0;tx_load_o=0;rx_push_o=0;rx_data_o=pending_field_o[7:0];
         rx_next_o=rx_value_i;rx_count_next_o=rx_count_i;rx_length_o=8;rx_timer_o=0;
         turnaround_o=0;mismatch_o=0;fault_o=0;terminate_o=0;field_complete_o=0;completed_field_o=0;
@@ -140,7 +149,7 @@ module motif_transaction (
         word=0;op=0;trigger=0;successor=0;alternate=0;argument=0;constant=0;field_mask=0;flags=0;
         decision=0;handoff=0;response_result=0;wait_result=0;rx_mask=0;
         triggered=0;capture=0;sample_event=0;complete_event=0;advanced=0;predicate=0;previous_pc=0;
-        execute=run_i && !clear_i && !halted_o;
+        execute=rst_n && run_i && !clear_i && !halted_o;
         for(stage=0;stage<4;stage=stage+1)begin
             if(execute)begin
                 word=program_i[pc_next*64 +: 64];op=word[2:0];trigger=word[4:3];successor=word[8:5];alternate=word[12:9];
@@ -149,9 +158,12 @@ module motif_transaction (
                 capture=op==RESPOND && argument[1:0]==2;
                 triggered=sample_event || (capture && complete_event);
                 if(!triggered)execute=0;
+                else if(op==WAIT && flags[2] && temporal_seen)execute=0;
                 else if(visited[pc_next])begin fault_o=1;execute=0;end
                 else begin
                     visited[pc_next]=1;previous_pc=pc_next;advanced=0;
+                    executed_pcs_o[executed_count_o*4 +: 4]=pc_next;
+                    executed_count_o=executed_count_o+1'b1;
                     case(op)
                         RX:begin
                             fires_o[3]=1;rx_fire_o=1;rx_length_o=argument[4:0];rx_timer_o=trigger==3;
@@ -200,11 +212,34 @@ module motif_transaction (
                         end
                         WAIT:begin
                             fires_o[9]=1;
-                            wait_result=wait_policy(argument[1:0],flags[1:0],desired_next,tx_empty_i,rx_full_i,settled_i,
-                                settled_bit_i,lsb_i ? tx_value_i[0] : tx_value_i[7],bit_i,constant[0]);
-                            hold_next=wait_result[1];
-                            if(wait_result[2])mismatch_o=1;
-                            else if(wait_result[0])begin pc_next=successor;advanced=1;events_o[9]=1;end
+                            if(flags[2])begin
+                                fires_o[10]=1;temporal_seen=1;hold_next=0;
+                                temporal_match=argument[1:0]==2 || bit_i==constant[0];
+                                if(trigger!=0 || argument[7:2]!=0 || argument[1:0]<2 || field_mask==0 ||
+                                   constant[15:1]!=0 || flags[1:0]!=0 || flags[9:4]!=0 ||
+                                   (argument[1:0]==2 && (constant[0] || flags[3])))fault_o=1;
+                                else if(temporal_done_o)begin
+                                    temporal_count_next=0;temporal_started_next=0;temporal_done_next=0;
+                                    pc_next=successor;advanced=1;events_o[9]=1;
+                                end else if(!temporal_match)begin
+                                    if(temporal_started_o)begin
+                                        events_o[18]=1;
+                                        if(flags[3])begin pc_next=alternate;advanced=1;end
+                                    end
+                                    temporal_count_next=0;temporal_started_next=0;temporal_done_next=0;
+                                end else begin
+                                    if(!temporal_started_o)events_o[17]=1;
+                                    temporal_started_next=1;
+                                    temporal_count_next=temporal_count_o+1'b1;
+                                    if(temporal_count_next==field_mask)begin temporal_done_next=1;events_o[19]=1;end
+                                end
+                            end else begin
+                                wait_result=wait_policy(argument[1:0],flags[1:0],desired_next,tx_empty_i,rx_full_i,settled_i,
+                                    settled_bit_i,lsb_i ? tx_value_i[0] : tx_value_i[7],bit_i,constant[0]);
+                                hold_next=wait_result[1];
+                                if(wait_result[2])mismatch_o=1;
+                                else if(wait_result[0])begin pc_next=successor;advanced=1;events_o[9]=1;end
+                            end
                         end
                         TX:begin
                             fires_o[4]=1;tx_fire_o=1;shifts=shifts+1;
@@ -237,8 +272,17 @@ module motif_transaction (
                     if(loads>1 || pushes>1 || shifts>1 || (loads!=0 && shifts!=0))fault_o=1;
                     if(fault_o || mismatch_o || halted_next)execute=0;
                     else if(!advanced || !flags[10] || program_i[pc_next*64+3 +: 2]!=0)execute=0;
-                    else if(pc_next==previous_pc || visited[pc_next] || stage==3)begin fault_o=1;execute=0;end
+                    else if(pc_next==previous_pc || visited[pc_next])begin fault_o=1;execute=0;end
+                    else if(temporal_seen && program_i[pc_next*64 +: 3]==WAIT && program_i[pc_next*64+55])execute=0;
+                    else if(stage==3)begin fault_o=1;execute=0;end
                 end
+            end
+        end
+        if(rst_n && acquire_i && first_word[2:0]==WAIT && first_word[55])begin
+            fires_o[10]=1;
+            if(first_word[14:13]==2 || bit_i==first_word[21])begin
+                events_o[17]=1;
+                if(first_word[52:37]==1)events_o[19]=1;
             end
         end
         if(mismatch_o || fault_o || terminate_o)begin
@@ -251,10 +295,16 @@ module motif_transaction (
         if(!rst_n || clear_i || mismatch_o || fault_o || terminate_o)begin
             pc_o<=0;desired_role_o<=0;role_o<=0;accepted_o<=0;response_o<=0;pending_field_o<=0;
             drive_enable_o<=0;drive_value_o<=0;hold_o<=0;halted_o<=0;
+            temporal_count_o<=0;temporal_started_o<=0;temporal_done_o<=0;
+            if(rst_n && acquire_i && first_word[2:0]==WAIT && first_word[55] &&
+               (first_word[14:13]==2 || bit_i==first_word[21]))begin
+                temporal_count_o<=1;temporal_started_o<=1;temporal_done_o<=first_word[52:37]==1;
+            end
         end else begin
             pc_o<=pc_next;desired_role_o<=desired_next;role_o<=role_next;accepted_o<=accepted_next;response_o<=response_next;
             pending_field_o<=pending_next;drive_enable_o<=enable_next;drive_value_o<=value_next;hold_o<=hold_next;halted_o<=halted_next;
+            temporal_count_o<=temporal_count_next;temporal_started_o<=temporal_started_next;temporal_done_o<=temporal_done_next;
         end
     end
-    wire _unused=&{argument[7:6],flags[9:5],handoff[2:1],current_word,tx_value_i[5:2],tx_head_i[6:1],1'b0};
+    wire _unused=&{argument[7:6],flags[9:5],handoff[2:1],current_word,first_word,tx_value_i[5:2],tx_head_i[6:1],1'b0};
 endmodule

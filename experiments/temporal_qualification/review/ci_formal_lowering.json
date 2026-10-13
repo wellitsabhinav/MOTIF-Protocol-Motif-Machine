@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "formal_harness_tool_compatibility_failure",
+  "source_commit": "cc72d539a0714f163be22181226f20d774e5ca1e",
+  "workflow_run_id": 38292706308,
+  "workflow_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38292706308",
+  "job_id": 114956393963,
+  "pinned_oss_cad_suite": "2026-10-11",
+  "failure": "Cannot lower edge triggered $check cell $assert$formal/temporal.sv:17$2518, run async2sync or clk2fflogic first.",
+  "stage": "Temporal assertion lowering before SAT solving",
+  "property_counterexample_reported": false,
+  "rtl_existing_modes_passed": true,
+  "model_tests_passed": true,
+  "runtime_cocotb_passed": true,
+  "cost_job": "Skipped because the required RTL job failed",
+  "required_resolution": "Compatible lowering of the same clocked assertions, followed by successful bounded proofs; no assertion, RTL or acceptance-rule weakening."
+}
