@@ -71,7 +71,8 @@ def run(destination):
     # Complete raw traces remain in separately identified simulation artifacts.
     # Keep the browser package readable and include only presentation inputs.
     for source in (ROOT / "build/demo").rglob("*"):
-        if (not source.is_file() or source.suffix.lower() not in (".html", ".md", ".json", ".svg", ".png")
+        if (not source.is_file() or (source.suffix.lower() not in (".html", ".md", ".json", ".svg", ".png")
+                                   and source.name != "simulation.log")
                 or source.name == "elaborated.json"):
             continue
         target = destination / source.relative_to(ROOT)
