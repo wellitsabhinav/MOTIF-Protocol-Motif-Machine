@@ -1,0 +1,106 @@
+{
+  "schema_version": 3,
+  "kind": "downloaded_ci_plain_html_delivery",
+  "passed": true,
+  "source_head_sha": "cffe8f62cd7716a939e29444c9f4b07df1f90e49",
+  "workflow_run_id": 38473966248,
+  "artifact_id": 11853572292,
+  "archive_bytes": 12527166,
+  "archive_sha256_raw": "43511bae6b3f7ae99e31de64e0a37cbb339311e2c3ad4160628ba878174493b7",
+  "manifest_sha256_raw": "287c0ff079c349905af740746540ae8a70a2f803c665142817a6db8f37614bb6",
+  "checkout_commit": "cffe8f62cd7716a939e29444c9f4b07df1f90e49",
+  "checkout_commit_role": "Checkout ancestry; the per-file manifest identifies the packaged bytes",
+  "packaged_working_tree_dirty": false,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "files": 517,
+  "all_packaged_bytes_verified": true,
+  "all_local_html_links_resolve": true,
+  "all_26_report_sections_rendered": true,
+  "selected_cost_source_and_image_hashes_verified": true,
+  "selected_physical_source_receipts_and_image_hashes_verified": true,
+  "raw_layouts_and_full_traces_excluded": true,
+  "physical_gallery": {
+    "attempt": 2,
+    "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+    "workflow_run_id": 38429471310,
+    "artifact": {
+      "id": 11843789314,
+      "name": "GDS_logs",
+      "archive_sha256_raw": "5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0",
+      "workflow_run_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310"
+    },
+    "presentation_status": "UNQUALIFIED",
+    "qualification_claim": false,
+    "separate_final_dispatch": {
+      "attempt": 3,
+      "run_id": 38470361703,
+      "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859",
+      "workflow_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703"
+    }
+  },
+  "demonstrations": [
+    {
+      "protocol": "i2c",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "microwire",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "interrupted_non_reset",
+      "passed": true
+    },
+    {
+      "protocol": "spi",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "uart",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "timed_stream",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "one_cycle_high_split",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "pending_sync_recovery",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "back_to_back",
+      "passed": true
+    }
+  ],
+  "public_unseen_receipt_sha256_lf": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+  "current_unseen_receipt_sha256_lf": "09dca7511a20ece57f8926d6598cfa0bd4a00fa1e58dccd4f608d6c901d6d2e9",
+  "artifact_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38473966248/artifacts/11853572292",
+  "scope": "Clean browsable HTML package: eleven bounded logical demos, editable A-Z report with clickable evidence, nominal cost figures and identified UNQUALIFIED attempt-2 physical views. Final allowed physical attempt3 is separately recorded as dispatched; no outcome is inferred."
+}

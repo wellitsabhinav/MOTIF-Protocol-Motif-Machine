@@ -11,6 +11,12 @@ python -m tools.demo --all --schematics
 
 The first command verifies the full 34-case unseen gate and creates its identified local demonstration hook. A clean checkout without that hook runs the seven base demonstrations with `--all`.
 
+For offline browsing, extract the [verified clean HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38473966248/artifacts/11853572292)
+and open `index.html`. It links all eleven demonstrations, the rendered A–Z
+report and the source-specific unqualified attempt-2 physical gallery.
+[Download verification](../../experiments/temporal_qualification/delivery_cffe8f6.json)
+checks every packaged file and local HTML link.
+
 | Command selector | Independent expected behavior | Output |
 | --- | --- | --- |
 | `i2c` | Address/data ACK; receive 55 AA; repeated START; transmit A5 5A; NACK and release | `build/demo/i2c/bounded/` |

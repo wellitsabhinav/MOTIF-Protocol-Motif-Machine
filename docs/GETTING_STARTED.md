@@ -108,7 +108,7 @@ mapped cells, declared bits and physical observations have separate scopes.
 
 The v3 experiment may freeze only after its logical and cost gates pass. The unseen workload must be researched and selected after that freeze, with an independent wire-level oracle committed before its configuration. Never change frozen semantics to repair unseen results or substitute another candidate after failure.
 
-Only an unseen logical pass makes the pinned Linux CMOS5L flow eligible. Physical reports and floorplan, placement, routing or GDS views must identify actual v3 artifacts. Until such artifacts exist, the demonstration package supplies no v3 physical image. The campaign retains a 6×4 allocation, 20 ns target and at most three diagnosed attempts; missing metrics remain unavailable.
+Only an unseen logical pass makes the pinned Linux CMOS5L flow eligible. Physical reports and floorplan, placement, routing or GDS views must identify actual v3 artifacts. The committed attempt-2 views bind its actual archive and failed timing result and are labelled UNQUALIFIED. The campaign retains a 6×4 allocation, 20 ns target and at most three diagnosed attempts; missing metrics remain unavailable.
 
 Full generated simulation and physical outputs stay outside Git. Concise source, results, trace excerpts and selected figures may be committed; large reproducible outputs belong in CI artifacts or releases.
 
@@ -120,3 +120,10 @@ linked editable sources, figures and concise evidence. Its manifest hashes
 every packaged file. Full raw traces, netlists and physical archives remain
 separately identified artifacts. The unseen CI workflow publishes this package
 under `motif-v3-plain-html-demonstration-package`.
+
+The [verified clean HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38473966248/artifacts/11853572292)
+contains all eleven demonstrations, a readable A–Z report with evidence links,
+and the identified unqualified attempt-2 gallery. Extract it and open `index.html`.
+Its [download verification](../experiments/temporal_qualification/delivery_cffe8f6.json)
+checks all 517 file hashes and local HTML links. The final physical run is
+recorded separately and remains active at this receipt's scope.

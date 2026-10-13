@@ -403,7 +403,17 @@ identifies clean head `16fafe7`. Its ZIP digest, all 490 file hashes, all local
 HTML links, eleven demonstration outcomes and the selected cost-renderer/image
 identities were checked after download. It includes the approved dispatch and
 read-only physical observations while attempt 2 remains active.
-[Current package verification](../../../experiments/temporal_qualification/delivery_16fafe7.json).
+[Earlier package verification](../../../experiments/temporal_qualification/delivery_16fafe7.json).
+
+The [browsable report and physical-gallery package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38473966248/artifacts/11853572292)
+identifies clean head `cffe8f6`. All 517 manifest-listed file hashes, eleven
+demonstrations, 26 rendered A–Z sections, tables and local HTML links were checked
+after download. Its landing page presents the report with clickable evidence
+and six actual attempt-2 layout/metric/timing views. Those views are explicitly
+UNQUALIFIED and bind the retained failed result, measured corners and exact
+archive/source correspondence. The separately recorded final attempt-3 dispatch
+does not inherit a result from the attempt-2 gallery. Full layouts and traces
+remain separate artifacts. [Current package verification](../../../experiments/temporal_qualification/delivery_cffe8f6.json).
 
 ## S. Architecture diagrams
 
