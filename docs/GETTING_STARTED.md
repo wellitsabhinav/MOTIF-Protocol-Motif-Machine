@@ -1,6 +1,6 @@
 # Run MOTIF and inspect its evidence
 
-MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. The v3 temporal campaign is in progress until its recorded gates establish a result. See [campaign evidence](research/v3_temporal_qualification/) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
+MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Independent unseen evaluation and physical qualification remain later gates. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
 
 ## Dependencies
 

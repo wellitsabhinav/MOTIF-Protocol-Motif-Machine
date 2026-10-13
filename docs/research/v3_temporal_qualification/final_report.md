@@ -3,8 +3,8 @@
 ## A. Executive classification
 
 The logical and local matched-cost qualification gates pass. V3 maps to
-210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. Freeze,
-unseen evaluation and physical qualification remain unreached in this interim
+210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
+is frozen; unseen evaluation and physical qualification remain unreached in this interim
 report. Logical repair does not establish unseen generalization or physical
 closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
@@ -191,16 +191,22 @@ Full simulation/netlist artifacts are published by the identified run.
 
 ## M. v3 freeze identity
 
-V3 is not yet frozen while final evidence and CI review complete. No semantic freeze
-manifest may be written without clean sources, complete source-matched passing
-receipts and budgets satisfied. Validation rejects truncated/duplicate case
+Established fact: separate immutable freeze commit
+`638c2ee4e7c9f53c64e6f660331747e5a79b570d` records manifest LF SHA-256
+`71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047`.
+Creation followed a clean committed source tree, complete passing qualification
+receipts and budgets satisfied. Original executed source identities, byte-equal
+dependency checks and narrowly scoped evidence bindings remain in the receipts.
+Validation rejects truncated/duplicate case
 sets, model-only receipts and stale source hashes. Initial physical inputs are
 identified separately from the semantic boundary.
-[Freeze machinery](../../../tools/v3_inventory.py), [preregistered freeze rule](preregistration.json).
+[Immutable manifest](../../../experiments/temporal_qualification/frozen_v3_manifest.json),
+[freeze machinery](../../../tools/v3_inventory.py), [preregistered freeze rule](preregistration.json).
 
 ## N. New unseen protocol selection
 
-Unreached. No next workload has been researched or selected. Candidate research,
+Selection is unreached. Independently delegated primary-source research began
+only after the recorded freeze; no workload is selected yet. Candidate research,
 ranking and a committed independent oracle contract are allowed only after a
 qualified v3 freeze. [Selection rule](preregistration.json).
 
@@ -315,8 +321,8 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Commit qualified evidence, resolve exact-head CI review, and create the separate
-immutable v3 freeze before independent unseen research/selection. The later
+Review the post-freeze independent candidate matrix and commit exactly one
+selection, timing bounds and bounded oracle contract before configuration. The later
 unseen and physical gates remain mandatory; any reached stop condition must
 retain its negative result without changing acceptance rules.
 [Stop conditions](preregistration.json).

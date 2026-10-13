@@ -1,6 +1,6 @@
 # Reproducible MOTIF demonstrations
 
-`python -m tools.demo --all --schematics` generates `build/demo/index.html` from deterministic simulation. The v3 campaign is currently in progress and unfrozen. Demonstration passes establish their recorded bounded behaviors; the campaign independently decides logical qualification, cost, unseen generalization and physical qualification.
+`python -m tools.demo --all --schematics` generates `build/demo/index.html` from deterministic simulation. V3 is logically qualified, within its cost limits and frozen. Unseen evaluation and physical qualification are still unreached. Demonstration passes establish their recorded bounded behaviors; the campaign classifies each gate separately.
 
 | Command selector | Independent expected behavior | Output |
 | --- | --- | --- |

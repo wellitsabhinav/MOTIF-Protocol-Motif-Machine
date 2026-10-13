@@ -4,11 +4,16 @@ MOTIF explores bounded compound operations for programmable serial I/O. Sampling
 shifting, counting, framing, decisions and responses compose through a fixed
 sixteen-entry table. An independent pad guardian controls final output enables.
 
-The **v3 temporal qualification campaign is in progress and unfrozen**. Its
-proposed tagged WAIT responsibility measures continuous synchronized RX levels
+The **v3 temporal architecture is qualified and frozen**. Its
+tagged WAIT responsibility measures continuous synchronized RX levels
 or elapsed delays while retaining the existing timed sampler and table format.
-Logical behavior, circuit cost, unseen generalization and physical closure are
-separate gates; a demonstration does not establish all four.
+All 160 tests, 55 temporal fixtures, 18 repaired 1-Wire cases and the original
+I²C/Microwire regressions pass. Matched mapped area is 210,241.9746 µm²,
+8.1623% above v2, within the fixed 10% cap. The
+[immutable freeze](experiments/temporal_qualification/frozen_v3_manifest.json)
+precedes independent unseen-workload selection. Unseen generalization and
+physical closure remain separate, unreached gates. See the
+[A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
 ![Actual Yosys-derived connected core modules](docs/demo/figures/architecture/architecture.png)
 
