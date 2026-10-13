@@ -4,9 +4,10 @@
 
 The logical and local matched-cost qualification gates pass. V3 maps to
 210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
-is frozen; unseen evaluation and physical qualification remain unreached in this interim
-report. Logical repair does not establish unseen generalization or physical
-closure. [Gate receipts](../../../experiments/temporal_qualification/),
+is frozen. The independently selected LIN break/sync prefix passes its 34-case
+unseen logical gate without semantic changes. Physical qualification remains
+unreached in this interim report. Logical generalization and cost qualification
+do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
 ## B. Starting frozen state
@@ -205,18 +206,53 @@ identified separately from the semantic boundary.
 
 ## N. New unseen protocol selection
 
-Selection is unreached. Independently delegated primary-source research began
-only after the recorded freeze; no workload is selected yet. Candidate research,
-ranking and a committed independent oracle contract are allowed only after a
-qualified v3 freeze. [Selection rule](preregistration.json).
+Established fact: independently delegated primary-source research began after
+the freeze. The candidate matrix ranks LIN break/sync, UART BREAK/gap,
+AT21CS01 reset/discovery, ISO 7816 warm reset/ATR prefix and PS/2 inhibit/release
+by structural independence, temporal falsification and bounded scope. LIN was
+selected once, at commit `5f67d888df07a7e76f814a8df9984394a951f7ac`, before its
+configuration. Selection LF SHA-256 is
+`f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663`.
+The complete official LIN 2.2A PDF was retrieved and hashed. Ranking scores are
+research judgments, rather than measured implementation properties.
+[Candidate matrix](unseen_candidate_matrix.md), [selection rationale](unseen_selection.md),
+[immutable electrical contract](../../../experiments/temporal_qualification/unseen/selected_workload.json).
 
 ## O. Unseen protocol result
 
-Unavailable: no selected unseen workload or evaluated configuration exists.
-The repaired 1-Wire result cannot establish unseen generalization. After a
-future eligible freeze, any necessary semantic repair must preserve its
-counterexample and stop, without candidate substitution.
-[Preregistered stop rule](preregistration.json).
+Measured result: all 34 committed LIN cases pass the independent electrical
+oracle and full augmented model/RTL comparison over 3,210,266 cycles. The
+semantic manifest verifies identically before and after. Cases include
+11-bit receiver threshold below/equal/above, the distinct 13-bit master minimum,
+observable one-cycle HIGH splits, repeated interruptions, malformed sync/stop,
+stale-header rejection, fresh-break recovery while awaiting sync, lifecycle
+cuts, two prefixes and nine legal length/phase probes. Four runtime host cases
+also pass actual table loading, receive-only pad checks and posttraffic FIFO
+drain; that subset does not replace the dense timing gate. The local test set
+passes: 204 model/tooling tests plus all 15 receipt guard checks, including
+44 independent oracle tests in the first group.
+[Logical receipt](../../../experiments/temporal_qualification/unseen/logical_result.json),
+[runtime host receipt](../../../experiments/temporal_qualification/unseen/runtime_host_result.json),
+[executed-source binding](../../../experiments/temporal_qualification/unseen/source_binding.json).
+
+Independent pinned Linux CI repeats the 34-case gate, runtime checks and four
+demonstrations at evaluated source `01fa51d`; all regression and cost jobs also
+pass. The published full-evidence ZIP is 57,889,637 bytes and its download
+matches the published SHA-256. Extracted CI and local receipts identify
+identical executed evaluation source bytes.
+[CI receipt](../../../experiments/temporal_qualification/unseen/ci_result.json),
+[full CI artifact](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38347135337/artifacts/11789508413).
+
+Scope is fixed nominal 20 kbit/s transceiver-normalized digital prefix
+recognition. FIFO `0x55` is an experiment acceptance token; all eight target
+output enables remain zero. Nominal acceptance is observed at core cycle
+79,256, inside the independent stop-cell window. Sixteen entries compose
+continuous LOW qualification, guarded replacement-break classification and
+existing timed sampling. No model, RTL, frontend, timer, vocabulary or state
+change was needed. This establishes one bounded unseen logical pass, not
+autobaud, full LIN frames, analog compliance or physical closure.
+[Configuration and boundary argument](unseen_lin_configuration.md),
+[independent oracle](../../../tools/lin_oracle.py), [stop rule](preregistration.json).
 
 ## P. Physical qualification
 
@@ -238,7 +274,8 @@ qualify v3. [Historical physical scope](../../physical.md).
 
 ## R. Demonstration artifacts
 
-Measured result: seven demonstrations pass over 257,390 compared cycles.
+Measured result: eleven demonstrations pass over 702,987 compared cycles,
+including four selected LIN cases in addition to the seven qualified profiles.
 `python -m tools.demo --all --schematics` produces plain HTML at
 `build/demo/index.html`, real waveforms, ordered execution timelines,
 configuration summaries, expected/observed results and concise trace excerpts.
@@ -267,6 +304,13 @@ identities and labels. [Protocol figure index](../../demo/README.md),
 [interruption zoom](../../demo/figures/one_wire/interrupted_non_reset/waveform_59990_60060.svg),
 [historical failure](../../demo/figures/historical/v2_interrupted_low/waveform.svg).
 
+The selected LIN figures show nominal recognition, interrupted false break,
+pending-sync recovery and two prefixes. A focused view shows a raw HIGH at
+35,000, synchronized HIGH at 35,002, immediate progress clearing, and no token.
+[LIN interruption zoom](../../demo/figures/unseen/one_cycle_high_split/waveform_34995_35012.svg),
+[LIN nominal timeline](../../demo/figures/unseen/nominal/timeline.svg),
+[focused RTL excerpts](../../demo/figures/unseen/focused_views.json).
+
 ## U. Synthesized schematics
 
 Yosys proc/opt-derived views show real elaborated top-level, PC and temporal
@@ -285,7 +329,7 @@ netlist and library hashes and does not rerun synthesis.
 
 ## V. GDS/floorplan/routing visuals
 
-Unavailable for v3 because the physical eligibility gate is unreached. No
+Unavailable for v3 because the now-eligible physical workflow has not run. No
 historical layout is presented as a v3 result and no physical view is fabricated.
 [Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
 
@@ -306,9 +350,10 @@ Measured results are independent bounded wire-oracle outcomes, exact
 model/RTL comparisons, bounded properties and source-identified accounting.
 Interpretation: tagged WAIT cleanly separates sampled persistence from timer
 sampling and repairs the known training failures. Hypothesis: the responsibility
-may compose with other temporal workloads. Unverified possibilities include
-debounce, BREAK/wake-up detection, unsampled analog behavior, complete protocol
-support and physical closure. None is claimed as validated here.
+composes with the one selected LIN prefix under its bounded electrical contract.
+Broader composition remains a hypothesis. Unverified possibilities include
+debounce, wake-up detection, unsampled analog behavior, complete protocol
+support, autobaud and physical closure. None is claimed as validated here.
 [Preregistration](preregistration.json), [qualification sources](../../../tools/temporal_campaign.py).
 
 ## Y. Competition relevance
@@ -321,8 +366,9 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Review the post-freeze independent candidate matrix and commit exactly one
-selection, timing bounds and bounded oracle contract before configuration. The later
-unseen and physical gates remain mandatory; any reached stop condition must
-retain its negative result without changing acceptance rules.
+Review and merge the green qualified unseen PR, then run the initial pinned
+CMOS5L physical attempt at 6×4 and 20 ns. At most two diagnosed flow-setting
+revisions may follow. Preserve failed attempts, retain unavailable metrics as
+unavailable, and complete physical classification and reached demonstrations
+without changing frozen semantics or the selected oracle.
 [Stop conditions](preregistration.json).

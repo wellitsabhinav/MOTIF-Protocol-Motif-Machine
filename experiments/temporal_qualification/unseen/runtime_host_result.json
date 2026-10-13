@@ -1,0 +1,44 @@
+{
+  "schema_version": 3,
+  "stage": "unseen-runtime-host",
+  "passed": true,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "python_version": "3.12.5",
+  "simulator": {
+    "iverilog": {
+      "command": "iverilog",
+      "sha256": "67ad019127af918172156ea3393ca297d61d889bb8b1efb202fcf6e985ca6e82"
+    },
+    "vvp": {
+      "command": "vvp",
+      "sha256": "7d18c437867e2ff41c7e4b7bb2d072e5f1e2cf08794b68405a93423e52334fc0"
+    }
+  },
+  "evaluation_source_hashes": {
+    "tools/lin_host_check.py": "58c184b841a99bd7e36f57afa21623ad5f03e01ded86e2a05790838a265aa220",
+    "test/lin_runtime.py": "39b82de260b8bc112279a26d3343785d6b7752cc8a148066ba50cbc1e3226b4f",
+    "tools/lin_unseen.py": "b39c0084ef102543d0f292b7c946bc54c3213f7d9bc726b36a5c6eb580e1badc",
+    "tools/lin_oracle.py": "ed29fd20a1f8fad55dc6934b8475a974904f9bc66215224b334014f99a03c1b9",
+    "experiments/temporal_qualification/unseen/config.json": "16e3a94ec122c065ce6d9a67f1ee0a3beba2e71482e001ea5307b7f00ac22acd",
+    "experiments/temporal_qualification/unseen/selected_workload.json": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663"
+  },
+  "runtime_test_sha256_lf": "39b82de260b8bc112279a26d3343785d6b7752cc8a148066ba50cbc1e3226b4f",
+  "selected_cases": [
+    "nominal",
+    "one_cycle_high_split",
+    "pending_sync_recovery",
+    "back_to_back"
+  ],
+  "scope": "Actual host table/configuration load, receive-only pads and independent posttraffic FIFO drain; dense early-token timing is established separately by the full core differential gate.",
+  "cocotb_version": "2.0.1",
+  "tests": [
+    {
+      "name": "runtime_lin_unseen",
+      "passed": true
+    }
+  ],
+  "results_sha256_lf": "10fc5c161c1e786d2f4efef012559ad2650d950868d55adc6156b69009d6527b",
+  "simulation_log_sha256_lf": "27c8c1f0e1f20577df117a80d111e511055984f024b4587cea1d8ec4567e64da",
+  "frozen_before_after_identical": true,
+  "evaluation_before_after_identical": true
+}

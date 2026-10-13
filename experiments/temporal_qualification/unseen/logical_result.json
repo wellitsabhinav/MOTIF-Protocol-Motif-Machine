@@ -1,0 +1,2486 @@
+{
+  "schema_version": 3,
+  "workload": "LIN_BREAK_SYNC_ENTRY",
+  "stage": "unseen",
+  "model_only": false,
+  "qualification_complete": true,
+  "selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
+  "selection_sha256_lf": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663",
+  "frozen_commit": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "configuration_sha256_lf": "16e3a94ec122c065ce6d9a67f1ee0a3beba2e71482e001ea5307b7f00ac22acd",
+  "source_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
+  "source_commit_role": "Parent commit when new evaluation files are uncommitted; evaluation_source_hashes identify executed bytes",
+  "evaluation_source_hashes": {
+    "tools/lin_unseen.py": "b39c0084ef102543d0f292b7c946bc54c3213f7d9bc726b36a5c6eb580e1badc",
+    "tools/lin_oracle.py": "ed29fd20a1f8fad55dc6934b8475a974904f9bc66215224b334014f99a03c1b9",
+    "tests/model/test_lin_oracle.py": "d8f1319f2e85e5dd34917111e23bf8de76c6965e9b04b5b6ac68808f9acd0047"
+  },
+  "cases": [
+    {
+      "name": "nominal",
+      "cycles": 85524,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [
+        85501
+      ],
+      "wire_sha256_lf": "67cab24ceabd48df325fb1e0a3b72d0bf89f44687a3be0e367b0424c64b8bd18",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9314de1c1c791fabdb213718848e99b00632ebc9f2c1975576f88524f32c32f0",
+        "model.jsonl": "de45ba4f5545aa96bbafe0f2e5575b0099252ddaac311d652bd8a4b0f04c6460",
+        "rtl.jsonl": "de45ba4f5545aa96bbafe0f2e5575b0099252ddaac311d652bd8a4b0f04c6460",
+        "simulation.log": "acd2e841bd164762ec5e263e8591aceb61b416b9ab7ce3eaff0c6fb75a5fa972"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/nominal"
+    },
+    {
+      "name": "long_break",
+      "cycles": 93024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 60000,
+            "byte_start": 63000,
+            "stop_start": 85500,
+            "stop_end": 88000,
+            "earliest": 85500,
+            "latest": 93000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 60000,
+            "byte_start": 63000,
+            "stop_start": 85500,
+            "stop_end": 88000,
+            "earliest": 85500,
+            "latest": 93000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 88000,
+      "drain_cycles": [
+        93001
+      ],
+      "wire_sha256_lf": "96d332918e17e4e7584e4d20439ea3f068fa43822e994fa37ff8b478f5b945d6",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "5429364e17d5d7d9897c6efb97f6eaa27b817f842f85d1f52be68b119e39278f",
+        "model.jsonl": "f08b8d0e6a9da29b6a463f254c01458befd37a92ed1a75f3c34dea7d4a19f72d",
+        "rtl.jsonl": "f08b8d0e6a9da29b6a463f254c01458befd37a92ed1a75f3c34dea7d4a19f72d",
+        "simulation.log": "a065a4d37bd864953ea1836fdc1cd4624728a3094291cf3095451b956d95fe46"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/long_break"
+    },
+    {
+      "name": "threshold_below",
+      "cycles": 80515,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 75499,
+      "drain_cycles": [],
+      "wire_sha256_lf": "cb1fcb5a6bae4a8f694ff0dc805775a362b0f1886768694e639cf5596844da0d",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "1b17eba24d2e4b9c17afc4e8e2ebde1fe12852c679f523301fdffa64e5a44fed",
+        "model.jsonl": "a72b43781546e9edd72ae00c06f8d24fac8222a24fd7e00fc5394e275b43af9e",
+        "rtl.jsonl": "a72b43781546e9edd72ae00c06f8d24fac8222a24fd7e00fc5394e275b43af9e",
+        "simulation.log": "32a0744cc68baf30d079682f37a76210f2287a2531d52b562b8ccd550a6925b4"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/threshold_below"
+    },
+    {
+      "name": "threshold_equal",
+      "cycles": 80524,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 47500,
+            "byte_start": 50500,
+            "stop_start": 73000,
+            "stop_end": 75500,
+            "earliest": 73000,
+            "latest": 80500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 74256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 47500,
+            "byte_start": 50500,
+            "stop_start": 73000,
+            "stop_end": 75500,
+            "earliest": 73000,
+            "latest": 80500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 74256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 75500,
+      "drain_cycles": [
+        80501
+      ],
+      "wire_sha256_lf": "86fcf550f672358eed7a7d61dda5d5ac0fe508102ceacb9bd87598a84d92f1a8",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3c675e98a507d07f1a2b54f657c7658c4b9716b978c643a47354a26820431e88",
+        "model.jsonl": "02e1e6ed04c5ca42eb90fa1f75fe082a72b4ea5f2d17de48e46ddb73686f9cb9",
+        "rtl.jsonl": "02e1e6ed04c5ca42eb90fa1f75fe082a72b4ea5f2d17de48e46ddb73686f9cb9",
+        "simulation.log": "8d9fffdc760ffcbdf06e3d4c10275d8f932a9c8ddfa27ab7cce10f8e26116772"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/threshold_equal"
+    },
+    {
+      "name": "threshold_above",
+      "cycles": 80525,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 47501,
+            "byte_start": 50501,
+            "stop_start": 73001,
+            "stop_end": 75501,
+            "earliest": 73001,
+            "latest": 80501,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 74257,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 47501,
+            "byte_start": 50501,
+            "stop_start": 73001,
+            "stop_end": 75501,
+            "earliest": 73001,
+            "latest": 80501,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 74257,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 75501,
+      "drain_cycles": [
+        80502
+      ],
+      "wire_sha256_lf": "e44d8d27800e5cc1d68a5759eaa5ff6dc7ef390047fd249d157350bc360abc33",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "b4436cd0f67017cdda4f3b50931714fb48dddf5eb39b7264747ede1781498e48",
+        "model.jsonl": "d3dddd1450daa0fd43c24fc0d7838e8ee3ee3dd9e6b6d5d23e86046460cbf0e4",
+        "rtl.jsonl": "d3dddd1450daa0fd43c24fc0d7838e8ee3ee3dd9e6b6d5d23e86046460cbf0e4",
+        "simulation.log": "b312f75ac4b0864103405b35c0588ac7bfa14e4c2e35d893bb51195598bc5e86"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/threshold_above"
+    },
+    {
+      "name": "receiver_tolerance_12bits",
+      "cycles": 83024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 50000,
+            "byte_start": 53000,
+            "stop_start": 75500,
+            "stop_end": 78000,
+            "earliest": 75500,
+            "latest": 83000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 76756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 50000,
+            "byte_start": 53000,
+            "stop_start": 75500,
+            "stop_end": 78000,
+            "earliest": 75500,
+            "latest": 83000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 76756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 78000,
+      "drain_cycles": [
+        83001
+      ],
+      "wire_sha256_lf": "8016e9c15bb4f1fb57c3e3c6d6bd05c2ea8e4e59983d087ab41e71eb2a9330ab",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "7bcf9dc2756d534461caa2150b68f064a649b3f935a804e96c4805ec09831acb",
+        "model.jsonl": "266b4920bca367e91928a39988789decb82b53e6fa22e88e61480a6d701ca1ac",
+        "rtl.jsonl": "266b4920bca367e91928a39988789decb82b53e6fa22e88e61480a6d701ca1ac",
+        "simulation.log": "caffe1564d08694eb1ea856f65dad4ba2f67ed5768260caa7bc4ea321100a0b4"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/receiver_tolerance_12bits"
+    },
+    {
+      "name": "split_false_break",
+      "cycles": 83066,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 78050,
+      "drain_cycles": [],
+      "wire_sha256_lf": "26ac97ede170dc6bf258f86aabf0f104d6f855485843bc09e6b5a6361e22f38f",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9f31563fce609e985745223b0d9b632b2551ff18f09e22d6737460b7f2694e7e",
+        "model.jsonl": "a4beb4955dee8db945282d6cb696b6035968813cbc0b67fc1cd5c44021267da5",
+        "rtl.jsonl": "a4beb4955dee8db945282d6cb696b6035968813cbc0b67fc1cd5c44021267da5",
+        "simulation.log": "6a94175a0c922f6ecb0f4fa1c99bae1797aa72fd9e196b0ec41392ca0b9d2750"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/split_false_break"
+    },
+    {
+      "name": "one_cycle_high_split",
+      "cycles": 83017,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 78001,
+      "drain_cycles": [],
+      "wire_sha256_lf": "189830592c83f7a733321db122e39f4bc15582233194fcda313e57d5e09a1d33",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "93b1a56049556ac30d10cc7d7173ee5d10903c647fa097a7f8a22fd98b30b83c",
+        "model.jsonl": "4414b14b561cd633e1380105d9b3610afc73da0b354df8be4933d2032948ae0f",
+        "rtl.jsonl": "4414b14b561cd633e1380105d9b3610afc73da0b354df8be4933d2032948ae0f",
+        "simulation.log": "c4da3e751305b3d379e15aad4aa66d34b50885809538dfc36a689899653645c3"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/one_cycle_high_split"
+    },
+    {
+      "name": "multiple_interruptions",
+      "cycles": 83166,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 78150,
+      "drain_cycles": [],
+      "wire_sha256_lf": "4478ce4e0a738faa2517c26f913ebd870f5b80c6d192c949a7f4422610c870d3",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "202b3f6d4ba6b0d1e2a4646737a9d94ab4e2fcf0d861f3573c949dece3119cf2",
+        "model.jsonl": "b46671f8d64db755218c2a71984c87d5825350d34f1cbcb260f8b5816acfc3d2",
+        "rtl.jsonl": "b46671f8d64db755218c2a71984c87d5825350d34f1cbcb260f8b5816acfc3d2",
+        "simulation.log": "da9c895155cef40a5ba442f02dd4826eec508a3a1e6c4b46ab2c7142d63fa65e"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/multiple_interruptions"
+    },
+    {
+      "name": "ordinary_zero_without_break",
+      "cycles": 81016,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 76000,
+      "drain_cycles": [],
+      "wire_sha256_lf": "958646fb34a0a92627a9595d7ceb016e804cf75cbec28d4e33dae7a98a9b2ef5",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "8b215f01d479ff41839c13b6e98c00a1d7c13be5f16de0fdbd2718503a8f8306",
+        "model.jsonl": "2c0a0403172fa2bf4df0779e0d9aa424081af00654fd142ad79f59b190dc53ff",
+        "rtl.jsonl": "2c0a0403172fa2bf4df0779e0d9aa424081af00654fd142ad79f59b190dc53ff",
+        "simulation.log": "3c5638578f509533a91a0cf25b14b93e4fdc57e7b9da5c81fcf75b9748f0f0f8"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/ordinary_zero_without_break"
+    },
+    {
+      "name": "sync_without_break",
+      "cycles": 53016,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 48000,
+      "drain_cycles": [],
+      "wire_sha256_lf": "75539f10d9b0161c00ca037c6e64acd4734a74a01769fdc73d8fa653f718b199",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "d91b0a810c7593a7ad0059644cb326df4531719a0c94f694081e1f7974bca688",
+        "model.jsonl": "439cff3fd84ad8a41328bf1d383780da619f4af4915ed0c4a07eb1ef347d2c68",
+        "rtl.jsonl": "439cff3fd84ad8a41328bf1d383780da619f4af4915ed0c4a07eb1ef347d2c68",
+        "simulation.log": "178ea616c6beb57b52cf0b44914c973436de8c495ac7ef54acf80c7bd98cac2d"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/sync_without_break"
+    },
+    {
+      "name": "wrong_sync_54",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "e17d2c4a5fe00c5e75aa5bef8cd7061635fced559679dda29b31eea1e9a3e192",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "47253f7084ac1432c80def695dccc213e42d3b3e6c1389e9c6e2045bfcedc9db",
+        "model.jsonl": "66ec7b53b7261bac5878fdb75b53830f4a1e13744dd5a1ae63521b019efc40da",
+        "rtl.jsonl": "66ec7b53b7261bac5878fdb75b53830f4a1e13744dd5a1ae63521b019efc40da",
+        "simulation.log": "94c0ca96d95b846a4637c5c6b352f698c2ee3c55ded6080bf0709ec7ed0e4a41"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/wrong_sync_54"
+    },
+    {
+      "name": "wrong_sync_AA",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "2c03555e1a0060415898d487f1477386ceff3b16848820b53f1dc2d3715fff7f",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "8a143cd2e9c11cbadf8df3d808f5033d5d9da5b2cbbf2c01a137f3547f9bef04",
+        "model.jsonl": "e6715266ec476d1d4ac7b42c6605d7dfafdea6ed3a020934d0b1967f5023623a",
+        "rtl.jsonl": "e6715266ec476d1d4ac7b42c6605d7dfafdea6ed3a020934d0b1967f5023623a",
+        "simulation.log": "2d3783ef9f5c833212da8567d1cd53e1d90bfdac92149ee455f6a0abd7443c55"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/wrong_sync_AA"
+    },
+    {
+      "name": "wrong_sync_zero",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "cbd525dd0f23689a208b1f7d7a2ef799d90953e9bd2e755cf56ac1442191b2e0",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "943b4cad105de8d69e7f9688f80cfd40d95bbda9adc2509c2b3e4e78be39a7a9",
+        "model.jsonl": "dafe8d17cfc65f9c42fa2a5a5a520a6e5398e88b47714a4f95ebe92257dfae2f",
+        "rtl.jsonl": "dafe8d17cfc65f9c42fa2a5a5a520a6e5398e88b47714a4f95ebe92257dfae2f",
+        "simulation.log": "49f40802f81130ea554654071f535e22e652aef57a4d8705a986858d170e6c68"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/wrong_sync_zero"
+    },
+    {
+      "name": "bad_stop",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "f25f439eef00aafead77f596cb771cab97656309350a9f6eabb73034255c8544",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "fb1e95b09657ec181ab34d680260603b776cf8d952afb94ceb6c9b4ff3d877b8",
+        "model.jsonl": "fdd3828e405b51ba115343cfbd18569d8ae457953736679e7bf2a7583efa8f0f",
+        "rtl.jsonl": "fdd3828e405b51ba115343cfbd18569d8ae457953736679e7bf2a7583efa8f0f",
+        "simulation.log": "90dc4810bb19dc31b1b79f72546598569c42ad2efa6319568eea30d0768e7812"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/bad_stop"
+    },
+    {
+      "name": "first_data_high_glitch",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "98fd8469034db080afc7988ea11b49d0c7ba586ac9179cdf2c37a60fd5cea909",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "5ac63831120e237845cb46d700da9071f8fc532a0a3b169d4c9d05244ad74e82",
+        "model.jsonl": "c71ae1d377e4474f085136ca47fc7d2d38738683e75680b8c1ff264cf995780e",
+        "rtl.jsonl": "c71ae1d377e4474f085136ca47fc7d2d38738683e75680b8c1ff264cf995780e",
+        "simulation.log": "24eced5b300035926bf3a78709e57157cc95bdc536f8bf1dd8a482a0039766e3"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/first_data_high_glitch"
+    },
+    {
+      "name": "startup_interruption_then_valid",
+      "cycles": 112826,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 47302,
+            "break_end": 79802,
+            "byte_start": 82802,
+            "stop_start": 105302,
+            "stop_end": 107802,
+            "earliest": 105302,
+            "latest": 112802,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 106558,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 47302,
+            "break_end": 79802,
+            "byte_start": 82802,
+            "stop_start": 105302,
+            "stop_end": 107802,
+            "earliest": 105302,
+            "latest": 112802,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 106558,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 107802,
+      "drain_cycles": [
+        112803
+      ],
+      "wire_sha256_lf": "dd552329024d8cc742c78721368c80bca64a2b51a29393c178fc6168dc33eadc",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "f1133b729fac815d8ce4c78440c5565860c0d2aeea6d86d52217b036735300b9",
+        "model.jsonl": "39dbb70666e7687e1c4b291e666c8c13e4cb6ad15090f9e58c2567d3eb43ee86",
+        "rtl.jsonl": "39dbb70666e7687e1c4b291e666c8c13e4cb6ad15090f9e58c2567d3eb43ee86",
+        "simulation.log": "936c7ed66de1858b9625bdde640283148dfc3d7e93e280186d696f685d1cd1d5"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/startup_interruption_then_valid"
+    },
+    {
+      "name": "fresh_after_split",
+      "cycles": 153574,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 88050,
+            "break_end": 120550,
+            "byte_start": 123550,
+            "stop_start": 146050,
+            "stop_end": 148550,
+            "earliest": 146050,
+            "latest": 153550,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 147306,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 88050,
+            "break_end": 120550,
+            "byte_start": 123550,
+            "stop_start": 146050,
+            "stop_end": 148550,
+            "earliest": 146050,
+            "latest": 153550,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 147306,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 148550,
+      "drain_cycles": [
+        153551
+      ],
+      "wire_sha256_lf": "697ff1eb10ecf0bbc2f6840be64ec493ac839af28a3ed2cc332f9c7b299fa8cc",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "94eedac7ab4cdde34f1d116cc8706c03eeb7d247ca94d59abc5c65be7943eeff",
+        "model.jsonl": "6be541ed143cfbf0accf76d46e9fa213f6334f374a69990eb3bf8dc54a4e60b9",
+        "rtl.jsonl": "6be541ed143cfbf0accf76d46e9fa213f6334f374a69990eb3bf8dc54a4e60b9",
+        "simulation.log": "d5bc7faaf0c844592ce9449f6d955aa40b21221668eaa87c47768b8de246ab20"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/fresh_after_split"
+    },
+    {
+      "name": "fresh_after_wrong_sync",
+      "cycles": 151024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 85500,
+            "break_end": 118000,
+            "byte_start": 121000,
+            "stop_start": 143500,
+            "stop_end": 146000,
+            "earliest": 143500,
+            "latest": 151000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 144756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 85500,
+            "break_end": 118000,
+            "byte_start": 121000,
+            "stop_start": 143500,
+            "stop_end": 146000,
+            "earliest": 143500,
+            "latest": 151000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 144756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 146000,
+      "drain_cycles": [
+        151001
+      ],
+      "wire_sha256_lf": "b3bda6cb36509ec57b8f209bd48033cb5d4200ebaad5e423e7962e0ef53ef888",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "e44f8958a7ea33d156c10f4a4c5018fccd6ed17f223e6e70a53b50dfbda96d21",
+        "model.jsonl": "85e7988063e4028ed2dd907cd569b63ae1483bda96d1b4d79fa8b463b8076b0f",
+        "rtl.jsonl": "85e7988063e4028ed2dd907cd569b63ae1483bda96d1b4d79fa8b463b8076b0f",
+        "simulation.log": "8fabb5bc8b90b23638d7610b5e239b79e2addb5ff0e7fc8c73e7617405cc45ac"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/fresh_after_wrong_sync"
+    },
+    {
+      "name": "pending_sync_recovery",
+      "cycles": 121024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 55500,
+            "break_end": 88000,
+            "byte_start": 91000,
+            "stop_start": 113500,
+            "stop_end": 116000,
+            "earliest": 113500,
+            "latest": 121000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 114756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 55500,
+            "break_end": 88000,
+            "byte_start": 91000,
+            "stop_start": 113500,
+            "stop_end": 116000,
+            "earliest": 113500,
+            "latest": 121000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 114756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 116000,
+      "drain_cycles": [
+        121001
+      ],
+      "wire_sha256_lf": "8e6d308fae459876eed1ce05c2b6b4c0dd9d634dcbacc4e51621ee043249a131",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "674d206ba1815d6af5626a584cf0170a715bc6d0899987fe7956477eb821e0fe",
+        "model.jsonl": "f1da9a9010ade9dc231223dcf20543e8887de5be836fd89a2d7bbb44c6519542",
+        "rtl.jsonl": "f1da9a9010ade9dc231223dcf20543e8887de5be836fd89a2d7bbb44c6519542",
+        "simulation.log": "3fc66cf10d628e691d75f7b29c943f3fd6ec1b9e2cd8b3c9b1cf458901cc7318"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/pending_sync_recovery"
+    },
+    {
+      "name": "stale_header_control",
+      "cycles": 115516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 110500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "869776842b15b7d2238c0cdd4d1b6d8ac1a26c06376da8673d42252d65a89cd0",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4d204aa826badd6385f686a9fdfef0951c49fb695274a8ed2efa1dda90d55054",
+        "model.jsonl": "21e24bfaa56fec6589a4ad96456d8136f493902ed125ee7930b0bb06dc972942",
+        "rtl.jsonl": "21e24bfaa56fec6589a4ad96456d8136f493902ed125ee7930b0bb06dc972942",
+        "simulation.log": "c25f0f714ae66bd139c79344c01b64e442192f4429ad602a4a6bb79b3dba2153"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/stale_header_control"
+    },
+    {
+      "name": "back_to_back",
+      "cycles": 156032,
+      "expected": [
+        85,
+        85
+      ],
+      "observed": [
+        85,
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          },
+          {
+            "value": 85,
+            "break_start": 90500,
+            "break_end": 123000,
+            "byte_start": 126000,
+            "stop_start": 148500,
+            "stop_end": 151000,
+            "earliest": 148500,
+            "latest": 156000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          },
+          {
+            "cycle": 149756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          },
+          {
+            "value": 85,
+            "break_start": 90500,
+            "break_end": 123000,
+            "byte_start": 126000,
+            "stop_start": 148500,
+            "stop_end": 151000,
+            "earliest": 148500,
+            "latest": 156000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          },
+          {
+            "cycle": 149756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 151000,
+      "drain_cycles": [
+        156001,
+        156009
+      ],
+      "wire_sha256_lf": "e26cd053677826ea355821af3885b7bf77109afb1a123ad9d2ed3b69f94fd85d",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "692a06c06b8818cf731908e3557a367db4168e6dd3c00a7ab5927573291bb209",
+        "model.jsonl": "093a0995fe974fb4666227b9fa78c9ad05252adab0e676064c388b38bc9e07a6",
+        "rtl.jsonl": "093a0995fe974fb4666227b9fa78c9ad05252adab0e676064c388b38bc9e07a6",
+        "simulation.log": "3f6565f180818812fe299fb8c9aac9f6f5dab0f1ebc9aaeac21f6a8db1b648ed"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/back_to_back"
+    },
+    {
+      "name": "reset_during_break",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {
+        "40000": "reset"
+      },
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "86e41fab2a8ebb8db0bf82c3c085c1515109d5bd57c3225f208a3a508a7aaded",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "1267a2372bcb791076c061db136d14977391bf5cf51a1dda9554d0b6c0321040",
+        "model.jsonl": "0fa2a07de388beb74e425f5093d648fa5bc386fea2ffc3c65f17083193208111",
+        "rtl.jsonl": "0fa2a07de388beb74e425f5093d648fa5bc386fea2ffc3c65f17083193208111",
+        "simulation.log": "6b97976d3aa92688804f103d8edff14b561b439b8f8547faad6760fa7eb809e4"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/reset_during_break"
+    },
+    {
+      "name": "abort_during_break",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {
+        "40000": "abort"
+      },
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "86e41fab2a8ebb8db0bf82c3c085c1515109d5bd57c3225f208a3a508a7aaded",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3ca384f3ea2b58dd45ebb4520c1de21293ed22a46c4b6ee5176a97113c69be52",
+        "model.jsonl": "932ed8292a02faeea56035dba11d26212ca9c5cef5d2541014da546acfdb77cb",
+        "rtl.jsonl": "932ed8292a02faeea56035dba11d26212ca9c5cef5d2541014da546acfdb77cb",
+        "simulation.log": "8074701b17bef409eda27995374e49e43dd0e4dd6779d45906bb1bf7c5fd38cb"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/abort_during_break"
+    },
+    {
+      "name": "disable_during_break",
+      "cycles": 85516,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {
+        "40000": "disable"
+      },
+      "traffic_end": 80500,
+      "drain_cycles": [],
+      "wire_sha256_lf": "86e41fab2a8ebb8db0bf82c3c085c1515109d5bd57c3225f208a3a508a7aaded",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4ad69c4ebfbd808c0c779cbc6727874815fc88be3c941cfb93de539141dce3d3",
+        "model.jsonl": "498b701e5a62fbff602adc6a77939be93afebe0aec070d3284dd6bee6a577c8a",
+        "rtl.jsonl": "498b701e5a62fbff602adc6a77939be93afebe0aec070d3284dd6bee6a577c8a",
+        "simulation.log": "12674cfcd698620840e546ec4be8c8fd5b92413d4d4b0585766581e1bc6e597a"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/disable_during_break"
+    },
+    {
+      "name": "legal_low32500_phase0",
+      "cycles": 85524,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [
+        85501
+      ],
+      "wire_sha256_lf": "67cab24ceabd48df325fb1e0a3b72d0bf89f44687a3be0e367b0424c64b8bd18",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9314de1c1c791fabdb213718848e99b00632ebc9f2c1975576f88524f32c32f0",
+        "model.jsonl": "de45ba4f5545aa96bbafe0f2e5575b0099252ddaac311d652bd8a4b0f04c6460",
+        "rtl.jsonl": "de45ba4f5545aa96bbafe0f2e5575b0099252ddaac311d652bd8a4b0f04c6460",
+        "simulation.log": "ded364b853214ea46039217027e2b6fba3da5a612dc97750e367a827ee4083f0"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low32500_phase0"
+    },
+    {
+      "name": "legal_low32500_phase1",
+      "cycles": 85525,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20001,
+            "break_end": 52501,
+            "byte_start": 55501,
+            "stop_start": 78001,
+            "stop_end": 80501,
+            "earliest": 78001,
+            "latest": 85501,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79257,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20001,
+            "break_end": 52501,
+            "byte_start": 55501,
+            "stop_start": 78001,
+            "stop_end": 80501,
+            "earliest": 78001,
+            "latest": 85501,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79257,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80501,
+      "drain_cycles": [
+        85502
+      ],
+      "wire_sha256_lf": "a5b000129f26baf10605868c974d642ac229e578f00ba58104c5744cab8df76f",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4e91a7cac6816942555d6523bb7f02b4884ecc2810dd739eb7e8ae302a97538e",
+        "model.jsonl": "b0b45e265367526270aaf43ad61599b2dc1152d2c00bcb08b1291e72a6e7a26e",
+        "rtl.jsonl": "b0b45e265367526270aaf43ad61599b2dc1152d2c00bcb08b1291e72a6e7a26e",
+        "simulation.log": "ad4156b6d0fb478a43d3225d2195e89f400fe6338d3031e475ca6229a0c037db"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low32500_phase1"
+    },
+    {
+      "name": "legal_low32500_phase2",
+      "cycles": 85526,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20002,
+            "break_end": 52502,
+            "byte_start": 55502,
+            "stop_start": 78002,
+            "stop_end": 80502,
+            "earliest": 78002,
+            "latest": 85502,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79258,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20002,
+            "break_end": 52502,
+            "byte_start": 55502,
+            "stop_start": 78002,
+            "stop_end": 80502,
+            "earliest": 78002,
+            "latest": 85502,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79258,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80502,
+      "drain_cycles": [
+        85503
+      ],
+      "wire_sha256_lf": "7cc5b3a713e7596197928dcb932ccf939a2b344cdd118d3e5d39e77a6895a8ce",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "583b3a1918057c29ff704873fc5496ba0325692756bb2f127348b68e058d1c0a",
+        "model.jsonl": "4f9d01c115155cae017e309d36257089af6bc59bb05dcc7f9eefceab965b7c5e",
+        "rtl.jsonl": "4f9d01c115155cae017e309d36257089af6bc59bb05dcc7f9eefceab965b7c5e",
+        "simulation.log": "f22b8ee0c34973da2cc88f694d20e335506d8e213bc728ea6f1f4587aeddb96a"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low32500_phase2"
+    },
+    {
+      "name": "legal_low40000_phase0",
+      "cycles": 93024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 60000,
+            "byte_start": 63000,
+            "stop_start": 85500,
+            "stop_end": 88000,
+            "earliest": 85500,
+            "latest": 93000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 60000,
+            "byte_start": 63000,
+            "stop_start": 85500,
+            "stop_end": 88000,
+            "earliest": 85500,
+            "latest": 93000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 88000,
+      "drain_cycles": [
+        93001
+      ],
+      "wire_sha256_lf": "96d332918e17e4e7584e4d20439ea3f068fa43822e994fa37ff8b478f5b945d6",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "5429364e17d5d7d9897c6efb97f6eaa27b817f842f85d1f52be68b119e39278f",
+        "model.jsonl": "f08b8d0e6a9da29b6a463f254c01458befd37a92ed1a75f3c34dea7d4a19f72d",
+        "rtl.jsonl": "f08b8d0e6a9da29b6a463f254c01458befd37a92ed1a75f3c34dea7d4a19f72d",
+        "simulation.log": "3fb2281e49b7c1a06cbb23c0a72dd4d27c30e2957a7da0ffea3dd5352cf6078c"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low40000_phase0"
+    },
+    {
+      "name": "legal_low40000_phase1",
+      "cycles": 93025,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20001,
+            "break_end": 60001,
+            "byte_start": 63001,
+            "stop_start": 85501,
+            "stop_end": 88001,
+            "earliest": 85501,
+            "latest": 93001,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86757,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20001,
+            "break_end": 60001,
+            "byte_start": 63001,
+            "stop_start": 85501,
+            "stop_end": 88001,
+            "earliest": 85501,
+            "latest": 93001,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86757,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 88001,
+      "drain_cycles": [
+        93002
+      ],
+      "wire_sha256_lf": "7de3dbc449493582974da56f34590850ed304f1b66d7265e7dfb7c863d9231e7",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "838fb77673cf9a87cea9c9a8b6e589f50c19af05527c923ce6ea6a75fb79ac06",
+        "model.jsonl": "3742f38913c52633f99f4347053a90bc171393991096e58092309288eb4c604c",
+        "rtl.jsonl": "3742f38913c52633f99f4347053a90bc171393991096e58092309288eb4c604c",
+        "simulation.log": "133ac71d9a8c8eed4c79e242fcce940fe79f188bdf0d2aefe7b28d106bc9af35"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low40000_phase1"
+    },
+    {
+      "name": "legal_low40000_phase2",
+      "cycles": 93026,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20002,
+            "break_end": 60002,
+            "byte_start": 63002,
+            "stop_start": 85502,
+            "stop_end": 88002,
+            "earliest": 85502,
+            "latest": 93002,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86758,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20002,
+            "break_end": 60002,
+            "byte_start": 63002,
+            "stop_start": 85502,
+            "stop_end": 88002,
+            "earliest": 85502,
+            "latest": 93002,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 86758,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 88002,
+      "drain_cycles": [
+        93003
+      ],
+      "wire_sha256_lf": "4e847af1d2dffed79682cce6fa495844564e24f03d80a0bb04c2fa56f83658ff",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "b145942fa5c96feaf992021c1090d842df8b79d2f971d4aff24aa10102136dca",
+        "model.jsonl": "eeeeac38326b1dda130c74f98aaeff1d2f194cd006600651ff02731317bd6f0e",
+        "rtl.jsonl": "eeeeac38326b1dda130c74f98aaeff1d2f194cd006600651ff02731317bd6f0e",
+        "simulation.log": "f015aea06e94d259d92378b17af4e1f695ad5f2819a1b28d37e0cddf78b40747"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low40000_phase2"
+    },
+    {
+      "name": "legal_low45000_phase0",
+      "cycles": 98024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 65000,
+            "byte_start": 68000,
+            "stop_start": 90500,
+            "stop_end": 93000,
+            "earliest": 90500,
+            "latest": 98000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 91756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 65000,
+            "byte_start": 68000,
+            "stop_start": 90500,
+            "stop_end": 93000,
+            "earliest": 90500,
+            "latest": 98000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 91756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 93000,
+      "drain_cycles": [
+        98001
+      ],
+      "wire_sha256_lf": "3160a6e0ae026ab820c7b6095aeab5ea258939e70036f2be45d6797938867fcf",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2861f301d8e43a8398d6dbb4c219d9e5ef716b3bdf444a424f13c4e6b14d0031",
+        "model.jsonl": "056a29e620a7fd2669fbd884879e3349a4464af82395fdd5bcecea4107870d5f",
+        "rtl.jsonl": "056a29e620a7fd2669fbd884879e3349a4464af82395fdd5bcecea4107870d5f",
+        "simulation.log": "1b3252db37e36a95f0582efbc26eb2a539556783ad89795a39afd0519a48e76c"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low45000_phase0"
+    },
+    {
+      "name": "legal_low45000_phase1",
+      "cycles": 98025,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20001,
+            "break_end": 65001,
+            "byte_start": 68001,
+            "stop_start": 90501,
+            "stop_end": 93001,
+            "earliest": 90501,
+            "latest": 98001,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 91757,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20001,
+            "break_end": 65001,
+            "byte_start": 68001,
+            "stop_start": 90501,
+            "stop_end": 93001,
+            "earliest": 90501,
+            "latest": 98001,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 91757,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 93001,
+      "drain_cycles": [
+        98002
+      ],
+      "wire_sha256_lf": "e2a5b34b99cefda9eb45122c1af82c4629b979055cfacd46bb3a9ebba9ce4420",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "0740b1836ee1faae34fe42f1e822522c411ad04d1ecb54a4abcafd16a550333f",
+        "model.jsonl": "986b36432e3970785139d589fc4c53e3e0c6922f98bf46c8fabba0a806dddf8b",
+        "rtl.jsonl": "986b36432e3970785139d589fc4c53e3e0c6922f98bf46c8fabba0a806dddf8b",
+        "simulation.log": "55f103b9ce3010ffea34cfc97676b72df4db00b2debb9aa0ee63d1c29de935ab"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low45000_phase1"
+    },
+    {
+      "name": "legal_low45000_phase2",
+      "cycles": 98026,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20002,
+            "break_end": 65002,
+            "byte_start": 68002,
+            "stop_start": 90502,
+            "stop_end": 93002,
+            "earliest": 90502,
+            "latest": 98002,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 91758,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20002,
+            "break_end": 65002,
+            "byte_start": 68002,
+            "stop_start": 90502,
+            "stop_end": 93002,
+            "earliest": 90502,
+            "latest": 98002,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 91758,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 93002,
+      "drain_cycles": [
+        98003
+      ],
+      "wire_sha256_lf": "f7b99889dec4144f17f8bf292c53094e4dab1e20fdb8e735ee21a1626193c799",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "759a0a54248d3902e6f5179349cb1526e70b4bf079ad84fcfa2ec67ced800420",
+        "model.jsonl": "b047fe87212a8bce4590fcffee4b309c310712465521b2cf2ee7fb55f273d8b7",
+        "rtl.jsonl": "b047fe87212a8bce4590fcffee4b309c310712465521b2cf2ee7fb55f273d8b7",
+        "simulation.log": "8ac33d7b7e458900b2e0588453e93ac27d55334cb32166d9fe81da6e726070e8"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/legal_low45000_phase2"
+    }
+  ],
+  "demonstrations": [
+    {
+      "name": "nominal",
+      "cycles": 85524,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 80500,
+      "drain_cycles": [
+        85501
+      ],
+      "wire_sha256_lf": "67cab24ceabd48df325fb1e0a3b72d0bf89f44687a3be0e367b0424c64b8bd18",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9314de1c1c791fabdb213718848e99b00632ebc9f2c1975576f88524f32c32f0",
+        "model.jsonl": "de45ba4f5545aa96bbafe0f2e5575b0099252ddaac311d652bd8a4b0f04c6460",
+        "rtl.jsonl": "de45ba4f5545aa96bbafe0f2e5575b0099252ddaac311d652bd8a4b0f04c6460",
+        "simulation.log": "acd2e841bd164762ec5e263e8591aceb61b416b9ab7ce3eaff0c6fb75a5fa972"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/nominal",
+      "pins": [
+        [
+          "LIN RX (normalized)",
+          2
+        ]
+      ]
+    },
+    {
+      "name": "one_cycle_high_split",
+      "cycles": 83017,
+      "expected": [],
+      "observed": [],
+      "model_oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [],
+        "observed_acceptances": [],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 78001,
+      "drain_cycles": [],
+      "wire_sha256_lf": "189830592c83f7a733321db122e39f4bc15582233194fcda313e57d5e09a1d33",
+      "maximum_entries_executed_per_cycle": 1,
+      "evidence_sha256_lf": {
+        "inputs.txt": "93b1a56049556ac30d10cc7d7173ee5d10903c647fa097a7f8a22fd98b30b83c",
+        "model.jsonl": "4414b14b561cd633e1380105d9b3610afc73da0b354df8be4933d2032948ae0f",
+        "rtl.jsonl": "4414b14b561cd633e1380105d9b3610afc73da0b354df8be4933d2032948ae0f",
+        "simulation.log": "c4da3e751305b3d379e15aad4aa66d34b50885809538dfc36a689899653645c3"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/one_cycle_high_split",
+      "pins": [
+        [
+          "LIN RX (normalized)",
+          2
+        ]
+      ]
+    },
+    {
+      "name": "pending_sync_recovery",
+      "cycles": 121024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 55500,
+            "break_end": 88000,
+            "byte_start": 91000,
+            "stop_start": 113500,
+            "stop_end": 116000,
+            "earliest": 113500,
+            "latest": 121000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 114756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 55500,
+            "break_end": 88000,
+            "byte_start": 91000,
+            "stop_start": 113500,
+            "stop_end": 116000,
+            "earliest": 113500,
+            "latest": 121000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 114756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 116000,
+      "drain_cycles": [
+        121001
+      ],
+      "wire_sha256_lf": "8e6d308fae459876eed1ce05c2b6b4c0dd9d634dcbacc4e51621ee043249a131",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "674d206ba1815d6af5626a584cf0170a715bc6d0899987fe7956477eb821e0fe",
+        "model.jsonl": "f1da9a9010ade9dc231223dcf20543e8887de5be836fd89a2d7bbb44c6519542",
+        "rtl.jsonl": "f1da9a9010ade9dc231223dcf20543e8887de5be836fd89a2d7bbb44c6519542",
+        "simulation.log": "3fc66cf10d628e691d75f7b29c943f3fd6ec1b9e2cd8b3c9b1cf458901cc7318"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/pending_sync_recovery",
+      "pins": [
+        [
+          "LIN RX (normalized)",
+          2
+        ]
+      ]
+    },
+    {
+      "name": "back_to_back",
+      "cycles": 156032,
+      "expected": [
+        85,
+        85
+      ],
+      "observed": [
+        85,
+        85
+      ],
+      "model_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          },
+          {
+            "value": 85,
+            "break_start": 90500,
+            "break_end": 123000,
+            "byte_start": 126000,
+            "stop_start": 148500,
+            "stop_end": 151000,
+            "earliest": 148500,
+            "latest": 156000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          },
+          {
+            "cycle": 149756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          },
+          {
+            "value": 85,
+            "break_start": 90500,
+            "break_end": 123000,
+            "byte_start": 126000,
+            "stop_start": 148500,
+            "stop_end": 151000,
+            "earliest": 148500,
+            "latest": 156000,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79256,
+            "public_head": 85
+          },
+          {
+            "cycle": 149756,
+            "public_head": 85
+          }
+        ],
+        "errors": [],
+        "passed": true
+      },
+      "model_rtl_agreement": true,
+      "host_fifo_preload": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "configuration_writes_during_traffic": 0,
+      "host_reads_during_traffic": 0,
+      "lifecycle_cuts": {},
+      "traffic_end": 151000,
+      "drain_cycles": [
+        156001,
+        156009
+      ],
+      "wire_sha256_lf": "e26cd053677826ea355821af3885b7bf77109afb1a123ad9d2ed3b69f94fd85d",
+      "maximum_entries_executed_per_cycle": 3,
+      "evidence_sha256_lf": {
+        "inputs.txt": "692a06c06b8818cf731908e3557a367db4168e6dd3c00a7ab5927573291bb209",
+        "model.jsonl": "093a0995fe974fb4666227b9fa78c9ad05252adab0e676064c388b38bc9e07a6",
+        "rtl.jsonl": "093a0995fe974fb4666227b9fa78c9ad05252adab0e676064c388b38bc9e07a6",
+        "simulation.log": "3f6565f180818812fe299fb8c9aac9f6f5dab0f1ebc9aaeac21f6a8db1b648ed"
+      },
+      "trace_directory": "build/v3_temporal_qualification/unseen/9dbddbd4dae0857c/back_to_back",
+      "pins": [
+        [
+          "LIN RX (normalized)",
+          2
+        ]
+      ]
+    }
+  ],
+  "passed": true,
+  "failed_cases": [],
+  "total_compared_cycles": 3210266,
+  "frozen_before_after_identical": true,
+  "evaluation_before_after_identical": true
+}

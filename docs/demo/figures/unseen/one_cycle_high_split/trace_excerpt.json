@@ -1,0 +1,138 @@
+[
+  {
+    "cycle": 0,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 20002,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 35002,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 35003,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 50003,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 53003,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 55503,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 58003,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 60503,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 63003,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 65503,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 68003,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 70503,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 83016,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  }
+]

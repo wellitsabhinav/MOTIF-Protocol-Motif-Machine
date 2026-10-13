@@ -1,6 +1,7 @@
 """Reject incomplete or stale unseen receipts before physical eligibility."""
 import argparse
 import json
+import re
 from pathlib import Path
 
 from tools.lin_unseen import selected, cases, SELECTION_COMMIT, SELECTION_SHA
@@ -39,14 +40,18 @@ def validate(report, artifacts=False):
             result = row.get(label, {})
             tokens = result.get("expected", [])
             acceptances = result.get("observed_acceptances", [])
-            if (result.get("passed") is not True or result.get("errors") != []
+            if (not {"passed", "errors", "expected", "observed_acceptances"} <= result.keys()
+                    or not isinstance(tokens, list) or not isinstance(acceptances, list)
+                    or result.get("passed") is not True or result.get("errors") != []
                     or [token.get("value") for token in tokens] != wanted or len(acceptances) != len(wanted)):
                 raise ValueError("Independent oracle evidence is incomplete: " + row["name"])
             if any(not token["earliest"] <= observed["cycle"] <= token["latest"]
                    for token, observed in zip(tokens, acceptances)):
                 raise ValueError("Recorded acceptance is outside the unchanged electrical window")
         evidence = row.get("evidence_sha256_lf", {})
-        if set(evidence) != {"inputs.txt", "model.jsonl", "rtl.jsonl", "simulation.log"}:
+        if (set(evidence) != {"inputs.txt", "model.jsonl", "rtl.jsonl", "simulation.log"}
+                or any(not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest)
+                       for digest in evidence.values())):
             raise ValueError("Unseen full comparison artifact identities are incomplete")
         if artifacts:
             directory = Path(row["trace_directory"]).resolve()

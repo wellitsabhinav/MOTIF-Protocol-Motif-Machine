@@ -1,0 +1,211 @@
+{
+  "schema_version": 3,
+  "qualified_evaluation_commit": "01fa51dccf86374152f1079330544f8e2521e295",
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "unseen_run_id": 38347135337,
+  "regression_run_id": 38347135307,
+  "passed": true,
+  "cases": [
+    {
+      "name": "nominal",
+      "cycles": 85524
+    },
+    {
+      "name": "long_break",
+      "cycles": 93024
+    },
+    {
+      "name": "threshold_below",
+      "cycles": 80515
+    },
+    {
+      "name": "threshold_equal",
+      "cycles": 80524
+    },
+    {
+      "name": "threshold_above",
+      "cycles": 80525
+    },
+    {
+      "name": "receiver_tolerance_12bits",
+      "cycles": 83024
+    },
+    {
+      "name": "split_false_break",
+      "cycles": 83066
+    },
+    {
+      "name": "one_cycle_high_split",
+      "cycles": 83017
+    },
+    {
+      "name": "multiple_interruptions",
+      "cycles": 83166
+    },
+    {
+      "name": "ordinary_zero_without_break",
+      "cycles": 81016
+    },
+    {
+      "name": "sync_without_break",
+      "cycles": 53016
+    },
+    {
+      "name": "wrong_sync_54",
+      "cycles": 85516
+    },
+    {
+      "name": "wrong_sync_AA",
+      "cycles": 85516
+    },
+    {
+      "name": "wrong_sync_zero",
+      "cycles": 85516
+    },
+    {
+      "name": "bad_stop",
+      "cycles": 85516
+    },
+    {
+      "name": "first_data_high_glitch",
+      "cycles": 85516
+    },
+    {
+      "name": "startup_interruption_then_valid",
+      "cycles": 112826
+    },
+    {
+      "name": "fresh_after_split",
+      "cycles": 153574
+    },
+    {
+      "name": "fresh_after_wrong_sync",
+      "cycles": 151024
+    },
+    {
+      "name": "pending_sync_recovery",
+      "cycles": 121024
+    },
+    {
+      "name": "stale_header_control",
+      "cycles": 115516
+    },
+    {
+      "name": "back_to_back",
+      "cycles": 156032
+    },
+    {
+      "name": "reset_during_break",
+      "cycles": 85516
+    },
+    {
+      "name": "abort_during_break",
+      "cycles": 85516
+    },
+    {
+      "name": "disable_during_break",
+      "cycles": 85516
+    },
+    {
+      "name": "legal_low32500_phase0",
+      "cycles": 85524
+    },
+    {
+      "name": "legal_low32500_phase1",
+      "cycles": 85525
+    },
+    {
+      "name": "legal_low32500_phase2",
+      "cycles": 85526
+    },
+    {
+      "name": "legal_low40000_phase0",
+      "cycles": 93024
+    },
+    {
+      "name": "legal_low40000_phase1",
+      "cycles": 93025
+    },
+    {
+      "name": "legal_low40000_phase2",
+      "cycles": 93026
+    },
+    {
+      "name": "legal_low45000_phase0",
+      "cycles": 98024
+    },
+    {
+      "name": "legal_low45000_phase1",
+      "cycles": 98025
+    },
+    {
+      "name": "legal_low45000_phase2",
+      "cycles": 98026
+    }
+  ],
+  "total_compared_cycles": 3210266,
+  "regression_jobs": [
+    {
+      "id": 115131045710,
+      "name": "cocotb",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 115131046013,
+      "name": "model",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 115131046110,
+      "name": "rtl",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 115131047068,
+      "name": "gate_test",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "id": 115133208050,
+      "name": "cost",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifact": {
+    "id": 11789508413,
+    "name": "frozen-v3-unseen-lin-evidence",
+    "size_in_bytes": 57889637,
+    "url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/artifacts/11789508413",
+    "archive_download_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/artifacts/11789508413/zip",
+    "expired": false,
+    "created_at": "2026-10-13T04:43:51Z",
+    "expires_at": "2026-10-27T04:42:59Z",
+    "updated_at": "2026-10-13T04:43:51Z",
+    "digest": "sha256:eb3dae5c725196a3b07e0c583ebacb7e75ab03b1e85776b6650f237fd4ef99bb",
+    "workflow_run": {
+      "id": 38347135337,
+      "repository_id": 1415056341,
+      "head_repository_id": 1415056341,
+      "head_branch": "codex/v3-unseen-evaluation",
+      "head_sha": "01fa51dccf86374152f1079330544f8e2521e295"
+    }
+  },
+  "runtime_host_pass": true,
+  "demonstrations_pass": true,
+  "limitations": "This receipt records the original green evaluated source commit. Any later PR head must independently be green before merge.",
+  "zip_digest_verified": true,
+  "extracted_receipt_sha256_lf": {
+    "ci_logical_result.json": "9ca891a9d72512c5a7bf6b4f5f6087cef1780cbc171c103d43da496a867f017e",
+    "ci_host_result.json": "a5bffe62bf674ac721cf37e6225b7f6ca2f72a5da2b457f43a8a2e6c0ba96b29"
+  },
+  "executed_evaluation_sources_equal_to_local": true
+}

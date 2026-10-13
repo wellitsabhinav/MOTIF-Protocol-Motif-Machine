@@ -42,12 +42,12 @@
     "tools/v3_trace.py": "d9b21ce33b8e208725dec47b751cbd2281f8e55bbbc809885c0f79207b0d5945"
   },
   "campaign": {
-    "status": "MOTIF_V3_FROZEN_TEMPORAL_QUALIFIED",
+    "status": "MOTIF_V3_UNSEEN_LOGICAL_PASS",
     "freeze_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
     "evidence": {
       "experiments/temporal_qualification/campaign_result.json": {
         "schema_version": 3,
-        "status": "MOTIF_V3_FROZEN_TEMPORAL_QUALIFIED",
+        "status": "MOTIF_V3_UNSEEN_LOGICAL_PASS",
         "source_sha": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
         "source_sha_role": "Frozen source revision; individual qualification receipts retain exact measured and bound source identities",
         "working_tree_dirty": true,
@@ -153,11 +153,11 @@
         },
         "logical_qualification": "PASS",
         "cost_qualification": "PASS",
-        "unseen_generalization": "UNREACHED",
+        "unseen_generalization": "PASS_BOUNDED_LIN_BREAK_SYNC_ENTRY",
         "physical_qualification": "UNREACHED",
         "freeze_created": true,
         "unseen_research_started": true,
-        "unseen_selected": false,
+        "unseen_selected": true,
         "physical_attempts": 0,
         "area_um2": 210241.9746,
         "area_growth_percent": 8.16233265288937,
@@ -179,9 +179,12 @@
           "conclusion": "success",
           "url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293882738"
         },
-        "scope": "Bounded training and preserved protocols; no unseen or physical result yet",
+        "scope": "Temporal training/regression and matched cost PASS; frozen semantics; one bounded selected LIN prefix unseen PASS; physical qualification unreached",
         "freeze_commit": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
-        "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047"
+        "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+        "unseen_selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
+        "unseen_selection_sha256_lf": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663",
+        "unseen_result": "experiments/temporal_qualification/unseen/logical_result.json"
       },
       "experiments/temporal_qualification/synthesis.json": {
         "schema_version": 3,
@@ -1371,6 +1374,64 @@
       "passed": true,
       "stimulus_sha256": "03929cf5a4feb49c467c46ebea76cb591c5265e2fc1a768a8ebb4d1e8af549c7",
       "rtl_trace_sha256": "c634a33ae741daa7a279f8c818c5762e3cb1965a7bd8d4fec289a8d4c5a9acd4"
+    },
+    {
+      "protocol": "unseen",
+      "case": "nominal",
+      "cycles": 85524,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "9314de1c1c791fabdb213718848e99b00632ebc9f2c1975576f88524f32c32f0",
+      "rtl_trace_sha256": "ce273554bf4b7679e9e44fd32fde1e63de2e29a958f824c9c3e2832624449c04"
+    },
+    {
+      "protocol": "unseen",
+      "case": "one_cycle_high_split",
+      "cycles": 83017,
+      "expected": [],
+      "observed": [],
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "93b1a56049556ac30d10cc7d7173ee5d10903c647fa097a7f8a22fd98b30b83c",
+      "rtl_trace_sha256": "676c1ad54db871d153fe4f0482a9f787c6fbfc38d3ec04f14c191497108c18ed"
+    },
+    {
+      "protocol": "unseen",
+      "case": "pending_sync_recovery",
+      "cycles": 121024,
+      "expected": [
+        85
+      ],
+      "observed": [
+        85
+      ],
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "674d206ba1815d6af5626a584cf0170a715bc6d0899987fe7956477eb821e0fe",
+      "rtl_trace_sha256": "049faecc7f9b3e1d36af5e619fd09c383b2d2e551007c0e1c18e215967c880b5"
+    },
+    {
+      "protocol": "unseen",
+      "case": "back_to_back",
+      "cycles": 156032,
+      "expected": [
+        85,
+        85
+      ],
+      "observed": [
+        85,
+        85
+      ],
+      "model_rtl_agreement": true,
+      "passed": true,
+      "stimulus_sha256": "692a06c06b8818cf731908e3557a367db4168e6dd3c00a7ab5927573291bb209",
+      "rtl_trace_sha256": "66efac8a6513761b78ff872022419e92075243f42f45030b28f498b17efec5f6"
     }
   ],
   "selected_artifact_sha256": {
@@ -1418,6 +1479,34 @@
     "timed_stream/bounded/trace_excerpt.json": "5d7c6205b8e9e52e2eee885bf81ba332de8d0fa6b29ee68936b631d6ad0fcc87",
     "timed_stream/bounded/waveform.png": "b37c58fcf701c862de261bfc68440da565c8cbbb047a1d080c52f8bc982fbe65",
     "timed_stream/bounded/waveform.svg": "defccf200e511b2b7f3d1e6a09e9e8ba256e8fd5e099d4e6e1c9e8f4b99bd3e1",
+    "unseen/nominal/configuration.json": "4683a235a6c41a28255c07edc0f8c71e5967891f68559262a15c9440080e285a",
+    "unseen/nominal/timeline.png": "fc2d5ea3ba6a13d9b8c6c09838066d772f780804eddcda0946860d0af6a109e8",
+    "unseen/nominal/timeline.svg": "39599c9f2cb5d87c4df0737c96cdd06c83e3c8bef03c4b2ded34a1dc3c4ee0fb",
+    "unseen/nominal/trace_excerpt.json": "1187d067b023ed1345dce88d1a400333aae7717ccef3ee87b3b9cca3b8c2e5c2",
+    "unseen/nominal/waveform.png": "1d5582284f6fddf05c2ac7ede97ebfd804a182b3c28bdaa33d3e2f550958a371",
+    "unseen/nominal/waveform.svg": "713613466c3671d80866d89be8cbf3c988e541680082a8e5c6f2a1a983b18e30",
+    "unseen/nominal/waveform_79248_79265.png": "afa67b0f44cdf831aee3d1041509a8e9c4501667df36d10fd8fb0eb38fb75db0",
+    "unseen/nominal/waveform_79248_79265.svg": "8ad113c41ceb5a2660317364205b4acb37f82b665f7196051fbd707878cc4575",
+    "unseen/one_cycle_high_split/configuration.json": "4683a235a6c41a28255c07edc0f8c71e5967891f68559262a15c9440080e285a",
+    "unseen/one_cycle_high_split/timeline.png": "39805cb6d1870196b01c553cc4e97b177ed2cc887ff147a118175b4c3a88507e",
+    "unseen/one_cycle_high_split/timeline.svg": "ed2a2a66843d36cbce61595eff70830664d39d2d3201d504c33215a3b28cfbd2",
+    "unseen/one_cycle_high_split/trace_excerpt.json": "cd5aa6655ea6331a58f1c77a81fe5272b0f4336a5cc0507918a32b81a8f9d575",
+    "unseen/one_cycle_high_split/waveform.png": "edba0ca918e2ccd3ce3261aa5a57bd8970981b79119c765865846856de7ad316",
+    "unseen/one_cycle_high_split/waveform.svg": "18ef4e1fc242d888439e389604a6d9e30aee6ef458e7ca1c8bfb3e89f2b81037",
+    "unseen/one_cycle_high_split/waveform_34995_35012.png": "a5620122c349f577d6364f443117027751ed947cd056eb8955f1a4a29fbb2108",
+    "unseen/one_cycle_high_split/waveform_34995_35012.svg": "5f060759fb5ca73b59eba163e6abbc5cc856b90525a3ceba97cccbbd6bce4bd3",
+    "unseen/pending_sync_recovery/configuration.json": "4683a235a6c41a28255c07edc0f8c71e5967891f68559262a15c9440080e285a",
+    "unseen/pending_sync_recovery/timeline.png": "3e0da40b515a2358aa68bf50c41d1b37ce7b1d4c0fa6242b36798ff7f12544aa",
+    "unseen/pending_sync_recovery/timeline.svg": "43105c918c71d51c3b1d8b299bd2de4aaf42d84b5700c6d9fae82dadedb8a8b2",
+    "unseen/pending_sync_recovery/trace_excerpt.json": "94e7755eaad7ab7387b211fa950b65a36e2351047ead3a2ba2b4fea6c0f61868",
+    "unseen/pending_sync_recovery/waveform.png": "38086164a09654bfb7738ccc18737f6b3d62fc0d9375afa5775ec234a2872741",
+    "unseen/pending_sync_recovery/waveform.svg": "54ed418e4cc7e8e4737ed2f9b9ade0e486cd3491f93e3ccbafb8649d23f9ce95",
+    "unseen/back_to_back/configuration.json": "4683a235a6c41a28255c07edc0f8c71e5967891f68559262a15c9440080e285a",
+    "unseen/back_to_back/timeline.png": "af2ac38f82f2b2163d70571268a5c7e7d6eec31dbaee8ceff76c9e652f017cd2",
+    "unseen/back_to_back/timeline.svg": "aefa368a85c48129e4291a4b576fb63c09f21bcf2ee5235fef603a64b3bab5cb",
+    "unseen/back_to_back/trace_excerpt.json": "450f36159faefefdb82c01ca9edc644dab25037f0224c588f7308386703874a5",
+    "unseen/back_to_back/waveform.png": "a16cc1aa960a0cf0cec8d710b65845b7808cf6108cb7f7198b7e4381e52e7c34",
+    "unseen/back_to_back/waveform.svg": "c90ef15bdae1d22d9cf4086deea416c2c9530faf6ae149c9176fa21c11b85774",
     "architecture/architecture.json": "91da685d3e51c6ef87eb9d01ef7004bf7dc7701f95ddd359ddea814d3648b6fe",
     "architecture/architecture.png": "2f0364e1db12dbcca6e86aaba87b63dae52a144d02d991f7152d5ba21f32c988",
     "architecture/architecture.svg": "706b95668e6a2153851ae86ba4f279299ccd4e6eda9f7398baacea6646b62f6b",

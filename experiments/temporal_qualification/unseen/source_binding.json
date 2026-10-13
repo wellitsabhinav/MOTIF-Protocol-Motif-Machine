@@ -1,0 +1,25 @@
+{
+  "schema_version": 3,
+  "qualified_evaluation_commit": "01fa51dccf86374152f1079330544f8e2521e295",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
+  "selection_sha256_lf": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663",
+  "receipt_sha256_lf": {
+    "logical_result.json": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+    "runtime_host_result.json": "13a357218c03edab590eedfb70a418788008780938f692f8af02b76c22de5c18"
+  },
+  "byte_equal_executed_dependencies_at_qualified_commit": {
+    "tools/lin_unseen.py": true,
+    "tools/lin_oracle.py": true,
+    "tests/model/test_lin_oracle.py": true,
+    "tools/lin_host_check.py": true,
+    "test/lin_runtime.py": true,
+    "experiments/temporal_qualification/unseen/config.json": true,
+    "experiments/temporal_qualification/unseen/selected_workload.json": true
+  },
+  "interpretation": "The full local electrical gate began with parent HEAD5f67d88 while new files were uncommitted; every recorded execution dependency is byte-equal to source commit01fa51d. Original source_commit metadata remains intact. Frozen runtime inputs are verified by the semantic manifest."
+}

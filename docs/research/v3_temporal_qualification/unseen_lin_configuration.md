@@ -1,5 +1,11 @@
 # LIN break/sync prefix configuration
 
+The full gate now passes: all 34 selected cases and 3,210,266 model/RTL cycles,
+with unchanged frozen semantics. This is a bounded logical result; physical
+qualification remains separate. [Logical receipt](../../../experiments/temporal_qualification/unseen/logical_result.json),
+[runtime subset](../../../experiments/temporal_qualification/unseen/runtime_host_result.json),
+[independent Linux CI](../../../experiments/temporal_qualification/unseen/ci_result.json).
+
 This document explains the candidate configuration for the selected
 `LIN_BREAK_SYNC_ENTRY` experiment. The controlling electrical contract is the
 [immutable selection](../../../experiments/temporal_qualification/unseen/selected_workload.json).

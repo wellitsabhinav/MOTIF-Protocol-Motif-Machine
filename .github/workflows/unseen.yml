@@ -26,6 +26,7 @@ jobs:
       - run: python -m tools.unseen_receipt --receipt build/v3_temporal_qualification/unseen/result.json --verify-artifacts
       - run: python -m tools.lin_host_check
       - run: python -m tools.demo --protocol unseen
+      - run: python -m docs.demo.render_lin
       - run: python -m tools.v3_inventory
       - uses: actions/upload-artifact@v7
         if: always()

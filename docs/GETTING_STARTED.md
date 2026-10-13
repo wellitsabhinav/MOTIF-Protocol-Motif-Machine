@@ -1,6 +1,6 @@
 # Run MOTIF and inspect its evidence
 
-MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Independent unseen evaluation and physical qualification remain later gates. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
+MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Its independently selected LIN prefix passes the unseen logical gate; physical qualification remains a later gate. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
 
 ## Dependencies
 
@@ -26,6 +26,26 @@ python -m tools.demo --protocol uart
 python -m tools.demo --protocol timed_stream
 python -m tools.demo --all --schematics
 ```
+
+For the frozen architecture's independently selected LIN break/sync workload,
+first recreate its identified local traces and oracle receipt:
+
+```sh
+python -m tools.lin_unseen
+python -m tools.lin_host_check
+python -m tools.demo --protocol unseen
+python -m tools.demo --all --reuse
+```
+
+The unseen invocation validates the full 34-case model/RTL and independent
+wire-level gate before rendering four selected cases. `unseen/result.json` is
+a generated local hook because it names generated trace artifacts;
+`unseen/logical_result.json` is the committed concise qualification receipt.
+`python -m tools.unseen_receipt --verify-artifacts` rejects incomplete, failed
+or stale receipts. The fixed 20 kbit/s LIN profile recognizes only a digital
+break/sync prefix and emits an experiment FIFO token while keeping all pads
+released. It does not add autobaud, PID/data/checksum processing or a physical
+transceiver.
 
 Open `build/demo/index.html` in a browser. Each demonstration reports expected and observed behavior and compares every normalized model/RTL observation. The output directory contains a configuration summary, trace excerpt, complete traces, simulation logs, waveforms, and the actual ordered execution timeline. SVG figures are editable; PNG copies are convenient previews. `--reuse` accepts cached traces only after checking the current source identity, deterministic stimulus identity and every recorded artifact hash. A failed oracle, comparison or requested rendering returns a nonzero exit status.
 
