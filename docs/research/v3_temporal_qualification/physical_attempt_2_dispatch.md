@@ -35,3 +35,25 @@ combined outcome; it cannot attribute improvement to either setting alone.
 [initial negative](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
 [rationale](physical_attempt_1_diagnosis.md),
 [archive and gate reproduction](../../v3_physical_reproduction.md).
+
+## CI launch helper
+
+The optional `v3-physical-dispatch` helper runs when the explicit tracked
+dispatch request changes on the delivery branch. It checks the immutable
+intent, frozen source/settings, prior completed failure and exact branch ref.
+An existing GDS run for that source prevents another launch. It sends one
+normal authenticated API request and never retries the POST; an empty accepted
+response must be resolved by reading actual run metadata. It does not execute
+P&R or change the pinned GDS workflow.
+
+Only this helper job receives `actions: write`, using the normal ephemeral
+GitHub job token. No repository protection, account permission or persistent
+credential changes are needed. GitHub documents workflow dispatch as a token
+event that can start a new workflow and requires Actions write permission.
+[GitHub token behavior](https://docs.github.com/en/actions/concepts/security/github_token),
+[workflow-dispatch API](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event),
+[returned run identities](https://github.blog/changelog/2026-02-19-workflow-dispatch-api-now-returns-run-ids/).
+
+The API response is published as a separate small CI artifact. It is evidence
+of dispatch acceptance only; the campaign ledger binds the actual workflow
+run, exact source and subsequent physical gates separately.

@@ -1,0 +1,8 @@
+{
+  "schema_version": 3,
+  "attempt": 2,
+  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "branch": "codex/v3-physical-attempt-2",
+  "intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
+  "authorization": "User requested launch of the prepared physical workflow; helper uses ordinary authenticated GitHub workflow dispatch without changing protections or the pinned flow"
+}
