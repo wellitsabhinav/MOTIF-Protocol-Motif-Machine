@@ -45,5 +45,6 @@ jobs:
         with:
           name: motif-v3-plain-html-demonstration-package
           path: build/delivery/plain_html/
+          include-hidden-files: true
           compression-level: 9
           retention-days: 90
