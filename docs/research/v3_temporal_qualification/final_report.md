@@ -282,6 +282,13 @@ follow; frozen semantics, allocation and clock remain fixed.
 [flow identity](../../../flow-lock.json),
 [physical restriction](preregistration.json).
 
+Attempt 2 is prepared at exact source
+`f55553a2b10b0880268663d8f06067c5ba1e14e0`: density 45 and integer threads 4.
+Its immutable intent precedes dispatch. The initial failed attempt remains
+the only dispatched run in this ledger; no revised result is claimed.
+[Prepared dispatch identities](physical_attempt_2_dispatch.md),
+[attempt 2 intent](../../../experiments/temporal_qualification/physical/attempt_2_intent.json).
+
 ## Q. PPA comparison
 
 Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this
