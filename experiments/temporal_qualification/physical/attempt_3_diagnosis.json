@@ -1,0 +1,142 @@
+{
+  "schema_version": 3,
+  "previous_attempt": 2,
+  "failure": "Official completed GDS flow failed deferred typical-corner setup check; final extracted STA also has negative setup WNS/TNS in fast and slow corners. Official precheck and routed functional jobs skipped.",
+  "workflow_run_id": 38429471310,
+  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "result_sha256_lf": "4cd4a52bb2d7aa722e5f78527b83aa19d695dff910fd2b75aa70cad1c682af94",
+  "metrics_sha256_lf": "64fb505400247f6edfe05021923583140fe9404e7e46f656ec52044c5215c5f3",
+  "source_correspondence_sha256_lf": "fe84c2e87dc9b294d86e1af8abee7daa77b80ed2e868f46a9c44dec8566897f9",
+  "observations_sha256_lf": "5bad925202fcff589f48367f5654fb64cdc3158984529091f1f8cba148a60a02",
+  "critical_path_excerpt_sha256_lf": "d21cc695969d65064a24ae5f0dd3495e6fc5a661f407a917d0e817564dfa20a2",
+  "permitted_setting_changes": [
+    {
+      "setting": "SYNTH_STRATEGY",
+      "before": null,
+      "after": "DELAY 0",
+      "before_role": "Unset in project configuration; actual resolved physical synthesis uses AREA 0",
+      "reason": "Final paths from programmable table value to RX FIFO capture have deep mapped cell-arc burden and violate setup at all three measured corners",
+      "hypothesis": "Timing-directed combinational factoring/mapping may shorten mapped paths; area, congestion and hold repair can worsen; no closure prediction"
+    },
+    {
+      "setting": "SYNTH_CORNER",
+      "before": null,
+      "after": "nom_slow_1p08V_125C",
+      "before_role": "Unset; actual DEFAULT_CORNER is nom_typ_1p20V_25C",
+      "reason": "The slow corner has the largest final setup deficit; select its existing pinned library during synthesis",
+      "hypothesis": "Mapping against the measured worst corner may better prioritize delay; this is not a change to the pinned PDK/library release and does not establish extracted closure"
+    }
+  ],
+  "final_corner_timing": {
+    "nom_fast_1p32V_m40C": {
+      "setup_worst_slack_ns": -0.5328040381921172,
+      "hold_worst_slack_ns": 0.10836781778663933,
+      "setup_wns_ns": -0.5328040381921172,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": -53.6000201616507,
+      "hold_tns_ns": 0,
+      "setup_violations": 188,
+      "hold_violations": 0
+    },
+    "nom_slow_1p08V_125C": {
+      "setup_worst_slack_ns": -26.75138053461459,
+      "hold_worst_slack_ns": 0.5924894076393782,
+      "setup_wns_ns": -26.75138053461459,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": -5172.522524704961,
+      "hold_tns_ns": 0,
+      "setup_violations": 202,
+      "hold_violations": 0
+    },
+    "nom_typ_1p20V_25C": {
+      "setup_worst_slack_ns": -9.764564544427186,
+      "hold_worst_slack_ns": 0.2798822364200014,
+      "setup_wns_ns": -9.764564544427186,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": -1859.0249581473663,
+      "hold_tns_ns": 0,
+      "setup_violations": 198,
+      "hold_violations": 0
+    }
+  },
+  "global_route_overflow": 7782,
+  "physical_measurements": {
+    "stdcell_count": 20178,
+    "stdcell_area_um2": 263349,
+    "register_count": 1401,
+    "core_area_um2": 902417,
+    "stdcell_utilization": 0.291827,
+    "detailed_wirelength_um": 2448577,
+    "global_wirelength_um": 3651991,
+    "vias": 206169,
+    "detailed_route_drc": 0,
+    "magic_drc": 0,
+    "klayout_drc": null,
+    "lvs_errors": 0,
+    "antenna_violating_nets": 0,
+    "antenna_violating_pins": 0,
+    "route_antenna_violations": 0,
+    "hold_buffer_count": 1294,
+    "timing_repair_buffer_area_um2": 49300.9,
+    "max_fanout_violations": 160,
+    "max_slew_violations": 542,
+    "max_cap_violations": 51
+  },
+  "critical_path_scope": {
+    "launch": "program_i[928] (entry 14, VALUE bit 11)",
+    "typical_endpoint": "RX FIFO memory[3][1]",
+    "slow_endpoint": "RX FIFO memory[3][3]",
+    "typical_reported_arrival_ns": 30.192322,
+    "typical_reported_required_ns": 20.427757,
+    "slow_reported_arrival_ns": 47.487091,
+    "slow_reported_required_ns": 20.735708,
+    "interpretation": "Deep generic table/control-to-FIFO mapped paths; not a path directly through the temporal counter. Arc sums are report observations, not causal elimination estimates."
+  },
+  "resolved_synthesis_configuration": {
+    "path": "runs/wokwi/06-yosys-synthesis/config.json",
+    "sha256_raw": "64d5116db7b5fde1a1117f5c0227f2a8c4f0504b0d27e54d3258f4e9f325f54a",
+    "strategy": "AREA 0",
+    "synthesis_corner": null,
+    "default_corner": "nom_typ_1p20V_25C",
+    "abc_dff": false
+  },
+  "primary_source_identity": {
+    "repository": "librelane/librelane",
+    "version": "3.1.0.dev3",
+    "commit": "ca6adb1e2982cd75445a68b632d461213d8ca421",
+    "files_sha256_raw": {
+      "construct_abc_script.py": "c7fa1ff543b1c667be9455a59d9ef9f96e88f940169bec09cbca1d9d0d5a94f1",
+      "pyosys.py": "92d4717bc3e07a74be926c6c83168266bf6d088c4bdc20799b8d762b47091a4c",
+      "synthesize.py": "0ef94aa58bb5ff1befe90d40561c8210bf360b3c5923ae5e184471c23a85128c"
+    },
+    "references": [
+      "https://github.com/librelane/librelane/blob/ca6adb1e2982cd75445a68b632d461213d8ca421/librelane/steps/pyosys.py",
+      "https://github.com/librelane/librelane/blob/ca6adb1e2982cd75445a68b632d461213d8ca421/librelane/scripts/pyosys/construct_abc_script.py",
+      "https://github.com/librelane/librelane/blob/ca6adb1e2982cd75445a68b632d461213d8ca421/librelane/scripts/pyosys/synthesize.py"
+    ]
+  },
+  "unchanged": [
+    "frozen RTL/model/frontend/timer/vocabulary/state",
+    "6x4 allocation",
+    "20 ns target",
+    "density 45",
+    "configured OpenROAD threads 4",
+    "hold margins",
+    "tool/PDK/cell-library/workflow pins",
+    "all functional and physical gates including all three acceptance corners"
+  ],
+  "alternative_not_selected": "Experimental post-global-route timing repair is disabled in the actual flow; additional resizing does not directly address the original deep mapped cone and may add substantial runtime.",
+  "combined_revision_scope": "One final diagnosed combinational mapping revision; strategy and library-corner selection effects cannot be separated by its single run. No ABC flip-flop optimization or sequential retiming is enabled.",
+  "canonical_cost_scope": "The immutable matched nominal v2/v3 cost decision is unchanged; physical mapped/placed/routed observations remain separate.",
+  "maximum_attempts": 3,
+  "attempts_completed": 2,
+  "revisions_used": 1,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "rationale": "docs/research/v3_temporal_qualification/physical_attempt_2_diagnosis.md",
+  "status": "diagnosed_before_flow_setting_change",
+  "physical_qualified": false
+}

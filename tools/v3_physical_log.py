@@ -24,6 +24,9 @@ def capture(log, workflow, jobs):
     repair_mode = None
     corners_loaded = []
     for index, line in enumerate(lines):
+        # The decoded job stream may concatenate chunks with a UTF-8 BOM.
+        # Strip it only for parsing; raw hashes and excerpts keep original bytes.
+        line = line.lstrip("\ufeff")
         match = re.match(r"(\d{4}-\d\d-\d\dT\S+Z)\s+(.*)", line)
         if not match:
             continue

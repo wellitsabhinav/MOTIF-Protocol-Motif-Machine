@@ -1,6 +1,6 @@
 # Run MOTIF and inspect its evidence
 
-MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Its independently selected LIN prefix passes the unseen logical gate; physical attempt 2 is running and physical closure remains unqualified. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
+MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Its independently selected LIN prefix passes the unseen logical gate; physical attempt 2 failed setup timing and physical closure remains unqualified. One final diagnosed setting revision remains. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
 
 ## Dependencies
 

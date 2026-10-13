@@ -16,7 +16,10 @@ prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
 without changing frozen semantics. The initial pinned physical run ended cancelled
 without a published physical archive; physical qualification remains incomplete.
 The [first diagnosed revision](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310)
-is running with density 45% and explicit OpenROAD threads 4 at the fixed 6×4/20 ns target.
+completed routing and generated identified GDS, but failed setup timing at the
+fixed 6×4/20 ns target. Its [unqualified physical views](docs/demo/figures/physical/attempt_2/identity.json)
+and [negative timing evidence](docs/research/v3_temporal_qualification/physical_attempt_2_diagnosis.md)
+are retained. One final timing-mapping revision is diagnosed before its setting changes.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
@@ -70,8 +73,9 @@ A5FF failure also remains permanent evidence. Read the
 
 V2 has no routed physical qualification. Earlier CMOS5L artifacts qualify only
 their identified earlier sources. V3 physical work requires an unseen logical
-pass after its semantic freeze. That logical gate now passes; no v3 GDS image
-is supplied until an identified physical artifact exists.
+pass after its semantic freeze. That logical gate now passes. Attempt 2 supplies
+identified layout previews labeled **UNQUALIFIED**; GDS availability does not
+establish timing closure, official precheck or routed functional qualification.
 See [historical physical evidence](docs/physical.md) and
 [v3 physical reproduction](docs/v3_physical_reproduction.md).
 

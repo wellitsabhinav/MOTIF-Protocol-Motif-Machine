@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "status": "MOTIF_V3_PHYSICAL_QUALIFICATION_RUNNING",
+  "status": "MOTIF_V3_UNSEEN_LOGICAL_PASS_PHYSICAL_ATTEMPT_2_FAILED",
   "source_sha": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
   "source_sha_role": "Frozen source revision; individual qualification receipts retain exact measured and bound source identities",
   "working_tree_dirty": true,
@@ -107,7 +107,7 @@
   "logical_qualification": "PASS",
   "cost_qualification": "PASS",
   "unseen_generalization": "PASS_BOUNDED_LIN_BREAK_SYNC_ENTRY",
-  "physical_qualification": "IN_PROGRESS",
+  "physical_qualification": "FAILED_ATTEMPT_2",
   "freeze_created": true,
   "unseen_research_started": true,
   "unseen_selected": true,
@@ -142,9 +142,54 @@
   "physical_run_id": 38429471310,
   "physical_source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
   "physical_intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
-  "physical_result": null,
+  "physical_result": {
+    "schema_version": 3,
+    "physical_qualified": false,
+    "errors": [
+      "Official physical workflow has not completed successfully",
+      "Required official job unavailable/failed: gds",
+      "Required official job unavailable/failed: precheck",
+      "Required official job unavailable/failed: gl_test",
+      "Missing/negative timing result: nom_fast_1p32V_m40C/setup_worst_slack_ns",
+      "Missing/negative timing result: nom_fast_1p32V_m40C/setup_wns_ns",
+      "Missing/negative timing result: nom_fast_1p32V_m40C/setup_tns_ns",
+      "Missing/negative timing result: nom_slow_1p08V_125C/setup_worst_slack_ns",
+      "Missing/negative timing result: nom_slow_1p08V_125C/setup_wns_ns",
+      "Missing/negative timing result: nom_slow_1p08V_125C/setup_tns_ns",
+      "Missing/negative timing result: nom_typ_1p20V_25C/setup_worst_slack_ns",
+      "Missing/negative timing result: nom_typ_1p20V_25C/setup_wns_ns",
+      "Missing/negative timing result: nom_typ_1p20V_25C/setup_tns_ns",
+      "Global-route overflow is nonzero/unavailable",
+      "Complete six-test routed functional receipt is missing/failed",
+      "Routed tests identify another physical run/source",
+      "Routed netlist is not bound by the downloaded-artifact correspondence"
+    ],
+    "scope": "Pinned 6x4/20ns official flow, three-corner STA, precheck, exact source correspondence and bounded zero-delay routed tests; no analog/silicon or complete protocol claim.",
+    "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+    "workflow_run_id": 38429471310,
+    "workflow_status": "completed",
+    "workflow_conclusion": "failure",
+    "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+    "preregistration": {
+      "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+      "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+    },
+    "physical_input_hashes_lf": {
+      "src/config.json": "49ca3b2dd50e3e1e7e9048218a8efa51bdc102790eab1fb7e127cf58e785889d",
+      "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+      "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+      ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+    },
+    "metrics_sha256_lf": "64fb505400247f6edfe05021923583140fe9404e7e46f656ec52044c5215c5f3",
+    "routed_receipt_sha256_lf": null,
+    "routed_evidence": {
+      "passed": false,
+      "status": "unavailable",
+      "reason": "No completed routed functional evidence supplied"
+    }
+  },
   "physical_revisions_remaining": 1,
-  "physical_run_identity_role": "Most recent actually dispatched run; active result unavailable until its gates complete",
+  "physical_run_identity_role": "Most recent actually dispatched run, completed unsuccessfully; final measurements and exact archive correspondence retained",
   "physical_current_attempt": 2,
   "physical_input_hashes_role": "Initial physical inputs preserved separately from subsequent diagnosed flow settings",
   "current_physical_input_hashes": {
@@ -155,5 +200,6 @@
   },
   "completed_physical_results": {
     "1": "experiments/temporal_qualification/physical/attempt_1_result.json"
-  }
+  },
+  "physical_final_revision_diagnosis_sha256_lf": "ed6bb14e3d326e340fae34e32199aa229c98bc17ec9eef9b8c103ec8ab72eeed"
 }

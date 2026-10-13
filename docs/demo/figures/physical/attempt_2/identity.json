@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "kind": "selected_identified_unqualified_physical_previews",
+  "classification": "presentation_only",
+  "presentation_status": "UNQUALIFIED",
+  "attempt": 2,
+  "workflow_run_id": 38429471310,
+  "identity": {
+    "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+    "workflow_head_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+    "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+    "correspondence_receipt_sha256_raw": "fe84c2e87dc9b294d86e1af8abee7daa77b80ed2e868f46a9c44dec8566897f9",
+    "source_role": "bundled_workflow_sources",
+    "source_verification": "hashes read from the explicitly identified bundled_workflow_sources directory",
+    "rtl_source_hashes_lf": {
+      "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+      "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+      "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+      "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+      "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+      "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+      "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+      "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+      "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+      "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+      "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+      "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+      "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+    },
+    "exact_rtl_correspondence": true,
+    "artifact": {
+      "id": 11843789314,
+      "name": "GDS_logs",
+      "archive_sha256_raw": "5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0",
+      "workflow_run_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310"
+    }
+  },
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "preregistration_binding": "Read from the immutable freeze manifest after its LF hash matched both the identified view and physical metric source correspondence",
+  "recorded_job_conclusions": {
+    "docs": "success",
+    "gds": "failure",
+    "gl_test": "skipped",
+    "precheck": "skipped"
+  },
+  "view_report_sha256_raw": "e2b0e8f80ee13e8529d607e7e2e81fa9847857d2f4beaedc8837c9acded2f58b",
+  "metrics_receipt_sha256_raw": "64fb505400247f6edfe05021923583140fe9404e7e46f656ec52044c5215c5f3",
+  "selector_sha256_raw": "fbe2a1833bfe111a965d7c37258d80c774f95653246024ff793c572a273f1082",
+  "views": {
+    "floorplan": {
+      "status": "available",
+      "geometry": "runs/wokwi/13-openroad-floorplan/tt_um_wellitsabhinav_motif.def",
+      "image": null,
+      "outputs": [
+        "floorplan.svg",
+        "floorplan.png"
+      ],
+      "reason": "Actual DIEAREA, spans between first/last row site origins, and placed pin origins; cell/row physical widths are not inferred.",
+      "coordinate_inventory": {
+        "design": "tt_um_wellitsabhinav_motif",
+        "die_bbox_um": [
+          0.0,
+          0.0,
+          1289.28,
+          710.64
+        ],
+        "row_count": 186,
+        "placed_component_count": 0,
+        "placed_pin_count": 0,
+        "route_segments_by_layer": {},
+        "unsupported_initial_wildcards": 0
+      },
+      "selected_outputs": [
+        "floorplan.png",
+        "floorplan.svg"
+      ],
+      "input_files": {
+        "runs/wokwi/13-openroad-floorplan/tt_um_wellitsabhinav_motif.def": {
+          "sha256_raw": "b8ca4aeb8b7cc1035a15bef706d6c24af64c92a54c2777ae7084d9e67385f9fc",
+          "bytes": 1901099
+        }
+      },
+      "source_rendered_png_sha256_raw": "23cc0d2c074845e7f9a188810b9877cbe54ab93adb6e12be715cd43c370a8bf2",
+      "preview_transform": {
+        "source_dimensions_px": [
+          1920,
+          1120
+        ],
+        "selected_layout_dimensions_px": [
+          1600,
+          933
+        ],
+        "selected_canvas_dimensions_px": [
+          1600,
+          1075
+        ],
+        "transformation": "Uniform downscale to at most 1600 pixels using Lanczos (never upscale); add status banner and footer"
+      },
+      "vector_transform": {
+        "transformation": "Retain original vector geometry unchanged inside translated group; add 86-point UNQUALIFIED status header"
+      },
+      "source_rendered_svg_sha256_raw": "36d4588a7b1858a2af1fbddba012ed8fa91c6db0d5d58c332b1512b0f71e9759"
+    },
+    "placement": {
+      "status": "available",
+      "geometry": "runs/wokwi/34-openroad-detailedplacement/tt_um_wellitsabhinav_motif.def",
+      "image": null,
+      "outputs": [
+        "placement.svg",
+        "placement.png"
+      ],
+      "reason": "Actual placed component origins (17,947); symbols are points, not inferred cell footprints.",
+      "coordinate_inventory": {
+        "design": "tt_um_wellitsabhinav_motif",
+        "die_bbox_um": [
+          0.0,
+          0.0,
+          1289.28,
+          710.64
+        ],
+        "row_count": 186,
+        "placed_component_count": 17947,
+        "placed_pin_count": 45,
+        "route_segments_by_layer": {},
+        "unsupported_initial_wildcards": 0
+      },
+      "selected_outputs": [
+        "placement.png"
+      ],
+      "input_files": {
+        "runs/wokwi/34-openroad-detailedplacement/tt_um_wellitsabhinav_motif.def": {
+          "sha256_raw": "009ffc36293ec1646d0d550021bc8ca6c4044016a075f0b6a135ca4a7e6afa29",
+          "bytes": 3922446
+        }
+      },
+      "source_rendered_png_sha256_raw": "3ed31a6f5e2428fde58afbce312375d33ca4b4fef8947bd25109c3a54392ad65",
+      "preview_transform": {
+        "source_dimensions_px": [
+          1920,
+          1120
+        ],
+        "selected_layout_dimensions_px": [
+          1600,
+          933
+        ],
+        "selected_canvas_dimensions_px": [
+          1600,
+          1075
+        ],
+        "transformation": "Uniform downscale to at most 1600 pixels using Lanczos (never upscale); add status banner and footer"
+      }
+    },
+    "routing": {
+      "status": "available",
+      "geometry": "runs/wokwi/44-openroad-detailedrouting/tt_um_wellitsabhinav_motif.def",
+      "image": null,
+      "outputs": [
+        "routing.svg",
+        "routing.png"
+      ],
+      "reason": "Actual NETS routed path centerlines; wire widths, via cuts, RECT patches and SPECIALNETS power geometry are omitted.",
+      "coordinate_inventory": {
+        "design": "tt_um_wellitsabhinav_motif",
+        "die_bbox_um": [
+          0.0,
+          0.0,
+          1289.28,
+          710.64
+        ],
+        "row_count": 186,
+        "placed_component_count": 20178,
+        "placed_pin_count": 45,
+        "route_segments_by_layer": {
+          "Metal2": 122986,
+          "Metal3": 98511,
+          "Metal4": 23614
+        },
+        "unsupported_initial_wildcards": 0
+      },
+      "selected_outputs": [
+        "routing.png"
+      ],
+      "input_files": {
+        "runs/wokwi/44-openroad-detailedrouting/tt_um_wellitsabhinav_motif.def": {
+          "sha256_raw": "7593f196838fed3762bab55e4379a983b07aa22ff4153b330cb4defc4a0f1012",
+          "bytes": 26938281
+        }
+      },
+      "source_rendered_png_sha256_raw": "0a9fc877d3a85f86a99e64649bf7bd310af83ec5748214ab222b3ae7847ed98c",
+      "preview_transform": {
+        "source_dimensions_px": [
+          1920,
+          1120
+        ],
+        "selected_layout_dimensions_px": [
+          1600,
+          933
+        ],
+        "selected_canvas_dimensions_px": [
+          1600,
+          1075
+        ],
+        "transformation": "Uniform downscale to at most 1600 pixels using Lanczos (never upscale); add status banner and footer"
+      }
+    },
+    "gds": {
+      "status": "available",
+      "geometry": "runs/wokwi/final/gds/tt_um_wellitsabhinav_motif.gds",
+      "image": "runs/wokwi/final/render/tt_um_wellitsabhinav_motif.png",
+      "outputs": [
+        "gds_artifact.png"
+      ],
+      "reason": "Unmodified image from the identified physical artifact",
+      "selected_outputs": [
+        "gds.png"
+      ],
+      "input_files": {
+        "runs/wokwi/final/gds/tt_um_wellitsabhinav_motif.gds": {
+          "sha256_raw": "a106d0f121719f3212acf4ab62bc46cbeb27663c2ad3dccdf02ec528726fb8ba",
+          "bytes": 27601790
+        },
+        "runs/wokwi/final/render/tt_um_wellitsabhinav_motif.png": {
+          "sha256_raw": "018f7279fbeaabb675d3ac73b11759d5b740d3f452ad2a1aaab18a924151bf45",
+          "bytes": 214538
+        }
+      },
+      "source_rendered_png_sha256_raw": "018f7279fbeaabb675d3ac73b11759d5b740d3f452ad2a1aaab18a924151bf45",
+      "preview_transform": {
+        "source_dimensions_px": [
+          1000,
+          551
+        ],
+        "selected_layout_dimensions_px": [
+          1000,
+          551
+        ],
+        "selected_canvas_dimensions_px": [
+          1000,
+          693
+        ],
+        "transformation": "Uniform downscale to at most 1600 pixels using Lanczos (never upscale); add status banner and footer"
+      }
+    }
+  },
+  "output_files_sha256_raw": {
+    "floorplan.png": "fd3afa79f9c55100169156bd7f0d42129ca64b88b3f5884c587c9944dcdc40e9",
+    "floorplan.svg": "e3c54041d6393941df0ef7497ea9ec7cdb203e0067501765709c7b17f84d86af",
+    "placement.png": "4bf92042dedcd7c6369cbc0eedfd10b09578cfbe6a27f2183160e2afa279dcfb",
+    "routing.png": "fb5c379e44afbf7f8397b3ad7a2f1b65c39ab2e1c9315bb8e35e0bc8eb854772",
+    "gds.png": "489f86d8a6e4b0aeeb1bc7ba8624126297eff4a2bb5972b4ad2815ea15138014"
+  },
+  "limitations": [
+    "The official GDS job failed; final GDS availability does not establish physical closure.",
+    "Official precheck and routed functional tests were skipped.",
+    "Dense views select raster previews; full generated vector views and actual geometry remain in build/."
+  ]
+}

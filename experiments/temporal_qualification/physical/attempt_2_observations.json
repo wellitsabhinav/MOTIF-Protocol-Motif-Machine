@@ -1,0 +1,662 @@
+{
+  "schema_version": 3,
+  "workflow_run_id": 38429471310,
+  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "workflow_status": "completed",
+  "workflow_conclusion": "failure",
+  "job_id": 115407553588,
+  "job_started_at": "2026-10-13T16:18:57Z",
+  "job_completed_at": "2026-10-13T19:58:31Z",
+  "log_sha256_raw": "3e847bb1334a6f7b5a2bbd1486d72c87e15510983b58b8f421587edd40f4f4d2",
+  "log_bytes": 5027070,
+  "log_lines": 45752,
+  "stages": [
+    {
+      "name": "Verilator.Lint",
+      "entered_at": "2026-10-13T16:21:45.9186019Z",
+      "log_line": 819,
+      "next_step_entered_at": "2026-10-13T16:21:46.2938127Z",
+      "entry_to_next_step_seconds": 0.375211
+    },
+    {
+      "name": "Checker.LintTimingConstructs",
+      "entered_at": "2026-10-13T16:21:46.2938127Z",
+      "log_line": 830,
+      "next_step_entered_at": "2026-10-13T16:21:46.2987016Z",
+      "entry_to_next_step_seconds": 0.004889
+    },
+    {
+      "name": "Checker.LintErrors",
+      "entered_at": "2026-10-13T16:21:46.2987016Z",
+      "log_line": 834,
+      "next_step_entered_at": "2026-10-13T16:21:46.3033109Z",
+      "entry_to_next_step_seconds": 0.004609
+    },
+    {
+      "name": "Checker.LintWarnings",
+      "entered_at": "2026-10-13T16:21:46.3033109Z",
+      "log_line": 838,
+      "next_step_entered_at": "2026-10-13T16:21:46.3081617Z",
+      "entry_to_next_step_seconds": 0.004851
+    },
+    {
+      "name": "Yosys.JsonHeader",
+      "entered_at": "2026-10-13T16:21:46.3081617Z",
+      "log_line": 842,
+      "next_step_entered_at": "2026-10-13T16:21:49.8300193Z",
+      "entry_to_next_step_seconds": 3.521858
+    },
+    {
+      "name": "Yosys.Synthesis",
+      "entered_at": "2026-10-13T16:21:49.8300193Z",
+      "log_line": 7838,
+      "next_step_entered_at": "2026-10-13T16:27:32.7071650Z",
+      "entry_to_next_step_seconds": 342.877146
+    },
+    {
+      "name": "Checker.YosysUnmappedCells",
+      "entered_at": "2026-10-13T16:27:32.7071650Z",
+      "log_line": 37021,
+      "next_step_entered_at": "2026-10-13T16:27:32.7122156Z",
+      "entry_to_next_step_seconds": 0.00505
+    },
+    {
+      "name": "Checker.YosysSynthChecks",
+      "entered_at": "2026-10-13T16:27:32.7122156Z",
+      "log_line": 37025,
+      "next_step_entered_at": "2026-10-13T16:27:32.7169330Z",
+      "entry_to_next_step_seconds": 0.004718
+    },
+    {
+      "name": "Checker.NetlistAssignStatements",
+      "entered_at": "2026-10-13T16:27:32.7169330Z",
+      "log_line": 37029,
+      "next_step_entered_at": "2026-10-13T16:27:32.7486192Z",
+      "entry_to_next_step_seconds": 0.031686
+    },
+    {
+      "name": "OpenROAD.CheckSDCFiles",
+      "entered_at": "2026-10-13T16:27:32.7486192Z",
+      "log_line": 37033,
+      "next_step_entered_at": "2026-10-13T16:27:32.7544685Z",
+      "entry_to_next_step_seconds": 0.005849
+    },
+    {
+      "name": "OpenROAD.CheckMacroInstances",
+      "entered_at": "2026-10-13T16:27:32.7544685Z",
+      "log_line": 37040,
+      "next_step_entered_at": "2026-10-13T16:27:32.7590953Z",
+      "entry_to_next_step_seconds": 0.004627
+    },
+    {
+      "name": "OpenROAD.STAPrePNR",
+      "entered_at": "2026-10-13T16:27:32.7590953Z",
+      "log_line": 37044,
+      "next_step_entered_at": "2026-10-13T16:27:59.1835569Z",
+      "entry_to_next_step_seconds": 26.424461
+    },
+    {
+      "name": "OpenROAD.Floorplan",
+      "entered_at": "2026-10-13T16:27:59.1835569Z",
+      "log_line": 37080,
+      "next_step_entered_at": "2026-10-13T16:28:00.1986190Z",
+      "entry_to_next_step_seconds": 1.015063
+    },
+    {
+      "name": "OpenROAD.DumpRCValues",
+      "entered_at": "2026-10-13T16:28:00.1986190Z",
+      "log_line": 37168,
+      "next_step_entered_at": "2026-10-13T16:28:00.7110433Z",
+      "entry_to_next_step_seconds": 0.512424
+    },
+    {
+      "name": "Odb.CheckMacroAntennaProperties",
+      "entered_at": "2026-10-13T16:28:00.7110433Z",
+      "log_line": 37210,
+      "next_step_entered_at": "2026-10-13T16:28:00.7163046Z",
+      "entry_to_next_step_seconds": 0.005261
+    },
+    {
+      "name": "Odb.SetPowerConnections",
+      "entered_at": "2026-10-13T16:28:00.7163046Z",
+      "log_line": 37216,
+      "next_step_entered_at": "2026-10-13T16:28:01.5270936Z",
+      "entry_to_next_step_seconds": 0.810789
+    },
+    {
+      "name": "Odb.ManualMacroPlacement",
+      "entered_at": "2026-10-13T16:28:01.5270936Z",
+      "log_line": 37222,
+      "next_step_entered_at": "2026-10-13T16:28:01.5326458Z",
+      "entry_to_next_step_seconds": 0.005552
+    },
+    {
+      "name": "OpenROAD.CutRows",
+      "entered_at": "2026-10-13T16:28:01.5326458Z",
+      "log_line": 37227,
+      "next_step_entered_at": "2026-10-13T16:28:02.2456658Z",
+      "entry_to_next_step_seconds": 0.71302
+    },
+    {
+      "name": "OpenROAD.TapEndcapInsertion",
+      "entered_at": "2026-10-13T16:28:02.2456658Z",
+      "log_line": 37271,
+      "next_step_entered_at": "2026-10-13T16:28:02.9588303Z",
+      "entry_to_next_step_seconds": 0.713165
+    },
+    {
+      "name": "Odb.AddPDNObstructions",
+      "entered_at": "2026-10-13T16:28:02.9588303Z",
+      "log_line": 37324,
+      "next_step_entered_at": "2026-10-13T16:28:02.9645939Z",
+      "entry_to_next_step_seconds": 0.005763
+    },
+    {
+      "name": "OpenROAD.GeneratePDN",
+      "entered_at": "2026-10-13T16:28:02.9645939Z",
+      "log_line": 37329,
+      "next_step_entered_at": "2026-10-13T16:28:04.0821096Z",
+      "entry_to_next_step_seconds": 1.117516
+    },
+    {
+      "name": "Odb.RemovePDNObstructions",
+      "entered_at": "2026-10-13T16:28:04.0821096Z",
+      "log_line": 37392,
+      "next_step_entered_at": "2026-10-13T16:28:04.0871676Z",
+      "entry_to_next_step_seconds": 0.005058
+    },
+    {
+      "name": "Odb.AddRoutingObstructions",
+      "entered_at": "2026-10-13T16:28:04.0871676Z",
+      "log_line": 37397,
+      "next_step_entered_at": "2026-10-13T16:28:04.0925384Z",
+      "entry_to_next_step_seconds": 0.005371
+    },
+    {
+      "name": "OpenROAD.GlobalPlacementSkipIO",
+      "entered_at": "2026-10-13T16:28:04.0925384Z",
+      "log_line": 37402,
+      "next_step_entered_at": "2026-10-13T16:28:04.0980278Z",
+      "entry_to_next_step_seconds": 0.005489
+    },
+    {
+      "name": "OpenROAD.IOPlacement",
+      "entered_at": "2026-10-13T16:28:04.0980278Z",
+      "log_line": 37410,
+      "next_step_entered_at": "2026-10-13T16:28:04.1035890Z",
+      "entry_to_next_step_seconds": 0.005562
+    },
+    {
+      "name": "Odb.CustomIOPlacement",
+      "entered_at": "2026-10-13T16:28:04.1035890Z",
+      "log_line": 37418,
+      "next_step_entered_at": "2026-10-13T16:28:04.1085962Z",
+      "entry_to_next_step_seconds": 0.005007
+    },
+    {
+      "name": "Odb.ApplyDEFTemplate",
+      "entered_at": "2026-10-13T16:28:04.1085962Z",
+      "log_line": 37423,
+      "next_step_entered_at": "2026-10-13T16:28:04.9202747Z",
+      "entry_to_next_step_seconds": 0.811678
+    },
+    {
+      "name": "OpenROAD.GlobalPlacement",
+      "entered_at": "2026-10-13T16:28:04.9202747Z",
+      "log_line": 37557,
+      "next_step_entered_at": "2026-10-13T16:28:30.9159435Z",
+      "entry_to_next_step_seconds": 25.995669
+    },
+    {
+      "name": "Odb.WriteVerilogHeader",
+      "entered_at": "2026-10-13T16:28:30.9159435Z",
+      "log_line": 38442,
+      "next_step_entered_at": "2026-10-13T16:28:31.6268647Z",
+      "entry_to_next_step_seconds": 0.710921
+    },
+    {
+      "name": "Checker.PowerGridViolations",
+      "entered_at": "2026-10-13T16:28:31.6268647Z",
+      "log_line": 38448,
+      "next_step_entered_at": "2026-10-13T16:28:31.6322894Z",
+      "entry_to_next_step_seconds": 0.005425
+    },
+    {
+      "name": "OpenROAD.STAMidPNR",
+      "entered_at": "2026-10-13T16:28:31.6322894Z",
+      "log_line": 38454,
+      "next_step_entered_at": "2026-10-13T16:28:54.7175190Z",
+      "entry_to_next_step_seconds": 23.08523
+    },
+    {
+      "name": "OpenROAD.RepairDesignPostGPL",
+      "entered_at": "2026-10-13T16:28:54.7175190Z",
+      "log_line": 38481,
+      "next_step_entered_at": "2026-10-13T16:29:05.3865652Z",
+      "entry_to_next_step_seconds": 10.669046
+    },
+    {
+      "name": "Odb.ManualGlobalPlacement",
+      "entered_at": "2026-10-13T16:29:05.3865652Z",
+      "log_line": 38589,
+      "next_step_entered_at": "2026-10-13T16:29:05.3923425Z",
+      "entry_to_next_step_seconds": 0.005777
+    },
+    {
+      "name": "OpenROAD.DetailedPlacement",
+      "entered_at": "2026-10-13T16:29:05.3923425Z",
+      "log_line": 38594,
+      "next_step_entered_at": "2026-10-13T16:29:06.7132860Z",
+      "entry_to_next_step_seconds": 1.320944
+    },
+    {
+      "name": "OpenROAD.CTS",
+      "entered_at": "2026-10-13T16:29:06.7132860Z",
+      "log_line": 38661,
+      "next_step_entered_at": "2026-10-13T16:29:23.5232782Z",
+      "entry_to_next_step_seconds": 16.809992
+    },
+    {
+      "name": "OpenROAD.STAMidPNR-1",
+      "entered_at": "2026-10-13T16:29:23.5232782Z",
+      "log_line": 38848,
+      "next_step_entered_at": "2026-10-13T16:29:37.5551168Z",
+      "entry_to_next_step_seconds": 14.031838
+    },
+    {
+      "name": "OpenROAD.ResizerTimingPostCTS",
+      "entered_at": "2026-10-13T16:29:37.5551168Z",
+      "log_line": 38875,
+      "next_step_entered_at": "2026-10-13T17:43:18.0704528Z",
+      "entry_to_next_step_seconds": 4420.515336
+    },
+    {
+      "name": "OpenROAD.STAMidPNR-2",
+      "entered_at": "2026-10-13T17:43:18.0704528Z",
+      "log_line": 40228,
+      "next_step_entered_at": "2026-10-13T17:43:33.1071059Z",
+      "entry_to_next_step_seconds": 15.036653
+    },
+    {
+      "name": "OpenROAD.GlobalRouting",
+      "entered_at": "2026-10-13T17:43:33.1071059Z",
+      "log_line": 40255,
+      "next_step_entered_at": "2026-10-13T17:57:55.7998581Z",
+      "entry_to_next_step_seconds": 862.692753
+    },
+    {
+      "name": "OpenROAD.CheckAntennas",
+      "entered_at": "2026-10-13T17:57:55.7998581Z",
+      "log_line": 40508,
+      "next_step_entered_at": "2026-10-13T17:58:10.0136005Z",
+      "entry_to_next_step_seconds": 14.213742
+    },
+    {
+      "name": "Odb.DiodesOnPorts",
+      "entered_at": "2026-10-13T17:58:10.0136005Z",
+      "log_line": 40688,
+      "next_step_entered_at": "2026-10-13T17:58:10.0228402Z",
+      "entry_to_next_step_seconds": 0.00924
+    },
+    {
+      "name": "OpenROAD.RepairAntennas",
+      "entered_at": "2026-10-13T17:58:10.0228402Z",
+      "log_line": 40697,
+      "next_step_entered_at": "2026-10-13T17:58:10.0265806Z",
+      "entry_to_next_step_seconds": 0.00374
+    },
+    {
+      "name": "OpenROAD.DiodeInsertion",
+      "entered_at": "2026-10-13T17:58:10.0265806Z",
+      "log_line": 40700,
+      "next_step_entered_at": "2026-10-13T17:59:02.0920850Z",
+      "entry_to_next_step_seconds": 52.065505
+    },
+    {
+      "name": "OpenROAD.CheckAntennas",
+      "entered_at": "2026-10-13T17:59:02.0920850Z",
+      "log_line": 40763,
+      "next_step_entered_at": "2026-10-13T17:59:13.8052328Z",
+      "entry_to_next_step_seconds": 11.713147
+    },
+    {
+      "name": "OpenROAD.STAMidPNR-3",
+      "entered_at": "2026-10-13T17:59:13.8052328Z",
+      "log_line": 40797,
+      "next_step_entered_at": "2026-10-13T17:59:29.5433364Z",
+      "entry_to_next_step_seconds": 15.738104
+    },
+    {
+      "name": "OpenROAD.DetailedRouting",
+      "entered_at": "2026-10-13T17:59:29.5433364Z",
+      "log_line": 40825,
+      "next_step_entered_at": "2026-10-13T19:12:26.9295954Z",
+      "entry_to_next_step_seconds": 4377.386259
+    },
+    {
+      "name": "Odb.RemoveRoutingObstructions",
+      "entered_at": "2026-10-13T19:12:26.9295954Z",
+      "log_line": 42649,
+      "next_step_entered_at": "2026-10-13T19:12:26.9353327Z",
+      "entry_to_next_step_seconds": 0.005737
+    },
+    {
+      "name": "OpenROAD.CheckAntennas-1",
+      "entered_at": "2026-10-13T19:12:26.9353327Z",
+      "log_line": 42654,
+      "next_step_entered_at": "2026-10-13T19:12:35.1151456Z",
+      "entry_to_next_step_seconds": 8.179813
+    },
+    {
+      "name": "Checker.TrDRC",
+      "entered_at": "2026-10-13T19:12:35.1151456Z",
+      "log_line": 42681,
+      "next_step_entered_at": "2026-10-13T19:12:35.1205416Z",
+      "entry_to_next_step_seconds": 0.005396
+    },
+    {
+      "name": "Odb.ReportDisconnectedPins",
+      "entered_at": "2026-10-13T19:12:35.1205416Z",
+      "log_line": 42685,
+      "next_step_entered_at": "2026-10-13T19:12:36.9370532Z",
+      "entry_to_next_step_seconds": 1.816512
+    },
+    {
+      "name": "Checker.DisconnectedPins",
+      "entered_at": "2026-10-13T19:12:36.9370532Z",
+      "log_line": 42692,
+      "next_step_entered_at": "2026-10-13T19:12:36.9425635Z",
+      "entry_to_next_step_seconds": 0.00551
+    },
+    {
+      "name": "Odb.ReportWireLength",
+      "entered_at": "2026-10-13T19:12:36.9425635Z",
+      "log_line": 42696,
+      "next_step_entered_at": "2026-10-13T19:12:37.8545745Z",
+      "entry_to_next_step_seconds": 0.912011
+    },
+    {
+      "name": "Checker.WireLength",
+      "entered_at": "2026-10-13T19:12:37.8545745Z",
+      "log_line": 42702,
+      "next_step_entered_at": "2026-10-13T19:12:37.8603384Z",
+      "entry_to_next_step_seconds": 0.005764
+    },
+    {
+      "name": "OpenROAD.FillInsertion",
+      "entered_at": "2026-10-13T19:12:37.8603384Z",
+      "log_line": 42707,
+      "next_step_entered_at": "2026-10-13T19:12:39.8817804Z",
+      "entry_to_next_step_seconds": 2.021442
+    },
+    {
+      "name": "Odb.CellFrequencyTables",
+      "entered_at": "2026-10-13T19:12:39.8817804Z",
+      "log_line": 42766,
+      "next_step_entered_at": "2026-10-13T19:12:41.8020252Z",
+      "entry_to_next_step_seconds": 1.920245
+    },
+    {
+      "name": "OpenROAD.RCX",
+      "entered_at": "2026-10-13T19:12:41.8020252Z",
+      "log_line": 42867,
+      "next_step_entered_at": "2026-10-13T19:12:48.6489066Z",
+      "entry_to_next_step_seconds": 6.846881
+    },
+    {
+      "name": "OpenROAD.STAPostPNR",
+      "entered_at": "2026-10-13T19:12:48.6489066Z",
+      "log_line": 42878,
+      "next_step_entered_at": "2026-10-13T19:13:31.5191051Z",
+      "entry_to_next_step_seconds": 42.870199
+    },
+    {
+      "name": "OpenROAD.IRDropReport",
+      "entered_at": "2026-10-13T19:13:31.5191051Z",
+      "log_line": 42923,
+      "next_step_entered_at": "2026-10-13T19:14:28.5710260Z",
+      "entry_to_next_step_seconds": 57.051921
+    },
+    {
+      "name": "Magic.StreamOut",
+      "entered_at": "2026-10-13T19:14:28.5710260Z",
+      "log_line": 42996,
+      "next_step_entered_at": "2026-10-13T19:15:16.0155531Z",
+      "entry_to_next_step_seconds": 47.444527
+    },
+    {
+      "name": "KLayout.StreamOut",
+      "entered_at": "2026-10-13T19:15:16.0155531Z",
+      "log_line": 43384,
+      "next_step_entered_at": "2026-10-13T19:15:18.7443118Z",
+      "entry_to_next_step_seconds": 2.728758
+    },
+    {
+      "name": "KLayout.Render",
+      "entered_at": "2026-10-13T19:15:18.7443118Z",
+      "log_line": 43399,
+      "next_step_entered_at": "2026-10-13T19:15:20.8631103Z",
+      "entry_to_next_step_seconds": 2.118799
+    },
+    {
+      "name": "Magic.WriteLEF",
+      "entered_at": "2026-10-13T19:15:20.8631103Z",
+      "log_line": 43405,
+      "next_step_entered_at": "2026-10-13T19:16:34.4319653Z",
+      "entry_to_next_step_seconds": 73.568855
+    },
+    {
+      "name": "Odb.CheckDesignAntennaProperties",
+      "entered_at": "2026-10-13T19:16:34.4319653Z",
+      "log_line": 43671,
+      "next_step_entered_at": "2026-10-13T19:16:35.3510644Z",
+      "entry_to_next_step_seconds": 0.919099
+    },
+    {
+      "name": "Magic.DRC",
+      "entered_at": "2026-10-13T19:16:35.3510644Z",
+      "log_line": 43706,
+      "next_step_entered_at": "2026-10-13T19:56:56.4690067Z",
+      "entry_to_next_step_seconds": 2421.117942
+    },
+    {
+      "name": "Checker.MagicDRC",
+      "entered_at": "2026-10-13T19:56:56.4690067Z",
+      "log_line": 43883,
+      "next_step_entered_at": "2026-10-13T19:56:56.4784676Z",
+      "entry_to_next_step_seconds": 0.009461
+    },
+    {
+      "name": "Magic.SpiceExtraction",
+      "entered_at": "2026-10-13T19:56:56.4784676Z",
+      "log_line": 43891,
+      "next_step_entered_at": "2026-10-13T19:57:32.9724215Z",
+      "entry_to_next_step_seconds": 36.493954
+    },
+    {
+      "name": "Checker.IllegalOverlap",
+      "entered_at": "2026-10-13T19:57:32.9724215Z",
+      "log_line": 44252,
+      "next_step_entered_at": "2026-10-13T19:57:32.9781182Z",
+      "entry_to_next_step_seconds": 0.005697
+    },
+    {
+      "name": "Netgen.LVS",
+      "entered_at": "2026-10-13T19:57:32.9781182Z",
+      "log_line": 44256,
+      "next_step_entered_at": "2026-10-13T19:57:42.7532096Z",
+      "entry_to_next_step_seconds": 9.775091
+    },
+    {
+      "name": "Checker.LVS",
+      "entered_at": "2026-10-13T19:57:42.7532096Z",
+      "log_line": 45419,
+      "next_step_entered_at": "2026-10-13T19:57:42.7630550Z",
+      "entry_to_next_step_seconds": 0.009846
+    },
+    {
+      "name": "Checker.SetupViolations",
+      "entered_at": "2026-10-13T19:57:42.7630550Z",
+      "log_line": 45426,
+      "next_step_entered_at": "2026-10-13T19:57:42.7685645Z",
+      "entry_to_next_step_seconds": 0.005509
+    },
+    {
+      "name": "Checker.HoldViolations",
+      "entered_at": "2026-10-13T19:57:42.7685645Z",
+      "log_line": 45433,
+      "next_step_entered_at": "2026-10-13T19:57:42.7741124Z",
+      "entry_to_next_step_seconds": 0.005548
+    },
+    {
+      "name": "Checker.MaxSlewViolations",
+      "entered_at": "2026-10-13T19:57:42.7741124Z",
+      "log_line": 45437,
+      "next_step_entered_at": "2026-10-13T19:57:42.7808010Z",
+      "entry_to_next_step_seconds": 0.006689
+    },
+    {
+      "name": "Checker.MaxCapViolations",
+      "entered_at": "2026-10-13T19:57:42.7808010Z",
+      "log_line": 45446,
+      "next_step_entered_at": "2026-10-13T19:57:42.7873016Z",
+      "entry_to_next_step_seconds": 0.0065
+    },
+    {
+      "name": "Misc.ReportManufacturability",
+      "entered_at": "2026-10-13T19:57:42.7873016Z",
+      "log_line": 45455,
+      "next_step_entered_at": null,
+      "entry_to_next_step_seconds": null
+    }
+  ],
+  "latest_decoded_observations": {
+    "core_area_um2": {
+      "timestamp": "2026-10-13T16:28:05.2425285Z",
+      "log_line": 37605,
+      "stage": "OpenROAD.GlobalPlacement",
+      "core_area_um2": 902417.242
+    },
+    "partial_cells": {
+      "timestamp": "2026-10-13T19:12:38.8731978Z",
+      "log_line": 42749,
+      "stage": "OpenROAD.FillInsertion",
+      "partial_cells": 82276,
+      "partial_cell_area_um2": 902417.24
+    },
+    "partial_cell_area_um2": {
+      "timestamp": "2026-10-13T19:12:38.8731978Z",
+      "log_line": 42749,
+      "stage": "OpenROAD.FillInsertion",
+      "partial_cells": 82276,
+      "partial_cell_area_um2": 902417.24
+    },
+    "placement_utilization_percent": {
+      "timestamp": "2026-10-13T16:28:05.2455193Z",
+      "log_line": 37610,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_utilization_percent": 26.909
+    },
+    "placement_target_density": {
+      "timestamp": "2026-10-13T16:28:27.7555157Z",
+      "log_line": 38362,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.45
+    },
+    "partial_resizer_setup": {
+      "timestamp": "2026-10-13T17:40:40.0651813Z",
+      "log_line": 39910,
+      "stage": "OpenROAD.ResizerTimingPostCTS",
+      "partial_resizer_setup": {
+        "wns_ns": -7.722,
+        "tns_ns": -1451.0,
+        "violating_endpoints": 198,
+        "corner": null,
+        "corners_loaded": [
+          "nom_fast_1p32V_m40C",
+          "nom_slow_1p08V_125C",
+          "nom_typ_1p20V_25C"
+        ],
+        "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+      }
+    },
+    "partial_resizer_hold": {
+      "timestamp": "2026-10-13T17:43:15.3989293Z",
+      "log_line": 40180,
+      "stage": "OpenROAD.ResizerTimingPostCTS",
+      "partial_resizer_hold": {
+        "wns_ns": 0.101,
+        "tns_ns": 0.0,
+        "corner": null,
+        "corners_loaded": [
+          "nom_fast_1p32V_m40C",
+          "nom_slow_1p08V_125C",
+          "nom_typ_1p20V_25C"
+        ],
+        "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+      }
+    },
+    "global_congestion": {
+      "timestamp": "2026-10-13T17:57:53.6837632Z",
+      "log_line": 40480,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_congestion": {
+        "layer": "Total",
+        "resource": 510059,
+        "demand": 374105,
+        "usage_percent": 73.35,
+        "max_horizontal_overflow": 8,
+        "max_vertical_overflow": 0,
+        "total_overflow": 7782
+      }
+    },
+    "global_wirelength_um": {
+      "timestamp": "2026-10-13T17:57:53.6862838Z",
+      "log_line": 40482,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_wirelength_um": 3651991
+    },
+    "partial_antenna_violations": {
+      "timestamp": "2026-10-13T19:09:52.8159537Z",
+      "log_line": 42331,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_antenna_violations": 1
+    },
+    "partial_detail_completion_percent": {
+      "timestamp": "2026-10-13T19:12:24.6017366Z",
+      "log_line": 42571,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 100,
+      "partial_detail_violations": 0
+    },
+    "partial_detail_violations": {
+      "timestamp": "2026-10-13T19:12:24.7682964Z",
+      "log_line": 42573,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_violations": 0
+    },
+    "partial_detail_wirelength_um": {
+      "timestamp": "2026-10-13T19:12:24.8754082Z",
+      "log_line": 42596,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_wirelength_um": 2448577
+    },
+    "partial_detail_vias": {
+      "timestamp": "2026-10-13T19:12:24.8815785Z",
+      "log_line": 42602,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_vias": 206169
+    }
+  },
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "metadata_sha256_raw": {
+    "workflow": "d90a7f9dd11111fc46f3ef18bf65227dae0e25fde7ab4becd94e6984696cf9fe",
+    "jobs": "b408bb8e19418d6b2cdca06923789f81fba106cc46d3e1a10285a5fcb2d3af83",
+    "artifacts": "567d89db331f695b30ae5d3c08567f78a94d00abdcfe29987ed097404160eb0e"
+  },
+  "scope": "Selected decoded log observations and complete actual stage inventory. In-memory BOM stripping recovers the real DetailedPlacement entry; raw log bytes/hashes remain unchanged. Final extracted measurements and qualification are separate receipts."
+}

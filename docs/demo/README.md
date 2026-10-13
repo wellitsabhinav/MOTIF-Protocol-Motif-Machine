@@ -1,6 +1,6 @@
 # Reproducible MOTIF demonstrations
 
-`python -m tools.demo --all --schematics` generates `build/demo/index.html` from deterministic simulation. V3 is logically qualified, within its cost limits and frozen. The independently selected LIN prefix passes unseen logical qualification. Physical attempt 2 is running; physical closure remains unqualified. Demonstration passes establish their recorded bounded behaviors; the campaign classifies each gate separately.
+`python -m tools.demo --all --schematics` generates `build/demo/index.html` from deterministic simulation. V3 is logically qualified, within its cost limits and frozen. The independently selected LIN prefix passes unseen logical qualification. Physical attempt 2 failed setup timing; identified layout previews are available but physical closure remains unqualified. Demonstration passes establish their recorded bounded behaviors; the campaign classifies each gate separately.
 
 Recreate the selected LIN traces before requesting all eleven reached demonstrations:
 
@@ -74,6 +74,15 @@ comparable pinned receipt remain unavailable. Reproduce this selected view with
 The renderer reads recorded receipts and does not run synthesis. Physical
 measurements, when available from an identified receipt, use a separate figure
 and retain their intermediate or final extraction scope.
+
+Attempt 2 supplies actual [floorplan](figures/physical/attempt_2/floorplan.svg),
+[placement](figures/physical/attempt_2/placement.png), [routing](figures/physical/attempt_2/routing.png)
+and [GDS preview](figures/physical/attempt_2/gds.png), all visibly labeled **UNQUALIFIED**.
+Their [identity inventory](figures/physical/attempt_2/identity.json) binds the
+actual failed source, workflow and archive. [Physical measurements](figures/physical/attempt_2/physical_cost.svg)
+and [three-corner timing](figures/physical/attempt_2/physical_timing.svg) use the
+final extracted metrics; official precheck and routed tests were skipped.
+Full geometry and dense route vectors stay in the identified CI archive.
 
 The frozen renderer supports a later qualified unseen workload through the [late-input contract](unseen-input-contract.md). Its CLI option appears only when that evaluation supplies an identified result. The interface itself does not select or qualify a workload.
 

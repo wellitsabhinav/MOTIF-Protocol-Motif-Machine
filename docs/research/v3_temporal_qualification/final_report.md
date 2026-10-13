@@ -6,8 +6,10 @@ The logical and local matched-cost qualification gates pass. V3 maps to
 210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
 is frozen. The independently selected LIN break/sync prefix passes its 34-case
 unseen logical gate without semantic changes. The initial physical attempt ended
-cancelled without published physical archives. Physical qualification remains
-incomplete while the first diagnosed flow revision runs. Logical generalization and cost qualification
+cancelled without published physical archives. The first diagnosed revision
+completed routing and GDS generation but failed setup timing at all three
+measured corners. A final mapping revision is diagnosed before its setting
+changes. Physical qualification remains incomplete. Logical generalization and cost qualification
 do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
@@ -284,19 +286,38 @@ follow; frozen semantics, allocation and clock remain fixed.
 [flow identity](../../../flow-lock.json),
 [physical restriction](preregistration.json).
 
-Attempt 2 is running at exact source
+Attempt 2 ran at exact source
 `f55553a2b10b0880268663d8f06067c5ba1e14e0`: density 45 and integer threads 4.
 Its immutable intent precedes dispatch. Approved helper run `38429454463`
 launched official run `38429471310` at `2026-10-13T16:18:53Z`. The downloaded
 helper API response matches its published archive digest and the actual source
 and run metadata. Two attempts have been dispatched; one further diagnosed
-revision remains available after an unsuccessful result. No revised physical
-result is claimed while this run is active.
+revision remains available. The official flow ended failed at `2026-10-13T19:58:31Z`;
+precheck and routed tests were skipped. The downloaded GDS log archive matches
+its published SHA-256, and all 911 extracted files, including the bundled frozen
+RTL, pass source correspondence. Final extracted metrics are available, but the
+independent physical gate exits nonzero.
 [Dispatch identities](physical_attempt_2_dispatch.md),
 [actual dispatch](../../../experiments/temporal_qualification/physical/attempt_2_dispatch.json),
 [accepted API response](../../../experiments/temporal_qualification/physical/attempt_2_dispatch_api_receipt.json),
-[active physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310),
+[completed physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310),
 [attempt 2 intent](../../../experiments/temporal_qualification/physical/attempt_2_intent.json).
+
+| Corner | Setup WNS (ns) | Setup TNS (ns) | Hold WNS (ns) | Hold TNS (ns) |
+|---|---:|---:|---:|---:|
+| Fast 1.32 V / −40 °C | −0.532804 | −53.600020 | 0 | 0 |
+| Typical 1.20 V / 25 °C | −9.764565 | −1,859.024958 | 0 | 0 |
+| Slow 1.08 V / 125 °C | −26.751381 | −5,172.522525 | 0 | 0 |
+
+Hold worst slack is positive at all corners; WNS is separately zero. Routing
+DRC, Magic DRC, LVS and reported antenna violations are zero. KLayout DRC is
+unavailable. Global-route overflow is 7,782 at its measured stage, distinct from
+final detailed-routing DRC. None of these checks overrides failed setup or
+skipped official gates. [Attempt 2 gate result](../../../experiments/temporal_qualification/physical/attempt_2_result.json),
+[complete final measurements](../../../experiments/temporal_qualification/physical/attempt_2_metrics.json),
+[archive/source correspondence](../../../experiments/temporal_qualification/physical/attempt_2_source_correspondence.json),
+[diagnosis and final revision rationale](physical_attempt_2_diagnosis.md),
+[diagnosis before settings](../../../experiments/temporal_qualification/physical/attempt_3_diagnosis.json).
 
 A separately identified read-only snapshot confirms OpenROAD receives argument
 `4` and placement uses target density `0.4500`. The initial completed log is
@@ -315,19 +336,24 @@ without a comparable pinned receipt remain unavailable. Declared bits and mapped
 cell instances have separate panels; table storage is included in configuration
 and configuration is included once in total declared registers.
 
-Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this
+Temporal qualification costs 18 declared bits and 15,865.6428 µm² in the
 matched mapping, principally additional combinational logic: +768 combinational
-cells versus +18 sequential cells. Initial physical logs report intermediate
-20,115 cells and 265,486.64 µm² after antenna insertion. Unlabelled resizer
-setup progress still had WNS −6.745 ns and TNS −1,247.8 ns with 198 violating
-endpoints; its later hold table had WNS +0.100 ns and TNS 0.000 ns. These are
-estimated intermediate observations with individual corner attribution
-unavailable, not final extracted STA. No v3 power,
-final routed area or maximum frequency is available. No matched v2 physical
-baseline exists for these intermediate values; they cannot replace the
-preregistered nominal mapping comparison. Earlier routed results retain their earlier source scope and cannot
-qualify v3. [Initial intermediate measurements](../../../experiments/temporal_qualification/physical/attempt_1_log_observations.json),
-[identified log and diagnosis](physical_attempt_1_diagnosis.md),
+cells versus +18 sequential cells. Initial physical intermediate observations
+remain separate from final extraction. [Initial measurements](../../../experiments/temporal_qualification/physical/attempt_1_log_observations.json),
+[initial diagnosis](physical_attempt_1_diagnosis.md).
+
+Attempt 2's final extraction records 20,178 functional standard cells,
+263,349 µm² standard-cell area, 1,401 mapped sequential cells, 902,417 µm² core
+area and 29.1827% standard-cell utilization. Fillers are excluded from those
+functional counts. Detailed wirelength is 2,448,577 µm with 206,169 vias;
+global wirelength and overflow retain their earlier routing-stage scope.
+No matched v2 physical baseline exists, so these values cannot replace the
+preregistered nominal mapping comparison. No workload power, qualified maximum
+frequency or silicon measurement is established. Earlier routed results retain
+their earlier source scope and cannot qualify v3.
+[Physical metric figure](../../demo/figures/physical/attempt_2/physical_cost.svg),
+[corner timing figure](../../demo/figures/physical/attempt_2/physical_timing.svg),
+[full values and origins](../../../experiments/temporal_qualification/physical/attempt_2_metrics.json),
 [historical physical scope](../../physical.md).
 
 ## R. Demonstration artifacts
@@ -407,10 +433,18 @@ netlist and library hashes and does not rerun synthesis.
 
 ## V. GDS/floorplan/routing visuals
 
-Unavailable: the initial identified v3 workflow published no physical archive,
-and the first diagnosed revision is still running. No
-historical layout is presented as a v3 result and no physical view is fabricated.
-[Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
+Attempt 2 supplies actual identified [floorplan](../../demo/figures/physical/attempt_2/floorplan.svg),
+[placement](../../demo/figures/physical/attempt_2/placement.png),
+[routing](../../demo/figures/physical/attempt_2/routing.png) and
+[GDS preview](../../demo/figures/physical/attempt_2/gds.png), each labeled
+**UNQUALIFIED**. The previews preserve their actual artifact geometry and carry
+source/run/archive hashes and explicit omission scopes. Detailed routing is
+shown as centerline geometry; widths, power routes and a temporal-block region
+are not inferred. Full geometry and dense route vectors stay in the identified
+265 MB CI archive. GDS generation does not establish physical closure.
+[View identities](../../demo/figures/physical/attempt_2/identity.json),
+[actual archive](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310/artifacts/11843789314),
+[campaign gate order](preregistration.json).
 
 ## W. Negative evidence
 
@@ -426,6 +460,13 @@ The initial physical attempt is retained as an unsuccessful cancelled run with
 remaining setup violations, routing congestion and unavailable final gates.
 [Physical negative](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
 [diagnosed partial evidence](physical_attempt_1_diagnosis.md).
+
+Attempt 2 is a retained final setup failure with identified routing/GDS but
+negative setup timing in all three corners and skipped official downstream
+checks. Its deepest measured control paths run from table data to RX FIFO
+capture. [Second physical negative](../../../experiments/temporal_qualification/physical/attempt_2_result.json),
+[actual path excerpts](../../../experiments/temporal_qualification/physical/attempt_2_critical_paths.txt),
+[second diagnosis](physical_attempt_2_diagnosis.md).
 
 ## X. Evidence strength
 
@@ -450,12 +491,13 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Collect the running diagnosed revision of the completed initial CMOS5L attempt at 6×4
-and 20 ns. Explicit OpenROAD threads address the invalid default argument;
-lower placement density tests the observed congestion. Neither change is a
-claim of closure. The qualified unseen PR has merged. Attempt 2 uses the first
-diagnosed revision; one further flow-setting revision remains after an unsuccessful result.
-Preserve failed attempts, retain unavailable metrics as
-unavailable, and complete physical classification and reached demonstrations
-without changing frozen semantics or the selected oracle.
+Run the final diagnosed mapping revision at 6×4 and 20 ns after its diagnosis,
+settings and immutable intent are committed in order. Attempt 2 completes
+routing but fails setup; its deep mapped control paths motivate a timing
+strategy and existing slow-library selection. These remain hypotheses, with
+no predicted closure. The qualified unseen PR has merged. One further
+flow-setting revision remains, permitting attempt 3 only. Preserve its outcome
+and stop after any remaining failure; retain unavailable metrics as unavailable
+and complete physical classification and reached demonstrations without
+changing frozen semantics or the selected oracle.
 [Stop conditions](preregistration.json).

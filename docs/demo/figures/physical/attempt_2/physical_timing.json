@@ -1,0 +1,1050 @@
+{
+  "schema_version": 1,
+  "kind": "presentation_of_identified_v3_physical_cost_receipt",
+  "classification": "presentation_only",
+  "receipt_path": "build/v3_physical/attempt_2/metrics.json",
+  "receipt_sha256_raw": "64fb505400247f6edfe05021923583140fe9404e7e46f656ec52044c5215c5f3",
+  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "workflow_run_id": 38429471310,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "preregistration_binding": "Read from the immutable freeze manifest after its LF hash matched the identified physical source correspondence",
+  "artifacts": [
+    {
+      "id": 11843789314,
+      "name": "GDS_logs",
+      "archive_sha256_raw": "5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0",
+      "archive_bytes": 265262975
+    }
+  ],
+  "extraction_scope": {
+    "directory_label": "wokwi",
+    "scope": "single explicit official flow run directory",
+    "metrics_status": "final_metrics_available",
+    "metrics_source": "final/metrics.json",
+    "fallback_reason": null,
+    "timing_report_stage": "55-openroad-stapostpnr"
+  },
+  "corners": {
+    "nom_fast_1p32V_m40C": {
+      "setup_worst_slack_ns": -0.5328040381921172,
+      "hold_worst_slack_ns": 0.10836781778663933,
+      "setup_wns_ns": -0.5328040381921172,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": -53.6000201616507,
+      "hold_tns_ns": 0,
+      "setup_violations": 188,
+      "hold_violations": 0
+    },
+    "nom_slow_1p08V_125C": {
+      "setup_worst_slack_ns": -26.75138053461459,
+      "hold_worst_slack_ns": 0.5924894076393782,
+      "setup_wns_ns": -26.75138053461459,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": -5172.522524704961,
+      "hold_tns_ns": 0,
+      "setup_violations": 202,
+      "hold_violations": 0
+    },
+    "nom_typ_1p20V_25C": {
+      "setup_worst_slack_ns": -9.764564544427186,
+      "hold_worst_slack_ns": 0.2798822364200014,
+      "setup_wns_ns": -9.764564544427186,
+      "hold_wns_ns": 0,
+      "setup_tns_ns": -1859.0249581473663,
+      "hold_tns_ns": 0,
+      "setup_violations": 198,
+      "hold_violations": 0
+    }
+  },
+  "timing_metric_sources": {
+    "corners.nom_fast_1p32V_m40C.setup_worst_slack_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__ws__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.hold_worst_slack_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__ws__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.setup_wns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__wns__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.hold_wns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__wns__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.setup_tns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__tns__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.hold_tns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__tns__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.setup_violations": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup_vio__count__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_fast_1p32V_m40C.hold_violations": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold_vio__count__corner:nom_fast_1p32V_m40C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.setup_worst_slack_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__ws__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.hold_worst_slack_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__ws__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.setup_wns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__wns__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.hold_wns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__wns__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.setup_tns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__tns__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.hold_tns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__tns__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.setup_violations": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup_vio__count__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_slow_1p08V_125C.hold_violations": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold_vio__count__corner:nom_slow_1p08V_125C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.setup_worst_slack_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__ws__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.hold_worst_slack_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__ws__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.setup_wns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__wns__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.hold_wns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__wns__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.setup_tns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup__tns__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.hold_tns_ns": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold__tns__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.setup_violations": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__setup_vio__count__corner:nom_typ_1p20V_25C"
+      ]
+    },
+    "corners.nom_typ_1p20V_25C.hold_violations": {
+      "path": "final/metrics.json",
+      "keys": [
+        "timing__hold_vio__count__corner:nom_typ_1p20V_25C"
+      ]
+    }
+  },
+  "presentation_status": "UNQUALIFIED",
+  "workflow_status": "completed",
+  "workflow_conclusion": "failure",
+  "receipt_metadata_sha256_raw": {
+    "artifacts": "a34a120b152ab57a86587154385a45f1dab883f93dcfe4059a48cb657c56f8d8",
+    "jobs": "b408bb8e19418d6b2cdca06923789f81fba106cc46d3e1a10285a5fcb2d3af83",
+    "workflow": "d90a7f9dd11111fc46f3ef18bf65227dae0e25fde7ab4becd94e6984696cf9fe",
+    "source_correspondence": "fe84c2e87dc9b294d86e1af8abee7daa77b80ed2e868f46a9c44dec8566897f9"
+  },
+  "measurement_values_original": {
+    "stdcell_count": 20178,
+    "stdcell_area_um2": 263349,
+    "register_count": 1401,
+    "core_area_um2": 902417,
+    "stdcell_utilization": 0.291827,
+    "detailed_wirelength_um": 2448577,
+    "global_wirelength_um": 3651991,
+    "vias": 206169,
+    "detailed_route_drc": 0,
+    "magic_drc": 0,
+    "klayout_drc": null,
+    "lvs_errors": 0,
+    "antenna_violating_nets": 0,
+    "antenna_violating_pins": 0,
+    "route_antenna_violations": 0,
+    "hold_buffer_count": 1294,
+    "timing_repair_buffer_area_um2": 49300.9,
+    "max_fanout_violations": 160,
+    "max_slew_violations": 542,
+    "max_cap_violations": 51
+  },
+  "input_files": {
+    "01-verilator-lint/state_in.json": {
+      "sha256_raw": "8bbbb272fcbae1f9f875f02f7fae97bb73751ce58d1f651e21b7928aaf9cee9d",
+      "bytes": 21
+    },
+    "01-verilator-lint/state_out.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "01-verilator-lint/verilator-lint.log": {
+      "sha256_raw": "e1997ac9846f3216c871aed7c351ae65b99bfa08d870ace518d8d3dba2edcd89",
+      "bytes": 290
+    },
+    "02-checker-linttimingconstructs/state_in.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "02-checker-linttimingconstructs/state_out.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "03-checker-linterrors/state_in.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "03-checker-linterrors/state_out.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "04-checker-lintwarnings/state_in.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "04-checker-lintwarnings/state_out.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "05-yosys-jsonheader/state_in.json": {
+      "sha256_raw": "11b56f7dba8e4806e39365f6b10c1b56d737723a0f80a9662e2cbd07823a2c74",
+      "bytes": 202
+    },
+    "05-yosys-jsonheader/state_out.json": {
+      "sha256_raw": "af618aff9927bdb6a7707a189126f9927da09135a5843738cb04d7c41251d8e0",
+      "bytes": 360
+    },
+    "05-yosys-jsonheader/yosys-jsonheader.log": {
+      "sha256_raw": "bc146d4c7a0817d9090441f394e2a9443a173129bc1e6f010110d3d3349e02bf",
+      "bytes": 347991
+    },
+    "06-yosys-synthesis/state_in.json": {
+      "sha256_raw": "af618aff9927bdb6a7707a189126f9927da09135a5843738cb04d7c41251d8e0",
+      "bytes": 360
+    },
+    "06-yosys-synthesis/state_out.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "06-yosys-synthesis/yosys-synthesis.log": {
+      "sha256_raw": "040faf6940cd86263444473283ddd34708b8e0d94d4a34a093b004d235da34fe",
+      "bytes": 1698970
+    },
+    "07-checker-yosysunmappedcells/state_in.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "07-checker-yosysunmappedcells/state_out.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "08-checker-yosyssynthchecks/state_in.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "08-checker-yosyssynthchecks/state_out.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "09-checker-netlistassignstatements/state_in.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "09-checker-netlistassignstatements/state_out.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "10-openroad-checksdcfiles/state_in.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "10-openroad-checksdcfiles/state_out.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "11-openroad-checkmacroinstances/state_in.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "11-openroad-checkmacroinstances/state_out.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "12-openroad-staprepnr/state_in.json": {
+      "sha256_raw": "67d594514f859bbced788ebd98770f60d4fbaeddf4a7843c6d9b9e42eb5059c3",
+      "bytes": 691
+    },
+    "12-openroad-staprepnr/state_out.json": {
+      "sha256_raw": "61907b409d92f290f9debdaae3c9385092c807275666b30c114ba90e6e393f9c",
+      "bytes": 6158
+    },
+    "13-openroad-floorplan/state_in.json": {
+      "sha256_raw": "61907b409d92f290f9debdaae3c9385092c807275666b30c114ba90e6e393f9c",
+      "bytes": 6158
+    },
+    "13-openroad-floorplan/state_out.json": {
+      "sha256_raw": "32902425369180aa1ba71062551ea1a4c8a6e9477bf1ef01d6388caf70d4baaa",
+      "bytes": 8240
+    },
+    "13-openroad-floorplan/openroad-floorplan.log": {
+      "sha256_raw": "440aaecbf510c5b3d9478072b0e226a89254ee009f48a90fd0fba30302d21426",
+      "bytes": 4233
+    },
+    "14-openroad-dumprcvalues/state_in.json": {
+      "sha256_raw": "32902425369180aa1ba71062551ea1a4c8a6e9477bf1ef01d6388caf70d4baaa",
+      "bytes": 8240
+    },
+    "14-openroad-dumprcvalues/state_out.json": {
+      "sha256_raw": "32902425369180aa1ba71062551ea1a4c8a6e9477bf1ef01d6388caf70d4baaa",
+      "bytes": 8240
+    },
+    "14-openroad-dumprcvalues/openroad-dumprcvalues.log": {
+      "sha256_raw": "1a358c394154b366986de484fa810bf4b2f28fa56e6ca5493cefcb8a58b3c579",
+      "bytes": 4588
+    },
+    "15-odb-checkmacroantennaproperties/state_in.json": {
+      "sha256_raw": "32902425369180aa1ba71062551ea1a4c8a6e9477bf1ef01d6388caf70d4baaa",
+      "bytes": 8240
+    },
+    "15-odb-checkmacroantennaproperties/state_out.json": {
+      "sha256_raw": "32902425369180aa1ba71062551ea1a4c8a6e9477bf1ef01d6388caf70d4baaa",
+      "bytes": 8240
+    },
+    "16-odb-setpowerconnections/state_in.json": {
+      "sha256_raw": "32902425369180aa1ba71062551ea1a4c8a6e9477bf1ef01d6388caf70d4baaa",
+      "bytes": 8240
+    },
+    "16-odb-setpowerconnections/state_out.json": {
+      "sha256_raw": "997b966db2f1e2ab39065a402e8c18f23f4f3ec15ea3e8e81305237966ff6970",
+      "bytes": 8295
+    },
+    "16-odb-setpowerconnections/odb-setpowerconnections.log": {
+      "sha256_raw": "359b5ac0e06599ef0e9fb465a10658a17daef0a66d849fd3a4eb20b72b9c9b7b",
+      "bytes": 50
+    },
+    "17-odb-manualmacroplacement/state_in.json": {
+      "sha256_raw": "997b966db2f1e2ab39065a402e8c18f23f4f3ec15ea3e8e81305237966ff6970",
+      "bytes": 8295
+    },
+    "17-odb-manualmacroplacement/state_out.json": {
+      "sha256_raw": "997b966db2f1e2ab39065a402e8c18f23f4f3ec15ea3e8e81305237966ff6970",
+      "bytes": 8295
+    },
+    "18-openroad-cutrows/state_in.json": {
+      "sha256_raw": "997b966db2f1e2ab39065a402e8c18f23f4f3ec15ea3e8e81305237966ff6970",
+      "bytes": 8295
+    },
+    "18-openroad-cutrows/state_out.json": {
+      "sha256_raw": "8f641c14a84aa5ce626e7ce414262802a486e822a27576e0f80f528adc8db815",
+      "bytes": 8281
+    },
+    "18-openroad-cutrows/openroad-cutrows.log": {
+      "sha256_raw": "6cc46f3178686ae314f690b0b6ff4fce951b67529e9b1c43eb405e24ad251b82",
+      "bytes": 1859
+    },
+    "19-openroad-tapendcapinsertion/state_in.json": {
+      "sha256_raw": "8f641c14a84aa5ce626e7ce414262802a486e822a27576e0f80f528adc8db815",
+      "bytes": 8281
+    },
+    "19-openroad-tapendcapinsertion/state_out.json": {
+      "sha256_raw": "3fb0015ff4af9181334e2daf62d6d54f0dc8cfe451f1f98207097a5408cb693a",
+      "bytes": 8330
+    },
+    "19-openroad-tapendcapinsertion/openroad-tapendcapinsertion.log": {
+      "sha256_raw": "11ff53fc367f41d5b7fd796cb620452c27091addef16ff93bf250b912c7bf6ee",
+      "bytes": 2428
+    },
+    "20-odb-addpdnobstructions/state_in.json": {
+      "sha256_raw": "3fb0015ff4af9181334e2daf62d6d54f0dc8cfe451f1f98207097a5408cb693a",
+      "bytes": 8330
+    },
+    "20-odb-addpdnobstructions/state_out.json": {
+      "sha256_raw": "3fb0015ff4af9181334e2daf62d6d54f0dc8cfe451f1f98207097a5408cb693a",
+      "bytes": 8330
+    },
+    "21-openroad-generatepdn/state_in.json": {
+      "sha256_raw": "3fb0015ff4af9181334e2daf62d6d54f0dc8cfe451f1f98207097a5408cb693a",
+      "bytes": 8330
+    },
+    "21-openroad-generatepdn/state_out.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "21-openroad-generatepdn/openroad-generatepdn.log": {
+      "sha256_raw": "8fca991da42f905ffaa0bdaeb90e27a1743ae4a0879e170a712250c55ac36e16",
+      "bytes": 2599
+    },
+    "22-odb-removepdnobstructions/state_in.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "22-odb-removepdnobstructions/state_out.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "23-odb-addroutingobstructions/state_in.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "23-odb-addroutingobstructions/state_out.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "24-openroad-globalplacementskipio/state_in.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "24-openroad-globalplacementskipio/state_out.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "25-openroad-ioplacement/state_in.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "25-openroad-ioplacement/state_out.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "26-odb-customioplacement/state_in.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "26-odb-customioplacement/state_out.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "27-odb-applydeftemplate/state_in.json": {
+      "sha256_raw": "2601f3a89acfb275c80a3327d5f60d911e9a7c4e555e9ec5a008d10062cee615",
+      "bytes": 8465
+    },
+    "27-odb-applydeftemplate/state_out.json": {
+      "sha256_raw": "017ae3bdb09c25dee9e9d1fcba29ca98208b837541a8f4f952b37da46d37f6dd",
+      "bytes": 8465
+    },
+    "27-odb-applydeftemplate/odb-applydeftemplate.log": {
+      "sha256_raw": "b746728ea81b0a0b272ea601ac74258eacdd789831d4d4755a7df16770ef95e2",
+      "bytes": 5767
+    },
+    "28-openroad-globalplacement/state_in.json": {
+      "sha256_raw": "017ae3bdb09c25dee9e9d1fcba29ca98208b837541a8f4f952b37da46d37f6dd",
+      "bytes": 8465
+    },
+    "28-openroad-globalplacement/state_out.json": {
+      "sha256_raw": "78ba06d845748b78d590e528d6c4b4d7a42c89f155b6eff1e627543bed1c3a9a",
+      "bytes": 8530
+    },
+    "28-openroad-globalplacement/openroad-globalplacement.log": {
+      "sha256_raw": "5b0dd7d36e49bd91c23bdf7f3e6f2489f4df2b88e69ba919c972749a0052f3ee",
+      "bytes": 53806
+    },
+    "29-odb-writeverilogheader/state_in.json": {
+      "sha256_raw": "78ba06d845748b78d590e528d6c4b4d7a42c89f155b6eff1e627543bed1c3a9a",
+      "bytes": 8530
+    },
+    "29-odb-writeverilogheader/state_out.json": {
+      "sha256_raw": "5bf066d3ba8b9f5ebe3e215f73338b2bc3adc35252ae44a33de1c08f117d16ac",
+      "bytes": 8686
+    },
+    "29-odb-writeverilogheader/odb-writeverilogheader.log": {
+      "sha256_raw": "359b5ac0e06599ef0e9fb465a10658a17daef0a66d849fd3a4eb20b72b9c9b7b",
+      "bytes": 50
+    },
+    "30-checker-powergridviolations/state_in.json": {
+      "sha256_raw": "5bf066d3ba8b9f5ebe3e215f73338b2bc3adc35252ae44a33de1c08f117d16ac",
+      "bytes": 8686
+    },
+    "30-checker-powergridviolations/state_out.json": {
+      "sha256_raw": "5bf066d3ba8b9f5ebe3e215f73338b2bc3adc35252ae44a33de1c08f117d16ac",
+      "bytes": 8686
+    },
+    "31-openroad-stamidpnr/state_in.json": {
+      "sha256_raw": "5bf066d3ba8b9f5ebe3e215f73338b2bc3adc35252ae44a33de1c08f117d16ac",
+      "bytes": 8686
+    },
+    "31-openroad-stamidpnr/state_out.json": {
+      "sha256_raw": "45dd0d19bf179e0e91aa6b7ade714071b8f677fcd3fc598d36f2b42151583133",
+      "bytes": 8512
+    },
+    "31-openroad-stamidpnr/openroad-stamidpnr.log": {
+      "sha256_raw": "ce64c5deb3a4b5c38bb99912e474a78a913ed2b8bc58e658d2ebb75bfc78fa5b",
+      "bytes": 11087358
+    },
+    "32-openroad-repairdesignpostgpl/state_in.json": {
+      "sha256_raw": "45dd0d19bf179e0e91aa6b7ade714071b8f677fcd3fc598d36f2b42151583133",
+      "bytes": 8512
+    },
+    "32-openroad-repairdesignpostgpl/state_out.json": {
+      "sha256_raw": "9fa6796cad1c715fee46f81e412932448020b9795398d16b0ee84117c791b474",
+      "bytes": 9006
+    },
+    "32-openroad-repairdesignpostgpl/openroad-repairdesignpostgpl.log": {
+      "sha256_raw": "6646194c40661d708936952a95d51afe553f662b162ae62fb553a9af5872b6c1",
+      "bytes": 5519
+    },
+    "33-odb-manualglobalplacement/state_in.json": {
+      "sha256_raw": "9fa6796cad1c715fee46f81e412932448020b9795398d16b0ee84117c791b474",
+      "bytes": 9006
+    },
+    "33-odb-manualglobalplacement/state_out.json": {
+      "sha256_raw": "9fa6796cad1c715fee46f81e412932448020b9795398d16b0ee84117c791b474",
+      "bytes": 9006
+    },
+    "34-openroad-detailedplacement/state_in.json": {
+      "sha256_raw": "9fa6796cad1c715fee46f81e412932448020b9795398d16b0ee84117c791b474",
+      "bytes": 9006
+    },
+    "34-openroad-detailedplacement/state_out.json": {
+      "sha256_raw": "5c34e2b76446db126aa1f8dd31bc48c8a6314c2ce7d5b5c78513ee2a245034af",
+      "bytes": 8981
+    },
+    "34-openroad-detailedplacement/openroad-detailedplacement.log": {
+      "sha256_raw": "29e841a18851afaba4a4d9e4e20f0d8d99f0bc1a3f73ad68cf1332ec46e982bc",
+      "bytes": 2923
+    },
+    "35-openroad-cts/state_in.json": {
+      "sha256_raw": "5c34e2b76446db126aa1f8dd31bc48c8a6314c2ce7d5b5c78513ee2a245034af",
+      "bytes": 8981
+    },
+    "35-openroad-cts/state_out.json": {
+      "sha256_raw": "26513d743f3adfd381560d9aff8313d951ea6df277c351e6d53cefa7eac791cf",
+      "bytes": 9174
+    },
+    "35-openroad-cts/openroad-cts.log": {
+      "sha256_raw": "6595c36f00dc2ec965bfab230b53c36243f762b9d6240258fb38931b6f63542b",
+      "bytes": 8869
+    },
+    "36-openroad-stamidpnr-1/state_in.json": {
+      "sha256_raw": "26513d743f3adfd381560d9aff8313d951ea6df277c351e6d53cefa7eac791cf",
+      "bytes": 9174
+    },
+    "36-openroad-stamidpnr-1/state_out.json": {
+      "sha256_raw": "d486908c126636243779afe68e549060de32160b437836a608922f813a47a6fa",
+      "bytes": 9163
+    },
+    "36-openroad-stamidpnr-1/openroad-stamidpnr-1.log": {
+      "sha256_raw": "a37c126e8200eaef377a3169958a89062144820d3950f4c05b2245965acd32ab",
+      "bytes": 16631736
+    },
+    "37-openroad-resizertimingpostcts/state_in.json": {
+      "sha256_raw": "d486908c126636243779afe68e549060de32160b437836a608922f813a47a6fa",
+      "bytes": 9163
+    },
+    "37-openroad-resizertimingpostcts/state_out.json": {
+      "sha256_raw": "6233654c73968580d0ab2968d07f20c72e4dbd29a0bd96a4dcc07e6c8ef2c7d1",
+      "bytes": 9402
+    },
+    "37-openroad-resizertimingpostcts/openroad-resizertimingpostcts.log": {
+      "sha256_raw": "1e905fb8a9a7d4370c24fbdb3f51919737ceb3699e75021c758a6f4389c95fde",
+      "bytes": 72668
+    },
+    "38-openroad-stamidpnr-2/state_in.json": {
+      "sha256_raw": "6233654c73968580d0ab2968d07f20c72e4dbd29a0bd96a4dcc07e6c8ef2c7d1",
+      "bytes": 9402
+    },
+    "38-openroad-stamidpnr-2/state_out.json": {
+      "sha256_raw": "8b29b7aa4022aac199409e47d25aa7b4e310bf1d83411903becf64ebd1d1a86d",
+      "bytes": 9324
+    },
+    "38-openroad-stamidpnr-2/openroad-stamidpnr-2.log": {
+      "sha256_raw": "a9a8e2f1790e4cf8784f5ee7053ba044a8423d018bac788b3b1a1bd1f5b04d9d",
+      "bytes": 15756907
+    },
+    "39-openroad-globalrouting/state_in.json": {
+      "sha256_raw": "8b29b7aa4022aac199409e47d25aa7b4e310bf1d83411903becf64ebd1d1a86d",
+      "bytes": 9324
+    },
+    "39-openroad-globalrouting/state_out.json": {
+      "sha256_raw": "1e11a567ed50e0c6868168dd6e71c1d6b7e17a24689af1893c90aaa0a4176c3a",
+      "bytes": 9483
+    },
+    "39-openroad-globalrouting/openroad-globalrouting.log": {
+      "sha256_raw": "7a54ddbec83b2dab3489658e969ea3d458889846147b382ed1db3456125ce94a",
+      "bytes": 11277
+    },
+    "40-openroad-checkantennas/state_in.json": {
+      "sha256_raw": "1e11a567ed50e0c6868168dd6e71c1d6b7e17a24689af1893c90aaa0a4176c3a",
+      "bytes": 9483
+    },
+    "40-openroad-checkantennas/state_out.json": {
+      "sha256_raw": "9b36fa300677278a0e469585b1f8703fad5b1aa7d410a482157ef02cfc2a5bf3",
+      "bytes": 9613
+    },
+    "40-openroad-checkantennas/openroad-checkantennas.log": {
+      "sha256_raw": "d8295cb84da56787f8688dbe4b98e58c46e90a7471a3512cc83e4a3f26ce7552",
+      "bytes": 1040976
+    },
+    "41-odb-diodesonports/state_in.json": {
+      "sha256_raw": "9b36fa300677278a0e469585b1f8703fad5b1aa7d410a482157ef02cfc2a5bf3",
+      "bytes": 9613
+    },
+    "41-odb-diodesonports/state_out.json": {
+      "sha256_raw": "9b36fa300677278a0e469585b1f8703fad5b1aa7d410a482157ef02cfc2a5bf3",
+      "bytes": 9613
+    },
+    "42-openroad-repairantennas/state_in.json": {
+      "sha256_raw": "9b36fa300677278a0e469585b1f8703fad5b1aa7d410a482157ef02cfc2a5bf3",
+      "bytes": 9613
+    },
+    "42-openroad-repairantennas/state_out.json": {
+      "sha256_raw": "d7a02b953f1a2f6ed7ead17eae67c90880681b2a67986322f1ac6727b2f4264b",
+      "bytes": 9818
+    },
+    "42-openroad-repairantennas/1-openroad-diodeinsertion/state_in.json": {
+      "sha256_raw": "9b36fa300677278a0e469585b1f8703fad5b1aa7d410a482157ef02cfc2a5bf3",
+      "bytes": 9613
+    },
+    "42-openroad-repairantennas/1-openroad-diodeinsertion/state_out.json": {
+      "sha256_raw": "3740342f5f9d94d6405e5d929c748a67df40a0aafd79a25c771b7272ca4da6e3",
+      "bytes": 9824
+    },
+    "42-openroad-repairantennas/1-openroad-diodeinsertion/openroad-diodeinsertion.log": {
+      "sha256_raw": "ac7b0d53bf023390ac668f8c9ed48675bd3205f9e525277c2482ef935f127dc1",
+      "bytes": 2679
+    },
+    "42-openroad-repairantennas/2-openroad-checkantennas/state_in.json": {
+      "sha256_raw": "3740342f5f9d94d6405e5d929c748a67df40a0aafd79a25c771b7272ca4da6e3",
+      "bytes": 9824
+    },
+    "42-openroad-repairantennas/2-openroad-checkantennas/state_out.json": {
+      "sha256_raw": "d7a02b953f1a2f6ed7ead17eae67c90880681b2a67986322f1ac6727b2f4264b",
+      "bytes": 9818
+    },
+    "42-openroad-repairantennas/2-openroad-checkantennas/openroad-checkantennas.log": {
+      "sha256_raw": "07161de76aab6b44b1139dd5e682caad674340524043fdf6c3ddca598d0a6260",
+      "bytes": 1267
+    },
+    "43-openroad-stamidpnr-3/state_in.json": {
+      "sha256_raw": "d7a02b953f1a2f6ed7ead17eae67c90880681b2a67986322f1ac6727b2f4264b",
+      "bytes": 9818
+    },
+    "43-openroad-stamidpnr-3/state_out.json": {
+      "sha256_raw": "1817da20fff21862b61ed3921a34bdf10ebf048684ead5126a5bdfc8063e40a1",
+      "bytes": 9853
+    },
+    "43-openroad-stamidpnr-3/openroad-stamidpnr-3.log": {
+      "sha256_raw": "c4f449f2b5748b14d7cf71be2220c706136de819dd272631d47548f52905eca9",
+      "bytes": 15935867
+    },
+    "44-openroad-detailedrouting/state_in.json": {
+      "sha256_raw": "1817da20fff21862b61ed3921a34bdf10ebf048684ead5126a5bdfc8063e40a1",
+      "bytes": 9853
+    },
+    "44-openroad-detailedrouting/state_out.json": {
+      "sha256_raw": "4530e5a6133d409c386fddbac081407824049c9f7dbf64bd185743b5f3ee3be5",
+      "bytes": 11113
+    },
+    "44-openroad-detailedrouting/openroad-detailedrouting.log": {
+      "sha256_raw": "4de1f1adb2fe03fb77bf0622662263ed89a53d5fc016c73a17bec8632cf9653c",
+      "bytes": 68589
+    },
+    "45-odb-removeroutingobstructions/state_in.json": {
+      "sha256_raw": "4530e5a6133d409c386fddbac081407824049c9f7dbf64bd185743b5f3ee3be5",
+      "bytes": 11113
+    },
+    "45-odb-removeroutingobstructions/state_out.json": {
+      "sha256_raw": "4530e5a6133d409c386fddbac081407824049c9f7dbf64bd185743b5f3ee3be5",
+      "bytes": 11113
+    },
+    "46-openroad-checkantennas-1/state_in.json": {
+      "sha256_raw": "4530e5a6133d409c386fddbac081407824049c9f7dbf64bd185743b5f3ee3be5",
+      "bytes": 11113
+    },
+    "46-openroad-checkantennas-1/state_out.json": {
+      "sha256_raw": "f75e38460c8b36b506bd81a3879ed6116bf727f4ff7a36ca0acbe96c8476d2d4",
+      "bytes": 11113
+    },
+    "46-openroad-checkantennas-1/openroad-checkantennas-1.log": {
+      "sha256_raw": "5d01bae71430fe0040dc4144ca64c9c3c32907acf14c19439e9cfe022e33daf2",
+      "bytes": 1218
+    },
+    "47-checker-trdrc/state_in.json": {
+      "sha256_raw": "f75e38460c8b36b506bd81a3879ed6116bf727f4ff7a36ca0acbe96c8476d2d4",
+      "bytes": 11113
+    },
+    "47-checker-trdrc/state_out.json": {
+      "sha256_raw": "f75e38460c8b36b506bd81a3879ed6116bf727f4ff7a36ca0acbe96c8476d2d4",
+      "bytes": 11113
+    },
+    "48-odb-reportdisconnectedpins/state_in.json": {
+      "sha256_raw": "f75e38460c8b36b506bd81a3879ed6116bf727f4ff7a36ca0acbe96c8476d2d4",
+      "bytes": 11113
+    },
+    "48-odb-reportdisconnectedpins/state_out.json": {
+      "sha256_raw": "4b1ed0f87b692e210900b827ad6aa32725b56bfc771df639c049eebebaee5333",
+      "bytes": 11218
+    },
+    "48-odb-reportdisconnectedpins/odb-reportdisconnectedpins.log": {
+      "sha256_raw": "3168291d97ec838aa902ee0740bd2043e7760016ce33ae8cc686793e69cc44d3",
+      "bytes": 104
+    },
+    "49-checker-disconnectedpins/state_in.json": {
+      "sha256_raw": "4b1ed0f87b692e210900b827ad6aa32725b56bfc771df639c049eebebaee5333",
+      "bytes": 11218
+    },
+    "49-checker-disconnectedpins/state_out.json": {
+      "sha256_raw": "4b1ed0f87b692e210900b827ad6aa32725b56bfc771df639c049eebebaee5333",
+      "bytes": 11218
+    },
+    "50-odb-reportwirelength/state_in.json": {
+      "sha256_raw": "4b1ed0f87b692e210900b827ad6aa32725b56bfc771df639c049eebebaee5333",
+      "bytes": 11218
+    },
+    "50-odb-reportwirelength/state_out.json": {
+      "sha256_raw": "085bf9cff2981f90bacfb843c1fdba606a78ef405418025c3c34218b2e5a4611",
+      "bytes": 11261
+    },
+    "50-odb-reportwirelength/odb-reportwirelength.log": {
+      "sha256_raw": "359b5ac0e06599ef0e9fb465a10658a17daef0a66d849fd3a4eb20b72b9c9b7b",
+      "bytes": 50
+    },
+    "51-checker-wirelength/state_in.json": {
+      "sha256_raw": "085bf9cff2981f90bacfb843c1fdba606a78ef405418025c3c34218b2e5a4611",
+      "bytes": 11261
+    },
+    "51-checker-wirelength/state_out.json": {
+      "sha256_raw": "085bf9cff2981f90bacfb843c1fdba606a78ef405418025c3c34218b2e5a4611",
+      "bytes": 11261
+    },
+    "52-openroad-fillinsertion/state_in.json": {
+      "sha256_raw": "085bf9cff2981f90bacfb843c1fdba606a78ef405418025c3c34218b2e5a4611",
+      "bytes": 11261
+    },
+    "52-openroad-fillinsertion/state_out.json": {
+      "sha256_raw": "2d2b89ca6bff52dc36ecc2493a68a78fc6e5fd16fcac1549f19503b17928763c",
+      "bytes": 11365
+    },
+    "52-openroad-fillinsertion/openroad-fillinsertion.log": {
+      "sha256_raw": "7f8d6fd7033dcc92c9a0aba167489690963a69c3938901f99c8a9dddd6a891e7",
+      "bytes": 2743
+    },
+    "53-odb-cellfrequencytables/state_in.json": {
+      "sha256_raw": "2d2b89ca6bff52dc36ecc2493a68a78fc6e5fd16fcac1549f19503b17928763c",
+      "bytes": 11365
+    },
+    "53-odb-cellfrequencytables/state_out.json": {
+      "sha256_raw": "56e2c859a9b985cee6a9790d44b02ce850ffdd892c1e3addc47fbe8399dafeb7",
+      "bytes": 11367
+    },
+    "53-odb-cellfrequencytables/odb-cellfrequencytables.log": {
+      "sha256_raw": "437b225adc4dd22be88e3f51a85a9948266a4cb63c1addf6db237ea3058b7e11",
+      "bytes": 9182
+    },
+    "54-openroad-rcx/state_in.json": {
+      "sha256_raw": "56e2c859a9b985cee6a9790d44b02ce850ffdd892c1e3addc47fbe8399dafeb7",
+      "bytes": 11367
+    },
+    "54-openroad-rcx/state_out.json": {
+      "sha256_raw": "7e5ba8424b40d7c886b11bfe0f012a221be219dd8faf8466c0479a8a24411c81",
+      "bytes": 11550
+    },
+    "55-openroad-stapostpnr/state_in.json": {
+      "sha256_raw": "7e5ba8424b40d7c886b11bfe0f012a221be219dd8faf8466c0479a8a24411c81",
+      "bytes": 11550
+    },
+    "55-openroad-stapostpnr/state_out.json": {
+      "sha256_raw": "e11f8f87b01ba1bccf10c4799252b5ce3a19b0625dcdca77d34c922259cd8b5e",
+      "bytes": 12910
+    },
+    "56-openroad-irdropreport/state_in.json": {
+      "sha256_raw": "e11f8f87b01ba1bccf10c4799252b5ce3a19b0625dcdca77d34c922259cd8b5e",
+      "bytes": 12910
+    },
+    "56-openroad-irdropreport/state_out.json": {
+      "sha256_raw": "2f812967572367356d8681a0cb1ff0ccacc3c706e0cfd7f59a80b77fe75ed529",
+      "bytes": 13927
+    },
+    "56-openroad-irdropreport/openroad-irdropreport.log": {
+      "sha256_raw": "58554bce336d1da751be87a29336d8128d7e55e6d63e2e0c1715cb7de098aa1a",
+      "bytes": 2239
+    },
+    "57-magic-streamout/state_in.json": {
+      "sha256_raw": "2f812967572367356d8681a0cb1ff0ccacc3c706e0cfd7f59a80b77fe75ed529",
+      "bytes": 13927
+    },
+    "57-magic-streamout/state_out.json": {
+      "sha256_raw": "42a844b6dc28f14106f12fd7cb9ebe60afe7be56a0eab69d45546f3ff3b02a12",
+      "bytes": 14239
+    },
+    "57-magic-streamout/magic-streamout.log": {
+      "sha256_raw": "660ba7a56084cd3ae443d22c9e5e7b27d55964e1b9fa3c061e12e44b0ddf2e40",
+      "bytes": 16434
+    },
+    "58-klayout-streamout/state_in.json": {
+      "sha256_raw": "42a844b6dc28f14106f12fd7cb9ebe60afe7be56a0eab69d45546f3ff3b02a12",
+      "bytes": 14239
+    },
+    "58-klayout-streamout/state_out.json": {
+      "sha256_raw": "b4e5967ca3365ca0e0cf0c225fc3a18b56462ab328da8d82b7abe6f50e63d16f",
+      "bytes": 14561
+    },
+    "58-klayout-streamout/klayout-streamout.log": {
+      "sha256_raw": "70710c82bd05179427e078d9d4b3253dd87f41114851f6a1a025f7721416a729",
+      "bytes": 384
+    },
+    "59-klayout-render/state_in.json": {
+      "sha256_raw": "b4e5967ca3365ca0e0cf0c225fc3a18b56462ab328da8d82b7abe6f50e63d16f",
+      "bytes": 14561
+    },
+    "59-klayout-render/state_out.json": {
+      "sha256_raw": "358857db91433913be7df65e1df43c30c2d1a69559536da994f0e7ea2ce3d8a1",
+      "bytes": 14714
+    },
+    "59-klayout-render/klayout-render.log": {
+      "sha256_raw": "3b48474a92811a790ab091d364f38194fd65080c8c9b1aadb0cda8db69ee98f9",
+      "bytes": 79
+    },
+    "60-magic-writelef/state_in.json": {
+      "sha256_raw": "358857db91433913be7df65e1df43c30c2d1a69559536da994f0e7ea2ce3d8a1",
+      "bytes": 14714
+    },
+    "60-magic-writelef/state_out.json": {
+      "sha256_raw": "02de612e46cac534393a39be338ff9f207ed8df0859f17809b30cbf366569efe",
+      "bytes": 14864
+    },
+    "60-magic-writelef/magic-writelef.log": {
+      "sha256_raw": "6567cf0a4fee8678df8dd43f3fc9c732967a3c851543ae00145256d54abd63ed",
+      "bytes": 9661
+    },
+    "61-odb-checkdesignantennaproperties/state_in.json": {
+      "sha256_raw": "02de612e46cac534393a39be338ff9f207ed8df0859f17809b30cbf366569efe",
+      "bytes": 14864
+    },
+    "61-odb-checkdesignantennaproperties/state_out.json": {
+      "sha256_raw": "62a011fc79a9fd5c9bddc8bbbafd9ba990fb1d2e0c1321fc25085542b6143971",
+      "bytes": 14864
+    },
+    "61-odb-checkdesignantennaproperties/odb-checkdesignantennaproperties.log": {
+      "sha256_raw": "31e63414f67f8395dcc39c962ad635eae2fa38becbede454de3bf4ab1c60b406",
+      "bytes": 1234
+    },
+    "62-magic-drc/state_in.json": {
+      "sha256_raw": "62a011fc79a9fd5c9bddc8bbbafd9ba990fb1d2e0c1321fc25085542b6143971",
+      "bytes": 14864
+    },
+    "62-magic-drc/state_out.json": {
+      "sha256_raw": "cb158abcf7ff47dbb115eba771e2e2239d670bbca762fd842f678ab7ab45a767",
+      "bytes": 14902
+    },
+    "62-magic-drc/magic-drc.log": {
+      "sha256_raw": "58815ce619807dde2a94c3fd13bc53c093401f3f8eeb410d534c08dab37a9999",
+      "bytes": 4617
+    },
+    "63-checker-magicdrc/state_in.json": {
+      "sha256_raw": "cb158abcf7ff47dbb115eba771e2e2239d670bbca762fd842f678ab7ab45a767",
+      "bytes": 14902
+    },
+    "63-checker-magicdrc/state_out.json": {
+      "sha256_raw": "cb158abcf7ff47dbb115eba771e2e2239d670bbca762fd842f678ab7ab45a767",
+      "bytes": 14902
+    },
+    "64-magic-spiceextraction/state_in.json": {
+      "sha256_raw": "cb158abcf7ff47dbb115eba771e2e2239d670bbca762fd842f678ab7ab45a767",
+      "bytes": 14902
+    },
+    "64-magic-spiceextraction/state_out.json": {
+      "sha256_raw": "6ba659dce0dbfa9ad7b12521d0eb3841319920736c8347c1b2b778237a1ed7ae",
+      "bytes": 15107
+    },
+    "64-magic-spiceextraction/magic-spiceextraction.log": {
+      "sha256_raw": "c17520f14b665b024d147de2c30808307cdb4b9ec9e85fd29bc5aaa2baf5c8f5",
+      "bytes": 15858
+    },
+    "65-checker-illegaloverlap/state_in.json": {
+      "sha256_raw": "6ba659dce0dbfa9ad7b12521d0eb3841319920736c8347c1b2b778237a1ed7ae",
+      "bytes": 15107
+    },
+    "65-checker-illegaloverlap/state_out.json": {
+      "sha256_raw": "6ba659dce0dbfa9ad7b12521d0eb3841319920736c8347c1b2b778237a1ed7ae",
+      "bytes": 15107
+    },
+    "66-netgen-lvs/state_in.json": {
+      "sha256_raw": "6ba659dce0dbfa9ad7b12521d0eb3841319920736c8347c1b2b778237a1ed7ae",
+      "bytes": 15107
+    },
+    "66-netgen-lvs/state_out.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "66-netgen-lvs/netgen-lvs.log": {
+      "sha256_raw": "ec885e164a91a26bd794c69b0c25d7274ec57c2af86b0df0be6042ba8e3de591",
+      "bytes": 49501
+    },
+    "67-checker-lvs/state_in.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "67-checker-lvs/state_out.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "68-checker-setupviolations/state_in.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "69-checker-holdviolations/state_in.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "69-checker-holdviolations/state_out.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "70-checker-maxslewviolations/state_in.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "70-checker-maxslewviolations/state_out.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "71-checker-maxcapviolations/state_in.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "71-checker-maxcapviolations/state_out.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "72-misc-reportmanufacturability/state_in.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "72-misc-reportmanufacturability/state_out.json": {
+      "sha256_raw": "8d0b1948500f311f73cc2405bfb56cb9bb29bdc96c10e4afe4090c2a3d4590bb",
+      "bytes": 15436
+    },
+    "final/metrics.json": {
+      "sha256_raw": "2f4ac3b7e6ece36920f63c69e05a255ba9dc1828420aa08cc966f707890b52fc",
+      "bytes": 10862
+    }
+  },
+  "unavailable_reasons": {
+    "measurements.klayout_drc": "metric_not_present"
+  },
+  "renderer_sha256_raw": "87e85583285edf2866fe31e02535834a309dd5debbad1dbdd22b8108f696fea7",
+  "limitations": [
+    "Physical extraction is a separate scope from nominal mapping; no comparison with the nominal 10% mapped-area cap.",
+    "Intermediate metrics remain intermediate; extraction alone makes no physical qualification decision.",
+    "Absent metrics are unavailable, never substituted with zero."
+  ],
+  "shared_plotting_helper_sha256_raw": "0d72fb97f69fe4374634927a441f7b0320ccf72b330719d1ae3db44d1d34d689",
+  "metrics": [
+    {
+      "key": "setup_wns_ns",
+      "label": "Setup worst negative slack",
+      "units": "ns",
+      "values": {
+        "nom_fast_1p32V_m40C": -0.5328040381921172,
+        "nom_typ_1p20V_25C": -9.764564544427186,
+        "nom_slow_1p08V_125C": -26.75138053461459
+      },
+      "zero_reference": true
+    },
+    {
+      "key": "setup_tns_ns",
+      "label": "Setup total negative slack",
+      "units": "ns",
+      "values": {
+        "nom_fast_1p32V_m40C": -53.6000201616507,
+        "nom_typ_1p20V_25C": -1859.0249581473663,
+        "nom_slow_1p08V_125C": -5172.522524704961
+      },
+      "zero_reference": true
+    },
+    {
+      "key": "hold_wns_ns",
+      "label": "Hold worst negative slack",
+      "units": "ns",
+      "values": {
+        "nom_fast_1p32V_m40C": 0,
+        "nom_typ_1p20V_25C": 0,
+        "nom_slow_1p08V_125C": 0
+      },
+      "zero_reference": true
+    },
+    {
+      "key": "hold_tns_ns",
+      "label": "Hold total negative slack",
+      "units": "ns",
+      "values": {
+        "nom_fast_1p32V_m40C": 0,
+        "nom_typ_1p20V_25C": 0,
+        "nom_slow_1p08V_125C": 0
+      },
+      "zero_reference": true
+    }
+  ],
+  "output_files_sha256_raw": {
+    "physical_timing.svg": "66099e6454befcf722a6c69f9f0a093676dee508c3d9be3ce1c92b9d189bac31",
+    "physical_timing.png": "4c739422d8afe08caad730af03fb1e28efa61928741e49ae2afc75acce5bc9c7"
+  }
+}
