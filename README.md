@@ -19,7 +19,8 @@ The [first diagnosed revision](https://github.com/wellitsabhinav/MOTIF-Protocol-
 completed routing and generated identified GDS, but failed setup timing at the
 fixed 6×4/20 ns target. Its [unqualified physical views](docs/demo/figures/physical/attempt_2/identity.json)
 and [negative timing evidence](docs/research/v3_temporal_qualification/physical_attempt_2_diagnosis.md)
-are retained. One final timing-mapping revision is diagnosed before its setting changes.
+are retained. The [final timing-mapping attempt](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703)
+is running at source `5dbf3ab`; all three permitted attempts are used.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 

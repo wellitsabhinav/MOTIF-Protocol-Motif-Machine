@@ -8,8 +8,9 @@ is frozen. The independently selected LIN break/sync prefix passes its 34-case
 unseen logical gate without semantic changes. The initial physical attempt ended
 cancelled without published physical archives. The first diagnosed revision
 completed routing and GDS generation but failed setup timing at all three
-measured corners. A final mapping revision is diagnosed before its setting
-changes. Physical qualification remains incomplete. Logical generalization and cost qualification
+measured corners. The final mapping revision is running after its diagnosis,
+settings, immutable intent and green source gates. Physical qualification remains
+incomplete. Logical generalization and cost qualification
 do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
@@ -319,6 +320,21 @@ skipped official gates. [Attempt 2 gate result](../../../experiments/temporal_qu
 [diagnosis and final revision rationale](physical_attempt_2_diagnosis.md),
 [diagnosis before settings](../../../experiments/temporal_qualification/physical/attempt_3_diagnosis.json).
 
+The final attempt runs at source `5dbf3abf11f61a8e6bd26cc5f328999190f12859`:
+`SYNTH_STRATEGY = 'DELAY 0'` and existing slow-corner library selection.
+Diagnosis commit `ce37eba` precedes the settings commit; immutable intent commit
+`69d9409` precedes dispatch. Exact source CI `38468562163` and unseen gate
+`38468561995` are green. Approved helper `38470339854` launched official run
+`38470361703` at `2026-10-13T21:24:29Z`; its downloaded API-response archive
+matches the published digest and actual dispatch. All three allowed attempts
+are now used, with zero further setting revisions available. Frozen semantics,
+6×4, 20 ns, tool pins, margins and acceptance gates remain unchanged. No outcome
+is claimed while the final run is active.
+[Final immutable intent](../../../experiments/temporal_qualification/physical/attempt_3_intent.json),
+[actual dispatch](../../../experiments/temporal_qualification/physical/attempt_3_dispatch.json),
+[verified API receipt](../../../experiments/temporal_qualification/physical/attempt_3_dispatch_api_receipt.json),
+[final official run](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703).
+
 A separately identified read-only snapshot confirms OpenROAD receives argument
 `4` and placement uses target density `0.4500`. The initial completed log is
 also preserved in the snapshot CI artifact and matches the retained terminal
@@ -491,13 +507,12 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Run the final diagnosed mapping revision at 6×4 and 20 ns after its diagnosis,
-settings and immutable intent are committed in order. Attempt 2 completes
-routing but fails setup; its deep mapped control paths motivate a timing
-strategy and existing slow-library selection. These remain hypotheses, with
-no predicted closure. The qualified unseen PR has merged. One further
-flow-setting revision remains, permitting attempt 3 only. Preserve its outcome
-and stop after any remaining failure; retain unavailable metrics as unavailable
-and complete physical classification and reached demonstrations without
-changing frozen semantics or the selected oracle.
+Collect the final diagnosed mapping attempt at 6×4 and 20 ns. Its diagnosis,
+settings and immutable intent were committed in order, and its exact source
+passed CI before dispatch. Attempt 2's deep mapped control paths motivate the
+timing strategy and existing slow-library selection; these remain hypotheses,
+with no predicted closure. All three allowed attempts are now used. Preserve
+the final outcome and stop after any remaining failure; retain unavailable
+metrics as unavailable and complete physical classification and reached
+demonstrations without changing frozen semantics or the selected oracle.
 [Stop conditions](preregistration.json).
