@@ -5,8 +5,9 @@
 The logical and local matched-cost qualification gates pass. V3 maps to
 210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
 is frozen. The independently selected LIN break/sync prefix passes its 34-case
-unseen logical gate without semantic changes. Physical qualification remains
-in progress in this interim report. Logical generalization and cost qualification
+unseen logical gate without semantic changes. The initial physical attempt ended
+cancelled without published physical archives. Physical qualification remains
+incomplete while diagnosed flow revisions are prepared. Logical generalization and cost qualification
 do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
@@ -256,17 +257,28 @@ autobaud, full LIN frames, analog compliance or physical closure.
 
 ## P. Physical qualification
 
-The initial v3 attempt is running on merged source
+The initial v3 attempt ran on merged source
 `5467fd4d15a18dda9bc58a93bb3182b03629aa4b`, after green reviewed PR #12. Its
 immutable intent was committed before dispatch, with the original separately
-identified physical inputs at 6×4 and 20 ns. No setting revision has been used.
-Routed-netlist tests, official precheck, artifact correspondence, DRC/LVS and
-antenna results are not yet available. Setup/hold WNS/TNS, utilization,
-wirelength, vias and overflow remain unavailable until actual identified
-reports arrive. At most two diagnosed setting revisions may follow; frozen
-semantics remain fixed. [Initial intent](../../../experiments/temporal_qualification/physical/attempt_1_intent.json),
+identified physical inputs at 6×4 and 20 ns. Its GDS job ended cancelled after
+6 h 27 s; the log does not establish the cancellation cause. Official precheck
+and routed-netlist tests were skipped, and only a documentation PDF was
+published. No final physical archive, corner STA, DRC, LVS or layout view is
+available. The attempt is **not physically qualified**.
+
+The completed log records CTS entering the next stage after 18.995 s,
+post-CTS repair after 12,869.929 s, and global routing after 965.350 s.
+Global overflow was 10,846. Detailed routing last reported 7,628 violations at
+80% of an optimization iteration before cancellation; this is partial progress,
+not final DRC. The actual log and intermediate observations retain their
+source and raw-byte identity. At most two diagnosed setting revisions may
+follow; frozen semantics, allocation and clock remain fixed.
+[Terminal result](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
+[partial observations](../../../experiments/temporal_qualification/physical/attempt_1_log_observations.json),
+[diagnosis](physical_attempt_1_diagnosis.md),
+[Initial intent](../../../experiments/temporal_qualification/physical/attempt_1_intent.json),
 [dispatch receipt](../../../experiments/temporal_qualification/physical/attempt_1_dispatch.json),
-[running physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124),
+[completed physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124),
 [flow identity](../../../flow-lock.json),
 [physical restriction](preregistration.json).
 
@@ -274,8 +286,15 @@ semantics remain fixed. [Initial intent](../../../experiments/temporal_qualifica
 
 Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this
 matched mapping, principally additional combinational logic: +768 combinational
-cells versus +18 sequential cells. No v3 power, placed timing, routed area or maximum frequency is
-available. Earlier routed results retain their earlier source scope and cannot
+cells versus +18 sequential cells. Initial physical logs report intermediate
+20,115 cells and 265,486.64 µm² after antenna insertion. Unlabelled resizer
+setup progress still had WNS −6.745 ns and TNS −1,247.8 ns with 198 violating
+endpoints; its later hold table had WNS +0.100 ns and TNS 0.000 ns. These are
+estimated intermediate observations with individual corner attribution
+unavailable, not final extracted STA. No v3 power,
+final routed area or maximum frequency is available. No matched v2 physical
+baseline exists for these intermediate values; they cannot replace the
+preregistered nominal mapping comparison. Earlier routed results retain their earlier source scope and cannot
 qualify v3. [Historical physical scope](../../physical.md).
 
 ## R. Demonstration artifacts
@@ -290,6 +309,12 @@ validation exits nonzero. Selected editable and rendered artifacts are committed
 full traces, caches, simulator outputs and netlists remain ignored build outputs
 and reproducible CI artifacts. [Demonstration inventory](../../demo/demonstrations.json),
 [guide](../../GETTING_STARTED.md).
+
+The downloaded [CI plain HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38385913225/artifacts/11806692626)
+was checked against its published ZIP digest and manifest: all 464 listed files
+match, every local HTML link resolves, and all eleven demonstrations pass.
+This package identifies source head `052beae`; it predates the terminal physical
+diagnosis. [Delivery verification](../../../experiments/temporal_qualification/delivery.json).
 
 ## S. Architecture diagrams
 
@@ -335,7 +360,7 @@ netlist and library hashes and does not rerun synthesis.
 
 ## V. GDS/floorplan/routing visuals
 
-Unavailable while the initial identified v3 physical workflow is running. No
+Unavailable because the initial identified v3 workflow published no physical archive. No
 historical layout is presented as a v3 result and no physical view is fabricated.
 [Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
 
@@ -349,13 +374,18 @@ counterexamples and the diagnosed CI lowering failure are also retained.
 [comparison evidence](../../../experiments/temporal_qualification/v2_composition_baseline.json),
 [correspondence record](implementation_correspondence.md).
 
+The initial physical attempt is retained as an unsuccessful cancelled run with
+remaining setup violations, routing congestion and unavailable final gates.
+[Physical negative](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
+[diagnosed partial evidence](physical_attempt_1_diagnosis.md).
+
 ## X. Evidence strength
 
 Established facts are commit order, immutable bytes and actual interfaces.
 Measured results are independent bounded wire-oracle outcomes, exact
 model/RTL comparisons, bounded properties and source-identified accounting.
 Interpretation: tagged WAIT cleanly separates sampled persistence from timer
-sampling and repairs the known training failures. Hypothesis: the responsibility
+sampling and repairs the known training failures. Measured result: the responsibility
 composes with the one selected LIN prefix under its bounded electrical contract.
 Broader composition remains a hypothesis. Unverified possibilities include
 debounce, wake-up detection, unsampled analog behavior, complete protocol
@@ -372,9 +402,11 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Collect the initial pinned CMOS5L physical attempt at 6×4 and 20 ns after its
-official workflow completes. The qualified unseen PR has merged. At most two
-diagnosed flow-setting revisions may follow. Preserve failed attempts, retain unavailable metrics as
+Evaluate a diagnosed revision of the completed initial CMOS5L attempt at 6×4
+and 20 ns. Explicit OpenROAD threads address the invalid default argument;
+lower placement density tests the observed congestion. Neither change is a
+claim of closure. The qualified unseen PR has merged. At most two diagnosed
+flow-setting revisions may follow. Preserve failed attempts, retain unavailable metrics as
 unavailable, and complete physical classification and reached demonstrations
 without changing frozen semantics or the selected oracle.
 [Stop conditions](preregistration.json).

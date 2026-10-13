@@ -54,7 +54,7 @@ observations, not final area or the separately qualified matched nominal
 synthesis cost. They do not establish post-route timing, congestion, DRC, LVS,
 antenna status or functional qualification.
 
-The inspected [project configuration](../../../src/config.json) retains
+The inspected [initial source configuration](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/blob/5467fd4d15a18dda9bc58a93bb3182b03629aa4b/src/config.json) retains
 `CLOCK_PERIOD = 20`, `RUN_CTS = 1` and target placement density 60. It does not
 set `OPENROAD_THREADS`. The [workflow](../../../.github/workflows/gds.yml) and
 [lock](../../../flow-lock.json) retain the official action at

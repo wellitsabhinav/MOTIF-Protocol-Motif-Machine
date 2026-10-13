@@ -1,0 +1,62 @@
+{
+  "schema_version": 3,
+  "previous_attempt": 1,
+  "failure": "Official GDS job cancelled before completion; precheck and routed tests skipped; no physical archive published",
+  "workflow_run_id": 38349981124,
+  "source_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+  "cancellation_cause": null,
+  "result_sha256_lf": "b9a74e86016ff1273cfdc6c3ca550e359201ec829faf6162fef340498f904f6b",
+  "log_sha256_raw": "7e27c87dca1bbe559a3cfa6974aeb688cb33ee575717b0382afdefe8aaf3ece9",
+  "observations_sha256_lf": "fa2767e9d116e5e35b01907e7363b2c0f1d67bc40744d3e45763524c0013d96d",
+  "excerpt_sha256_lf": "d8be6917360c44a290a7b0b681337f7a559e8996c4204be0465675a734158b9f",
+  "permitted_setting_changes": [
+    {
+      "setting": "OPENROAD_THREADS",
+      "before": null,
+      "after": 4,
+      "before_role": "unset; pinned command constructor supplies invalid string None",
+      "reason": "Use a valid integer thread argument; pinned parser source predicts the invalid default retains initial count one",
+      "hypothesis": "Available parallel work may complete faster; actual effective thread count and speedup were not measured"
+    },
+    {
+      "setting": "PL_TARGET_DENSITY_PCT",
+      "before": 60,
+      "after": 45,
+      "reason": "Global routing reports overflow 10846 and detailed routing remains incomplete with partial violations",
+      "feasibility_observation": "Initial GPL utilization 26.909 percent is below 45 percent in the fixed 902417.242 um2 core",
+      "hypothesis": "More spread placement may reduce congestion; timing, wirelength and closure may instead worsen"
+    }
+  ],
+  "remaining_setup_negative": {
+    "wns_ns": -6.745,
+    "tns_ns": -1247.8,
+    "violating_endpoints": 198,
+    "corner": null,
+    "corners_loaded": [
+      "nom_fast_1p32V_m40C",
+      "nom_slow_1p08V_125C",
+      "nom_typ_1p20V_25C"
+    ],
+    "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+  },
+  "unchanged": [
+    "all frozen RTL/model/frontend/timer/vocabulary/state semantics",
+    "6x4 allocation",
+    "20 ns clock target",
+    "pinned workflow/tool/library identities",
+    "hold margins",
+    "all functional and physical acceptance gates"
+  ],
+  "combined_revision_scope": "One diagnosed resource/congestion revision; effects cannot be causally separated by this comparison",
+  "maximum_attempts": 3,
+  "attempts_completed": 1,
+  "revisions_used": 0,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "rationale": "docs/research/v3_temporal_qualification/physical_attempt_1_diagnosis.md",
+  "status": "diagnosed_before_flow_setting_change",
+  "physical_qualified": false
+}

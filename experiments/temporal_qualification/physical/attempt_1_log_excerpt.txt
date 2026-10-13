@@ -1,0 +1,162 @@
+819: 2026-10-13T05:12:01.0803408Z [05:12:01] VERBOSE  Running 'Verilator.Lint' at                     step.py:1138
+830: 2026-10-13T05:12:01.4660640Z [05:12:01] VERBOSE  Running 'Checker.LintTimingConstructs' at       step.py:1138
+834: 2026-10-13T05:12:01.4715640Z [05:12:01] VERBOSE  Running 'Checker.LintErrors' at                 step.py:1138
+838: 2026-10-13T05:12:01.4771355Z [05:12:01] VERBOSE  Running 'Checker.LintWarnings' at               step.py:1138
+842: 2026-10-13T05:12:01.4832431Z [05:12:01] VERBOSE  Running 'Yosys.JsonHeader' at                   step.py:1138
+7838: 2026-10-13T05:12:05.4417045Z [05:12:05] VERBOSE  Running 'Yosys.Synthesis' at                    step.py:1138
+37021: 2026-10-13T05:17:52.3555371Z [05:17:52] VERBOSE  Running 'Checker.YosysUnmappedCells' at         step.py:1138
+37025: 2026-10-13T05:17:52.3609658Z [05:17:52] VERBOSE  Running 'Checker.YosysSynthChecks' at           step.py:1138
+37029: 2026-10-13T05:17:52.3664912Z [05:17:52] VERBOSE  Running 'Checker.NetlistAssignStatements' at    step.py:1138
+37033: 2026-10-13T05:17:52.4024343Z [05:17:52] VERBOSE  Running 'OpenROAD.CheckSDCFiles' at             step.py:1138
+37040: 2026-10-13T05:17:52.4093109Z [05:17:52] VERBOSE  Running 'OpenROAD.CheckMacroInstances' at       step.py:1138
+37044: 2026-10-13T05:17:52.4151283Z [05:17:52] VERBOSE  Running 'OpenROAD.STAPrePNR' at                 step.py:1138
+37080: 2026-10-13T05:18:20.9361850Z [05:18:20] VERBOSE  Running 'OpenROAD.Floorplan' at                 step.py:1138
+37082: 2026-10-13T05:18:20.9393935Z [05:18:20] VERBOSE  OpenROAD will use None threads               openroad.py:520
+37133: 2026-10-13T05:18:21.4018279Z [INFO IFP-0102] Core area:                       902417.242 um^2
+37153: 2026-10-13T05:18:21.5856028Z   Total                                 15623  206462.39
+37170: 2026-10-13T05:18:21.9524183Z [05:18:21] VERBOSE  Running 'OpenROAD.DumpRCValues' at              step.py:1138
+37172: 2026-10-13T05:18:21.9552862Z [05:18:21] VERBOSE  OpenROAD will use None threads               openroad.py:520
+37214: 2026-10-13T05:18:22.4655006Z [05:18:22] VERBOSE  Running 'Odb.CheckMacroAntennaProperties' at    step.py:1138
+37220: 2026-10-13T05:18:22.4717262Z [05:18:22] VERBOSE  Running 'Odb.SetPowerConnections' at            step.py:1138
+37226: 2026-10-13T05:18:23.3844897Z [05:18:23] VERBOSE  Running 'Odb.ManualMacroPlacement' at           step.py:1138
+37231: 2026-10-13T05:18:23.3908704Z [05:18:23] VERBOSE  Running 'OpenROAD.CutRows' at                   step.py:1138
+37233: 2026-10-13T05:18:23.3937138Z [05:18:23] VERBOSE  OpenROAD will use None threads               openroad.py:520
+37269: 2026-10-13T05:18:23.7880118Z   Total                                 15623  206462.39
+37277: 2026-10-13T05:18:24.2051974Z [05:18:24] VERBOSE  Running 'OpenROAD.TapEndcapInsertion' at        step.py:1138
+37279: 2026-10-13T05:18:24.2082226Z [05:18:24] VERBOSE  OpenROAD will use None threads               openroad.py:520
+37315: 2026-10-13T05:18:24.6089155Z   Total                                 15623  206462.39
+37332: 2026-10-13T05:18:25.0204733Z [05:18:25] VERBOSE  Running 'Odb.AddPDNObstructions' at             step.py:1138
+37337: 2026-10-13T05:18:25.0270184Z [05:18:25] VERBOSE  Running 'OpenROAD.GeneratePDN' at               step.py:1138
+37344: 2026-10-13T05:18:25.0314831Z [05:18:25] VERBOSE  OpenROAD will use None threads               openroad.py:520
+37383: 2026-10-13T05:18:25.5162705Z   Total                                 15623  206462.39
+37402: 2026-10-13T05:18:26.2453398Z [05:18:26] VERBOSE  Running 'Odb.RemovePDNObstructions' at          step.py:1138
+37407: 2026-10-13T05:18:26.2512423Z [05:18:26] VERBOSE  Running 'Odb.AddRoutingObstructions' at         step.py:1138
+37412: 2026-10-13T05:18:26.2576461Z [05:18:26] VERBOSE  Running 'OpenROAD.GlobalPlacementSkipIO' at     step.py:1138
+37420: 2026-10-13T05:18:26.2645696Z [05:18:26] VERBOSE  Running 'OpenROAD.IOPlacement' at               step.py:1138
+37428: 2026-10-13T05:18:26.2709162Z [05:18:26] VERBOSE  Running 'Odb.CustomIOPlacement' at              step.py:1138
+37433: 2026-10-13T05:18:26.2770077Z [05:18:26] VERBOSE  Running 'Odb.ApplyDEFTemplate' at               step.py:1138
+37567: 2026-10-13T05:18:27.0890875Z [05:18:27] VERBOSE  Running 'OpenROAD.GlobalPlacement' at           step.py:1138
+37569: 2026-10-13T05:18:27.0920048Z [05:18:27] VERBOSE  OpenROAD will use None threads               openroad.py:520
+37617: 2026-10-13T05:18:27.4290641Z [INFO GPL-0016] Core area:                  902417.242 um^2
+37622: 2026-10-13T05:18:27.4326674Z [INFO GPL-0019] Utilization:                    26.909 %
+37636: 2026-10-13T05:18:27.9770974Z [INFO GPL-0023] Placement target density:       0.6000
+37706: 2026-10-13T05:18:32.2957017Z [INFO GPL-0052] Placement target density:       0.6000
+37740: 2026-10-13T05:18:33.0155511Z [INFO GPL-0052] Placement target density:       0.6000
+37774: 2026-10-13T05:18:33.7075231Z [INFO GPL-0052] Placement target density:       0.6000
+37808: 2026-10-13T05:18:34.3777609Z [INFO GPL-0052] Placement target density:       0.6000
+37836: 2026-10-13T05:18:34.5644384Z [INFO GPL-0052] Placement target density:       0.6000
+37871: 2026-10-13T05:18:35.1791018Z [INFO GPL-0052] Placement target density:       0.6230
+37906: 2026-10-13T05:18:35.8070450Z [INFO GPL-0052] Placement target density:       0.6349
+37940: 2026-10-13T05:18:36.4135748Z [INFO GPL-0052] Placement target density:       0.6446
+37975: 2026-10-13T05:18:37.0226637Z [INFO GPL-0052] Placement target density:       0.6543
+38009: 2026-10-13T05:18:37.6118991Z [INFO GPL-0052] Placement target density:       0.6656
+38043: 2026-10-13T05:18:38.2069506Z [INFO GPL-0052] Placement target density:       0.6750
+38078: 2026-10-13T05:18:38.8103171Z [INFO GPL-0052] Placement target density:       0.6842
+38112: 2026-10-13T05:18:39.4152059Z [INFO GPL-0052] Placement target density:       0.6928
+38146: 2026-10-13T05:18:40.0076318Z [INFO GPL-0052] Placement target density:       0.7026
+38180: 2026-10-13T05:18:40.5883533Z [INFO GPL-0052] Placement target density:       0.7115
+38214: 2026-10-13T05:18:41.1688048Z [INFO GPL-0052] Placement target density:       0.7202
+38248: 2026-10-13T05:18:41.7439360Z [INFO GPL-0052] Placement target density:       0.7303
+38282: 2026-10-13T05:18:42.3209239Z [INFO GPL-0052] Placement target density:       0.7398
+38338: 2026-10-13T05:18:44.2624257Z   Total                                 15623  206462.39
+38355: 2026-10-13T05:18:44.7817068Z [05:18:44] VERBOSE  Running 'Odb.WriteVerilogHeader' at             step.py:1138
+38361: 2026-10-13T05:18:45.5938080Z [05:18:45] VERBOSE  Running 'Checker.PowerGridViolations' at        step.py:1138
+38367: 2026-10-13T05:18:45.6002679Z [05:18:45] VERBOSE  Running 'OpenROAD.STAMidPNR' at                 step.py:1138
+38369: 2026-10-13T05:18:45.6031572Z [05:18:45] VERBOSE  OpenROAD will use None threads               openroad.py:520
+38396: 2026-10-13T05:19:22.5731088Z [05:19:22] VERBOSE  Running 'OpenROAD.RepairDesignPostGPL' at       step.py:1138
+38398: 2026-10-13T05:19:22.5761100Z [05:19:22] VERBOSE  OpenROAD will use None threads               openroad.py:520
+38489: 2026-10-13T05:19:35.3708812Z   Total                                 17928  223376.23
+38506: 2026-10-13T05:19:35.7395598Z [05:19:35] VERBOSE  Running 'Odb.ManualGlobalPlacement' at          step.py:1138
+38511: 2026-10-13T05:19:35.7458148Z [05:19:35] VERBOSE  Running 'OpenROAD.DetailedPlacement' at         step.py:1138
+38513: 2026-10-13T05:19:35.7487459Z [05:19:35] VERBOSE  OpenROAD will use None threads               openroad.py:520
+38563: 2026-10-13T05:19:36.5594617Z   Total                                 17928  223376.23
+38580: 2026-10-13T05:19:37.0688081Z [05:19:37] VERBOSE  Running 'OpenROAD.CTS' at                       step.py:1138
+38582: 2026-10-13T05:19:37.0718977Z [05:19:37] VERBOSE  OpenROAD will use None threads               openroad.py:520
+38709: 2026-10-13T05:19:53.6726383Z   Total                                 18168  228186.20
+38752: 2026-10-13T05:19:55.7029288Z   Total                                 18168  228186.20
+38769: 2026-10-13T05:19:56.0636026Z [05:19:56] VERBOSE  Running 'OpenROAD.STAMidPNR-1' at               step.py:1138
+38771: 2026-10-13T05:19:56.0665376Z [05:19:56] VERBOSE  OpenROAD will use None threads               openroad.py:520
+38798: 2026-10-13T05:20:20.7782238Z [05:20:20] VERBOSE  Running 'OpenROAD.ResizerTimingPostCTS' at      step.py:1138
+38800: 2026-10-13T05:20:20.7812366Z [05:20:20] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40043: 2026-10-13T08:41:08.1770478Z     final |      17 |    1756 |      614 |      0 |   387 |    +7.2% |   -6.745
+40044: 2026-10-13T08:41:08.1771220Z |    -1247.8 |    198 | _27025_/D
+40305: 2026-10-13T08:54:47.8373169Z     final |       0 |    1246 |            0 |    +8.3% |   0.100 |   0.000 |
+40336: 2026-10-13T08:54:50.3050467Z   Total                                 20013  264931.43
+40353: 2026-10-13T08:54:50.7075516Z [08:54:50] VERBOSE  Running 'OpenROAD.STAMidPNR-2' at               step.py:1138
+40355: 2026-10-13T08:54:50.7103699Z [08:54:50] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40382: 2026-10-13T08:55:18.4663199Z [08:55:18] VERBOSE  Running 'OpenROAD.GlobalRouting' at             step.py:1138
+40384: 2026-10-13T08:55:18.4692615Z [08:55:18] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40603: 2026-10-13T09:11:21.7132969Z Metal1               0             0            0.00%             0 /  0 /  0
+40604: 2026-10-13T09:11:21.7139901Z Metal2          159079        134768           84.72%             1 /  2 / 49
+40605: 2026-10-13T09:11:21.7147397Z Metal3          194422        181841           93.53%             8 /  1 / 10691
+40606: 2026-10-13T09:11:21.7154896Z Metal4          156558         66751           42.64%             1 /  0 / 106
+40609: 2026-10-13T09:11:21.7168689Z Total           510059        383360           75.16%            10 /  3 / 10846
+40611: 2026-10-13T09:11:21.7181200Z [INFO GRT-0018] Total wirelength: 3769279 um
+40629: 2026-10-13T09:11:23.3566240Z   Total                                 20013  264931.43
+40637: 2026-10-13T09:11:23.8166289Z [09:11:23] VERBOSE  Running 'OpenROAD.CheckAntennas' at             step.py:1138
+40639: 2026-10-13T09:11:23.8196214Z [09:11:23] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40780: 2026-10-13T09:11:55.8690342Z [09:11:55] VERBOSE  Running 'Odb.DiodesOnPorts' at                  step.py:1138
+40789: 2026-10-13T09:11:55.8800813Z [09:11:55] VERBOSE  Running 'OpenROAD.RepairAntennas' at            step.py:1138
+40792: 2026-10-13T09:11:55.8846035Z [09:11:55] VERBOSE  Running 'OpenROAD.DiodeInsertion' at            step.py:1138
+40795: 2026-10-13T09:11:55.8875564Z [09:11:55] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40823: 2026-10-13T09:12:28.2534274Z [INFO GRT-0012] Found 93 antenna violations.
+40825: 2026-10-13T09:12:59.3084536Z [INFO GRT-0012] Found 66 antenna violations.
+40827: 2026-10-13T09:13:22.9271500Z [INFO GRT-0012] Found 71 antenna violations.
+40829: 2026-10-13T09:13:44.9486289Z [INFO GRT-0012] Found 4 antenna violations.
+40831: 2026-10-13T09:13:45.6046442Z [INFO GRT-0012] Found 1 antenna violations.
+40833: 2026-10-13T09:13:46.1033283Z [INFO GRT-0012] Found 0 antenna violations.
+40847: 2026-10-13T09:13:47.3795804Z   Total                                 20115  265486.64
+40857: 2026-10-13T09:13:47.7696983Z [09:13:47] VERBOSE  Running 'OpenROAD.CheckAntennas' at             step.py:1138
+40860: 2026-10-13T09:13:47.7726905Z [09:13:47] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40893: 2026-10-13T09:14:14.1109348Z [09:14:14] VERBOSE  Running 'OpenROAD.STAMidPNR-3' at               step.py:1138
+40895: 2026-10-13T09:14:14.1138456Z [09:14:14] VERBOSE  OpenROAD will use None threads               openroad.py:520
+40923: 2026-10-13T09:14:42.6660525Z [09:14:42] VERBOSE  Running 'OpenROAD.DetailedRouting' at           step.py:1138
+40925: 2026-10-13T09:14:42.6691549Z [09:14:42] VERBOSE  OpenROAD will use None threads               openroad.py:520
+41104: 2026-10-13T09:19:41.2605912Z     Completing 10% with 0 violations.
+41106: 2026-10-13T09:23:40.4368182Z     Completing 20% with 0 violations.
+41108: 2026-10-13T09:26:20.3608810Z     Completing 30% with 7128 violations.
+41110: 2026-10-13T09:30:44.6117891Z     Completing 40% with 7128 violations.
+41112: 2026-10-13T09:34:52.4810454Z     Completing 50% with 7128 violations.
+41114: 2026-10-13T09:37:41.8262931Z     Completing 60% with 15387 violations.
+41116: 2026-10-13T09:42:04.8594874Z     Completing 70% with 15387 violations.
+41118: 2026-10-13T09:44:41.9375851Z     Completing 80% with 21774 violations.
+41120: 2026-10-13T09:49:26.8705184Z     Completing 90% with 21774 violations.
+41122: 2026-10-13T09:53:10.9175845Z     Completing 100% with 29091 violations.
+41124: 2026-10-13T09:53:12.0567084Z [INFO DRT-0199]   Number of violations = 36836.
+41133: 2026-10-13T09:53:12.0950880Z Total wire length = 2560773 um.
+41139: 2026-10-13T09:53:12.0975992Z Total number of vias = 204726.
+41153: 2026-10-13T09:55:15.3189613Z     Completing 10% with 36836 violations.
+41155: 2026-10-13T09:58:36.6541981Z     Completing 20% with 36836 violations.
+41157: 2026-10-13T10:00:36.2985172Z     Completing 30% with 33771 violations.
+41159: 2026-10-13T10:04:37.2476781Z     Completing 40% with 33771 violations.
+41161: 2026-10-13T10:08:47.2775449Z     Completing 50% with 33771 violations.
+41163: 2026-10-13T10:10:58.1283249Z     Completing 60% with 29740 violations.
+41165: 2026-10-13T10:14:23.3052023Z     Completing 70% with 29740 violations.
+41167: 2026-10-13T10:16:13.3371183Z     Completing 80% with 25553 violations.
+41169: 2026-10-13T10:20:21.8584978Z     Completing 90% with 25553 violations.
+41171: 2026-10-13T10:23:57.5753661Z     Completing 100% with 21444 violations.
+41173: 2026-10-13T10:23:58.7698795Z [INFO DRT-0199]   Number of violations = 21444.
+41180: 2026-10-13T10:23:58.8213317Z Total wire length = 2536822 um.
+41186: 2026-10-13T10:23:58.8249069Z Total number of vias = 203306.
+41200: 2026-10-13T10:25:48.7415689Z     Completing 10% with 21444 violations.
+41202: 2026-10-13T10:29:24.3470961Z     Completing 20% with 21444 violations.
+41204: 2026-10-13T10:31:11.6808395Z     Completing 30% with 20947 violations.
+41206: 2026-10-13T10:34:27.3877782Z     Completing 40% with 20947 violations.
+41208: 2026-10-13T10:38:25.7330624Z     Completing 50% with 20947 violations.
+41210: 2026-10-13T10:40:14.2797727Z     Completing 60% with 20574 violations.
+41212: 2026-10-13T10:43:29.7521473Z     Completing 70% with 20574 violations.
+41214: 2026-10-13T10:45:44.2301247Z     Completing 80% with 19426 violations.
+41216: 2026-10-13T10:49:12.9460906Z     Completing 90% with 19426 violations.
+41218: 2026-10-13T10:52:36.3349871Z     Completing 100% with 18716 violations.
+41220: 2026-10-13T10:52:37.5347182Z [INFO DRT-0199]   Number of violations = 18716.
+41227: 2026-10-13T10:52:37.5863189Z Total wire length = 2524953 um.
+41233: 2026-10-13T10:52:37.5902492Z Total number of vias = 201513.
+41247: 2026-10-13T10:53:47.8483777Z     Completing 10% with 18716 violations.
+41249: 2026-10-13T10:56:49.1197259Z     Completing 20% with 18716 violations.
+41251: 2026-10-13T10:57:51.2750693Z     Completing 30% with 15110 violations.
+41253: 2026-10-13T11:01:04.8813599Z     Completing 40% with 15110 violations.
+41255: 2026-10-13T11:03:01.4787491Z     Completing 50% with 15110 violations.
+41257: 2026-10-13T11:03:41.1410513Z     Completing 60% with 11176 violations.
+41259: 2026-10-13T11:06:36.9273567Z     Completing 70% with 11176 violations.
+41261: 2026-10-13T11:07:50.1692925Z     Completing 80% with 7628 violations.
+41263: 2026-10-13T11:10:07.4976074Z ##[error]The operation was canceled.

@@ -260,6 +260,27 @@ def test_next_intent_requires_actual_setting_change(revision):
         physical.intent(SOURCE, revision["diagnosis"])
 
 
+@pytest.mark.parametrize("changes", [
+    [{"setting": "PL_TARGET_DENSITY_PCT", "before": 59, "after": 61}],
+    [{"setting": "PL_TARGET_DENSITY_PCT", "before": 60, "after": 62}],
+    [{"setting": "OPENROAD_THREADS", "before": None, "after": 4}],
+    [{"setting": "PL_TARGET_DENSITY_PCT", "before": 60, "after": 61},
+     {"setting": "OPENROAD_THREADS", "before": None, "after": 4}],
+    [{"setting": "PL_TARGET_DENSITY_PCT", "before": 60, "after": 61}] * 2,
+])
+def test_next_intent_refuses_undeclared_or_misstated_setting_changes(revision, changes):
+    mutate_json(revision["diagnosis"], lambda data: data.update(permitted_setting_changes=changes))
+    with pytest.raises(ValueError, match="Actual flow setting changes differ"):
+        physical.intent(REVISION, revision["diagnosis"])
+
+
+@pytest.mark.parametrize("changes", ["PL_TARGET_DENSITY_PCT", ["PL_TARGET_DENSITY_PCT"], [{"setting": "PL_TARGET_DENSITY_PCT"}]])
+def test_next_intent_requires_structured_before_after_setting_changes(revision, changes):
+    mutate_json(revision["diagnosis"], lambda data: data.update(permitted_setting_changes=changes))
+    with pytest.raises(ValueError, match="enumerate setting names and before/after values"):
+        physical.intent(REVISION, revision["diagnosis"])
+
+
 def test_attempt_cap_refuses_a_fourth_intent(environment):
     for number in range(1, 4):
         write_json(environment["ledger"] / f"attempt_{number}_intent.json", environment["baseline"])

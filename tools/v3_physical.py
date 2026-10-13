@@ -91,6 +91,18 @@ def intent(source, diagnosis=None):
         prior = json.loads(existing[-1].read_text())
         if prior["physical_input_hashes_lf"]["src/config.json"] == data["physical_input_hashes_lf"]["src/config.json"]:
             raise ValueError("A new flow attempt must implement the diagnosed setting revision")
+        before = json.loads(committed(prior["source_sha"], "src/config.json"))
+        after = json.loads(committed(source, "src/config.json"))
+        changes = diagnosed["permitted_setting_changes"]
+        if (not isinstance(changes, list) or any(not isinstance(change, dict) or
+                not {"setting", "before", "after"}.issubset(change) for change in changes)):
+            raise ValueError("Flow revision must enumerate setting names and before/after values")
+        names = [change["setting"] for change in changes]
+        changed = {key for key in before.keys() | after.keys() if before.get(key) != after.get(key)}
+        if (any(not isinstance(name, str) for name in names) or len(set(names)) != len(names)
+                or set(names) != changed or any(before.get(change["setting"]) != change["before"]
+                or after.get(change["setting"]) != change["after"] for change in changes)):
+            raise ValueError("Actual flow setting changes differ from the recorded diagnosis")
     data.update(attempt=number, flow_setting_revision=number-1, semantic_changes=False,
                 status="prepared_before_dispatch", maximum_attempts=3)
     path = DIRECTORY / f"attempt_{number}_intent.json"

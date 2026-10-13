@@ -1,0 +1,82 @@
+{
+  "schema_version": 3,
+  "passed": true,
+  "kind": "downloaded_ci_plain_html_delivery",
+  "source_head_sha": "052beaec9716679a729ed31bf52537a35726f702",
+  "workflow_run_id": 38385913225,
+  "artifact_id": 11806692626,
+  "archive_sha256_raw": "961d8615dc345ceb1c05b8dd33246915eee92405b050161e3945b49fe75a84f2",
+  "manifest_sha256_raw": "1e4112627e789a83d0b4338c0ab9c5289a8d635c4739ff57bbf932f51038d8a6",
+  "checkout_commit": "46b5e848d6b093057a4b8362007a992c50429a98",
+  "checkout_commit_role": "Checkout ancestry; the per-file manifest identifies the packaged bytes",
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "files": 464,
+  "all_packaged_bytes_verified": true,
+  "all_local_html_links_resolve": true,
+  "demonstrations": [
+    {
+      "protocol": "i2c",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "microwire",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "interrupted_non_reset",
+      "passed": true
+    },
+    {
+      "protocol": "spi",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "uart",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "timed_stream",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "one_cycle_high_split",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "pending_sync_recovery",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "back_to_back",
+      "passed": true
+    }
+  ],
+  "public_unseen_receipt_sha256_lf": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+  "current_unseen_receipt_sha256_lf": "13c862b267af705c5d8434786e287223416a8b3bf98ff27b787f1ca8ea3ba319",
+  "workflow_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38385913225",
+  "artifact_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38385913225/artifacts/11806692626",
+  "scope": "HTML source/evidence publication and bounded simulation demonstrations; no physical closure claim"
+}

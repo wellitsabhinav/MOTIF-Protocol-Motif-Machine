@@ -13,7 +13,8 @@ I²C/Microwire regressions pass. Matched mapped area is 210,241.9746 µm²,
 [immutable freeze](experiments/temporal_qualification/frozen_v3_manifest.json)
 precedes independent unseen-workload selection. The selected LIN break/sync
 prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
-without changing frozen semantics. The initial pinned physical qualification run is in progress.
+without changing frozen semantics. The initial pinned physical run ended cancelled
+without a published physical archive; physical qualification remains incomplete.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
@@ -82,6 +83,11 @@ python -m tools.v3_delivery --output build/delivery/plain_html
 Open `build/delivery/plain_html/index.html`. The unseen CI workflow publishes
 the same identified HTML package; complete traces and physical outputs remain
 separate CI artifacts.
+
+The [verified CI HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38385913225/artifacts/11806692626)
+contains all eleven passing demonstrations and linked public sources. Its
+[download verification receipt](experiments/temporal_qualification/delivery.json)
+binds the archive, manifest, file inventory and resolved HTML links.
 
 ```sh
 python -m pytest -q
