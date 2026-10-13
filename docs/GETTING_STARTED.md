@@ -106,3 +106,12 @@ The v3 experiment may freeze only after its logical and cost gates pass. The uns
 Only an unseen logical pass makes the pinned Linux CMOS5L flow eligible. Physical reports and floorplan, placement, routing or GDS views must identify actual v3 artifacts. Until such artifacts exist, the demonstration package supplies no v3 physical image. The campaign retains a 6×4 allocation, 20 ns target and at most three diagnosed attempts; missing metrics remain unavailable.
 
 Full generated simulation and physical outputs stay outside Git. Concise source, results, trace excerpts and selected figures may be committed; large reproducible outputs belong in CI artifacts or releases.
+
+Read [v3 physical reproduction](v3_physical_reproduction.md) for exact attempt,
+archive, metric, routed-test and rendering commands. After the unseen traces
+have been recreated, `python -m tools.v3_delivery --output build/delivery/plain_html`
+validates all eleven demonstrations and creates an offline HTML package with
+linked editable sources, figures and concise evidence. Its manifest hashes
+every packaged file. Full raw traces, netlists and physical archives remain
+separately identified artifacts. The unseen CI workflow publishes this package
+under `motif-v3-plain-html-demonstration-package`.

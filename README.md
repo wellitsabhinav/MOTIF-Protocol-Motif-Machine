@@ -7,13 +7,13 @@ sixteen-entry table. An independent pad guardian controls final output enables.
 The **v3 temporal architecture is qualified and frozen**. Its
 tagged WAIT responsibility measures continuous synchronized RX levels
 or elapsed delays while retaining the existing timed sampler and table format.
-All 160 tests, 55 temporal fixtures, 18 repaired 1-Wire cases and the original
+Frozen qualification passed 160 tests, 55 temporal fixtures, 18 repaired 1-Wire cases and the original
 I²C/Microwire regressions pass. Matched mapped area is 210,241.9746 µm²,
 8.1623% above v2, within the fixed 10% cap. The
 [immutable freeze](experiments/temporal_qualification/frozen_v3_manifest.json)
 precedes independent unseen-workload selection. The selected LIN break/sync
 prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
-without changing frozen semantics. Physical qualification remains unreached.
+without changing frozen semantics. The initial pinned physical qualification run is in progress.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
@@ -69,7 +69,19 @@ V2 has no routed physical qualification. Earlier CMOS5L artifacts qualify only
 their identified earlier sources. V3 physical work requires an unseen logical
 pass after its semantic freeze. That logical gate now passes; no v3 GDS image
 is supplied until an identified physical artifact exists.
-See [physical evidence](docs/physical.md).
+See [historical physical evidence](docs/physical.md) and
+[v3 physical reproduction](docs/v3_physical_reproduction.md).
+
+After recreating the unseen traces, package all eleven validated demonstrations
+and linked source/evidence for offline browsing:
+
+```sh
+python -m tools.v3_delivery --output build/delivery/plain_html
+```
+
+Open `build/delivery/plain_html/index.html`. The unseen CI workflow publishes
+the same identified HTML package; complete traces and physical outputs remain
+separate CI artifacts.
 
 ```sh
 python -m pytest -q

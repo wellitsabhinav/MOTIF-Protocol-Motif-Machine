@@ -335,7 +335,7 @@ netlist and library hashes and does not rerun synthesis.
 
 ## V. GDS/floorplan/routing visuals
 
-Unavailable for v3 because the now-eligible physical workflow has not run. No
+Unavailable while the initial identified v3 physical workflow is running. No
 historical layout is presented as a v3 result and no physical view is fabricated.
 [Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
 
@@ -372,9 +372,9 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Review and merge the green qualified unseen PR, then run the initial pinned
-CMOS5L physical attempt at 6×4 and 20 ns. At most two diagnosed flow-setting
-revisions may follow. Preserve failed attempts, retain unavailable metrics as
+Collect the initial pinned CMOS5L physical attempt at 6×4 and 20 ns after its
+official workflow completes. The qualified unseen PR has merged. At most two
+diagnosed flow-setting revisions may follow. Preserve failed attempts, retain unavailable metrics as
 unavailable, and complete physical classification and reached demonstrations
 without changing frozen semantics or the selected oracle.
 [Stop conditions](preregistration.json).

@@ -27,6 +27,8 @@ jobs:
       - run: python -m tools.lin_host_check
       - run: python -m tools.demo --protocol unseen
       - run: python -m docs.demo.render_lin
+      - run: python -m tools.demo --all --schematics
+      - run: python -m tools.v3_delivery --output build/delivery/plain_html
       - run: python -m tools.v3_inventory
       - uses: actions/upload-artifact@v7
         if: always()
@@ -38,3 +40,10 @@ jobs:
             build/demo/unseen/
           compression-level: 9
           retention-days: 14
+      - uses: actions/upload-artifact@v7
+        if: success()
+        with:
+          name: motif-v3-plain-html-demonstration-package
+          path: build/delivery/plain_html/
+          compression-level: 9
+          retention-days: 90

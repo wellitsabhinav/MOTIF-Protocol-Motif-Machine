@@ -76,12 +76,18 @@ jobs:
       - name: Require all five original tests without skips
         run: |
           python - <<'PY'
-          import shutil, xml.etree.ElementTree as ET
+          import hashlib, json, shutil, xml.etree.ElementTree as ET
+          from pathlib import Path
           from tools.host_check import expected_test_names
           tests = ET.parse('test/results.xml').getroot().findall('.//testcase')
           assert {test.get('name') for test in tests} == expected_test_names()
           assert len(tests) == len(expected_test_names())
           assert all(all(test.find(tag) is None for tag in ('failure', 'error', 'skipped')) for test in tests)
+          root = Path('build/v3_physical/routed_retest')
+          identified = json.loads((root / 'netlist_identity.json').read_text())['sha256_raw']
+          compiled = Path('test/gate_level_netlist.v')
+          assert hashlib.sha256(compiled.read_bytes()).hexdigest() == identified
+          shutil.copyfile(compiled, root / 'compiled_netlist.v')
           shutil.copyfile('test/results.xml', 'build/v3_physical/routed_retest/original_results.xml')
           PY
       - name: Selected LIN runtime checks on the same routed netlist
@@ -89,13 +95,18 @@ jobs:
           make -C test clean
           GATES=yes make -C test COCOTB_TEST_MODULES=lin_runtime
           python - <<'PY'
-          import shutil, xml.etree.ElementTree as ET
+          import hashlib, json, shutil, xml.etree.ElementTree as ET
+          from pathlib import Path
           tests = ET.parse('test/results.xml').getroot().findall('.//testcase')
           assert len(tests) == 1 and tests[0].get('name') == 'runtime_lin_unseen'
           assert all(tests[0].find(tag) is None for tag in ('failure', 'error', 'skipped'))
+          root = Path('build/v3_physical/routed_retest')
+          identified = json.loads((root / 'netlist_identity.json').read_text())['sha256_raw']
+          assert hashlib.sha256(Path('test/gate_level_netlist.v').read_bytes()).hexdigest() == identified
           shutil.copyfile('test/results.xml', 'build/v3_physical/routed_retest/lin_results.xml')
           PY
       - run: python -m tools.v3_inventory
+      - run: python -m tools.v3_routed_receipt build/v3_physical/routed_retest
       - uses: actions/upload-artifact@v7
         if: always()
         with:
