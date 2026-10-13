@@ -24,6 +24,10 @@ def semantic_inventory():
     files += list(Path("formal").glob("*.sv"))
     files += [Path(name) for name in ("pyproject.toml", "test/requirements.txt", "test/Makefile", ".github/workflows/ci.yml")]
     files += [PREREGISTRATION]
+    # These declarative wire-level workloads are read by the protected oracles
+    # and runners. Their input bytes belong to the qualification boundary too.
+    files += [Path("experiments/exchange_decomposition/third_workload.json"),
+              Path("experiments/generalization/microwire_workload.json")]
     files += list((DIRECTORY / "configurations").glob("*.json"))
     return {path.as_posix(): sha(path.read_bytes()) for path in sorted(set(files)) if path.is_file()}
 
