@@ -132,7 +132,7 @@
     "conclusion": "success",
     "url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293882738"
   },
-  "scope": "Logical temporal training/regression and matched cost PASS; bounded selected LIN unseen PASS; initial physical attempt cancelled without archives; first diagnosed physical revision running; no physical closure established",
+  "scope": "Logical temporal training/regression and matched cost PASS; bounded selected LIN unseen PASS; initial physical attempt cancelled without archives; first diagnosed revision failed setup timing with final measurements and exact archive correspondence retained; final allowed physical attempt running, no revisions remaining and no physical closure established",
   "freeze_commit": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
   "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
   "unseen_selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
@@ -148,13 +148,14 @@
   "physical_current_attempt": 3,
   "physical_input_hashes_role": "Initial physical inputs preserved separately from subsequent diagnosed flow settings",
   "current_physical_input_hashes": {
-    "src/config.json": "49ca3b2dd50e3e1e7e9048218a8efa51bdc102790eab1fb7e127cf58e785889d",
+    "src/config.json": "ab74e6431be0074e402035f79eebd8165ed820293ded2254a0ee84e38c24be2e",
     "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
     "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
     ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
   },
   "completed_physical_results": {
-    "1": "experiments/temporal_qualification/physical/attempt_1_result.json"
+    "1": "experiments/temporal_qualification/physical/attempt_1_result.json",
+    "2": "experiments/temporal_qualification/physical/attempt_2_result.json"
   },
   "physical_final_revision_diagnosis_sha256_lf": "ed6bb14e3d326e340fae34e32199aa229c98bc17ec9eef9b8c103ec8ab72eeed",
   "current_physical_input_hashes_lf": {

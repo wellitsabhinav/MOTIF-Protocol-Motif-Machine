@@ -22,7 +22,8 @@ antenna metrics are zero, while KLayout DRC is unavailable and official precheck
 and routed functional tests were skipped. Final metrics and GDS availability
 do not establish physical qualification.
 
-Attempt 3 is **prepared, not yet dispatched** at this guide's recorded state.
+Attempt 3 is **running** as
+[official run 38470361703](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703).
 The [final intent](../experiments/temporal_qualification/physical/attempt_3_intent.json)
 binds source `5dbf3abf11f61a8e6bd26cc5f328999190f12859` and LF intent SHA-256
 `0a47370b37cf44fcf5e71f356ae91f0c88e3121452a70e0f35c013dfa040c417`.
@@ -30,8 +31,13 @@ The [diagnosed final revision](../experiments/temporal_qualification/physical/at
 changes only synthesis strategy to `DELAY 0` and synthesis corner to
 `nom_slow_1p08V_125C`. All frozen source bytes, 6 × 4 allocation, 20 ns target,
 flow pins and acceptance gates remain unchanged. Three is the maximum number
-of physical attempts; no fourth run is permitted. Consult the intent/dispatch
-ledger for subsequent status rather than treating this preparation as execution.
+of physical attempts, and all three are now used; no fourth run is permitted.
+Exact source CI and the unseen gate passed before the approved helper launched
+the run at `2026-10-13T21:24:29Z`. The
+[actual dispatch](../experiments/temporal_qualification/physical/attempt_3_dispatch.json)
+and [downloaded API receipt](../experiments/temporal_qualification/physical/attempt_3_dispatch_api_receipt.json)
+bind that execution to the previously committed intent. Consult the ledger
+for subsequent status; no final outcome is claimed while this run is active.
 
 Run repository commands from its root. Local extraction and identity helpers
 use Python, Git and the committed qualification receipts. The renderer also

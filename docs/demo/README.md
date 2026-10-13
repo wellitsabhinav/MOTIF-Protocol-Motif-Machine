@@ -84,6 +84,11 @@ and [three-corner timing](figures/physical/attempt_2/physical_timing.svg) use th
 final extracted metrics; official precheck and routed tests were skipped.
 Full geometry and dense route vectors stay in the identified CI archive.
 
+The final [attempt 3](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703)
+is running at the prequalified source `5dbf3ab`. All three allowed attempts
+are used; the selected attempt-2 views retain their own failed source identity
+and do not establish the outcome of the final run.
+
 The frozen renderer supports a later qualified unseen workload through the [late-input contract](unseen-input-contract.md). Its CLI option appears only when that evaluation supplies an identified result. The interface itself does not select or qualify a workload.
 
 See [getting started](../GETTING_STARTED.md), [execution contract](../execution-model.md), [host interface](../host-interface.md), and [historical campaign](../generalization.md).
