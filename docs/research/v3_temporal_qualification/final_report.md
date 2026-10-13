@@ -7,7 +7,7 @@ The logical and local matched-cost qualification gates pass. V3 maps to
 is frozen. The independently selected LIN break/sync prefix passes its 34-case
 unseen logical gate without semantic changes. The initial physical attempt ended
 cancelled without published physical archives. Physical qualification remains
-incomplete while diagnosed flow revisions are prepared. Logical generalization and cost qualification
+incomplete while the first diagnosed flow revision runs. Logical generalization and cost qualification
 do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
@@ -282,11 +282,18 @@ follow; frozen semantics, allocation and clock remain fixed.
 [flow identity](../../../flow-lock.json),
 [physical restriction](preregistration.json).
 
-Attempt 2 is prepared at exact source
+Attempt 2 is running at exact source
 `f55553a2b10b0880268663d8f06067c5ba1e14e0`: density 45 and integer threads 4.
-Its immutable intent precedes dispatch. The initial failed attempt remains
-the only dispatched run in this ledger; no revised result is claimed.
-[Prepared dispatch identities](physical_attempt_2_dispatch.md),
+Its immutable intent precedes dispatch. Approved helper run `38429454463`
+launched official run `38429471310` at `2026-10-13T16:18:53Z`. The downloaded
+helper API response matches its published archive digest and the actual source
+and run metadata. Two attempts have been dispatched; one further diagnosed
+revision remains available after an unsuccessful result. No revised physical
+result is claimed while this run is active.
+[Dispatch identities](physical_attempt_2_dispatch.md),
+[actual dispatch](../../../experiments/temporal_qualification/physical/attempt_2_dispatch.json),
+[accepted API response](../../../experiments/temporal_qualification/physical/attempt_2_dispatch_api_receipt.json),
+[active physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310),
 [attempt 2 intent](../../../experiments/temporal_qualification/physical/attempt_2_intent.json).
 
 ## Q. PPA comparison
@@ -373,7 +380,8 @@ netlist and library hashes and does not rerun synthesis.
 
 ## V. GDS/floorplan/routing visuals
 
-Unavailable because the initial identified v3 workflow published no physical archive. No
+Unavailable: the initial identified v3 workflow published no physical archive,
+and the first diagnosed revision is still running. No
 historical layout is presented as a v3 result and no physical view is fabricated.
 [Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
 
@@ -415,7 +423,7 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Evaluate a diagnosed revision of the completed initial CMOS5L attempt at 6×4
+Collect the running diagnosed revision of the completed initial CMOS5L attempt at 6×4
 and 20 ns. Explicit OpenROAD threads address the invalid default argument;
 lower placement density tests the observed congestion. Neither change is a
 claim of closure. The qualified unseen PR has merged. At most two diagnosed

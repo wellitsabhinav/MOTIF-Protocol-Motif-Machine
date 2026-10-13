@@ -1,7 +1,10 @@
-# Prepared physical attempt 2
+# Physical attempt 2: preparation and identified dispatch
 
 This is the first diagnosed flow revision, following the retained unsuccessful
-initial attempt. It is prepared and has not been dispatched by this receipt.
+initial attempt. Its immutable intent was committed before dispatch. The
+approved CI helper subsequently launched
+[official run 38429471310](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310)
+at `2026-10-13T16:18:53Z` (21:48:53 IST), using the exact source below.
 
 | Identity | Value |
 |---|---|
@@ -11,17 +14,21 @@ initial attempt. It is prepared and has not been dispatched by this receipt.
 | Density | 45%, previously 60% |
 | OpenROAD threads | Integer 4, previously unset |
 | Allocation and clock | 6×4, 20 ns |
+| Official workflow run | `38429471310`, first run attempt |
+| Helper run and source | `38429454463`, `ead060d37d8729f7b7cac9c9ddcc89aabdeef8a6` |
 
 The source branch is an immutable dispatch pointer. The delivery branch also
 contains the intent committed after the source was identified. Dispatching
 the delivery branch would select a different commit and fail intent matching.
-No second attempt has been consumed until an actual official run is identified.
-The cap remains three total runs, including the failed initial attempt.
+Two physical attempts have now been dispatched, including the failed initial
+attempt. The cap remains three total runs; one diagnosed revision remains
+available only after a retained unsuccessful result.
 
-Open the [pinned GDS workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/workflows/gds.yml),
-choose **Run workflow**, select branch `codex/v3-physical-attempt-2`, and run it
-once. A rerun of the initial workflow would use the old settings and is not this
-revision. Record the resulting run URL before any further dispatch.
+The launch selected branch `codex/v3-physical-attempt-2` in the unchanged
+[pinned GDS workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/workflows/gds.yml).
+An existing source run prevents another helper dispatch. The intent and
+actual workflow metadata must be compared before collecting physical evidence;
+this launch establishes no physical acceptance gate.
 
 The initial terminal result, diagnosis and setting change were committed in
 that order. All frozen RTL, model, compiler, harness and qualification bytes
@@ -34,6 +41,8 @@ combined outcome; it cannot attribute improvement to either setting alone.
 [prerevision diagnosis](../../../experiments/temporal_qualification/physical/attempt_2_diagnosis.json),
 [initial negative](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
 [rationale](physical_attempt_1_diagnosis.md),
+[actual dispatch receipt](../../../experiments/temporal_qualification/physical/attempt_2_dispatch.json),
+[verified API response](../../../experiments/temporal_qualification/physical/attempt_2_dispatch_api_receipt.json),
 [archive and gate reproduction](../../v3_physical_reproduction.md).
 
 ## CI launch helper

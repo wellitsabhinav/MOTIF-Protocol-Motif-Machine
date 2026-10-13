@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "status": "MOTIF_V3_PHYSICAL_REVISION_AWAITING_DISPATCH",
+  "status": "MOTIF_V3_PHYSICAL_QUALIFICATION_RUNNING",
   "source_sha": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
   "source_sha_role": "Frozen source revision; individual qualification receipts retain exact measured and bound source identities",
   "working_tree_dirty": true,
@@ -107,11 +107,11 @@
   "logical_qualification": "PASS",
   "cost_qualification": "PASS",
   "unseen_generalization": "PASS_BOUNDED_LIN_BREAK_SYNC_ENTRY",
-  "physical_qualification": "NOT_QUALIFIED_INITIAL_ATTEMPT",
+  "physical_qualification": "IN_PROGRESS",
   "freeze_created": true,
   "unseen_research_started": true,
   "unseen_selected": true,
-  "physical_attempts": 1,
+  "physical_attempts": 2,
   "area_um2": 210241.9746,
   "area_growth_percent": 8.16233265288937,
   "configuration_bits": 1096,
@@ -132,22 +132,28 @@
     "conclusion": "success",
     "url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293882738"
   },
-  "scope": "Logical temporal training/regression and matched cost PASS; bounded selected LIN unseen PASS; initial physical attempt cancelled without archives; diagnosed revision one prepared but not dispatched; no physical closure established",
+  "scope": "Logical temporal training/regression and matched cost PASS; bounded selected LIN unseen PASS; initial physical attempt cancelled without archives; first diagnosed physical revision running; no physical closure established",
   "freeze_commit": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
   "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
   "unseen_selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
   "unseen_selection_sha256_lf": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663",
   "unseen_result": "experiments/temporal_qualification/unseen/logical_result.json",
-  "physical_flow_setting_revisions": 0,
-  "physical_run_id": 38349981124,
-  "physical_source_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
-  "physical_intent_sha256_lf": "97d354e55d8443bace5161d6c7eba81d69b33cf3ec505892ea9f1bcfab88f7c1",
-  "physical_result": "experiments/temporal_qualification/physical/attempt_1_result.json",
-  "physical_revisions_remaining": 2,
-  "prepared_physical_attempt": 2,
-  "prepared_physical_flow_setting_revision": 1,
-  "prepared_physical_source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
-  "prepared_physical_branch": "codex/v3-physical-attempt-2",
-  "prepared_physical_intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
-  "physical_run_identity_role": "Most recent actually dispatched run; prepared revision is separate"
+  "physical_flow_setting_revisions": 1,
+  "physical_run_id": 38429471310,
+  "physical_source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "physical_intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
+  "physical_result": null,
+  "physical_revisions_remaining": 1,
+  "physical_run_identity_role": "Most recent actually dispatched run; active result unavailable until its gates complete",
+  "physical_current_attempt": 2,
+  "physical_input_hashes_role": "Initial physical inputs preserved separately from subsequent diagnosed flow settings",
+  "current_physical_input_hashes": {
+    "src/config.json": "49ca3b2dd50e3e1e7e9048218a8efa51bdc102790eab1fb7e127cf58e785889d",
+    "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+  },
+  "completed_physical_results": {
+    "1": "experiments/temporal_qualification/physical/attempt_1_result.json"
+  }
 }

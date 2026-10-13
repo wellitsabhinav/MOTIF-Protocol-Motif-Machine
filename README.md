@@ -15,6 +15,8 @@ precedes independent unseen-workload selection. The selected LIN break/sync
 prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
 without changing frozen semantics. The initial pinned physical run ended cancelled
 without a published physical archive; physical qualification remains incomplete.
+The [first diagnosed revision](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310)
+is running with density 45% and explicit OpenROAD threads 4 at the fixed 6×4/20 ns target.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
