@@ -6,18 +6,37 @@ interfaces. It makes no physical qualification or timing-closure claim. The
 reached results; the commands below keep eligibility, measurement extraction,
 functional testing, presentation and the final gate separate.
 
-The initial attempt has [intent](../experiments/temporal_qualification/physical/attempt_1_intent.json)
-and [dispatch](../experiments/temporal_qualification/physical/attempt_1_dispatch.json)
-receipts for source `5467fd4d15a18dda9bc58a93bb3182b03629aa4b` and
-[official workflow run 38349981124](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124).
-Those receipts identify an attempt, rather than establish its outcome. Fetch
-fresh completed-run metadata when recording a final result; a dispatch-time
-snapshot does not establish job completion.
+Attempt 1 was cancelled and published no physical archive; its
+[terminal result](../experiments/temporal_qualification/physical/attempt_1_result.json)
+preserves the incomplete outcome and unknown cancellation cause. Attempt 2,
+[run 38429471310](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310)
+at source `f55553a2b10b0880268663d8f06067c5ba1e14e0`, completed with setup
+failure. Its identified `GDS_logs` archive contains final extracted metrics,
+reports and layout artifacts, with
+[negative qualification](../experiments/temporal_qualification/physical/attempt_2_result.json),
+[measurements](../experiments/temporal_qualification/physical/attempt_2_metrics.json),
+[source correspondence](../experiments/temporal_qualification/physical/attempt_2_source_correspondence.json)
+and [diagnosis](research/v3_temporal_qualification/physical_attempt_2_diagnosis.md).
+All three corners have negative setup WNS/TNS. Routing DRC, Magic DRC, LVS and
+antenna metrics are zero, while KLayout DRC is unavailable and official precheck
+and routed functional tests were skipped. Final metrics and GDS availability
+do not establish physical qualification.
+
+Attempt 3 is **prepared, not yet dispatched** at this guide's recorded state.
+The [final intent](../experiments/temporal_qualification/physical/attempt_3_intent.json)
+binds source `5dbf3abf11f61a8e6bd26cc5f328999190f12859` and LF intent SHA-256
+`0a47370b37cf44fcf5e71f356ae91f0c88e3121452a70e0f35c013dfa040c417`.
+The [diagnosed final revision](../experiments/temporal_qualification/physical/attempt_3_diagnosis.json)
+changes only synthesis strategy to `DELAY 0` and synthesis corner to
+`nom_slow_1p08V_125C`. All frozen source bytes, 6 × 4 allocation, 20 ns target,
+flow pins and acceptance gates remain unchanged. Three is the maximum number
+of physical attempts; no fourth run is permitted. Consult the intent/dispatch
+ledger for subsequent status rather than treating this preparation as execution.
 
 Run repository commands from its root. Local extraction and identity helpers
 use Python, Git and the committed qualification receipts. The renderer also
 needs the plotting dependencies described in the
-[getting-started guide](getting_started.md). The actual physical flow runs on
+[getting-started guide](GETTING_STARTED.md). The actual physical flow runs on
 the pinned Linux workflow, rather than through these local Python helpers.
 The Bash download examples additionally require an authenticated GitHub CLI
 with permission to read this repository's Actions artifacts. A connected
@@ -36,9 +55,9 @@ whose LF-normalized SHA-256 is
 `71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047`.
 
 ```bash
-TASK_SOURCE_SHA=5467fd4d15a18dda9bc58a93bb3182b03629aa4b
-TASK_RUN_ID=38349981124
-TASK_DIR=build/v3_physical/attempt_1
+TASK_SOURCE_SHA=f55553a2b10b0880268663d8f06067c5ba1e14e0
+TASK_RUN_ID=38429471310
+TASK_DIR=build/v3_physical/attempt_2_reproduction
 python -m tools.v3_physical --source-sha "$TASK_SOURCE_SHA"
 ```
 
@@ -52,13 +71,17 @@ The CMOS5L PDK and other recorded identities are in
 [`flow-lock.json`](../flow-lock.json). The original physical-input hashes are
 separate from the frozen semantic boundary.
 
-Before a new dispatch, `--intent` creates the next immutable numbered intent:
+Before a new dispatch, `--intent` creates the next immutable numbered intent.
+All three campaign intents already exist. The examples below document that
+interface; **do not replay them to recreate an existing intent or allocate a
+fourth attempt**:
 
 ```bash
-python -m tools.v3_physical --source-sha "$TASK_SOURCE_SHA" --intent
+TASK_NEXT_SOURCE_SHA=5dbf3abf11f61a8e6bd26cc5f328999190f12859
+python -m tools.v3_physical --source-sha "$TASK_NEXT_SOURCE_SHA" --intent
 ```
 
-Do not run this again to reproduce the existing initial intent. It allocates a
+Do not run this again to reproduce an existing intent. It allocates a
 new attempt number, rather than replaying an old one. The initial attempt must
 use all original physical inputs. At most two further attempts are allowed,
 each with a diagnosed flow-setting revision in `src/config.json`. Model/RTL
@@ -68,14 +91,17 @@ plus a diagnosis JSON with `previous_attempt`, a concrete `failure` and
 `permitted_setting_changes`. It must implement a changed configuration hash.
 
 ```bash
-python -m tools.v3_physical --source-sha "$TASK_SOURCE_SHA" --intent \
-  --diagnosis experiments/temporal_qualification/physical/attempt_1_diagnosis.json
+python -m tools.v3_physical --source-sha "$TASK_NEXT_SOURCE_SHA" --intent \
+  --diagnosis experiments/temporal_qualification/physical/attempt_3_diagnosis.json
 ```
 
-The diagnosis path above is the naming pattern for a future diagnosed revision;
-it is not a claim that such a revision or diagnosis exists. An unfinished run
-is not a diagnosed failed attempt. Preserve the completed failed run and its
-actual cause before preparing a revision. Do not use GitHub's rerun button to
+For the prepared final intent, the source argument was the exact attempt-3
+source shown as `TASK_NEXT_SOURCE_SHA`, rather than the attempt-2 replay source.
+Only the example with `--diagnosis` represents that final revision. The committed
+diagnosis preceded its two setting changes, and the intent preceded dispatch.
+An unfinished run is not a diagnosed failed attempt. Preserve the completed
+failed run and its actual cause before preparing a revision. Do not use
+GitHub's rerun button to
 bypass the limit: dispatch recording requires `run_attempt == 1`. Separate
 routed functional retests reuse a physical artifact and run no new physical
 flow.
@@ -84,11 +110,14 @@ After dispatch, retain the GitHub workflow JSON and bind it to the intent:
 
 ```bash
 python -m tools.v3_physical --source-sha "$TASK_SOURCE_SHA" \
-  --record-dispatch 1 --workflow "$TASK_DIR/workflow_dispatch_snapshot.json"
+  --record-dispatch 2 --workflow "$TASK_DIR/workflow_dispatch_snapshot.json"
 ```
 
 This verifies the repository, official workflow path, dispatch event, exact
 head SHA and first run attempt. It refuses a conflicting replacement dispatch.
+The existing attempt-2 dispatch is already recorded; this is an interface
+example, not an instruction to overwrite its immutable receipt. Measurement
+and rendering reproduction require no dispatch or ledger mutation.
 
 ## Download and verify one official archive
 
@@ -108,6 +137,7 @@ following commands require that value and retain the published artifact
 metadata and raw ZIP:
 
 ```bash
+TASK_ARTIFACT_ID=11843789314  # Actual attempt-2 GDS_logs artifact
 gh api "repos/$TASK_REPO/actions/artifacts/${TASK_ARTIFACT_ID:?Set the identified artifact ID}" > "$TASK_DIR/artifact_api.json"
 gh api "repos/$TASK_REPO/actions/artifacts/$TASK_ARTIFACT_ID/zip" > "$TASK_DIR/physical_artifact.zip"
 ```
@@ -118,6 +148,12 @@ downloaded ZIP; a missing digest is unavailable evidence. The following Python
 example prepares the metadata and extractor input receipt, then extracts into
 a fresh directory after rejecting unsafe archive members. Export `TASK_DIR`
 first so Python receives the same explicit directory.
+
+For attempt 2, the raw ZIP is 265,262,975 bytes and SHA-256
+`5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0`.
+The recorded correspondence covers all 911 extracted files, including the
+actual bundled RTL inventory. Retain the metadata and raw download even though
+the associated workflow failed.
 
 ```bash
 export TASK_DIR
@@ -184,6 +220,14 @@ Find the single actual flow-run directory inside the verified archive. It
 contains numbered stages and, if produced, `final/`. Set `TASK_FLOW_DIR` to that
 explicit directory; do not mix stages from different runs or use an earlier
 successful run as a substitute.
+
+For the verified attempt-2 archive the explicit run root is
+`$TASK_DIR/artifacts/runs/wokwi`; final timing comes from
+`55-openroad-stapostpnr` after RC extraction. The final receipt reports 20,178
+standard cells, 263,349 µm² standard-cell area and utilization 0.291827 in a
+902,417 µm² core. All-instance/filler area and the independent nominal synthesis
+cost are different inventories. Global routing overflow is 7,782 even though
+final detailed routing DRC is zero.
 
 ```bash
 python -m tools.v3_physical_metrics "${TASK_FLOW_DIR:?Set the exact extracted flow-run directory}" \
@@ -271,7 +315,7 @@ python -m tools.v3_physical_gate "$TASK_FLOW_DIR" \
   --physical-artifact-metadata "$TASK_DIR/artifact_download.json" \
   --artifact-directory "$TASK_DIR/artifacts" \
   --routed-receipt "$TASK_ROUTED_DIR/result.json" --routed-directory "$TASK_ROUTED_DIR" \
-  --output experiments/temporal_qualification/physical/attempt_1_result.json
+  --output "$TASK_DIR/qualification_result.json"
 ```
 
 Qualification requires successful completed official `gds`, `precheck` and
@@ -290,18 +334,23 @@ nonzero. A supplied invalid routed receipt cannot become a pass. Partial or
 missing required timing/check results also fail. Keep the negative result,
 job/stage state, logs, archive identity and diagnosis in the same numbered
 attempt. Do not replace unavailable inputs with invented zeros or XML passes.
+Attempt 2 follows this negative path. Reproduction outputs go under `build/`;
+do not overwrite the committed attempt-1 or attempt-2 result receipts.
 If no physical archive was published, record terminal official failure without
 inventing an artifact identity:
 
 ```bash
 python -m tools.v3_physical --source-sha "$TASK_SOURCE_SHA" --record-failure 1 \
   --workflow "$TASK_DIR/workflow.json" --jobs "$TASK_DIR/jobs.json" \
-  --artifacts "$TASK_DIR/artifacts.json"
+  --artifacts "$TASK_DIR/artifact_list.json"
 ```
 
 This writes the failed-attempt ledger and exits nonzero. It requires a completed
 unsuccessful run, a failed required official job and the matching immutable
 dispatch. If physical archives exist, use normal partial-metric extraction.
+The `--record-failure 1` example applies to the already recorded archive-less
+attempt 1 and must use its own source/run metadata. It does not apply to the
+attempt-2 archive replay variables, and must not rewrite historical evidence.
 An unfinished run cannot unlock a flow revision; the prior failed result must
 match its dispatch's source and run ID.
 
@@ -315,7 +364,9 @@ python docs/demo/render_v3_physical.py \
   --manifest experiments/temporal_qualification/frozen_v3_manifest.json \
   --manifest-sha256-lf 71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047 \
   --correspondence "$TASK_DIR/source_correspondence.json" \
-  --output build/demo/physical_v3/attempt_1
+  --output "$TASK_DIR/full_views" \
+  --require-view floorplan --require-view placement \
+  --require-view routing --require-view gds
 ```
 
 [`render_v3_physical.py`](demo/render_v3_physical.py) produces plain HTML,
@@ -335,6 +386,99 @@ once per required view to fail on unavailable presentation inputs. Ambiguous
 inputs require an explicit receipt `views` recipe. Reuse requires the same
 identity and receipt, with no unexpected leftover output files. Detailed view
 formats and omissions are documented in [physical_views.md](demo/physical_views.md).
+
+Attempt 2 has four actual inputs, all belonging to archive `11843789314`:
+
+| View | Identified geometry/image | Presentation scope |
+|---|---|---|
+| Floorplan | `runs/wokwi/13-openroad-floorplan/*.def` | Actual die bounds and spans between row site origins |
+| Placement | `runs/wokwi/34-openroad-detailedplacement/*.def` | 17,947 actual component origins; points are not cell footprints |
+| Routing | `runs/wokwi/44-openroad-detailedrouting/*.def` | Actual signal-route centerlines; via cuts, widths, patches and power geometry omitted |
+| GDS | `runs/wokwi/final/gds/*.gds` and `final/render/*.png` | Existing identified official image with bound GDS bytes |
+
+The stars in this table abbreviate the recorded top-module basename; they are
+not permission to select arbitrary files. The renderer's receipt retains exact
+paths and raw hashes. [Selected view identity](demo/figures/physical/attempt_2/identity.json)
+links the public [floorplan](demo/figures/physical/attempt_2/floorplan.svg),
+[placement](demo/figures/physical/attempt_2/placement.png),
+[routing](demo/figures/physical/attempt_2/routing.png) and
+[GDS preview](demo/figures/physical/attempt_2/gds.png) to those inputs. Every
+selected view is visibly **UNQUALIFIED**.
+
+## Select small unqualified previews and render metrics
+
+[`select_physical_views.py`](demo/select_physical_views.py) accepts the actual
+`--help` arguments `--view-report`, `--metrics`, `--source-sha`, `--run-id`,
+optional `--manifest`, and `--output-dir`. It takes the renderer's report and
+the same-run measurement receipt. For the recorded failed attempt:
+
+```bash
+TASK_PHYSICAL_METRICS=experiments/temporal_qualification/physical/attempt_2_metrics.json
+TASK_MANIFEST=experiments/temporal_qualification/frozen_v3_manifest.json
+python docs/demo/select_physical_views.py \
+  --view-report "$TASK_DIR/full_views/physical_views.json" \
+  --metrics "$TASK_PHYSICAL_METRICS" \
+  --source-sha "$TASK_SOURCE_SHA" --run-id "$TASK_RUN_ID" \
+  --manifest "$TASK_MANIFEST" --output-dir "$TASK_DIR/selected_views"
+```
+
+The full renderer received the explicit `--correspondence` receipt. The
+selector then requires exact RTL correspondence, matching view/metric source
+and workflow identities, and the same artifact ID and raw ZIP hash. It reads
+the supplied immutable manifest, checks its LF hash against both source/view
+boundaries and the fixed v3 manifest hash, and obtains preregistration from
+that checked manifest. The measurement receipt's embedded source
+correspondence must have the same source, manifest and preregistration
+identities. The selector has no separate `--source-correspondence` argument;
+that validation uses the supplied metric receipt. It also requires recorded
+`gds=failure`, `precheck=skipped` and `gl_test=skipped` conclusions. This helper
+is for the current attempt-2 negative presentation, not a later closure claim.
+
+Selection writes `identity.json`, four PNG previews and a floorplan SVG. PNG
+layout content is uniformly downscaled to at most 1,600 pixels without
+upscaling, then wrapped with a status banner/footer. The floorplan keeps its
+vector geometry inside a translated group and adds a status header. All input
+and selected-output hashes and transformations are retained. Dense placement
+and routing SVGs, raw GDS and netlists stay in ignored build/CI artifacts; they
+are not copied into the selected public package or Git.
+
+[`render_physical_metrics.py`](demo/render_physical_metrics.py) accepts
+`--physical-receipt`, `--physical-receipt-sha256`, `--physical-source-sha`,
+optional `--manifest`, and `--output-dir`. Supply the expected raw hash of the
+identified receipt explicitly, independently of the file being rendered:
+
+```bash
+TASK_METRICS_SHA256=64fb505400247f6edfe05021923583140fe9404e7e46f656ec52044c5215c5f3
+python docs/demo/render_physical_metrics.py \
+  --physical-receipt "$TASK_PHYSICAL_METRICS" \
+  --physical-receipt-sha256 "$TASK_METRICS_SHA256" \
+  --physical-source-sha "$TASK_SOURCE_SHA" \
+  --manifest "$TASK_MANIFEST" --output-dir "$TASK_DIR/metric_figures"
+```
+
+This checks the raw receipt bytes, exact source SHA and embedded source
+correspondence, then binds the actual manifest LF hash and its preregistration
+to that source correspondence. An altered receipt or different semantic
+boundary fails. If checkout newline conversion changed the tracked JSON's raw
+bytes, materialize its exact committed Git blob before using the recorded raw
+hash; do not replace the expected hash with one computed from altered input.
+
+The outputs are `physical_cost.{svg,png,json}` and
+`physical_timing.{svg,png,json}`. Missing metrics remain unavailable; utilization
+converts the recorded fraction to percent. Corner WNS/TNS retain their signs
+and a visible zero reference. The figures keep physical stage measurements
+separate from the nominal mapped-area cap and preserve source paths, input
+identities, original values and renderer hashes in JSON. The corresponding
+selected [measurement figure](demo/figures/physical/attempt_2/physical_cost.svg)
+and [timing figure](demo/figures/physical/attempt_2/physical_timing.svg) remain
+UNQUALIFIED. A renderer's `PASS` means its input identities and presentation
+requirements passed; it is not the campaign's physical gate.
+
+Both helpers require fresh empty output directories. Keep full views,
+selected previews and metric figures in separate replay directories. After
+review, only concise identities and the selected small floorplan/metric SVGs,
+PNG previews and JSON receipts belong in the public package. Large full
+vector views and raw physical geometry remain outside that package and Git.
 
 Keep each attempt in a separate ignored `build/` directory. Full archives,
 traces, simulator output, netlists, stage databases and GDS remain outside Git

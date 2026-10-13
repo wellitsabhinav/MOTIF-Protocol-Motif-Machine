@@ -1,8 +1,8 @@
 {
   "schema_version": 3,
-  "attempt": 2,
-  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
-  "branch": "codex/v3-physical-attempt-2",
-  "intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
-  "authorization": "User requested launch of the prepared physical workflow; helper uses ordinary authenticated GitHub workflow dispatch without changing protections or the pinned flow"
+  "attempt": 3,
+  "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859",
+  "branch": "codex/v3-physical-attempt-3",
+  "intent_sha256_lf": "0a47370b37cf44fcf5e71f356ae91f0c88e3121452a70e0f35c013dfa040c417",
+  "authorization": "User authorized the full controlled campaign with initial attempt plus at most two diagnosed flow revisions and explicitly approved the guarded actions-write CI helper. Final source CI 38468562163 and unseen gate 38468561995 are green; ordinary authenticated dispatch retains the fixed limits and pinned flow."
 }
