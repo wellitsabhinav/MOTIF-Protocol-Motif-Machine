@@ -356,6 +356,13 @@ attempt-2 intent. All 473 manifest-listed files match their downloaded bytes,
 all local HTML links resolve, and all eleven demonstrations pass.
 [Later download verification](../../../experiments/temporal_qualification/delivery_7d3b0a9.json).
 
+The [updated guide and cost-figure package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38439964655/artifacts/11836295099)
+identifies clean head `16fafe7`. Its ZIP digest, all 490 file hashes, all local
+HTML links, eleven demonstration outcomes and the selected cost-renderer/image
+identities were checked after download. It includes the approved dispatch and
+read-only physical observations while attempt 2 remains active.
+[Current package verification](../../../experiments/temporal_qualification/delivery_16fafe7.json).
+
 ## S. Architecture diagrams
 
 Actual module/interface inventories generate the connected core, top-level and
