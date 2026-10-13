@@ -39,6 +39,18 @@ The historical v2 interrupted-low false presence and earlier BYTE_EXCHANGE A5FF 
 
 No unseen workload is researched by this package before the semantic freeze. No physical figure is generated without an identified v3 implementation artifact. If a campaign stop condition prevents later gates, reached demonstrations and an honest report are still deliverables.
 
+Separate [mapped hierarchy](figures/mapped/hierarchy.svg),
+[PC bit-0 neighborhood](figures/mapped/transaction_bit0.svg) and
+[temporal counter bit-0 neighborhood](figures/mapped/temporal_bit0.svg) derive
+from the identified CMOS5L cost netlist. [Their identities](figures/mapped/identity.json)
+include source, tool, library and netlist hashes. Run `python docs/demo/render_mapped.py`
+after the matched synthesis gate to reproduce them; this renderer does not run
+another synthesis or infer missing circuitry. These views establish mapped
+connectivity, with omitted logic explicitly listed, rather than physical closure.
+
+The [A–Z campaign report](../research/v3_temporal_qualification/final_report.md)
+records logical, cost, unseen and physical outcomes separately.
+
 The frozen renderer supports a later qualified unseen workload through the [late-input contract](unseen-input-contract.md). Its CLI option appears only when that evaluation supplies an identified result. The interface itself does not select or qualify a workload.
 
 See [getting started](../GETTING_STARTED.md), [execution contract](../execution-model.md), [host interface](../host-interface.md), and [historical campaign](../generalization.md).

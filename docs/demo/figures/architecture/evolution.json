@@ -39,7 +39,7 @@
   },
   {
     "label": "Working v3 (qualification status separate)",
-    "identity": "3766cfaad79ea206ce60dbde585fc521ac080fc1515b94269d32c0527e898802",
+    "identity": "af18c0161b987d9b8113526277440b8da0e510316ed36311c11e8eb76008db8f",
     "modules": [
       "motif_core",
       "motif_event_frontend",

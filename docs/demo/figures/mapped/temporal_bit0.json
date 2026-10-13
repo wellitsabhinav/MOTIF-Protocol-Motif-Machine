@@ -1,0 +1,776 @@
+{
+  "kind": "selected_measured_technology_mapped_connectivity",
+  "netlist_sha256": "b96b2246771ee4ed54ffbc513a0150c1ebe3eb0ace3cbaec6727c257dcc1e803",
+  "measurement_report_sha256": "047b2e7033d5ab26b55892e182db9c6f6f90b74061aaad5614ebd0703d339ea1",
+  "rtl_source_hashes": {
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+  },
+  "source_sha": "383e494610deec2edc99aac0bca7215f735dbcdf",
+  "tools": {
+    "yosys": {
+      "command": "yosys",
+      "sha256": "da2209de850fff3546f3fc7fb4203e62c611fda7d5103785a1a453e16566aaa5"
+    },
+    "abc": {
+      "command": "abc.exe",
+      "sha256": "1394d146474be249f241cc8d98eafd1d73d56e0d5d40af0d1532ebb7997686db"
+    }
+  },
+  "yosys": "Yosys 0.30+48 (git sha1 b5b0b7e83, x86_64-w64-mingw32-g++ 13.1.0 -march=nocona -msahf -mtune=generic -O2 -Os)",
+  "library_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "renderer_sha256": "ce01f6321e211405c4e581f9a32f82f043d7b4c56ecdc0b20c64701cb71d85d4",
+  "scope": "Measured nominal mapped logic; no placement, routing, timing closure or physical qualification claim",
+  "module": "motif_transaction",
+  "focus_net": "temporal_count_o",
+  "bit_index": 0,
+  "bit_id": 1193,
+  "owner": "$auto$ff.cc:266:slice$163699",
+  "owner_output": "Q",
+  "selected_cells": {
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358265": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_inv_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1193
+        ],
+        "Y": [
+          1243
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362714": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_xnor2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1193
+        ],
+        "B": [
+          1194
+        ],
+        "Y": [
+          5687
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362742": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_nand3_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1193
+        ],
+        "B": [
+          1194
+        ],
+        "C": [
+          1195
+        ],
+        "Y": [
+          5715
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input",
+        "C": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362743": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_a21o_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A1": [
+          1193
+        ],
+        "A2": [
+          1194
+        ],
+        "B1": [
+          1195
+        ],
+        "X": [
+          5716
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A1": "input",
+        "A2": "input",
+        "B1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363296": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_a21oi_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A1": [
+          1193
+        ],
+        "A2": [
+          1378
+        ],
+        "B1": [
+          6267
+        ],
+        "Y": [
+          6268
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A1": "input",
+        "A2": "input",
+        "B1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363297": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_nor2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1193
+        ],
+        "B": [
+          1378
+        ],
+        "Y": [
+          6269
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363320": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_xnor2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A": [
+          1193
+        ],
+        "B": [
+          2527
+        ],
+        "Y": [
+          6292
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A": "input",
+        "B": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363389": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_a21oi_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A1": [
+          1630
+        ],
+        "A2": [
+          6360
+        ],
+        "B1": [
+          1193
+        ],
+        "Y": [
+          6361
+        ]
+      },
+      "port_directions": {
+        "Y": "output",
+        "A1": "input",
+        "A2": "input",
+        "B1": "input"
+      }
+    },
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363398": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_mux2_1",
+      "parameters": {},
+      "attributes": {},
+      "connections": {
+        "A0": [
+          6369
+        ],
+        "A1": [
+          6247
+        ],
+        "S": [
+          5683
+        ],
+        "X": [
+          6370
+        ]
+      },
+      "port_directions": {
+        "X": "output",
+        "A0": "input",
+        "A1": "input",
+        "S": "input"
+      }
+    },
+    "$auto$ff.cc:266:slice$163699": {
+      "hide_name": 1,
+      "type": "sg13cmos5l_dfrbpq_1",
+      "parameters": {},
+      "attributes": {
+        "src": "src/motif_transaction.sv:294.5-308.8"
+      },
+      "connections": {
+        "CLK": [
+          2
+        ],
+        "D": [
+          6370
+        ],
+        "Q": [
+          1193
+        ],
+        "RESET_B": [
+          "1"
+        ]
+      },
+      "port_directions": {
+        "Q": "output",
+        "CLK": "input",
+        "D": "input",
+        "RESET_B": "input"
+      }
+    }
+  },
+  "edges": [
+    {
+      "source": "$abc$358251$auto$blifparse.cc:386:parse_blif$363398",
+      "output": "X",
+      "target": "$auto$ff.cc:266:slice$163699",
+      "input": "D",
+      "bit_ids": [
+        6370
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$358265",
+      "input": "A",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$362714",
+      "input": "A",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$362742",
+      "input": "A",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$362743",
+      "input": "A1",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$363296",
+      "input": "A1",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$363297",
+      "input": "A",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$363320",
+      "input": "A",
+      "bit_ids": [
+        1193
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$163699",
+      "output": "Q",
+      "target": "$abc$358251$auto$blifparse.cc:386:parse_blif$363389",
+      "input": "B1",
+      "bit_ids": [
+        1193
+      ]
+    }
+  ],
+  "direct_fanin_cells": [
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363398"
+  ],
+  "selected_fanout_cells": [
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$358265",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362714",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362742",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$362743",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363296",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363297",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363320",
+    "$abc$358251$auto$blifparse.cc:386:parse_blif$363389"
+  ],
+  "total_direct_fanout_cells": 11,
+  "omitted_module_cells": 5507,
+  "boundary_ports": [
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$358265",
+      "port": "Y",
+      "direction": "output",
+      "bit": 1243,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363372",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363333",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363390",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362714",
+      "port": "B",
+      "direction": "input",
+      "bit": 1194,
+      "public_aliases": [
+        "temporal_count_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$154218",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362714",
+      "port": "Y",
+      "direction": "output",
+      "bit": 5687,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363301",
+          "A2"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362724",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363363",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362732",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363345",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363299",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362716",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363313",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362739",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362742",
+      "port": "B",
+      "direction": "input",
+      "bit": 1194,
+      "public_aliases": [
+        "temporal_count_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$154218",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362742",
+      "port": "C",
+      "direction": "input",
+      "bit": 1195,
+      "public_aliases": [
+        "temporal_count_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$154219",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362742",
+      "port": "Y",
+      "direction": "output",
+      "bit": 5715,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362757",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362759",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362758",
+          "B"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362744",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362743",
+      "port": "A2",
+      "direction": "input",
+      "bit": 1194,
+      "public_aliases": [
+        "temporal_count_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$154218",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362743",
+      "port": "B1",
+      "direction": "input",
+      "bit": 1195,
+      "public_aliases": [
+        "temporal_count_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$auto$ff.cc:266:slice$154219",
+          "Q"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$362743",
+      "port": "X",
+      "direction": "output",
+      "bit": 5716,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362744",
+          "B"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363296",
+      "port": "A2",
+      "direction": "input",
+      "bit": 1378,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358400",
+          "X"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363296",
+      "port": "B1",
+      "direction": "input",
+      "bit": 6267,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363295",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363296",
+      "port": "Y",
+      "direction": "output",
+      "bit": 6268,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363302",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363297",
+      "port": "B",
+      "direction": "input",
+      "bit": 1378,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358400",
+          "X"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363297",
+      "port": "Y",
+      "direction": "output",
+      "bit": 6269,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363298",
+          "B1"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363320",
+      "port": "B",
+      "direction": "input",
+      "bit": 2527,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$359549",
+          "X"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363320",
+      "port": "Y",
+      "direction": "output",
+      "bit": 6292,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363322",
+          "C"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363389",
+      "port": "A1",
+      "direction": "input",
+      "bit": 1630,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$358652",
+          "X"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363389",
+      "port": "A2",
+      "direction": "input",
+      "bit": 6360,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363388",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363389",
+      "port": "Y",
+      "direction": "output",
+      "bit": 6361,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363391",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363398",
+      "port": "A0",
+      "direction": "input",
+      "bit": 6369,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363397",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363398",
+      "port": "A1",
+      "direction": "input",
+      "bit": 6247,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363275",
+          "Y"
+        ]
+      ]
+    },
+    {
+      "cell": "$abc$358251$auto$blifparse.cc:386:parse_blif$363398",
+      "port": "S",
+      "direction": "input",
+      "bit": 5683,
+      "public_aliases": [],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$362710",
+          "X"
+        ]
+      ]
+    },
+    {
+      "cell": "$auto$ff.cc:266:slice$163699",
+      "port": "CLK",
+      "direction": "input",
+      "bit": 2,
+      "public_aliases": [
+        "clk"
+      ],
+      "omitted_connected_ports": []
+    },
+    {
+      "cell": "$auto$ff.cc:266:slice$163699",
+      "port": "Q",
+      "direction": "output",
+      "bit": 1193,
+      "public_aliases": [
+        "temporal_count_o"
+      ],
+      "omitted_connected_ports": [
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363395",
+          "A"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363397",
+          "A1"
+        ],
+        [
+          "$abc$358251$auto$blifparse.cc:386:parse_blif$363392",
+          "A"
+        ]
+      ]
+    },
+    {
+      "cell": "$auto$ff.cc:266:slice$163699",
+      "port": "RESET_B",
+      "direction": "input",
+      "bit": "1",
+      "public_aliases": [
+        "stage"
+      ],
+      "omitted_connected_ports": []
+    }
+  ]
+}

@@ -1937,7 +1937,7 @@
     },
     {
       "source": "$shiftx$src/motif_transaction.sv:0$886",
-      "target": "$procmux$34727",
+      "target": "$procmux$34995",
       "output": "Y",
       "input": "B",
       "bit_ids": [
@@ -1961,7 +1961,7 @@
     },
     {
       "source": "$shiftx$src/motif_transaction.sv:0$886",
-      "target": "$procmux$34995",
+      "target": "$procmux$34727",
       "output": "Y",
       "input": "B",
       "bit_ids": [
@@ -1973,7 +1973,7 @@
     },
     {
       "source": "$shiftx$src/motif_transaction.sv:0$1032",
-      "target": "$procmux$41945",
+      "target": "$procmux$41921",
       "output": "Y",
       "input": "S",
       "bit_ids": [
@@ -1982,7 +1982,7 @@
     },
     {
       "source": "$shiftx$src/motif_transaction.sv:0$1032",
-      "target": "$procmux$41921",
+      "target": "$procmux$41945",
       "output": "Y",
       "input": "S",
       "bit_ids": [
@@ -2000,129 +2000,9 @@
     },
     {
       "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$34888",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$38202",
-      "output": "Q",
-      "input": "A",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$35067",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$35318",
-      "output": "Q",
-      "input": "A",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
       "target": "$procmux$38379",
       "output": "Q",
       "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$41945",
-      "output": "Q",
-      "input": "A",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$35384",
-      "output": "Q",
-      "input": "A",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$shiftx$src/motif_transaction.sv:0$886",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$38578",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$41921",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$43760",
-      "output": "Q",
-      "input": "A",
       "bit_ids": [
         1166,
         1167,
@@ -2156,45 +2036,9 @@
     },
     {
       "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$neg$src/motif_transaction.sv:0$1104",
+      "target": "$procmux$43760",
       "output": "Q",
       "input": "A",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$35563",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$eq$src/motif_transaction.sv:275$1381",
-      "output": "Q",
-      "input": "B",
-      "bit_ids": [
-        1166,
-        1167,
-        1168,
-        1169
-      ]
-    },
-    {
-      "source": "$auto$ff.cc:266:slice$46259",
-      "target": "$procmux$35953",
-      "output": "Q",
-      "input": "B",
       "bit_ids": [
         1166,
         1167,
@@ -2216,7 +2060,31 @@
     },
     {
       "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$35953",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
       "target": "$procmux$36987",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$shiftx$src/motif_transaction.sv:0$886",
       "output": "Q",
       "input": "B",
       "bit_ids": [
@@ -2240,7 +2108,139 @@
     },
     {
       "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$35563",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$41945",
+      "output": "Q",
+      "input": "A",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$34888",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$35067",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$eq$src/motif_transaction.sv:275$1381",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$neg$src/motif_transaction.sv:0$1104",
+      "output": "Q",
+      "input": "A",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$38202",
+      "output": "Q",
+      "input": "A",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$41921",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
       "target": "$procmux$44183",
+      "output": "Q",
+      "input": "A",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$35384",
+      "output": "Q",
+      "input": "A",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$38578",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1166,
+        1167,
+        1168,
+        1169
+      ]
+    },
+    {
+      "source": "$auto$ff.cc:266:slice$46259",
+      "target": "$procmux$35318",
       "output": "Q",
       "input": "A",
       "bit_ids": [

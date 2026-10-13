@@ -1,0 +1,1831 @@
+{
+  "schema_version": 3,
+  "stage": "temporal",
+  "source_sha": "383e494610deec2edc99aac0bca7215f735dbcdf",
+  "source_sha_role": "Final protected inventory; original execution identities and narrowly checked rebinding evidence retained below",
+  "working_tree_dirty": true,
+  "source_hashes": {
+    ".github/workflows/ci.yml": "2a5561bb9d40df14fa9e7e2e0bfe4598f1e6af567564c7b38fcc4e1eae704003",
+    "docs/research/v3_temporal_qualification/preregistration.json": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522",
+    "experiments/temporal_qualification/configurations/one_wire_reset_presence.json": "da02c34b1de4882a6645bb56ffdf03becf7e7f706464aa6db781d6da43ab3e2e",
+    "experiments/temporal_qualification/configurations/v2_dual_source_response.json": "9d895955ba1b057dc30bdd2b86b6a6dfd5202351924ebcbe5b111ac0ee2dd8f6",
+    "formal/guardian.sv": "b2845122acce3b5dc013f192b968c80a7844d681312b1f3367d29b8e5af07008",
+    "formal/temporal.sv": "9a6c74a39a655df1df2635eddb2ef7d8836e5fc863189de8797356bf68a9bf83",
+    "formal/watchdog.sv": "99bee078d2ce2c1dce766a660ea9497dfed9e9982b31104d22e6d298c2c5bb96",
+    "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+    "motif/engine.py": "903acafd55b300cf3eaf0323298b982c9d20395a8500f621be4b143cec4f1090",
+    "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+    "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+    "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+    "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+    "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+    "motif/motifs/transaction.py": "7409f397a496b76e30b56e8ba3499ef81b3a59be5136a67623420e0b9788aab1",
+    "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+    "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+    "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+    "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+    "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+    "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+    "motif/transaction.py": "e5d789ea8f5cc98b195fc20177969e9a4da2c8362c59c1d492bb838c5269f2bb",
+    "pyproject.toml": "54f14bba12226efbc2a6c5b4499863f2b94f25fdef3513dd288f717556dbddea",
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4",
+    "test/host_tb.sv": "6742b858d49064e45930bd1295b291164117b235ce30fc1d1ac3f647f694b4d8",
+    "test/Makefile": "5c04d9e7a3286bc4e853eecf3c75b6b794c3468af5560a627e4107201b53e6be",
+    "test/requirements.txt": "9bc997c473bd44c93f41772d3a19c723a1a538dbf93f870ffb09c63c66267491",
+    "test/tb.v": "e082f6163dbcd3a409b8f5c3bffa6b9cce71e60b6746e35e2252bfb713f2306a",
+    "test/test.py": "a3730f32cc0a9ae12008c46b5e26c4203d6742023cb8bb21679a4f4170f21f6f",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/adversarial/test_direction.py": "e33f4c688d0282389cad006df33953e20efca5df09ca5647b3b81f5ef0cd42f0",
+    "tests/adversarial/test_guardian.py": "636028f6e1bc42f73408c41acff1087c1705ec5035a0631e4c148975eb8e2d73",
+    "tests/adversarial/test_i2c_provenance.py": "479358668398c9d1899601d8ce293a78f1de6b01487a7a06e2034a6aec38ab9e",
+    "tests/adversarial/test_timeout_frame.py": "6e99eb270b2a80078cf914e06cbb708f424bbeb8d845735337a4f3796936d764",
+    "tests/drivers.py": "08ddbe5992a8aad5cca763a2be2bc3e2af959e1e405987f8f91d6448bbee3eb1",
+    "tests/i2c_driver.py": "c95f2355f45f10cb56a79a7f8431674edb589f417189cd2846e24a5a8ec093cf",
+    "tests/model/test_configuration.py": "8d453f526d1704b7f52fba6edda66dd3b014ed6221ed1d8d41efd5c9cedc138f",
+    "tests/model/test_frozen_manifest.py": "f2a6d7aa3f79b598558068df70167cab0e41d725b7157132650a926fff285fe5",
+    "tests/model/test_i2c.py": "3eeb447e7a33747bc9b3a50e5cb1e6eb8dbce54e74957026742e4806d8cc9919",
+    "tests/model/test_i2c_setup.py": "b819d62b86e9fc21c660ebc6735758f45cf63b9b52504eecd77723d51563592e",
+    "tests/model/test_m0.py": "e6d985245602cddaa83e57f09729358f8f1ffedba3eccbd7448670d4220eaa8c",
+    "tests/model/test_microwire_oracle.py": "d3325e70e0c734440fe49dbb3746d54b19e81769411bc151a84e853fe707d533",
+    "tests/model/test_one_wire_oracle.py": "2be4e30763deef3b3b49e04ae66fad63d3cf0aac6f7fe2a99445348af49f46f2",
+    "tests/model/test_reference.py": "8cb321677e445a7b19d5fe6ec36bd932462663f1f4b2b00b6922a3684d853d68",
+    "tests/model/test_temporal.py": "73065b153b4062a1f43bc60d9cfe429462388f0e641107747d6274eaa717c771",
+    "tests/model/test_timed_stream.py": "96a036b9ad60284fbf5eee285652baf6fa121d2eedfcb2469335ba5c87064d24",
+    "tests/model/test_transaction.py": "92e817ceb8d72b77a019cb8c0c68a1c3962b2ff53d60a09faf0cec8ea704053d",
+    "tests/tooling/test_v3_evidence.py": "b80fd5f91c246b15b88f4102e929aaf7410c0b726f9809c7dbab4c4083e2e4d2",
+    "tools/__init__.py": "d854eb40e756b998a7f3abfe7862f3c0faa5bf17fed7a1c689e4e6694fa8d22e",
+    "tools/accounting.py": "53051f0297220ae19b1fdb270f149f4cb1e848a953916ee14e91c387e3be455f",
+    "tools/byte_exchange_falsification.py": "849159ea0a7834356ef0ec070f97060c62d13563d23a8b0703a45df0b3bc1caf",
+    "tools/campaign_report.py": "29e9842fb033243c5feb8a7efc10691f4c348193f11f7b13bad34cea5a43f4cf",
+    "tools/demo.py": "bde12609f9344197eb29c1130b278e6e0a4e65b77e5880064b6572627973b8ab",
+    "tools/demo_render.py": "0af75f2ac80f7baa98a4806264c7dfd413e3c818795d5ede46b6e75e65baa22f",
+    "tools/exchange_decomposition.py": "8c681010888f46a72e1581349ce86514776a2234d2691eebf99fc6535ceb75e5",
+    "tools/formal_check.py": "bb099115b00f66cfd16913222c9dfd6d2f9fb800892f8969c33dc72858b8b1f0",
+    "tools/frozen_manifest.py": "dc63a04ffc725b3461f61835282934bd148bc62c64793a77a37c6ecb2dabf67b",
+    "tools/generalization.py": "41f7d1e24c0e46ff4cdfbef40bde34ad2a967336d2068c4adaf00294e9cdf72a",
+    "tools/historical_snapshot.py": "969ed34474d705dcf74474543338392db5995b8c0bc39425e9948a03674fc4b4",
+    "tools/host_check.py": "ae16fc24b9d5896cbbe37edc49eb3a9d47d91c5efeaeda423c711cd0705929a6",
+    "tools/legacy_baseline.py": "1825f04efdc9d0158f469cad58bee7902a7b2a1818689e28c90fb056e910b4cc",
+    "tools/physical_correspondence.py": "1964131c2980a60aabf41e3e6202b7837b4f47cdc00ba198c3361e04947a9c62",
+    "tools/physical_report.py": "78f8aa0fdd4ed4d92b8195d6005ec6434aec9768d66125af8ca4c48e10df720b",
+    "tools/prepare_gate_models.py": "b243488995c4e235425e22da96d7ebabb962dfcc10d73ee3822a6ca5ceca398d",
+    "tools/rtl_check.py": "0f073739c15925f14536a89491d50c7e810652e8c6a9b917f4ca010d86847da7",
+    "tools/synthesis.py": "a96d0e4a437946705d28b6f905cb591f1c45b8bea89b3d8d495c1346e85fb489",
+    "tools/temporal_baseline.py": "37a46104eca60da4b3bbfa3bbe9105fad15357aa7b509e091d9b28fc28ef778c",
+    "tools/temporal_campaign.py": "a0776e0ed15b23e45ef7a91a23f4e7101367c243bca5ea1035f7291a702059cc",
+    "tools/temporal_vectors.py": "e9fd5a3aab2ad43a6d0358bffecc5e0affe388f403f91ee287ae675c474a35a2",
+    "tools/unseen_protocol.py": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
+    "tools/unseen_result.py": "193a71cbb19d91e0642316d7d19e7e71cce8800d832be4029b8ec5279852135b",
+    "tools/v2_inventory.py": "09a441b1b5d89e637697c93bf39540cbd6c6fe25ca5de2937c1be55ba4f3cbc7",
+    "tools/v3_inventory.py": "1e0880b8b0587def0989eb778c00b06742879e1ec7aded150e9ea7d2224c9159",
+    "tools/v3_trace.py": "d9b21ce33b8e208725dec47b751cbd2281f8e55bbbc809885c0f79207b0d5945"
+  },
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "physical_input_hashes": {
+    "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+    "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+  },
+  "cases": [
+    {
+      "name": "level0_t1_delta-1",
+      "cycles": 24,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "03e97d0b6a854e74022dd22e4a2ef6f46b365f969995b04aa7dcf8a750269b4e",
+        "model.jsonl": "752e77a8119699263ac53da321e658e0406b53970b6a774a36f5ab55fd1bd01b",
+        "rtl.jsonl": "752e77a8119699263ac53da321e658e0406b53970b6a774a36f5ab55fd1bd01b"
+      }
+    },
+    {
+      "name": "level0_t1_delta0",
+      "cycles": 25,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              11,
+              17
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            11,
+            17
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "b685e6c78300711ffe7fa1c31943a4efa6dff44d28c43d5240a484f4e82e86f5",
+        "model.jsonl": "0e35231a6cbdfaaa538f4f9a35d45d0531b1a60535b7314dfb5810b0ee683acb",
+        "rtl.jsonl": "0e35231a6cbdfaaa538f4f9a35d45d0531b1a60535b7314dfb5810b0ee683acb"
+      }
+    },
+    {
+      "name": "level0_t1_delta1",
+      "cycles": 26,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              11,
+              18
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            11,
+            18
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "51c2875d074cfb405e3e899b123f1e3e9b245f396d8f18e635fa3dbbdd9fe6a6",
+        "model.jsonl": "9e9bd270c53bf477b7ccf50b20a639a0c0b70bdbf37debafb3a607195e1f9f80",
+        "rtl.jsonl": "9e9bd270c53bf477b7ccf50b20a639a0c0b70bdbf37debafb3a607195e1f9f80"
+      }
+    },
+    {
+      "name": "level0_t2_delta-1",
+      "cycles": 25,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "b685e6c78300711ffe7fa1c31943a4efa6dff44d28c43d5240a484f4e82e86f5",
+        "model.jsonl": "6493a20329e564f53148e09ab12623c9271bd66644c1c8d76eb683ddf3ab98b7",
+        "rtl.jsonl": "6493a20329e564f53148e09ab12623c9271bd66644c1c8d76eb683ddf3ab98b7"
+      }
+    },
+    {
+      "name": "level0_t2_delta0",
+      "cycles": 26,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              12,
+              18
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            12,
+            18
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "51c2875d074cfb405e3e899b123f1e3e9b245f396d8f18e635fa3dbbdd9fe6a6",
+        "model.jsonl": "b5e22d28fa7ca9cb285d72cda6fa98062e838f2cb41eca9715c9d0b99035e551",
+        "rtl.jsonl": "b5e22d28fa7ca9cb285d72cda6fa98062e838f2cb41eca9715c9d0b99035e551"
+      }
+    },
+    {
+      "name": "level0_t2_delta1",
+      "cycles": 27,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              12,
+              19
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            12,
+            19
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "f334b30a81130f6e38aca3fab00548613d4f4e2774fee20d11ea2ba36ec4c3ac",
+        "model.jsonl": "a17ac5a00aeed517cca8f28389a6c1b57343e0153951f1596d67e5fac20b8fb1",
+        "rtl.jsonl": "a17ac5a00aeed517cca8f28389a6c1b57343e0153951f1596d67e5fac20b8fb1"
+      }
+    },
+    {
+      "name": "level0_t4_delta-1",
+      "cycles": 27,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "f334b30a81130f6e38aca3fab00548613d4f4e2774fee20d11ea2ba36ec4c3ac",
+        "model.jsonl": "68015bc34c93b3ea4ca54400275ffbde5b892c38809411e059106c6b8057b6e6",
+        "rtl.jsonl": "68015bc34c93b3ea4ca54400275ffbde5b892c38809411e059106c6b8057b6e6"
+      }
+    },
+    {
+      "name": "level0_t4_delta0",
+      "cycles": 28,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              14,
+              20
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            14,
+            20
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "668250cf6bab91b4666fed04e2fb9317ab480a75a0f700f022a7e1135621d902",
+        "model.jsonl": "601e01ab5612b39cb9fa1ab14f3dca4cbd5dec743bd2d9b2ed8c9758a6bc12e5",
+        "rtl.jsonl": "601e01ab5612b39cb9fa1ab14f3dca4cbd5dec743bd2d9b2ed8c9758a6bc12e5"
+      }
+    },
+    {
+      "name": "level0_t4_delta1",
+      "cycles": 29,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              14,
+              21
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            14,
+            21
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9f368f21548214fb9396003987560771eefd4ef14c25a17574e2b4a53ce4bfe8",
+        "model.jsonl": "12074295a6477f5df6b290a240620e25bdde322c25b22a05b00b24ea2524305f",
+        "rtl.jsonl": "12074295a6477f5df6b290a240620e25bdde322c25b22a05b00b24ea2524305f"
+      }
+    },
+    {
+      "name": "level0_t16_delta-1",
+      "cycles": 39,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "075839b940b999f9268d4ec0adde1037e5f8cc0edd6a12103a9a721f860b2dad",
+        "model.jsonl": "d89e3372e661e99ef902ba5a797ada54457741a6e336ce12d7ce29d648839857",
+        "rtl.jsonl": "d89e3372e661e99ef902ba5a797ada54457741a6e336ce12d7ce29d648839857"
+      }
+    },
+    {
+      "name": "level0_t16_delta0",
+      "cycles": 40,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              26,
+              32
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            26,
+            32
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3e6baaea66e43d38e8ebe9c0eddd81b9f044d53808903f9c999dbca838ce6707",
+        "model.jsonl": "6339b4999ab27a757ead48a509e22843dfdb6e0e6612f6720a853bd613fa85aa",
+        "rtl.jsonl": "6339b4999ab27a757ead48a509e22843dfdb6e0e6612f6720a853bd613fa85aa"
+      }
+    },
+    {
+      "name": "level0_t16_delta1",
+      "cycles": 41,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              26,
+              33
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            26,
+            33
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "faa12aeb2f6083884919fa60c42eefbc68091875ace3348306760c45afc8f1c5",
+        "model.jsonl": "ce13f86ebcb296080143aff64994ec2a969249d22cd5328360a0e816f692f672",
+        "rtl.jsonl": "ce13f86ebcb296080143aff64994ec2a969249d22cd5328360a0e816f692f672"
+      }
+    },
+    {
+      "name": "level0_t65535_delta-1",
+      "cycles": 65558,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "6b5960174c8055294b9190920e3ad7c9a82eb4965bcf702eefd2f7d7ba5c7b7b",
+        "model.jsonl": "71f29464688d0e41588497deba362dda4bb12385d23162d5cc2a9f17676b7ebb",
+        "rtl.jsonl": "71f29464688d0e41588497deba362dda4bb12385d23162d5cc2a9f17676b7ebb"
+      }
+    },
+    {
+      "name": "level0_t65535_delta0",
+      "cycles": 65559,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              65545,
+              65551
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            65545,
+            65551
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9f595487a5f64dcac3421360e3f0003c3985ac32017c5f1c383fcabb2d0a529f",
+        "model.jsonl": "84ff3e2caf866187700fe9ed8ba9e9e97ab8891eb19af55ad7a04c99044a971b",
+        "rtl.jsonl": "84ff3e2caf866187700fe9ed8ba9e9e97ab8891eb19af55ad7a04c99044a971b"
+      }
+    },
+    {
+      "name": "level0_t65535_delta1",
+      "cycles": 65560,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              65545,
+              65552
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            65545,
+            65552
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3e53af3c15bd36a8a5ff1d100867a3045fae0e94d95a7c402f733ff611c51a25",
+        "model.jsonl": "db46939ecb73c03656b10b7a6582a2e476b5d4013c5e24daf07f4b7cbfa62c2f",
+        "rtl.jsonl": "db46939ecb73c03656b10b7a6582a2e476b5d4013c5e24daf07f4b7cbfa62c2f"
+      }
+    },
+    {
+      "name": "level0_interrupt1_restart",
+      "cycles": 30,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              16,
+              22
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            16,
+            22
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2008772bbc4bbe79fc8f261123482c341b78a5a2cef62e69389ac2dad4cea6dd",
+        "model.jsonl": "25f44257e15224d409102b4e9580b69b1156d0fd2d804644c4f3e7e9f53d5488",
+        "rtl.jsonl": "25f44257e15224d409102b4e9580b69b1156d0fd2d804644c4f3e7e9f53d5488"
+      }
+    },
+    {
+      "name": "level0_interrupt1_branch",
+      "cycles": 30,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2008772bbc4bbe79fc8f261123482c341b78a5a2cef62e69389ac2dad4cea6dd",
+        "model.jsonl": "bbbbf84d288d86dc08e272874904d1c21ceb1647b68eae16e2b779570471bd22",
+        "rtl.jsonl": "bbbbf84d288d86dc08e272874904d1c21ceb1647b68eae16e2b779570471bd22"
+      }
+    },
+    {
+      "name": "level0_interrupt2_restart",
+      "cycles": 31,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              17,
+              23
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            17,
+            23
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "fd2050d0e44f0e4a0eabb298648ffdd3f4164221f8d0e71dccc40157cb72a15c",
+        "model.jsonl": "76e70672b8878ab55eb81a66fc9404fd226d1e0335757c8ed81393cec938727d",
+        "rtl.jsonl": "76e70672b8878ab55eb81a66fc9404fd226d1e0335757c8ed81393cec938727d"
+      }
+    },
+    {
+      "name": "level0_interrupt2_branch",
+      "cycles": 31,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "fd2050d0e44f0e4a0eabb298648ffdd3f4164221f8d0e71dccc40157cb72a15c",
+        "model.jsonl": "fd9c50e60f73dfff692f4f6743c5e0ca64092e7b8036e336c3d00e31fbafe6de",
+        "rtl.jsonl": "fd9c50e60f73dfff692f4f6743c5e0ca64092e7b8036e336c3d00e31fbafe6de"
+      }
+    },
+    {
+      "name": "level0_interrupt3_restart",
+      "cycles": 32,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              18,
+              24
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            18,
+            24
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "e6eb0713b26df209e6ee658074f4ba8627e37b306ac0832c487eee0832e2a651",
+        "model.jsonl": "bc4f1b015811a9e89533adf3657af8d5180cb4184398c024061bf1732c800684",
+        "rtl.jsonl": "bc4f1b015811a9e89533adf3657af8d5180cb4184398c024061bf1732c800684"
+      }
+    },
+    {
+      "name": "level0_interrupt3_branch",
+      "cycles": 32,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "e6eb0713b26df209e6ee658074f4ba8627e37b306ac0832c487eee0832e2a651",
+        "model.jsonl": "97fbe03de92727f105935f86bcaeac1800b1f594eeaed2e01711b4712e34e71f",
+        "rtl.jsonl": "97fbe03de92727f105935f86bcaeac1800b1f594eeaed2e01711b4712e34e71f"
+      }
+    },
+    {
+      "name": "level0_multiple_interruptions",
+      "cycles": 33,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              19,
+              25
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            19,
+            25
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3bad08500510b269f37a6ddca4201969298410969209f0a1975ba5295c31078b",
+        "model.jsonl": "c80e78033ce9f4f1f2b4ccc997673c6f930b0aa6cb6add2a3ca725788bd50e24",
+        "rtl.jsonl": "c80e78033ce9f4f1f2b4ccc997673c6f930b0aa6cb6add2a3ca725788bd50e24"
+      }
+    },
+    {
+      "name": "level0_long_idle",
+      "cycles": 128,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              114,
+              120
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            114,
+            120
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "e103ef9ccf52d9c111f5e8cb5b18cbd4cad8750ce249b6178d6f43963d6cdda0",
+        "model.jsonl": "03d44162cb7081287e66e0b98af8dafd6864434dd353e9228fb08c15351193d7",
+        "rtl.jsonl": "03d44162cb7081287e66e0b98af8dafd6864434dd353e9228fb08c15351193d7"
+      }
+    },
+    {
+      "name": "level1_t1_delta-1",
+      "cycles": 24,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "cec1bc42a5515a992e5730787cdcb2d34ec2cea87c802e6452d1f05db054abe7",
+        "model.jsonl": "70ca23a01709ed42674d8db2eac1d02b7630246b850d14b4189a6edd9b59d45c",
+        "rtl.jsonl": "70ca23a01709ed42674d8db2eac1d02b7630246b850d14b4189a6edd9b59d45c"
+      }
+    },
+    {
+      "name": "level1_t1_delta0",
+      "cycles": 25,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              11,
+              17
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            11,
+            17
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "e8315178201eaa71537e75458195a424d3372a95f41ff8663518c44b13ad2f7e",
+        "model.jsonl": "f08bba2e406ee7bedaec2aec06ffaa4b9ef4fd1ad20bdf955465c81d7770a856",
+        "rtl.jsonl": "f08bba2e406ee7bedaec2aec06ffaa4b9ef4fd1ad20bdf955465c81d7770a856"
+      }
+    },
+    {
+      "name": "level1_t1_delta1",
+      "cycles": 26,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              11,
+              18
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            11,
+            18
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2edd3948c91fbaa53446f665e3f06bc4fcc5bb33a2b71bdf9140f96931a12d70",
+        "model.jsonl": "65d4bc931adb77643e55e8f3cb5f4125e46d2909a2211caff4c8a5581fde5843",
+        "rtl.jsonl": "65d4bc931adb77643e55e8f3cb5f4125e46d2909a2211caff4c8a5581fde5843"
+      }
+    },
+    {
+      "name": "level1_t2_delta-1",
+      "cycles": 25,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "e8315178201eaa71537e75458195a424d3372a95f41ff8663518c44b13ad2f7e",
+        "model.jsonl": "f35dc262b161158bb56de3fe2b137d22ab6323aca9d349ac2c7ec0fa485ba9c9",
+        "rtl.jsonl": "f35dc262b161158bb56de3fe2b137d22ab6323aca9d349ac2c7ec0fa485ba9c9"
+      }
+    },
+    {
+      "name": "level1_t2_delta0",
+      "cycles": 26,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              12,
+              18
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            12,
+            18
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2edd3948c91fbaa53446f665e3f06bc4fcc5bb33a2b71bdf9140f96931a12d70",
+        "model.jsonl": "a17dde7d811f335fad75f730b971c10481d56c4d8570f7be297e15faae64c219",
+        "rtl.jsonl": "a17dde7d811f335fad75f730b971c10481d56c4d8570f7be297e15faae64c219"
+      }
+    },
+    {
+      "name": "level1_t2_delta1",
+      "cycles": 27,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              12,
+              19
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            12,
+            19
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "1f7ec37a1646964c405c37e5fa19e96cea2dfe912918d83088d5e7a782e87494",
+        "model.jsonl": "efb2cb19d0ed0e9a80da5dfbbc0beed536e346000f52cf3cd393bf489140cac2",
+        "rtl.jsonl": "efb2cb19d0ed0e9a80da5dfbbc0beed536e346000f52cf3cd393bf489140cac2"
+      }
+    },
+    {
+      "name": "level1_t4_delta-1",
+      "cycles": 27,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "1f7ec37a1646964c405c37e5fa19e96cea2dfe912918d83088d5e7a782e87494",
+        "model.jsonl": "779afb2081184c420e178d74d2d813c76a1ae9e09435178c77575b2780e25b93",
+        "rtl.jsonl": "779afb2081184c420e178d74d2d813c76a1ae9e09435178c77575b2780e25b93"
+      }
+    },
+    {
+      "name": "level1_t4_delta0",
+      "cycles": 28,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              14,
+              20
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            14,
+            20
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "067d14984407a9acbc752e0c1c6008e9930282bf77fc126d876d2b334b40eb92",
+        "model.jsonl": "4a22c20e174c3529e6322f21d0e1492a0c0af014d4d84643e372f3d46fbcade2",
+        "rtl.jsonl": "4a22c20e174c3529e6322f21d0e1492a0c0af014d4d84643e372f3d46fbcade2"
+      }
+    },
+    {
+      "name": "level1_t4_delta1",
+      "cycles": 29,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              14,
+              21
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            14,
+            21
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "fb69a9b358df282a8ea8bdda5eab7c42a0909dead04d6232bd57ed0668e093a6",
+        "model.jsonl": "20515537de9f90c0ee5241f1a6a9fb67382f7ea22ad6b81da97230f8dd378d46",
+        "rtl.jsonl": "20515537de9f90c0ee5241f1a6a9fb67382f7ea22ad6b81da97230f8dd378d46"
+      }
+    },
+    {
+      "name": "level1_t16_delta-1",
+      "cycles": 39,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "404f02484415a0df472f4c45183806bd5ec271a691a6736d143b964370d606c3",
+        "model.jsonl": "fbfe5b55564b1fcba16ddab89d90a8fef89456f82061a611e6963dc11a58dbe4",
+        "rtl.jsonl": "fbfe5b55564b1fcba16ddab89d90a8fef89456f82061a611e6963dc11a58dbe4"
+      }
+    },
+    {
+      "name": "level1_t16_delta0",
+      "cycles": 40,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              26,
+              32
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            26,
+            32
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "dd5bac3bbc7685706f46d4e18d807f602bf83eb9944583f2df003354d215871f",
+        "model.jsonl": "87605ba253d40a7ec03896a83d20a4a8c7a5bff801c385abddf9b55c7c667695",
+        "rtl.jsonl": "87605ba253d40a7ec03896a83d20a4a8c7a5bff801c385abddf9b55c7c667695"
+      }
+    },
+    {
+      "name": "level1_t16_delta1",
+      "cycles": 41,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              26,
+              33
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            26,
+            33
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "f67315e2ad88f82d38ffac6f6c17b1e79019ad10020e40504ad311b48f353e04",
+        "model.jsonl": "cc36f69659d9662366113ae019f2a3db3006ac29463b50ef62b8a8bb0c4a3989",
+        "rtl.jsonl": "cc36f69659d9662366113ae019f2a3db3006ac29463b50ef62b8a8bb0c4a3989"
+      }
+    },
+    {
+      "name": "level1_t65535_delta-1",
+      "cycles": 65558,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "4b29134c75b41cb734ea19dcbe6363b97b5bce40e4f9d85602c21bbef9a7f69e",
+        "model.jsonl": "c1852058554deff8b3b59cbb1b4e48c39293479bee9568d9b6b53f50d0f510c5",
+        "rtl.jsonl": "c1852058554deff8b3b59cbb1b4e48c39293479bee9568d9b6b53f50d0f510c5"
+      }
+    },
+    {
+      "name": "level1_t65535_delta0",
+      "cycles": 65559,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              65545,
+              65551
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            65545,
+            65551
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "92fce9a61c5222353201c05f6cc2040d3bf80cec9c4cd655147aa69a6254e1bd",
+        "model.jsonl": "920da3aa6f28a6044da905d435f219ff78bed7e230f1809b5337103168c3d23f",
+        "rtl.jsonl": "920da3aa6f28a6044da905d435f219ff78bed7e230f1809b5337103168c3d23f"
+      }
+    },
+    {
+      "name": "level1_t65535_delta1",
+      "cycles": 65560,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              65545,
+              65552
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            65545,
+            65552
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "30c9083f30cbf801c67ba9d0a2e9da7ba6913e06249975e9c198bf700ef5986f",
+        "model.jsonl": "0eafce263e50c70a9232676aa09681f6f1073607b970d3f0b9dcb205f1eecd33",
+        "rtl.jsonl": "0eafce263e50c70a9232676aa09681f6f1073607b970d3f0b9dcb205f1eecd33"
+      }
+    },
+    {
+      "name": "level1_interrupt1_restart",
+      "cycles": 30,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              16,
+              22
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            16,
+            22
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "380dcbf11e23bff1659a11ddf403967e1446328942f5687633ca9ae87d467c46",
+        "model.jsonl": "11ef43b1ed5e548231b0c7cc9d26460d394d3e932b8c122e9a25062ada2ac176",
+        "rtl.jsonl": "11ef43b1ed5e548231b0c7cc9d26460d394d3e932b8c122e9a25062ada2ac176"
+      }
+    },
+    {
+      "name": "level1_interrupt1_branch",
+      "cycles": 30,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "380dcbf11e23bff1659a11ddf403967e1446328942f5687633ca9ae87d467c46",
+        "model.jsonl": "4d01ca2efccc78969804fbe544e7868670e7dfb918701a2509ef66224e89817c",
+        "rtl.jsonl": "4d01ca2efccc78969804fbe544e7868670e7dfb918701a2509ef66224e89817c"
+      }
+    },
+    {
+      "name": "level1_interrupt2_restart",
+      "cycles": 31,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              17,
+              23
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            17,
+            23
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "6cacd3ad6f11c399616860ef4eeb2b8fdc167007a2c801b74d5d5184e682a14d",
+        "model.jsonl": "7e3de102cad0862945a1b56f517865ad6139e1c22c6000465fbc785693069a9e",
+        "rtl.jsonl": "7e3de102cad0862945a1b56f517865ad6139e1c22c6000465fbc785693069a9e"
+      }
+    },
+    {
+      "name": "level1_interrupt2_branch",
+      "cycles": 31,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "6cacd3ad6f11c399616860ef4eeb2b8fdc167007a2c801b74d5d5184e682a14d",
+        "model.jsonl": "6c3cd0a06fc7a0fb86963548ef2ed5e531a072f2efaff19eb3fbcdd8f6232ba7",
+        "rtl.jsonl": "6c3cd0a06fc7a0fb86963548ef2ed5e531a072f2efaff19eb3fbcdd8f6232ba7"
+      }
+    },
+    {
+      "name": "level1_interrupt3_restart",
+      "cycles": 32,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              18,
+              24
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            18,
+            24
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2372469230df497ecf9fa7460ed8f421bff9fa20be6ed3137791873f6695347b",
+        "model.jsonl": "d17366fac51d98c4e999c2c67450b6a702df01c2f389ae48218bcc03ff94c922",
+        "rtl.jsonl": "d17366fac51d98c4e999c2c67450b6a702df01c2f389ae48218bcc03ff94c922"
+      }
+    },
+    {
+      "name": "level1_interrupt3_branch",
+      "cycles": 32,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "2372469230df497ecf9fa7460ed8f421bff9fa20be6ed3137791873f6695347b",
+        "model.jsonl": "470d0618fc398c1821eca87ec4b2bad970f7ebdfe588e8187224e5766381db95",
+        "rtl.jsonl": "470d0618fc398c1821eca87ec4b2bad970f7ebdfe588e8187224e5766381db95"
+      }
+    },
+    {
+      "name": "level1_multiple_interruptions",
+      "cycles": 33,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              19,
+              25
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            19,
+            25
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "1087745a0f358ced6c54aab53a56999e7b7ed0ff177804b5845ac19f7c8cebf4",
+        "model.jsonl": "3178ca43200f53fef48db141bbf0aea243cc88ce71bae3b04492aee4374d7241",
+        "rtl.jsonl": "3178ca43200f53fef48db141bbf0aea243cc88ce71bae3b04492aee4374d7241"
+      }
+    },
+    {
+      "name": "level1_long_idle",
+      "cycles": 128,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              114,
+              120
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            114,
+            120
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3150afbea9d28cdd645deda657493219ff828569a1e1d1797316f81a49d49e77",
+        "model.jsonl": "7ae38a0c225ed04f1d677c833adc4418611250553e9b0da26a263d2ca63efd78",
+        "rtl.jsonl": "7ae38a0c225ed04f1d677c833adc4418611250553e9b0da26a263d2ca63efd78"
+      }
+    },
+    {
+      "name": "constant_delay",
+      "cycles": 32,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              14,
+              24
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            14,
+            24
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "9024a551e1dfe168c9416029c7cf93eb667794b21aa0ce1c8bee29e77689d2d2",
+        "model.jsonl": "1bf1121ab3e724ed5bdd9e466cb308053022f2a3552840e00881da44f5062ddf",
+        "rtl.jsonl": "1bf1121ab3e724ed5bdd9e466cb308053022f2a3552840e00881da44f5062ddf"
+      }
+    },
+    {
+      "name": "lifecycle_reset",
+      "cycles": 73,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              59,
+              65
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            59,
+            65
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "d13a52127272bd4f20939686c8286892f7b15cc8784a6762ec3bd94a49c51811",
+        "model.jsonl": "7c7240f28cc313b3fefd59e15b12cb9b6838f089e65b4841022046f728d5aa19",
+        "rtl.jsonl": "7c7240f28cc313b3fefd59e15b12cb9b6838f089e65b4841022046f728d5aa19"
+      }
+    },
+    {
+      "name": "lifecycle_abort",
+      "cycles": 73,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              59,
+              65
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            59,
+            65
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "10dec444ab4ea348af14b2e606d465cfe33185d652642d3c5a33cbc2a3f2b3fb",
+        "model.jsonl": "071a11ae1ae9d2748b1dc456bb19efd29d090f8396815867bb43f7d34e74b106",
+        "rtl.jsonl": "071a11ae1ae9d2748b1dc456bb19efd29d090f8396815867bb43f7d34e74b106"
+      }
+    },
+    {
+      "name": "lifecycle_disable",
+      "cycles": 73,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              59,
+              65
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            59,
+            65
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "3ea68273d493059e80b1785c8fe00a1dbb68b6002732da0c43987cdff61e374f",
+        "model.jsonl": "a7bd6e4d4ff4c89a95c9450f5640ef623bff78e669ed9c66492d7159b8d2333c",
+        "rtl.jsonl": "a7bd6e4d4ff4c89a95c9450f5640ef623bff78e669ed9c66492d7159b8d2333c"
+      }
+    },
+    {
+      "name": "lifecycle_watchdog",
+      "cycles": 75,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              61,
+              67
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            61,
+            67
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "d1ebe28effb61ebfb4aab1be0ebaf0c2aea95bcaf2853883721448a4833cbb74",
+        "model.jsonl": "c0a965c2fbe3df0525d61df3e56e4c7ba0092d35c3febf03f74381816c924536",
+        "rtl.jsonl": "c0a965c2fbe3df0525d61df3e56e4c7ba0092d35c3febf03f74381816c924536"
+      }
+    },
+    {
+      "name": "lifecycle_release",
+      "cycles": 65,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              51,
+              57
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Declared external sample runs, two-cycle frontend and registered completion; no PC/qualification-state oracle"
+        },
+        "observed_marker_intervals": [
+          [
+            51,
+            57
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "34231d61948fa4fe8aa46e1d828dde1b98a2130a5e58c2384912223e6e984aa1",
+        "model.jsonl": "837397639c10f4073f00672a6ddb647222b8fdc6c39ffe76bf0a26b9a54f47f9",
+        "rtl.jsonl": "837397639c10f4073f00672a6ddb647222b8fdc6c39ffe76bf0a26b9a54f47f9"
+      }
+    },
+    {
+      "name": "chained_qualifications_bridges0",
+      "cycles": 28,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              13,
+              24
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Two registered qualifications separated by the mandatory second-entry deferral; first acquisition raw8+frontend2, marker at13"
+        },
+        "observed_marker_intervals": [
+          [
+            13,
+            24
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "51c23d5f940c572386b12cd3a4078f2ae7a7b2872cf78371c06d45d43f2d70b6",
+        "model.jsonl": "bf23507e2145bdc320841d06347a7f9624fada198affffb28decad8b8a7c686e",
+        "rtl.jsonl": "bf23507e2145bdc320841d06347a7f9624fada198affffb28decad8b8a7c686e"
+      }
+    },
+    {
+      "name": "chained_qualifications_bridges3",
+      "cycles": 28,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [
+            [
+              13,
+              24
+            ]
+          ],
+          "marker_pin": 3,
+          "basis": "Two registered qualifications separated by the mandatory second-entry deferral; first acquisition raw8+frontend2, marker at13"
+        },
+        "observed_marker_intervals": [
+          [
+            13,
+            24
+          ]
+        ]
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "51c23d5f940c572386b12cd3a4078f2ae7a7b2872cf78371c06d45d43f2d70b6",
+        "model.jsonl": "e9230c55df3e4e4a37001df44436feaebb714a0391934b67766eaa6ec9f4f539",
+        "rtl.jsonl": "e9230c55df3e4e4a37001df44436feaebb714a0391934b67766eaa6ec9f4f539"
+      }
+    },
+    {
+      "name": "registered_timer_end_precedes_repeated_acquisition",
+      "cycles": 40,
+      "oracle": {
+        "passed": true,
+        "errors": [],
+        "expected": {
+          "marker_intervals": [],
+          "marker_pin": 2,
+          "basis": "First acquisition observes rawDQfall8 at10; 2-cycle timer validates stop at28. Registered validation end overrides the repeated acquisition at29, cancelling the partial100-observation qualification before it can emit a marker."
+        },
+        "observed_marker_intervals": []
+      },
+      "model_rtl_agreement": true,
+      "evidence_sha256_lf": {
+        "inputs.txt": "cdad5b05904830bcb5a9d4841afec0588e5fbacf118948a8aef09bc8177c4253",
+        "model.jsonl": "e52e8ae6ba2d67b380eb5a436523a826f4eee7d3910f786919aafc8d780c8582",
+        "rtl.jsonl": "e52e8ae6ba2d67b380eb5a436523a826f4eee7d3910f786919aafc8d780c8582"
+      }
+    }
+  ],
+  "passed": true,
+  "model_only": false,
+  "total_compared_cycles": 395249,
+  "qualification_provenance": {
+    "executed_check_source_identity": {
+      "source_sha": "cc72d539a0714f163be22181226f20d774e5ca1e",
+      "source_sha_role": "Parent commit of measured working-tree sources; source_hashes identify the tested bytes",
+      "working_tree_dirty": true,
+      "source_hashes": {
+        ".github/workflows/ci.yml": "2a5561bb9d40df14fa9e7e2e0bfe4598f1e6af567564c7b38fcc4e1eae704003",
+        "docs/research/v3_temporal_qualification/preregistration.json": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522",
+        "experiments/temporal_qualification/configurations/one_wire_reset_presence.json": "da02c34b1de4882a6645bb56ffdf03becf7e7f706464aa6db781d6da43ab3e2e",
+        "experiments/temporal_qualification/configurations/v2_dual_source_response.json": "9d895955ba1b057dc30bdd2b86b6a6dfd5202351924ebcbe5b111ac0ee2dd8f6",
+        "formal/guardian.sv": "b2845122acce3b5dc013f192b968c80a7844d681312b1f3367d29b8e5af07008",
+        "formal/temporal.sv": "9a6c74a39a655df1df2635eddb2ef7d8836e5fc863189de8797356bf68a9bf83",
+        "formal/watchdog.sv": "99bee078d2ce2c1dce766a660ea9497dfed9e9982b31104d22e6d298c2c5bb96",
+        "motif/__init__.py": "2a698627173daa5b3df2b635f9e236ab3572eb32c4c250110f0703466a4ce58f",
+        "motif/engine.py": "903acafd55b300cf3eaf0323298b982c9d20395a8500f621be4b143cec4f1090",
+        "motif/events.py": "5c0f48f69d23ba8ece8dbc00a5345f9d8fed3a4a8efd1f0942acfa2559556e65",
+        "motif/guardian.py": "cd6b72c97269d4ff730a70769d34cc0f7cbf45e9fb76eaac7a2aa54d390aa35c",
+        "motif/motifs/__init__.py": "10a33f56dc3dfea7ef40bca1f44e5ec5e756d5a0199f4946fda41ed33d255290",
+        "motif/motifs/shift.py": "a09f5a0015795ffb04beec285791fd8efda61b726fc705214145d25d4c7916d9",
+        "motif/motifs/timed.py": "1fccb50a31655d6081035e74ef8c8b8b4cdf830a2eecb8f37983d7de5e937382",
+        "motif/motifs/transaction.py": "7409f397a496b76e30b56e8ba3499ef81b3a59be5136a67623420e0b9788aab1",
+        "motif/pad_history.py": "7ce1907868480d042db025e0f35e9dd69db5b06315976b63c0cf29919b72b2c5",
+        "motif/protocols/__init__.py": "4bbd0b6670a2585d2e6521ac2c911296bbc8c7524a833aafaba5a3fa89478fed",
+        "motif/protocols/i2c.py": "a68129753c01ddedb19ad5d93434ae21b0809d84ad1829e272587c4e821c2fac",
+        "motif/protocols/spi.py": "35876c3f43b04bc025ee215228cfe85585faf02bbf68d36a2a9c26b37ed37363",
+        "motif/protocols/timed_stream.py": "fe349b802debd932d62a970344bd52bb78384898956e9e91d4567f09f141592e",
+        "motif/protocols/uart.py": "a6dd07a79514cb3bdef0c3fb2f300cc6c26b068b844f9ce7c28d37c99db62d42",
+        "motif/transaction.py": "e5d789ea8f5cc98b195fc20177969e9a4da2c8362c59c1d492bb838c5269f2bb",
+        "pyproject.toml": "54f14bba12226efbc2a6c5b4499863f2b94f25fdef3513dd288f717556dbddea",
+        "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+        "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+        "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+        "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+        "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+        "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+        "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+        "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+        "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+        "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+        "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+        "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+        "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4",
+        "test/host_tb.sv": "6742b858d49064e45930bd1295b291164117b235ce30fc1d1ac3f647f694b4d8",
+        "test/Makefile": "5c04d9e7a3286bc4e853eecf3c75b6b794c3468af5560a627e4107201b53e6be",
+        "test/requirements.txt": "9bc997c473bd44c93f41772d3a19c723a1a538dbf93f870ffb09c63c66267491",
+        "test/tb.v": "e082f6163dbcd3a409b8f5c3bffa6b9cce71e60b6746e35e2252bfb713f2306a",
+        "test/test.py": "a3730f32cc0a9ae12008c46b5e26c4203d6742023cb8bb21679a4f4170f21f6f",
+        "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tests/adversarial/test_direction.py": "e33f4c688d0282389cad006df33953e20efca5df09ca5647b3b81f5ef0cd42f0",
+        "tests/adversarial/test_guardian.py": "636028f6e1bc42f73408c41acff1087c1705ec5035a0631e4c148975eb8e2d73",
+        "tests/adversarial/test_i2c_provenance.py": "479358668398c9d1899601d8ce293a78f1de6b01487a7a06e2034a6aec38ab9e",
+        "tests/adversarial/test_timeout_frame.py": "6e99eb270b2a80078cf914e06cbb708f424bbeb8d845735337a4f3796936d764",
+        "tests/drivers.py": "08ddbe5992a8aad5cca763a2be2bc3e2af959e1e405987f8f91d6448bbee3eb1",
+        "tests/i2c_driver.py": "c95f2355f45f10cb56a79a7f8431674edb589f417189cd2846e24a5a8ec093cf",
+        "tests/model/test_configuration.py": "8d453f526d1704b7f52fba6edda66dd3b014ed6221ed1d8d41efd5c9cedc138f",
+        "tests/model/test_frozen_manifest.py": "f2a6d7aa3f79b598558068df70167cab0e41d725b7157132650a926fff285fe5",
+        "tests/model/test_i2c.py": "3eeb447e7a33747bc9b3a50e5cb1e6eb8dbce54e74957026742e4806d8cc9919",
+        "tests/model/test_i2c_setup.py": "b819d62b86e9fc21c660ebc6735758f45cf63b9b52504eecd77723d51563592e",
+        "tests/model/test_m0.py": "e6d985245602cddaa83e57f09729358f8f1ffedba3eccbd7448670d4220eaa8c",
+        "tests/model/test_microwire_oracle.py": "d3325e70e0c734440fe49dbb3746d54b19e81769411bc151a84e853fe707d533",
+        "tests/model/test_one_wire_oracle.py": "2be4e30763deef3b3b49e04ae66fad63d3cf0aac6f7fe2a99445348af49f46f2",
+        "tests/model/test_reference.py": "8cb321677e445a7b19d5fe6ec36bd932462663f1f4b2b00b6922a3684d853d68",
+        "tests/model/test_temporal.py": "73065b153b4062a1f43bc60d9cfe429462388f0e641107747d6274eaa717c771",
+        "tests/model/test_timed_stream.py": "96a036b9ad60284fbf5eee285652baf6fa121d2eedfcb2469335ba5c87064d24",
+        "tests/model/test_transaction.py": "92e817ceb8d72b77a019cb8c0c68a1c3962b2ff53d60a09faf0cec8ea704053d",
+        "tools/__init__.py": "d854eb40e756b998a7f3abfe7862f3c0faa5bf17fed7a1c689e4e6694fa8d22e",
+        "tools/accounting.py": "53051f0297220ae19b1fdb270f149f4cb1e848a953916ee14e91c387e3be455f",
+        "tools/byte_exchange_falsification.py": "849159ea0a7834356ef0ec070f97060c62d13563d23a8b0703a45df0b3bc1caf",
+        "tools/campaign_report.py": "29e9842fb033243c5feb8a7efc10691f4c348193f11f7b13bad34cea5a43f4cf",
+        "tools/demo.py": "bde12609f9344197eb29c1130b278e6e0a4e65b77e5880064b6572627973b8ab",
+        "tools/demo_render.py": "0af75f2ac80f7baa98a4806264c7dfd413e3c818795d5ede46b6e75e65baa22f",
+        "tools/exchange_decomposition.py": "8c681010888f46a72e1581349ce86514776a2234d2691eebf99fc6535ceb75e5",
+        "tools/formal_check.py": "57801308c8e2fd54fbc947e148c1ec10b4f3ec68893c61919d9d514457508ec3",
+        "tools/frozen_manifest.py": "dc63a04ffc725b3461f61835282934bd148bc62c64793a77a37c6ecb2dabf67b",
+        "tools/generalization.py": "41f7d1e24c0e46ff4cdfbef40bde34ad2a967336d2068c4adaf00294e9cdf72a",
+        "tools/historical_snapshot.py": "969ed34474d705dcf74474543338392db5995b8c0bc39425e9948a03674fc4b4",
+        "tools/host_check.py": "ae16fc24b9d5896cbbe37edc49eb3a9d47d91c5efeaeda423c711cd0705929a6",
+        "tools/legacy_baseline.py": "1825f04efdc9d0158f469cad58bee7902a7b2a1818689e28c90fb056e910b4cc",
+        "tools/physical_correspondence.py": "1964131c2980a60aabf41e3e6202b7837b4f47cdc00ba198c3361e04947a9c62",
+        "tools/physical_report.py": "78f8aa0fdd4ed4d92b8195d6005ec6434aec9768d66125af8ca4c48e10df720b",
+        "tools/prepare_gate_models.py": "b243488995c4e235425e22da96d7ebabb962dfcc10d73ee3822a6ca5ceca398d",
+        "tools/rtl_check.py": "0f073739c15925f14536a89491d50c7e810652e8c6a9b917f4ca010d86847da7",
+        "tools/synthesis.py": "a96d0e4a437946705d28b6f905cb591f1c45b8bea89b3d8d495c1346e85fb489",
+        "tools/temporal_baseline.py": "37a46104eca60da4b3bbfa3bbe9105fad15357aa7b509e091d9b28fc28ef778c",
+        "tools/temporal_campaign.py": "a0776e0ed15b23e45ef7a91a23f4e7101367c243bca5ea1035f7291a702059cc",
+        "tools/temporal_vectors.py": "e9fd5a3aab2ad43a6d0358bffecc5e0affe388f403f91ee287ae675c474a35a2",
+        "tools/unseen_protocol.py": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
+        "tools/unseen_result.py": "193a71cbb19d91e0642316d7d19e7e71cce8800d832be4029b8ec5279852135b",
+        "tools/v2_inventory.py": "09a441b1b5d89e637697c93bf39540cbd6c6fe25ca5de2937c1be55ba4f3cbc7",
+        "tools/v3_inventory.py": "8014394351df15217399004928b16fb731476d14b7bc95908b2ea95511e899f1",
+        "tools/v3_trace.py": "d9b21ce33b8e208725dec47b751cbd2281f8e55bbbc809885c0f79207b0d5945"
+      },
+      "preregistration": {
+        "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+        "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+      },
+      "physical_input_hashes": {
+        "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+        "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+        "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+        ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+      }
+    },
+    "changed_protected_files": [
+      "tests/tooling/test_v3_evidence.py",
+      "tools/formal_check.py",
+      "tools/v3_inventory.py"
+    ],
+    "reason": "Only formal-backend portability/receipt validation/new tooling guard tests changed; runtime RTL/model/configuration/controllers/oracles/comparison harness bytes are unchanged",
+    "byte_equal_verified_dependencies": [
+      ".github/workflows/ci.yml",
+      "docs/research/v3_temporal_qualification/preregistration.json",
+      "experiments/temporal_qualification/configurations/one_wire_reset_presence.json",
+      "experiments/temporal_qualification/configurations/v2_dual_source_response.json",
+      "formal/guardian.sv",
+      "formal/temporal.sv",
+      "formal/watchdog.sv",
+      "motif/__init__.py",
+      "motif/engine.py",
+      "motif/events.py",
+      "motif/guardian.py",
+      "motif/motifs/__init__.py",
+      "motif/motifs/shift.py",
+      "motif/motifs/timed.py",
+      "motif/motifs/transaction.py",
+      "motif/pad_history.py",
+      "motif/protocols/__init__.py",
+      "motif/protocols/i2c.py",
+      "motif/protocols/spi.py",
+      "motif/protocols/timed_stream.py",
+      "motif/protocols/uart.py",
+      "motif/transaction.py",
+      "pyproject.toml",
+      "src/motif_core.sv",
+      "src/motif_event_frontend.sv",
+      "src/motif_fifo.sv",
+      "src/motif_host_spi.sv",
+      "src/motif_pad_guardian.sv",
+      "src/motif_reference_top.sv",
+      "src/motif_sequential_shift.sv",
+      "src/motif_shift_rx_count.sv",
+      "src/motif_shift_tx.sv",
+      "src/motif_timed_sample.sv",
+      "src/motif_transaction.sv",
+      "src/motif_watchdog.sv",
+      "src/tt_um_wellitsabhinav_motif.sv",
+      "test/Makefile",
+      "test/host_tb.sv",
+      "test/requirements.txt",
+      "test/tb.v",
+      "test/test.py",
+      "tests/__init__.py",
+      "tests/adversarial/test_direction.py",
+      "tests/adversarial/test_guardian.py",
+      "tests/adversarial/test_i2c_provenance.py",
+      "tests/adversarial/test_timeout_frame.py",
+      "tests/drivers.py",
+      "tests/i2c_driver.py",
+      "tests/model/test_configuration.py",
+      "tests/model/test_frozen_manifest.py",
+      "tests/model/test_i2c.py",
+      "tests/model/test_i2c_setup.py",
+      "tests/model/test_m0.py",
+      "tests/model/test_microwire_oracle.py",
+      "tests/model/test_one_wire_oracle.py",
+      "tests/model/test_reference.py",
+      "tests/model/test_temporal.py",
+      "tests/model/test_timed_stream.py",
+      "tests/model/test_transaction.py",
+      "tools/__init__.py",
+      "tools/accounting.py",
+      "tools/byte_exchange_falsification.py",
+      "tools/campaign_report.py",
+      "tools/demo.py",
+      "tools/demo_render.py",
+      "tools/exchange_decomposition.py",
+      "tools/frozen_manifest.py",
+      "tools/generalization.py",
+      "tools/historical_snapshot.py",
+      "tools/host_check.py",
+      "tools/legacy_baseline.py",
+      "tools/physical_correspondence.py",
+      "tools/physical_report.py",
+      "tools/prepare_gate_models.py",
+      "tools/rtl_check.py",
+      "tools/synthesis.py",
+      "tools/temporal_baseline.py",
+      "tools/temporal_campaign.py",
+      "tools/temporal_vectors.py",
+      "tools/unseen_protocol.py",
+      "tools/unseen_result.py",
+      "tools/v2_inventory.py",
+      "tools/v3_trace.py"
+    ],
+    "local_formal_commands_identical": true,
+    "local_formal_checks": [
+      {
+        "name": "guardian",
+        "command_sha256": "7434e709fee02e9ed2a94dee0ab1ec1cdb5463a721cc3ef040b3f5e5187de23f",
+        "proof_log_sha256_lf": "bfd011cad223dafa2036bf449c6f389e478d95200a1800eee412d801b96d8b8d",
+        "passed": true
+      },
+      {
+        "name": "watchdog",
+        "command_sha256": "c93be8fc888bdc8e84e4c30cfc95f31f91bae66746ba3edbeaf97baeb7280836",
+        "proof_log_sha256_lf": "d5b03a1e179b761542c2657b3d5771fa232f48f21d6a21e65b3932d9be6aafeb",
+        "passed": true
+      },
+      {
+        "name": "temporal_1",
+        "command_sha256": "4d1035dc151ef650c51b10e5ca8b163702d61d811ae0b2eb64e8cdfb3bf86205",
+        "proof_log_sha256_lf": "8302313b0bb62792b88a024b3e3fbaa617e4dcde388dfb5e664271d844df085f",
+        "passed": true
+      },
+      {
+        "name": "temporal_2",
+        "command_sha256": "c0e11bfa6d20a68502180f017f51578c13032b62722c9a30178f88088e350be5",
+        "proof_log_sha256_lf": "6e1883f23190e8ab3fe48cf9e8024409807cafedb66fc7fdb7703a066b0d41e0",
+        "passed": true
+      },
+      {
+        "name": "temporal_3",
+        "command_sha256": "9585a01cbbe510fbcfffc166e82a92f648d6e20ad68f2cb8dd74f8a23aa4c28d",
+        "proof_log_sha256_lf": "638f443346176c6eac9625ebba6939851c8f8b061603f7e4a91a2f86b7afb495",
+        "passed": true
+      },
+      {
+        "name": "temporal_4",
+        "command_sha256": "a86e3718644bff6772798da7e63bfe322bf62b1ca2f7ca4c5630c9eeb6665f3b",
+        "proof_log_sha256_lf": "7e4e36eb2f97e9ab25e8db7174126ce56fa36b49def3c1ab77b388c55085ea98",
+        "passed": true
+      }
+    ],
+    "modern_formal_confirmation": {
+      "workflow_run_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293348349",
+      "source_sha": "c694f65361257d9763b2591ee1d62a28a173a5be",
+      "formal_step": "success",
+      "evidence_origin": "Parent independently inspected completed formal step; source is identical apart from subsequently strengthened validator/tests"
+    },
+    "final_full_pytest_receipt_sha256_lf": "17798efdab79615a254201ba5b46b61060d60babaf01521d09da5299d441b6d4"
+  }
+}

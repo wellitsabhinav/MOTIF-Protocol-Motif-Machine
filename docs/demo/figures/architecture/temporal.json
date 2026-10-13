@@ -597,31 +597,7 @@
   "edges": [
     {
       "source": "$procdff$45707",
-      "target": "$add$src/motif_transaction.sv:233$3094",
-      "output": "Q",
-      "input": "A",
-      "bit_ids": [
-        1195,
-        1196,
-        1197,
-        1198,
-        1199,
-        1200,
-        1201,
-        1202,
-        1203,
-        1204,
-        1205,
-        1206,
-        1207,
-        1208,
-        1209,
-        1210
-      ]
-    },
-    {
-      "source": "$procdff$45707",
-      "target": "$procmux$36081",
+      "target": "$procmux$43700",
       "output": "Q",
       "input": "A",
       "bit_ids": [
@@ -669,6 +645,30 @@
     },
     {
       "source": "$procdff$45707",
+      "target": "$procmux$40369",
+      "output": "Q",
+      "input": "B",
+      "bit_ids": [
+        1195,
+        1196,
+        1197,
+        1198,
+        1199,
+        1200,
+        1201,
+        1202,
+        1203,
+        1204,
+        1205,
+        1206,
+        1207,
+        1208,
+        1209,
+        1210
+      ]
+    },
+    {
+      "source": "$procdff$45707",
       "target": "$procmux$35930",
       "output": "Q",
       "input": "B",
@@ -693,7 +693,7 @@
     },
     {
       "source": "$procdff$45707",
-      "target": "$procmux$43700",
+      "target": "$add$src/motif_transaction.sv:233$3094",
       "output": "Q",
       "input": "A",
       "bit_ids": [
@@ -741,9 +741,9 @@
     },
     {
       "source": "$procdff$45707",
-      "target": "$procmux$40369",
+      "target": "$procmux$36081",
       "output": "Q",
-      "input": "B",
+      "input": "A",
       "bit_ids": [
         1195,
         1196,

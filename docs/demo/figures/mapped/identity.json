@@ -1,0 +1,46 @@
+{
+  "kind": "selected_measured_technology_mapped_connectivity",
+  "netlist_sha256": "b96b2246771ee4ed54ffbc513a0150c1ebe3eb0ace3cbaec6727c257dcc1e803",
+  "measurement_report_sha256": "047b2e7033d5ab26b55892e182db9c6f6f90b74061aaad5614ebd0703d339ea1",
+  "rtl_source_hashes": {
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+  },
+  "source_sha": "383e494610deec2edc99aac0bca7215f735dbcdf",
+  "tools": {
+    "yosys": {
+      "command": "yosys",
+      "sha256": "da2209de850fff3546f3fc7fb4203e62c611fda7d5103785a1a453e16566aaa5"
+    },
+    "abc": {
+      "command": "abc.exe",
+      "sha256": "1394d146474be249f241cc8d98eafd1d73d56e0d5d40af0d1532ebb7997686db"
+    }
+  },
+  "yosys": "Yosys 0.30+48 (git sha1 b5b0b7e83, x86_64-w64-mingw32-g++ 13.1.0 -march=nocona -msahf -mtune=generic -O2 -Os)",
+  "library_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "renderer_sha256": "ce01f6321e211405c4e581f9a32f82f043d7b4c56ecdc0b20c64701cb71d85d4",
+  "scope": "Measured nominal mapped logic; no placement, routing, timing closure or physical qualification claim",
+  "selected_artifacts_sha256": {
+    "hierarchy.json": "fe7fc4405e4b8213c21dcc2413d4517e3ca9757b57bc68a923bf3ee5803af381",
+    "hierarchy.png": "a0b7952cc7602c0a0f40fbdd3cf14d995de07905fc07844efc3ba7d92dbb838c",
+    "hierarchy.svg": "12922291c0647ab157d94b80586aa891d8e402d7599b84c486fef613d63af059",
+    "temporal_bit0.json": "3fdc28885bf28005c3b6c395c3a3763f9d734a9900c80c2a1838d71d3bffab90",
+    "temporal_bit0.png": "c374397b6b854b82d41066183be25715f0f9675322d3f9fc74bcb9d44ff436d9",
+    "temporal_bit0.svg": "7cd5018d78ecf354e8153b25da3a06c71a073a6d0c9200d151c65462f1e226f4",
+    "transaction_bit0.json": "6ba4fc81830d20b6c3bf9447b97c104896e401a524988614cf860f459659c048",
+    "transaction_bit0.png": "6608485d292b66e5294dfb722bd1d37e24ee88ff27b3037e998e15caeaf9f187",
+    "transaction_bit0.svg": "baea1c8ca3bdc33ded10ded3dd4af46cf42c7754d64c87371ff69532169bcfa8"
+  }
+}
