@@ -1,12 +1,14 @@
 {
   "schema_version": 3,
   "stage": "regression",
-  "source_sha": "383e494610deec2edc99aac0bca7215f735dbcdf",
-  "source_sha_role": "Final protected inventory; original execution identities and narrowly checked rebinding evidence retained below",
-  "working_tree_dirty": true,
+  "source_sha": "358555b7f3ae5c52e193ada483b93e1a5bab35c0",
+  "source_sha_role": "Final expanded source/input inventory; measured execution identities and both narrow identity bindings are preserved",
+  "working_tree_dirty": false,
   "source_hashes": {
     ".github/workflows/ci.yml": "2a5561bb9d40df14fa9e7e2e0bfe4598f1e6af567564c7b38fcc4e1eae704003",
     "docs/research/v3_temporal_qualification/preregistration.json": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522",
+    "experiments/exchange_decomposition/third_workload.json": "b2d3cf5b331bc8440806521ae8e083fa292319b49b13a984d81e95cfc4f2b309",
+    "experiments/generalization/microwire_workload.json": "5a8629efd9f3925bf103f116b4f78e26b186bf1b2be47177d3467bd08e6b1c2e",
     "experiments/temporal_qualification/configurations/one_wire_reset_presence.json": "da02c34b1de4882a6645bb56ffdf03becf7e7f706464aa6db781d6da43ab3e2e",
     "experiments/temporal_qualification/configurations/v2_dual_source_response.json": "9d895955ba1b057dc30bdd2b86b6a6dfd5202351924ebcbe5b111ac0ee2dd8f6",
     "formal/guardian.sv": "b2845122acce3b5dc013f192b968c80a7844d681312b1f3367d29b8e5af07008",
@@ -89,7 +91,7 @@
     "tools/unseen_protocol.py": "aa16e10d4201870610fff09a3cc69909a63953730aa6d242ac501437f5756471",
     "tools/unseen_result.py": "193a71cbb19d91e0642316d7d19e7e71cce8800d832be4029b8ec5279852135b",
     "tools/v2_inventory.py": "09a441b1b5d89e637697c93bf39540cbd6c6fe25ca5de2937c1be55ba4f3cbc7",
-    "tools/v3_inventory.py": "1e0880b8b0587def0989eb778c00b06742879e1ec7aded150e9ea7d2224c9159",
+    "tools/v3_inventory.py": "3fc01d585438764b3abadb8deadf993c6e6ce775728e9de24941289762af7fcf",
     "tools/v3_trace.py": "d9b21ce33b8e208725dec47b751cbd2281f8e55bbbc809885c0f79207b0d5945"
   },
   "preregistration": {
@@ -3546,5 +3548,16 @@
       "passed": true,
       "log_sha256_lf": "daf6eb68151e2b9cdcf6e3481b1dc0467e20ea1eec4d3d3faf986f05ced95ffe"
     }
+  },
+  "qualification_input_identity_binding": {
+    "prior_evidence_commit": "8147582a38877322476675b458629068042e238c",
+    "prior_report_sha256_lf": "cc118de7ed6e9db4c64af680bd65b7f9cfa3b5f8ea5417c026e5ffa9077a739a",
+    "changed_inventory_implementation_only": "tools/v3_inventory.py adds these two inputs to inventory; validation/runtime semantics unchanged",
+    "added_workload_hashes": {
+      "experiments/exchange_decomposition/third_workload.json": "b2d3cf5b331bc8440806521ae8e083fa292319b49b13a984d81e95cfc4f2b309",
+      "experiments/generalization/microwire_workload.json": "5a8629efd9f3925bf103f116b4f78e26b186bf1b2be47177d3467bd08e6b1c2e"
+    },
+    "qualification_inputs_equal_to_pinned_490a50c": true,
+    "every_other_previously_protected_dependency_byte_equal": true
   }
 }
