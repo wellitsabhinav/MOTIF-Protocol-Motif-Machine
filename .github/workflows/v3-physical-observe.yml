@@ -1,0 +1,27 @@
+name: v3-physical-observe
+on:
+  push:
+    branches: [codex/v3-physical-delivery]
+    paths: [experiments/temporal_qualification/physical/observe_request.json]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  observe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m tools.v3_physical_observe --request experiments/temporal_qualification/physical/observe_request.json --output build/v3_physical/job_snapshots
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: identified-physical-job-snapshots
+          path: build/v3_physical/job_snapshots/
+          retention-days: 90
