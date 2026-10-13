@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "status": "MOTIF_V3_FROZEN_TEMPORAL_QUALIFIED",
+  "status": "MOTIF_V3_UNSEEN_LOGICAL_PASS",
   "source_sha": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
   "source_sha_role": "Frozen source revision; individual qualification receipts retain exact measured and bound source identities",
   "working_tree_dirty": true,
@@ -106,11 +106,11 @@
   },
   "logical_qualification": "PASS",
   "cost_qualification": "PASS",
-  "unseen_generalization": "UNREACHED",
+  "unseen_generalization": "PASS_BOUNDED_LIN_BREAK_SYNC_ENTRY",
   "physical_qualification": "UNREACHED",
   "freeze_created": true,
   "unseen_research_started": true,
-  "unseen_selected": false,
+  "unseen_selected": true,
   "physical_attempts": 0,
   "area_um2": 210241.9746,
   "area_growth_percent": 8.16233265288937,
@@ -132,7 +132,10 @@
     "conclusion": "success",
     "url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38293882738"
   },
-  "scope": "Bounded training and preserved protocols; no unseen or physical result yet",
+  "scope": "Temporal training/regression and matched cost PASS; frozen semantics; one bounded selected LIN prefix unseen PASS; physical qualification unreached",
   "freeze_commit": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
-  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047"
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "unseen_selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
+  "unseen_selection_sha256_lf": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663",
+  "unseen_result": "experiments/temporal_qualification/unseen/logical_result.json"
 }

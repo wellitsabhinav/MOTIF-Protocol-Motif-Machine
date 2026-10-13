@@ -11,8 +11,10 @@ All 160 tests, 55 temporal fixtures, 18 repaired 1-Wire cases and the original
 I²C/Microwire regressions pass. Matched mapped area is 210,241.9746 µm²,
 8.1623% above v2, within the fixed 10% cap. The
 [immutable freeze](experiments/temporal_qualification/frozen_v3_manifest.json)
-precedes independent unseen-workload selection. Unseen generalization and
-physical closure remain separate, unreached gates. See the
+precedes independent unseen-workload selection. The selected LIN break/sync
+prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
+without changing frozen semantics. Physical qualification remains unreached.
+See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
 ![Actual Yosys-derived connected core modules](docs/demo/figures/architecture/architecture.png)
@@ -39,6 +41,21 @@ stream, seven-bit I²C target and Microwire 93LC46 x16 READ. V3 additionally tra
 against the previously selected 1-Wire reset/presence workload. No ROM commands,
 data slots, analog compliance or silicon results are established by that test.
 
+Reproduce the selected unseen prefix and its identified demonstrations:
+
+```sh
+python -m tools.lin_unseen
+python -m tools.lin_host_check
+python -m tools.demo --protocol unseen
+```
+
+The LIN profile uses a fixed nominal 20 kbit/s digital receive line. Its FIFO
+`0x55` token records prefix recognition; it does not implement autobaud,
+complete LIN frames or a transmitted LIN response. The
+[selection contract](experiments/temporal_qualification/unseen/selected_workload.json)
+was committed before configuration. The new CI job publishes full traces;
+the local demonstration hook is generated after those traces exist.
+
 Historical evidence stays unchanged. Frozen v2 preserves all 48 I²C cases and
 returns Microwire A55A, then passes eight of nine selected 1-Wire initialization
 cases. An interrupted short-low sequence incorrectly produces presence:
@@ -50,7 +67,8 @@ A5FF failure also remains permanent evidence. Read the
 
 V2 has no routed physical qualification. Earlier CMOS5L artifacts qualify only
 their identified earlier sources. V3 physical work requires an unseen logical
-pass after its semantic freeze; no v3 GDS image is supplied before that gate.
+pass after its semantic freeze. That logical gate now passes; no v3 GDS image
+is supplied until an identified physical artifact exists.
 See [physical evidence](docs/physical.md).
 
 ```sh

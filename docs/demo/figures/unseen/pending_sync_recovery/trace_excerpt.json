@@ -1,0 +1,146 @@
+[
+  {
+    "cycle": 0,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 20002,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 47501,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 27500
+  },
+  {
+    "cycle": 47502,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0,
+      1
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 52502,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      1,
+      2
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 55502,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      2
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 59251,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      2
+    ],
+    "temporal_count": 3750
+  },
+  {
+    "cycle": 59252,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      2,
+      3,
+      4
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 59253,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      5,
+      6,
+      7
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 83001,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      7
+    ],
+    "temporal_count": 23749
+  },
+  {
+    "cycle": 83002,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      7,
+      1
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 88002,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      1,
+      2
+    ],
+    "temporal_count": 0
+  },
+  {
+    "cycle": 91002,
+    "pins": 251,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      2
+    ],
+    "temporal_count": 1
+  },
+  {
+    "cycle": 121023,
+    "pins": 255,
+    "oe": 0,
+    "data": 0,
+    "executed_entries": [
+      0
+    ],
+    "temporal_count": 0
+  }
+]

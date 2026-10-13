@@ -38,6 +38,9 @@ tt_submission/
 pdks/
 oss-cad-suite/
 generated/
+# Runtime unseen receipt binds local generated traces; the concise committed
+# qualification receipt is unseen/logical_result.json and CI recreates this hook.
+experiments/temporal_qualification/unseen/result.json
 *.netlist.v
 *.nl.v
 *.pnl.v

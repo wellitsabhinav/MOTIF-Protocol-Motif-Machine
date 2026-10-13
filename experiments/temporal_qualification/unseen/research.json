@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "artifact_role": "primary_source_candidate_research_only",
+  "research_date_utc": "2026-10-13",
+  "research_started_after_freeze": true,
+  "selected": false,
+  "configuration_written": false,
+  "freeze_commit": "638c2ee4e7c9f53c64e6f660331747e5a79b570d",
+  "manifest": "experiments/temporal_qualification/frozen_v3_manifest.json",
+  "manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "entry_head_matches_freeze": true,
+  "entry_working_tree_clean": true,
+  "full_boundary_checker_after_initial_url_discovery_before_detailed_extraction": "passed",
+  "end_boundary_check": "passed",
+  "end_boundary_check_result": "tools.v3_inventory.verify passed; manifest LF SHA256 remained 71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "end_head": "f435c820449979ab1831e70bed230b2139842bae",
+  "end_head_role": "Parent final-document commit; frozen semantic inventory remained unchanged",
+  "matrix": "docs/research/v3_temporal_qualification/unseen_candidate_matrix.md",
+  "ranking_rule": ["structural_independence_desc", "temporal_falsification_desc", "bounded_scope_asc", "exact_ascii_workload_name_asc"],
+  "scores_are_research_judgments_not_implementation_measurements": true,
+  "top_candidate_required_recovery_proposal": "First legal break plus delimiter with no sync; fresh legal break plus delimiter and framed sync. Mandatory byte-expected separated recovery under LIN2.2A section2.3.1.2 pages30-31; optional overlap with an already transmitting data byte is excluded.",
+  "ranked_candidates": [
+    {"rank": 1, "workload": "LIN_BREAK_SYNC_ENTRY", "eligible": true, "structural_independence": 4, "temporal_falsification": 4, "bounded_scope": 2, "primary_sources": ["L"]},
+    {"rank": 2, "workload": "UART_BREAK_GAP_ENTRY", "eligible": true, "structural_independence": 4, "temporal_falsification": 3, "bounded_scope": 2, "primary_sources": ["U"]},
+    {"rank": 3, "workload": "MICROCHIP_AT21CS01_RESET_DISCOVERY", "eligible": true, "structural_independence": 3, "temporal_falsification": 4, "bounded_scope": 2, "primary_sources": ["S"]},
+    {"rank": 4, "workload": "ISO7816_WARM_RESET_ATR_PREFIX", "eligible": true, "structural_independence": 3, "temporal_falsification": 4, "bounded_scope": 4, "primary_sources": ["I"]},
+    {"rank": 5, "workload": "PS2_INHIBIT_RELEASE_ENTRY", "eligible": true, "structural_independence": 2, "temporal_falsification": 3, "bounded_scope": 3, "primary_sources": ["P", "P2"]}
+  ],
+  "primary_sources": {
+    "L": {"owner": "LIN Consortium", "revision": "2.2A, 2010-12-31", "url": "https://www.lin-cia.org/fileadmin/microsites/lin-cia.org/resources/documents/LIN_2.2A.pdf", "sections": ["2.3.1", "2.3.1.1", "2.3.1.2", "6.3", "9.2.1.3"], "printed_pages": [29, 30, 31, 113, 177], "access": "official indexed excerpts; direct PDF open failed"},
+    "U": {"owner": "Texas Instruments", "revision": "TL28L92 SLLS890C, April 2024", "url": "https://www.ti.com/lit/ds/symlink/tl28l92.pdf", "sections": ["5.3.7.2"], "printed_pages": [27], "access": "official indexed excerpt"},
+    "S": {"owner": "Microchip", "revision": "AT21CS01/AT21CS11 DS20005857I, May 2026", "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/AT21CS01-AT21CS11-1-Kbit-Serial-EEPROM-Data-Sheet-DS20005857.pdf", "sections": ["1.1", "3.5.1", "4.1.1.1", "4.1.1.2"], "printed_pages": [5, 10, 12, 13], "access": "official PDF table and matching official HTML table"},
+    "I": {"owner": "SEALSQ", "revision": "AT90SCRXXX TPR0630E, 2023-01-18", "url": "https://www.sealsq.com/hubfs/SCR%20400.pdf", "sections": ["15.4", "15.5.7", "15.6.1", "15.8.8"], "printed_pages": [150, 158, 159, 160, 172], "access": "official PDF"},
+    "P": {"owner": "Microchip", "revision": "ECE1117 DS00001860E, 2020", "url": "https://ww1.microchip.com/downloads/aemDocuments/documents/CPG/ProductDocuments/DataSheets/ECE1117-Data-Sheet-DS00001860E.pdf", "sections": ["10", "10.1.1", "Table 10-2"], "printed_pages": [61, 62], "access": "official PDF"},
+    "P2": {"owner": "Cypress/Infineon", "revision": "PS2D 001-13681 Rev. *E", "url": "https://www.infineon.com/assets/row/public/documents/30/396/infineon-ps2d-001-13681-software-module-datasheets-en.pdf", "sections": ["Figure 3"], "printed_pages": [3], "access": "official PDF"}
+  },
+  "semantics_modified": false,
+  "researcher_authored_paths": ["docs/research/v3_temporal_qualification/unseen_candidate_matrix.md", "experiments/temporal_qualification/unseen/research.json"]
+}

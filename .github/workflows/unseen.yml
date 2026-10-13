@@ -1,0 +1,40 @@
+name: v3-unseen
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unseen:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: YosysHQ/setup-oss-cad-suite@c7845bc0d335c8076aa22047e85972caa8a916df
+        with:
+          version: '2026-10-11'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: python -m pip install -e '.[test]' -r test/requirements.txt matplotlib==3.9.2 Pillow==11.0.0
+      - run: python -m tools.v3_inventory
+      - run: python -m pytest -q tests/model/test_lin_oracle.py
+      - run: python -m tools.lin_unseen
+      - run: python -m tools.unseen_receipt --receipt build/v3_temporal_qualification/unseen/result.json --verify-artifacts
+      - run: python -m tools.lin_host_check
+      - run: python -m tools.demo --protocol unseen
+      - run: python -m docs.demo.render_lin
+      - run: python -m tools.v3_inventory
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: frozen-v3-unseen-lin-evidence
+          path: |
+            build/v3_temporal_qualification/unseen/
+            build/v3_temporal_qualification/unseen_host/
+            build/demo/unseen/
+          compression-level: 9
+          retention-days: 14
