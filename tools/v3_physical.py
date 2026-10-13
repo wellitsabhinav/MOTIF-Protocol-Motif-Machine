@@ -123,6 +123,30 @@ def correspondence(source, run_id, artifact_metadata, extracted, output):
     return data
 
 
+def record_dispatch(number, workflow):
+    path = DIRECTORY / f"attempt_{number}_intent.json"
+    prepared = json.loads(path.read_text())
+    run = json.loads(Path(workflow).read_text())
+    if (run.get("head_sha") != prepared["source_sha"] or run.get("path") != ".github/workflows/gds.yml"
+            or run.get("event") != "workflow_dispatch" or run.get("run_attempt") != 1
+            or run.get("repository", {}).get("full_name") != "wellitsabhinav/MOTIF-Protocol-Motif-Machine"):
+        raise ValueError("Official dispatch does not match its immutable intent or repeats a run")
+    preflight(run["head_sha"])
+    data = {"schema_version": 3, "attempt": number, "intent_sha256_lf": sha(path.read_bytes()),
+            "run_id": run["id"], "run_attempt": run["run_attempt"], "source_sha": run["head_sha"],
+            "workflow_url": run["html_url"], "workflow_id": run["workflow_id"],
+            "created_at": run["created_at"], "flow_setting_revision": number-1,
+            "frozen_manifest_sha256_lf": prepared["frozen_manifest_sha256_lf"],
+            "preregistration": prepared["preregistration"],
+            "snapshot_sha256_lf": sha(Path(workflow).read_bytes())}
+    output = DIRECTORY / f"attempt_{number}_dispatch.json"
+    if output.exists() and json.loads(output.read_text()) != data:
+        raise ValueError("Refusing to overwrite an immutable physical dispatch")
+    write(output, data)
+    print("RECORDED physical attempt", number, "run", run["id"], "exact source", run["head_sha"])
+    return data
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-sha", required=True)
@@ -132,8 +156,14 @@ def main():
     parser.add_argument("--artifact-metadata", type=Path)
     parser.add_argument("--extracted", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--record-dispatch", type=int)
+    parser.add_argument("--workflow", type=Path)
     args = parser.parse_args()
-    if args.intent:
+    if args.record_dispatch:
+        if not args.workflow:
+            parser.error("Dispatch recording requires identified workflow metadata")
+        record_dispatch(args.record_dispatch, args.workflow)
+    elif args.intent:
         intent(args.source_sha, args.diagnosis)
     elif args.run_id:
         if not all((args.artifact_metadata, args.extracted, args.output)):

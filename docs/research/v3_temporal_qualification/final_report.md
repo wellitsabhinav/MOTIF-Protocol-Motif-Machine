@@ -6,7 +6,7 @@ The logical and local matched-cost qualification gates pass. V3 maps to
 210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
 is frozen. The independently selected LIN break/sync prefix passes its 34-case
 unseen logical gate without semantic changes. Physical qualification remains
-unreached in this interim report. Logical generalization and cost qualification
+in progress in this interim report. Logical generalization and cost qualification
 do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
@@ -256,12 +256,18 @@ autobaud, full LIN frames, analog compliance or physical closure.
 
 ## P. Physical qualification
 
-Unreached: no v3 physical attempt, routed-netlist test, official precheck, source
-correspondence check, DRC/LVS or antenna result exists. Setup/hold WNS/TNS,
-utilization, wirelength, vias and overflow are unavailable. Synthesis cannot
-establish physical closure. The allowed later flow remains pinned CMOS5L,
-6×4 allocation and 20 ns target, with initial run plus at most two diagnosed
-flow-setting revisions. [Flow identity](../../../flow-lock.json),
+The initial v3 attempt is running on merged source
+`5467fd4d15a18dda9bc58a93bb3182b03629aa4b`, after green reviewed PR #12. Its
+immutable intent was committed before dispatch, with the original separately
+identified physical inputs at 6×4 and 20 ns. No setting revision has been used.
+Routed-netlist tests, official precheck, artifact correspondence, DRC/LVS and
+antenna results are not yet available. Setup/hold WNS/TNS, utilization,
+wirelength, vias and overflow remain unavailable until actual identified
+reports arrive. At most two diagnosed setting revisions may follow; frozen
+semantics remain fixed. [Initial intent](../../../experiments/temporal_qualification/physical/attempt_1_intent.json),
+[dispatch receipt](../../../experiments/temporal_qualification/physical/attempt_1_dispatch.json),
+[running physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124),
+[flow identity](../../../flow-lock.json),
 [physical restriction](preregistration.json).
 
 ## Q. PPA comparison
