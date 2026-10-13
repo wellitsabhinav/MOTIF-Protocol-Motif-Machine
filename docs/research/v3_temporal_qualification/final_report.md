@@ -229,9 +229,11 @@ observable one-cycle HIGH splits, repeated interruptions, malformed sync/stop,
 stale-header rejection, fresh-break recovery while awaiting sync, lifecycle
 cuts, two prefixes and nine legal length/phase probes. Four runtime host cases
 also pass actual table loading, receive-only pad checks and posttraffic FIFO
-drain; that subset does not replace the dense timing gate. The local test set
-passes: 204 model/tooling tests plus all 15 receipt guard checks, including
-44 independent oracle tests in the first group.
+drain; that subset does not replace the dense timing gate. The 44 independent
+oracle tests also pass. Later delivery/tooling snapshot `2be40c4` passes all
+422 tests and the historical/v3 freeze checks in its identified CI model job;
+that later test count is distinct from the 160-test frozen qualification.
+[Delivery snapshot CI](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38437703555/job/115435917452).
 [Logical receipt](../../../experiments/temporal_qualification/unseen/logical_result.json),
 [runtime host receipt](../../../experiments/temporal_qualification/unseen/runtime_host_result.json),
 [executed-source binding](../../../experiments/temporal_qualification/unseen/source_binding.json).
@@ -306,6 +308,13 @@ closure. [Snapshot observations](physical_attempt_2_observations.md),
 
 ## Q. PPA comparison
 
+The [cost figure](../../demo/figures/cost/cost_summary.svg) renders the canonical
+matched v2/v3 receipt with axes starting at zero. Its [editable metric inventory](../../demo/figures/cost/cost_summary.json)
+retains measured source, tool, library and receipt identities. Legacy values
+without a comparable pinned receipt remain unavailable. Declared bits and mapped
+cell instances have separate panels; table storage is included in configuration
+and configuration is included once in total declared registers.
+
 Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this
 matched mapping, principally additional combinational logic: +768 combinational
 cells versus +18 sequential cells. Initial physical logs report intermediate
@@ -317,13 +326,16 @@ unavailable, not final extracted STA. No v3 power,
 final routed area or maximum frequency is available. No matched v2 physical
 baseline exists for these intermediate values; they cannot replace the
 preregistered nominal mapping comparison. Earlier routed results retain their earlier source scope and cannot
-qualify v3. [Historical physical scope](../../physical.md).
+qualify v3. [Initial intermediate measurements](../../../experiments/temporal_qualification/physical/attempt_1_log_observations.json),
+[identified log and diagnosis](physical_attempt_1_diagnosis.md),
+[historical physical scope](../../physical.md).
 
 ## R. Demonstration artifacts
 
 Measured result: eleven demonstrations pass over 702,987 compared cycles,
 including four selected LIN cases in addition to the seven qualified profiles.
-`python -m tools.demo --all --schematics` produces plain HTML at
+After `python -m tools.lin_unseen` recreates and validates the selected LIN
+traces and local hook, `python -m tools.demo --all --schematics` produces plain HTML at
 `build/demo/index.html`, real waveforms, ordered execution timelines,
 configuration summaries, expected/observed results and concise trace excerpts.
 Cache reuse requires matching source, stimulus and artifact identities; failed
@@ -434,8 +446,9 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 Collect the running diagnosed revision of the completed initial CMOS5L attempt at 6×4
 and 20 ns. Explicit OpenROAD threads address the invalid default argument;
 lower placement density tests the observed congestion. Neither change is a
-claim of closure. The qualified unseen PR has merged. At most two diagnosed
-flow-setting revisions may follow. Preserve failed attempts, retain unavailable metrics as
+claim of closure. The qualified unseen PR has merged. Attempt 2 uses the first
+diagnosed revision; one further flow-setting revision remains after an unsuccessful result.
+Preserve failed attempts, retain unavailable metrics as
 unavailable, and complete physical classification and reached demonstrations
 without changing frozen semantics or the selected oracle.
 [Stop conditions](preregistration.json).
