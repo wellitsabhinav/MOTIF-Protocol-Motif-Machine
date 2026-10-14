@@ -1,0 +1,970 @@
+{
+  "netlist_sha256": "38ec2d55bf67dee92f00eefb59ce8119d02ad091b8324a846909afe2ff4a87d0",
+  "num_cells": 82276,
+  "top_nonclock_fanout": [
+    {
+      "net": "clknet_leaf_24_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_24_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27389_",
+          "CLK"
+        ],
+        [
+          "_27517_",
+          "CLK"
+        ],
+        [
+          "_27581_",
+          "CLK"
+        ],
+        [
+          "_27714_",
+          "CLK"
+        ],
+        [
+          "_27778_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_21_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_21_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27391_",
+          "CLK"
+        ],
+        [
+          "_27455_",
+          "CLK"
+        ],
+        [
+          "_27519_",
+          "CLK"
+        ],
+        [
+          "_27583_",
+          "CLK"
+        ],
+        [
+          "_27647_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_109_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_109_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27414_",
+          "CLK"
+        ],
+        [
+          "_27415_",
+          "CLK"
+        ],
+        [
+          "_27543_",
+          "CLK"
+        ],
+        [
+          "_27674_",
+          "CLK"
+        ],
+        [
+          "_27676_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_113_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_113_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_dfrbpq_2": 1,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27416_",
+          "CLK"
+        ],
+        [
+          "_27417_",
+          "CLK"
+        ],
+        [
+          "_27608_",
+          "CLK"
+        ],
+        [
+          "_27669_",
+          "CLK"
+        ],
+        [
+          "_27672_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_7_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_7_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27437_",
+          "CLK"
+        ],
+        [
+          "_27630_",
+          "CLK"
+        ],
+        [
+          "_27694_",
+          "CLK"
+        ],
+        [
+          "_27695_",
+          "CLK"
+        ],
+        [
+          "_27886_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_8_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_8_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27438_",
+          "CLK"
+        ],
+        [
+          "_27501_",
+          "CLK"
+        ],
+        [
+          "_27565_",
+          "CLK"
+        ],
+        [
+          "_27629_",
+          "CLK"
+        ],
+        [
+          "_27713_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_1_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_1_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27440_",
+          "CLK"
+        ],
+        [
+          "_27441_",
+          "CLK"
+        ],
+        [
+          "_27506_",
+          "CLK"
+        ],
+        [
+          "_27507_",
+          "CLK"
+        ],
+        [
+          "_27697_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_88_clk",
+      "fanout_pin_count": 15,
+      "distinct_sink_cells": 15,
+      "driver": [
+        "clkbuf_leaf_88_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 14,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27486_",
+          "CLK"
+        ],
+        [
+          "_27550_",
+          "CLK"
+        ],
+        [
+          "_27554_",
+          "CLK"
+        ],
+        [
+          "_27556_",
+          "CLK"
+        ],
+        [
+          "_27682_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_58_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_58_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_buf_8": 1
+      },
+      "buffer_sink_count": 1,
+      "first_sinks": [
+        [
+          "_27018_",
+          "CLK"
+        ],
+        [
+          "_27058_",
+          "CLK"
+        ],
+        [
+          "_27059_",
+          "CLK"
+        ],
+        [
+          "_27060_",
+          "CLK"
+        ],
+        [
+          "_27063_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_50_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_50_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27038_",
+          "CLK"
+        ],
+        [
+          "_27042_",
+          "CLK"
+        ],
+        [
+          "_27046_",
+          "CLK"
+        ],
+        [
+          "_27050_",
+          "CLK"
+        ],
+        [
+          "_27082_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_38_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_38_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27118_",
+          "CLK"
+        ],
+        [
+          "_27120_",
+          "CLK"
+        ],
+        [
+          "_27246_",
+          "CLK"
+        ],
+        [
+          "_27255_",
+          "CLK"
+        ],
+        [
+          "_27256_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_33_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_33_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_buf_8": 1
+      },
+      "buffer_sink_count": 1,
+      "first_sinks": [
+        [
+          "_27165_",
+          "CLK"
+        ],
+        [
+          "_27169_",
+          "CLK"
+        ],
+        [
+          "_27170_",
+          "CLK"
+        ],
+        [
+          "_27171_",
+          "CLK"
+        ],
+        [
+          "_27178_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_49_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_49_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27210_",
+          "CLK"
+        ],
+        [
+          "_27226_",
+          "CLK"
+        ],
+        [
+          "_27227_",
+          "CLK"
+        ],
+        [
+          "_27228_",
+          "CLK"
+        ],
+        [
+          "_27330_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_29_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_29_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 12,
+        "sg13cmos5l_dfrbpq_2": 1,
+        "sg13cmos5l_buf_8": 1
+      },
+      "buffer_sink_count": 1,
+      "first_sinks": [
+        [
+          "_27268_",
+          "CLK"
+        ],
+        [
+          "_27269_",
+          "CLK"
+        ],
+        [
+          "_27282_",
+          "CLK"
+        ],
+        [
+          "_27285_",
+          "CLK"
+        ],
+        [
+          "_27286_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_20_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_20_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_2": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27390_",
+          "CLK"
+        ],
+        [
+          "_27454_",
+          "CLK"
+        ],
+        [
+          "_27518_",
+          "CLK"
+        ],
+        [
+          "_27582_",
+          "CLK"
+        ],
+        [
+          "_27710_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_22_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_22_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27397_",
+          "CLK"
+        ],
+        [
+          "_27463_",
+          "CLK"
+        ],
+        [
+          "_27525_",
+          "CLK"
+        ],
+        [
+          "_27527_",
+          "CLK"
+        ],
+        [
+          "_27653_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_12_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_12_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27400_",
+          "CLK"
+        ],
+        [
+          "_27401_",
+          "CLK"
+        ],
+        [
+          "_27521_",
+          "CLK"
+        ],
+        [
+          "_27528_",
+          "CLK"
+        ],
+        [
+          "_27529_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_16_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_16_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27403_",
+          "CLK"
+        ],
+        [
+          "_27464_",
+          "CLK"
+        ],
+        [
+          "_27468_",
+          "CLK"
+        ],
+        [
+          "_27530_",
+          "CLK"
+        ],
+        [
+          "_27531_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_66_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_66_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_2": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27410_",
+          "CLK"
+        ],
+        [
+          "_27411_",
+          "CLK"
+        ],
+        [
+          "_27475_",
+          "CLK"
+        ],
+        [
+          "_27476_",
+          "CLK"
+        ],
+        [
+          "_27538_",
+          "CLK"
+        ]
+      ]
+    },
+    {
+      "net": "clknet_leaf_86_clk",
+      "fanout_pin_count": 14,
+      "distinct_sink_cells": 14,
+      "driver": [
+        "clkbuf_leaf_86_clk",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_dfrbpq_1": 13,
+        "sg13cmos5l_inv_2": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_27423_",
+          "CLK"
+        ],
+        [
+          "_27426_",
+          "CLK"
+        ],
+        [
+          "_27487_",
+          "CLK"
+        ],
+        [
+          "_27490_",
+          "CLK"
+        ],
+        [
+          "_27492_",
+          "CLK"
+        ]
+      ]
+    }
+  ],
+  "fanout_histogram": {
+    "1": 11039,
+    "2": 3698,
+    "3": 910,
+    "4": 906,
+    "5": 562,
+    "6": 601,
+    "7": 489,
+    "8": 1448,
+    "9": 24,
+    "10": 18,
+    "11": 18,
+    "12": 16,
+    "13": 21,
+    "14": 15,
+    "15": 8
+  },
+  "maximum_nonclock_fanout": 15,
+  "top_depth_endpoints": [
+    {
+      "endpoint": "_27015_",
+      "state": "core.tx_fifo.memory[0][0]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27016_",
+      "state": "core.tx_fifo.memory[0][1]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27017_",
+      "state": "core.tx_fifo.memory[0][2]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27018_",
+      "state": "core.tx_fifo.memory[0][3]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27019_",
+      "state": "core.tx_fifo.memory[0][4]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27020_",
+      "state": "core.tx_fifo.memory[0][5]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27021_",
+      "state": "core.tx_fifo.memory[0][6]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27022_",
+      "state": "core.tx_fifo.memory[0][7]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27055_",
+      "state": "core.tx_fifo.memory[2][0]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27056_",
+      "state": "core.tx_fifo.memory[2][1]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27057_",
+      "state": "core.tx_fifo.memory[2][2]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27058_",
+      "state": "core.tx_fifo.memory[2][3]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27059_",
+      "state": "core.tx_fifo.memory[2][4]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27060_",
+      "state": "core.tx_fifo.memory[2][5]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27061_",
+      "state": "core.tx_fifo.memory[2][6]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27062_",
+      "state": "core.tx_fifo.memory[2][7]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27063_",
+      "state": "core.tx_fifo.memory[1][0]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27064_",
+      "state": "core.tx_fifo.memory[1][1]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27065_",
+      "state": "core.tx_fifo.memory[1][2]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    },
+    {
+      "endpoint": "_27066_",
+      "state": "core.tx_fifo.memory[1][3]",
+      "logic_depth": 66,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 131
+    }
+  ],
+  "max_logic_depth": 66,
+  "max_mapped_mux_depth": 12
+}

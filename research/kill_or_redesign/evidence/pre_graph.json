@@ -1,0 +1,1062 @@
+{
+  "netlist_sha256": "1ec189b254fe9baade899c0afa2e70d9e5616bd1be17231cd4bf9849240642ad",
+  "num_cells": 15623,
+  "top_nonclock_fanout": [
+    {
+      "net": "_06437_",
+      "fanout_pin_count": 922,
+      "distinct_sink_cells": 922,
+      "driver": [
+        "_14990_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_or4_1": 1,
+        "sg13cmos5l_nor2_1": 887,
+        "sg13cmos5l_nor3_1": 3,
+        "sg13cmos5l_a21oi_1": 29,
+        "sg13cmos5l_a221oi_1": 2
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_15584_",
+          "B"
+        ],
+        [
+          "_21486_",
+          "A"
+        ],
+        [
+          "_21705_",
+          "A"
+        ],
+        [
+          "_21709_",
+          "A"
+        ],
+        [
+          "_21713_",
+          "A"
+        ]
+      ]
+    },
+    {
+      "net": "_01711_",
+      "fanout_pin_count": 474,
+      "distinct_sink_cells": 474,
+      "driver": [
+        "_21686_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand3_1": 28,
+        "sg13cmos5l_a22oi_1": 414,
+        "sg13cmos5l_nand2_1": 13,
+        "sg13cmos5l_nand4_1": 19
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_21703_",
+          "A"
+        ],
+        [
+          "_21704_",
+          "A1"
+        ],
+        [
+          "_21708_",
+          "B2"
+        ],
+        [
+          "_21712_",
+          "B2"
+        ],
+        [
+          "_21717_",
+          "B2"
+        ]
+      ]
+    },
+    {
+      "net": "_02216_",
+      "fanout_pin_count": 473,
+      "distinct_sink_cells": 473,
+      "driver": [
+        "_22356_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand4_1": 19,
+        "sg13cmos5l_a22oi_1": 413,
+        "sg13cmos5l_nand2_1": 13,
+        "sg13cmos5l_nand3_1": 28
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_22358_",
+          "D"
+        ],
+        [
+          "_22361_",
+          "B2"
+        ],
+        [
+          "_22364_",
+          "B2"
+        ],
+        [
+          "_22369_",
+          "B2"
+        ],
+        [
+          "_22372_",
+          "B2"
+        ]
+      ]
+    },
+    {
+      "net": "rst_n",
+      "fanout_pin_count": 306,
+      "distinct_sink_cells": 306,
+      "driver": null,
+      "clock_only": false,
+      "categories": [
+        "unrelated_infrastructure"
+      ],
+      "sink_type_histogram": {
+        "sg13cmos5l_inv_1": 1,
+        "sg13cmos5l_nand2_1": 9,
+        "sg13cmos5l_nand4_1": 1,
+        "sg13cmos5l_o21ai_1": 254,
+        "sg13cmos5l_nand3_1": 4,
+        "sg13cmos5l_and3_1": 1,
+        "sg13cmos5l_nand2b_1": 22,
+        "sg13cmos5l_and2_1": 14
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_14990_",
+          "A"
+        ],
+        [
+          "_16105_",
+          "A"
+        ],
+        [
+          "_21473_",
+          "A"
+        ],
+        [
+          "_21507_",
+          "B"
+        ],
+        [
+          "_21510_",
+          "A"
+        ]
+      ]
+    },
+    {
+      "net": "_01764_",
+      "fanout_pin_count": 272,
+      "distinct_sink_cells": 272,
+      "driver": [
+        "_21752_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand4_1": 16,
+        "sg13cmos5l_a22oi_1": 256
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_21756_",
+          "D"
+        ],
+        [
+          "_21760_",
+          "D"
+        ],
+        [
+          "_21764_",
+          "D"
+        ],
+        [
+          "_21768_",
+          "D"
+        ],
+        [
+          "_21772_",
+          "D"
+        ]
+      ]
+    },
+    {
+      "net": "_01792_",
+      "fanout_pin_count": 265,
+      "distinct_sink_cells": 265,
+      "driver": [
+        "_21788_",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_and2_1": 1,
+        "sg13cmos5l_nand4_1": 8,
+        "sg13cmos5l_a22oi_1": 256
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_21790_",
+          "B"
+        ],
+        [
+          "_21791_",
+          "D"
+        ],
+        [
+          "_22312_",
+          "C"
+        ],
+        [
+          "_22723_",
+          "B"
+        ],
+        [
+          "_23118_",
+          "B"
+        ]
+      ]
+    },
+    {
+      "net": "_01699_",
+      "fanout_pin_count": 259,
+      "distinct_sink_cells": 259,
+      "driver": [
+        "_21674_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand2_1": 2,
+        "sg13cmos5l_nor3_1": 1,
+        "sg13cmos5l_a22oi_1": 256
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_21693_",
+          "A"
+        ],
+        [
+          "_22000_",
+          "A"
+        ],
+        [
+          "_23773_",
+          "A"
+        ],
+        [
+          "_24960_",
+          "A2"
+        ],
+        [
+          "_24963_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_01743_",
+      "fanout_pin_count": 258,
+      "distinct_sink_cells": 258,
+      "driver": [
+        "_21723_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand2_1": 2,
+        "sg13cmos5l_a22oi_1": 256
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_21725_",
+          "B"
+        ],
+        [
+          "_22031_",
+          "A"
+        ],
+        [
+          "_24959_",
+          "A2"
+        ],
+        [
+          "_24962_",
+          "A2"
+        ],
+        [
+          "_24965_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_07360_",
+      "fanout_pin_count": 197,
+      "distinct_sink_cells": 197,
+      "driver": [
+        "_15929_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a22oi_1": 85,
+        "sg13cmos5l_a21oi_1": 19,
+        "sg13cmos5l_a221oi_1": 81,
+        "sg13cmos5l_nand2_1": 10,
+        "sg13cmos5l_and2_1": 1,
+        "sg13cmos5l_nand4_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_15937_",
+          "B1"
+        ],
+        [
+          "_15941_",
+          "A2"
+        ],
+        [
+          "_15944_",
+          "A2"
+        ],
+        [
+          "_15949_",
+          "B1"
+        ],
+        [
+          "_15953_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_07364_",
+      "fanout_pin_count": 194,
+      "distinct_sink_cells": 194,
+      "driver": [
+        "_15933_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand2_1": 23,
+        "sg13cmos5l_a22oi_1": 76,
+        "sg13cmos5l_a21oi_1": 5,
+        "sg13cmos5l_a221oi_1": 82,
+        "sg13cmos5l_nand2b_1": 2,
+        "sg13cmos5l_a21o_1": 3,
+        "sg13cmos5l_o21ai_1": 1,
+        "sg13cmos5l_nand3_1": 1,
+        "sg13cmos5l_nand4_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_15935_",
+          "B"
+        ],
+        [
+          "_15941_",
+          "B1"
+        ],
+        [
+          "_15946_",
+          "B1"
+        ],
+        [
+          "_15948_",
+          "B1"
+        ],
+        [
+          "_15952_",
+          "B1"
+        ]
+      ]
+    },
+    {
+      "net": "_08570_",
+      "fanout_pin_count": 188,
+      "distinct_sink_cells": 188,
+      "driver": [
+        "_17139_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a22oi_1": 89,
+        "sg13cmos5l_a221oi_1": 45,
+        "sg13cmos5l_nand2_1": 5,
+        "sg13cmos5l_a21oi_1": 46,
+        "sg13cmos5l_nand2b_1": 1,
+        "sg13cmos5l_nand3_1": 2
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_17141_",
+          "B1"
+        ],
+        [
+          "_17213_",
+          "B1"
+        ],
+        [
+          "_17218_",
+          "B1"
+        ],
+        [
+          "_17219_",
+          "B1"
+        ],
+        [
+          "_17227_",
+          "B1"
+        ]
+      ]
+    },
+    {
+      "net": "_08562_",
+      "fanout_pin_count": 183,
+      "distinct_sink_cells": 183,
+      "driver": [
+        "_17131_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a21oi_1": 19,
+        "sg13cmos5l_a221oi_1": 83,
+        "sg13cmos5l_a22oi_1": 72,
+        "sg13cmos5l_nand2b_1": 2,
+        "sg13cmos5l_nand2_1": 7
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_17133_",
+          "A2"
+        ],
+        [
+          "_17214_",
+          "A2"
+        ],
+        [
+          "_17216_",
+          "A2"
+        ],
+        [
+          "_17220_",
+          "A2"
+        ],
+        [
+          "_17226_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_11250_",
+      "fanout_pin_count": 179,
+      "distinct_sink_cells": 179,
+      "driver": [
+        "_19819_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a22oi_1": 88,
+        "sg13cmos5l_a221oi_1": 71,
+        "sg13cmos5l_a21oi_1": 14,
+        "sg13cmos5l_nand2_1": 3,
+        "sg13cmos5l_nand3_1": 3
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_19827_",
+          "A2"
+        ],
+        [
+          "_19831_",
+          "A2"
+        ],
+        [
+          "_19833_",
+          "A2"
+        ],
+        [
+          "_19835_",
+          "A2"
+        ],
+        [
+          "_19849_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_11256_",
+      "fanout_pin_count": 178,
+      "distinct_sink_cells": 178,
+      "driver": [
+        "_19825_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a221oi_1": 100,
+        "sg13cmos5l_a21oi_1": 27,
+        "sg13cmos5l_nand2b_1": 1,
+        "sg13cmos5l_a22oi_1": 41,
+        "sg13cmos5l_nand2_1": 5,
+        "sg13cmos5l_o21ai_1": 1,
+        "sg13cmos5l_nand3_1": 3
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_19828_",
+          "B1"
+        ],
+        [
+          "_19829_",
+          "A2"
+        ],
+        [
+          "_19834_",
+          "B1"
+        ],
+        [
+          "_19836_",
+          "B"
+        ],
+        [
+          "_19848_",
+          "B1"
+        ]
+      ]
+    },
+    {
+      "net": "_11254_",
+      "fanout_pin_count": 177,
+      "distinct_sink_cells": 177,
+      "driver": [
+        "_19823_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a22oi_1": 77,
+        "sg13cmos5l_a221oi_1": 48,
+        "sg13cmos5l_a21oi_1": 27,
+        "sg13cmos5l_nand2_1": 21,
+        "sg13cmos5l_nand2b_1": 1,
+        "sg13cmos5l_nand3_1": 3
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_19827_",
+          "B1"
+        ],
+        [
+          "_19831_",
+          "B1"
+        ],
+        [
+          "_19834_",
+          "A2"
+        ],
+        [
+          "_19837_",
+          "B1"
+        ],
+        [
+          "_19849_",
+          "B1"
+        ]
+      ]
+    },
+    {
+      "net": "_07362_",
+      "fanout_pin_count": 173,
+      "distinct_sink_cells": 173,
+      "driver": [
+        "_15931_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a21oi_1": 58,
+        "sg13cmos5l_a22oi_1": 100,
+        "sg13cmos5l_a221oi_1": 12,
+        "sg13cmos5l_nand2_1": 1,
+        "sg13cmos5l_o21ai_1": 1,
+        "sg13cmos5l_nand4_1": 1
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_15936_",
+          "A2"
+        ],
+        [
+          "_15946_",
+          "A2"
+        ],
+        [
+          "_15948_",
+          "A2"
+        ],
+        [
+          "_15953_",
+          "B1"
+        ],
+        [
+          "_15956_",
+          "B"
+        ]
+      ]
+    },
+    {
+      "net": "_07358_",
+      "fanout_pin_count": 173,
+      "distinct_sink_cells": 173,
+      "driver": [
+        "_15927_",
+        "X"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a22oi_1": 37,
+        "sg13cmos5l_a21oi_1": 10,
+        "sg13cmos5l_nand2_1": 18,
+        "sg13cmos5l_a221oi_1": 105,
+        "sg13cmos5l_nand2b_1": 1,
+        "sg13cmos5l_and2_1": 2
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_15937_",
+          "A2"
+        ],
+        [
+          "_15939_",
+          "A2"
+        ],
+        [
+          "_15945_",
+          "B"
+        ],
+        [
+          "_15949_",
+          "A2"
+        ],
+        [
+          "_15952_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_08565_",
+      "fanout_pin_count": 172,
+      "distinct_sink_cells": 172,
+      "driver": [
+        "_17134_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_nand2_1": 23,
+        "sg13cmos5l_a22oi_1": 60,
+        "sg13cmos5l_a221oi_1": 73,
+        "sg13cmos5l_a21oi_1": 16
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_17136_",
+          "B"
+        ],
+        [
+          "_17213_",
+          "A2"
+        ],
+        [
+          "_17220_",
+          "B1"
+        ],
+        [
+          "_17226_",
+          "B1"
+        ],
+        [
+          "_17227_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_11252_",
+      "fanout_pin_count": 169,
+      "distinct_sink_cells": 169,
+      "driver": [
+        "_19821_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a221oi_1": 61,
+        "sg13cmos5l_a22oi_1": 66,
+        "sg13cmos5l_nand2_1": 17,
+        "sg13cmos5l_a21oi_1": 20,
+        "sg13cmos5l_nand2b_1": 2,
+        "sg13cmos5l_nand3_1": 3
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_19828_",
+          "A2"
+        ],
+        [
+          "_19833_",
+          "B1"
+        ],
+        [
+          "_19837_",
+          "A2"
+        ],
+        [
+          "_19844_",
+          "B"
+        ],
+        [
+          "_19848_",
+          "A2"
+        ]
+      ]
+    },
+    {
+      "net": "_08568_",
+      "fanout_pin_count": 168,
+      "distinct_sink_cells": 168,
+      "driver": [
+        "_17137_",
+        "Y"
+      ],
+      "clock_only": false,
+      "categories": [],
+      "sink_type_histogram": {
+        "sg13cmos5l_a22oi_1": 57,
+        "sg13cmos5l_a221oi_1": 87,
+        "sg13cmos5l_a21oi_1": 3,
+        "sg13cmos5l_nand2_1": 21
+      },
+      "buffer_sink_count": 0,
+      "first_sinks": [
+        [
+          "_17141_",
+          "A2"
+        ],
+        [
+          "_17214_",
+          "B1"
+        ],
+        [
+          "_17218_",
+          "A2"
+        ],
+        [
+          "_17219_",
+          "A2"
+        ],
+        [
+          "_17225_",
+          "A2"
+        ]
+      ]
+    }
+  ],
+  "fanout_histogram": {
+    "1": 9512,
+    "2": 3188,
+    "3": 783,
+    "4": 450,
+    "5": 313,
+    "6": 454,
+    "7": 350,
+    "8": 199,
+    "9": 79,
+    "10": 34,
+    "11": 30,
+    "12": 20,
+    "13": 15,
+    "14": 13,
+    "15": 10,
+    "16": 22,
+    "17": 5,
+    "18": 6,
+    "19": 7,
+    "20": 8,
+    "21": 5,
+    "22": 2,
+    "23": 4,
+    "24": 6,
+    "25": 3,
+    "26": 3,
+    "27": 1,
+    "28": 1,
+    "29": 2,
+    "30": 1,
+    "31": 1,
+    "32": 2,
+    "33": 2,
+    "34": 6,
+    "35": 3,
+    "38": 5,
+    "39": 2,
+    "40": 3,
+    "41": 4,
+    "43": 2,
+    "44": 1,
+    "45": 6,
+    "46": 2,
+    "47": 1,
+    "48": 1,
+    "50": 2,
+    "51": 2,
+    "52": 3,
+    "56": 1,
+    "59": 2,
+    "65": 2,
+    "67": 1,
+    "68": 1,
+    "69": 1,
+    "70": 4,
+    "71": 2,
+    "78": 2,
+    "80": 1,
+    "82": 3,
+    "84": 1,
+    "86": 1,
+    "88": 1,
+    "112": 1,
+    "114": 1,
+    "121": 1,
+    "123": 1,
+    "127": 2,
+    "131": 1,
+    "144": 1,
+    "146": 1,
+    "168": 1,
+    "169": 1,
+    "172": 1,
+    "173": 2,
+    "177": 1,
+    "178": 1,
+    "179": 1,
+    "183": 1,
+    "188": 1,
+    "194": 1,
+    "197": 1,
+    "258": 1,
+    "259": 1,
+    "265": 1,
+    "272": 1,
+    "306": 1,
+    "473": 1,
+    "474": 1,
+    "922": 1
+  },
+  "maximum_nonclock_fanout": 922,
+  "top_depth_endpoints": [
+    {
+      "endpoint": "_27015_",
+      "state": "core.tx_fifo.memory[0][0]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27016_",
+      "state": "core.tx_fifo.memory[0][1]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27017_",
+      "state": "core.tx_fifo.memory[0][2]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27018_",
+      "state": "core.tx_fifo.memory[0][3]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27019_",
+      "state": "core.tx_fifo.memory[0][4]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27020_",
+      "state": "core.tx_fifo.memory[0][5]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27021_",
+      "state": "core.tx_fifo.memory[0][6]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27022_",
+      "state": "core.tx_fifo.memory[0][7]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27055_",
+      "state": "core.tx_fifo.memory[2][0]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27056_",
+      "state": "core.tx_fifo.memory[2][1]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27057_",
+      "state": "core.tx_fifo.memory[2][2]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27058_",
+      "state": "core.tx_fifo.memory[2][3]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27059_",
+      "state": "core.tx_fifo.memory[2][4]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27060_",
+      "state": "core.tx_fifo.memory[2][5]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27061_",
+      "state": "core.tx_fifo.memory[2][6]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27062_",
+      "state": "core.tx_fifo.memory[2][7]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27063_",
+      "state": "core.tx_fifo.memory[1][0]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27064_",
+      "state": "core.tx_fifo.memory[1][1]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27065_",
+      "state": "core.tx_fifo.memory[1][2]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    },
+    {
+      "endpoint": "_27066_",
+      "state": "core.tx_fifo.memory[1][3]",
+      "logic_depth": 65,
+      "mapped_mux_depth": 12,
+      "comb_depth_with_buffers": 65
+    }
+  ],
+  "max_logic_depth": 65,
+  "max_mapped_mux_depth": 12
+}
