@@ -1,0 +1,1029 @@
+{
+  "schema_version": 3,
+  "workflow_run_id": 38349981124,
+  "source_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+  "workflow_status": "completed",
+  "workflow_conclusion": "cancelled",
+  "job_id": 115139931872,
+  "job_started_at": "2026-10-13T05:09:42Z",
+  "job_completed_at": "2026-10-13T11:10:09Z",
+  "log_sha256_raw": "7e27c87dca1bbe559a3cfa6974aeb688cb33ee575717b0382afdefe8aaf3ece9",
+  "log_bytes": 4547178,
+  "log_lines": 41420,
+  "stages": [
+    {
+      "name": "Verilator.Lint",
+      "entered_at": "2026-10-13T05:12:01.0803408Z",
+      "log_line": 819,
+      "next_step_entered_at": "2026-10-13T05:12:01.4660640Z",
+      "entry_to_next_step_seconds": 0.385724
+    },
+    {
+      "name": "Checker.LintTimingConstructs",
+      "entered_at": "2026-10-13T05:12:01.4660640Z",
+      "log_line": 830,
+      "next_step_entered_at": "2026-10-13T05:12:01.4715640Z",
+      "entry_to_next_step_seconds": 0.0055
+    },
+    {
+      "name": "Checker.LintErrors",
+      "entered_at": "2026-10-13T05:12:01.4715640Z",
+      "log_line": 834,
+      "next_step_entered_at": "2026-10-13T05:12:01.4771355Z",
+      "entry_to_next_step_seconds": 0.005571
+    },
+    {
+      "name": "Checker.LintWarnings",
+      "entered_at": "2026-10-13T05:12:01.4771355Z",
+      "log_line": 838,
+      "next_step_entered_at": "2026-10-13T05:12:01.4832431Z",
+      "entry_to_next_step_seconds": 0.006108
+    },
+    {
+      "name": "Yosys.JsonHeader",
+      "entered_at": "2026-10-13T05:12:01.4832431Z",
+      "log_line": 842,
+      "next_step_entered_at": "2026-10-13T05:12:05.4417045Z",
+      "entry_to_next_step_seconds": 3.958461
+    },
+    {
+      "name": "Yosys.Synthesis",
+      "entered_at": "2026-10-13T05:12:05.4417045Z",
+      "log_line": 7838,
+      "next_step_entered_at": "2026-10-13T05:17:52.3555371Z",
+      "entry_to_next_step_seconds": 346.913833
+    },
+    {
+      "name": "Checker.YosysUnmappedCells",
+      "entered_at": "2026-10-13T05:17:52.3555371Z",
+      "log_line": 37021,
+      "next_step_entered_at": "2026-10-13T05:17:52.3609658Z",
+      "entry_to_next_step_seconds": 0.005428
+    },
+    {
+      "name": "Checker.YosysSynthChecks",
+      "entered_at": "2026-10-13T05:17:52.3609658Z",
+      "log_line": 37025,
+      "next_step_entered_at": "2026-10-13T05:17:52.3664912Z",
+      "entry_to_next_step_seconds": 0.005526
+    },
+    {
+      "name": "Checker.NetlistAssignStatements",
+      "entered_at": "2026-10-13T05:17:52.3664912Z",
+      "log_line": 37029,
+      "next_step_entered_at": "2026-10-13T05:17:52.4024343Z",
+      "entry_to_next_step_seconds": 0.035943
+    },
+    {
+      "name": "OpenROAD.CheckSDCFiles",
+      "entered_at": "2026-10-13T05:17:52.4024343Z",
+      "log_line": 37033,
+      "next_step_entered_at": "2026-10-13T05:17:52.4093109Z",
+      "entry_to_next_step_seconds": 0.006876
+    },
+    {
+      "name": "OpenROAD.CheckMacroInstances",
+      "entered_at": "2026-10-13T05:17:52.4093109Z",
+      "log_line": 37040,
+      "next_step_entered_at": "2026-10-13T05:17:52.4151283Z",
+      "entry_to_next_step_seconds": 0.005818
+    },
+    {
+      "name": "OpenROAD.STAPrePNR",
+      "entered_at": "2026-10-13T05:17:52.4151283Z",
+      "log_line": 37044,
+      "next_step_entered_at": "2026-10-13T05:18:20.9361850Z",
+      "entry_to_next_step_seconds": 28.521057
+    },
+    {
+      "name": "OpenROAD.Floorplan",
+      "entered_at": "2026-10-13T05:18:20.9361850Z",
+      "log_line": 37080,
+      "next_step_entered_at": "2026-10-13T05:18:21.9524183Z",
+      "entry_to_next_step_seconds": 1.016233
+    },
+    {
+      "name": "OpenROAD.DumpRCValues",
+      "entered_at": "2026-10-13T05:18:21.9524183Z",
+      "log_line": 37170,
+      "next_step_entered_at": "2026-10-13T05:18:22.4655006Z",
+      "entry_to_next_step_seconds": 0.513082
+    },
+    {
+      "name": "Odb.CheckMacroAntennaProperties",
+      "entered_at": "2026-10-13T05:18:22.4655006Z",
+      "log_line": 37214,
+      "next_step_entered_at": "2026-10-13T05:18:22.4717262Z",
+      "entry_to_next_step_seconds": 0.006226
+    },
+    {
+      "name": "Odb.SetPowerConnections",
+      "entered_at": "2026-10-13T05:18:22.4717262Z",
+      "log_line": 37220,
+      "next_step_entered_at": "2026-10-13T05:18:23.3844897Z",
+      "entry_to_next_step_seconds": 0.912763
+    },
+    {
+      "name": "Odb.ManualMacroPlacement",
+      "entered_at": "2026-10-13T05:18:23.3844897Z",
+      "log_line": 37226,
+      "next_step_entered_at": "2026-10-13T05:18:23.3908704Z",
+      "entry_to_next_step_seconds": 0.006381
+    },
+    {
+      "name": "OpenROAD.CutRows",
+      "entered_at": "2026-10-13T05:18:23.3908704Z",
+      "log_line": 37231,
+      "next_step_entered_at": "2026-10-13T05:18:24.2051974Z",
+      "entry_to_next_step_seconds": 0.814327
+    },
+    {
+      "name": "OpenROAD.TapEndcapInsertion",
+      "entered_at": "2026-10-13T05:18:24.2051974Z",
+      "log_line": 37277,
+      "next_step_entered_at": "2026-10-13T05:18:25.0204733Z",
+      "entry_to_next_step_seconds": 0.815276
+    },
+    {
+      "name": "Odb.AddPDNObstructions",
+      "entered_at": "2026-10-13T05:18:25.0204733Z",
+      "log_line": 37332,
+      "next_step_entered_at": "2026-10-13T05:18:25.0270184Z",
+      "entry_to_next_step_seconds": 0.006545
+    },
+    {
+      "name": "OpenROAD.GeneratePDN",
+      "entered_at": "2026-10-13T05:18:25.0270184Z",
+      "log_line": 37337,
+      "next_step_entered_at": "2026-10-13T05:18:26.2453398Z",
+      "entry_to_next_step_seconds": 1.218321
+    },
+    {
+      "name": "Odb.RemovePDNObstructions",
+      "entered_at": "2026-10-13T05:18:26.2453398Z",
+      "log_line": 37402,
+      "next_step_entered_at": "2026-10-13T05:18:26.2512423Z",
+      "entry_to_next_step_seconds": 0.005903
+    },
+    {
+      "name": "Odb.AddRoutingObstructions",
+      "entered_at": "2026-10-13T05:18:26.2512423Z",
+      "log_line": 37407,
+      "next_step_entered_at": "2026-10-13T05:18:26.2576461Z",
+      "entry_to_next_step_seconds": 0.006404
+    },
+    {
+      "name": "OpenROAD.GlobalPlacementSkipIO",
+      "entered_at": "2026-10-13T05:18:26.2576461Z",
+      "log_line": 37412,
+      "next_step_entered_at": "2026-10-13T05:18:26.2645696Z",
+      "entry_to_next_step_seconds": 0.006923
+    },
+    {
+      "name": "OpenROAD.IOPlacement",
+      "entered_at": "2026-10-13T05:18:26.2645696Z",
+      "log_line": 37420,
+      "next_step_entered_at": "2026-10-13T05:18:26.2709162Z",
+      "entry_to_next_step_seconds": 0.006347
+    },
+    {
+      "name": "Odb.CustomIOPlacement",
+      "entered_at": "2026-10-13T05:18:26.2709162Z",
+      "log_line": 37428,
+      "next_step_entered_at": "2026-10-13T05:18:26.2770077Z",
+      "entry_to_next_step_seconds": 0.006091
+    },
+    {
+      "name": "Odb.ApplyDEFTemplate",
+      "entered_at": "2026-10-13T05:18:26.2770077Z",
+      "log_line": 37433,
+      "next_step_entered_at": "2026-10-13T05:18:27.0890875Z",
+      "entry_to_next_step_seconds": 0.81208
+    },
+    {
+      "name": "OpenROAD.GlobalPlacement",
+      "entered_at": "2026-10-13T05:18:27.0890875Z",
+      "log_line": 37567,
+      "next_step_entered_at": "2026-10-13T05:18:44.7817068Z",
+      "entry_to_next_step_seconds": 17.692619
+    },
+    {
+      "name": "Odb.WriteVerilogHeader",
+      "entered_at": "2026-10-13T05:18:44.7817068Z",
+      "log_line": 38355,
+      "next_step_entered_at": "2026-10-13T05:18:45.5938080Z",
+      "entry_to_next_step_seconds": 0.812102
+    },
+    {
+      "name": "Checker.PowerGridViolations",
+      "entered_at": "2026-10-13T05:18:45.5938080Z",
+      "log_line": 38361,
+      "next_step_entered_at": "2026-10-13T05:18:45.6002679Z",
+      "entry_to_next_step_seconds": 0.006459
+    },
+    {
+      "name": "OpenROAD.STAMidPNR",
+      "entered_at": "2026-10-13T05:18:45.6002679Z",
+      "log_line": 38367,
+      "next_step_entered_at": "2026-10-13T05:19:22.5731088Z",
+      "entry_to_next_step_seconds": 36.972841
+    },
+    {
+      "name": "OpenROAD.RepairDesignPostGPL",
+      "entered_at": "2026-10-13T05:19:22.5731088Z",
+      "log_line": 38396,
+      "next_step_entered_at": "2026-10-13T05:19:35.7395598Z",
+      "entry_to_next_step_seconds": 13.166451
+    },
+    {
+      "name": "Odb.ManualGlobalPlacement",
+      "entered_at": "2026-10-13T05:19:35.7395598Z",
+      "log_line": 38506,
+      "next_step_entered_at": "2026-10-13T05:19:35.7458148Z",
+      "entry_to_next_step_seconds": 0.006255
+    },
+    {
+      "name": "OpenROAD.DetailedPlacement",
+      "entered_at": "2026-10-13T05:19:35.7458148Z",
+      "log_line": 38511,
+      "next_step_entered_at": "2026-10-13T05:19:37.0688081Z",
+      "entry_to_next_step_seconds": 1.322994
+    },
+    {
+      "name": "OpenROAD.CTS",
+      "entered_at": "2026-10-13T05:19:37.0688081Z",
+      "log_line": 38580,
+      "next_step_entered_at": "2026-10-13T05:19:56.0636026Z",
+      "entry_to_next_step_seconds": 18.994794
+    },
+    {
+      "name": "OpenROAD.STAMidPNR-1",
+      "entered_at": "2026-10-13T05:19:56.0636026Z",
+      "log_line": 38769,
+      "next_step_entered_at": "2026-10-13T05:20:20.7782238Z",
+      "entry_to_next_step_seconds": 24.714621
+    },
+    {
+      "name": "OpenROAD.ResizerTimingPostCTS",
+      "entered_at": "2026-10-13T05:20:20.7782238Z",
+      "log_line": 38798,
+      "next_step_entered_at": "2026-10-13T08:54:50.7075516Z",
+      "entry_to_next_step_seconds": 12869.929328
+    },
+    {
+      "name": "OpenROAD.STAMidPNR-2",
+      "entered_at": "2026-10-13T08:54:50.7075516Z",
+      "log_line": 40353,
+      "next_step_entered_at": "2026-10-13T08:55:18.4663199Z",
+      "entry_to_next_step_seconds": 27.758768
+    },
+    {
+      "name": "OpenROAD.GlobalRouting",
+      "entered_at": "2026-10-13T08:55:18.4663199Z",
+      "log_line": 40382,
+      "next_step_entered_at": "2026-10-13T09:11:23.8166289Z",
+      "entry_to_next_step_seconds": 965.350309
+    },
+    {
+      "name": "OpenROAD.CheckAntennas",
+      "entered_at": "2026-10-13T09:11:23.8166289Z",
+      "log_line": 40637,
+      "next_step_entered_at": "2026-10-13T09:11:55.8690342Z",
+      "entry_to_next_step_seconds": 32.052406
+    },
+    {
+      "name": "Odb.DiodesOnPorts",
+      "entered_at": "2026-10-13T09:11:55.8690342Z",
+      "log_line": 40780,
+      "next_step_entered_at": "2026-10-13T09:11:55.8800813Z",
+      "entry_to_next_step_seconds": 0.011047
+    },
+    {
+      "name": "OpenROAD.RepairAntennas",
+      "entered_at": "2026-10-13T09:11:55.8800813Z",
+      "log_line": 40789,
+      "next_step_entered_at": "2026-10-13T09:11:55.8846035Z",
+      "entry_to_next_step_seconds": 0.004522
+    },
+    {
+      "name": "OpenROAD.DiodeInsertion",
+      "entered_at": "2026-10-13T09:11:55.8846035Z",
+      "log_line": 40792,
+      "next_step_entered_at": "2026-10-13T09:13:47.7696983Z",
+      "entry_to_next_step_seconds": 111.885095
+    },
+    {
+      "name": "OpenROAD.CheckAntennas",
+      "entered_at": "2026-10-13T09:13:47.7696983Z",
+      "log_line": 40857,
+      "next_step_entered_at": "2026-10-13T09:14:14.1109348Z",
+      "entry_to_next_step_seconds": 26.341236
+    },
+    {
+      "name": "OpenROAD.STAMidPNR-3",
+      "entered_at": "2026-10-13T09:14:14.1109348Z",
+      "log_line": 40893,
+      "next_step_entered_at": "2026-10-13T09:14:42.6660525Z",
+      "entry_to_next_step_seconds": 28.555118
+    },
+    {
+      "name": "OpenROAD.DetailedRouting",
+      "entered_at": "2026-10-13T09:14:42.6660525Z",
+      "log_line": 40923,
+      "next_step_entered_at": null,
+      "entry_to_next_step_seconds": null
+    }
+  ],
+  "observations": [
+    {
+      "timestamp": "2026-10-13T05:18:21.4018279Z",
+      "log_line": 37133,
+      "stage": "OpenROAD.Floorplan",
+      "core_area_um2": 902417.242
+    },
+    {
+      "timestamp": "2026-10-13T05:18:21.5856028Z",
+      "log_line": 37153,
+      "stage": "OpenROAD.Floorplan",
+      "partial_cells": 15623,
+      "partial_cell_area_um2": 206462.39
+    },
+    {
+      "timestamp": "2026-10-13T05:18:23.7880118Z",
+      "log_line": 37269,
+      "stage": "OpenROAD.CutRows",
+      "partial_cells": 15623,
+      "partial_cell_area_um2": 206462.39
+    },
+    {
+      "timestamp": "2026-10-13T05:18:24.6089155Z",
+      "log_line": 37315,
+      "stage": "OpenROAD.TapEndcapInsertion",
+      "partial_cells": 15623,
+      "partial_cell_area_um2": 206462.39
+    },
+    {
+      "timestamp": "2026-10-13T05:18:25.5162705Z",
+      "log_line": 37383,
+      "stage": "OpenROAD.GeneratePDN",
+      "partial_cells": 15623,
+      "partial_cell_area_um2": 206462.39
+    },
+    {
+      "timestamp": "2026-10-13T05:18:27.4290641Z",
+      "log_line": 37617,
+      "stage": "OpenROAD.GlobalPlacement",
+      "core_area_um2": 902417.242
+    },
+    {
+      "timestamp": "2026-10-13T05:18:27.4326674Z",
+      "log_line": 37622,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_utilization_percent": 26.909
+    },
+    {
+      "timestamp": "2026-10-13T05:18:27.9770974Z",
+      "log_line": 37636,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6
+    },
+    {
+      "timestamp": "2026-10-13T05:18:32.2957017Z",
+      "log_line": 37706,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6
+    },
+    {
+      "timestamp": "2026-10-13T05:18:33.0155511Z",
+      "log_line": 37740,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6
+    },
+    {
+      "timestamp": "2026-10-13T05:18:33.7075231Z",
+      "log_line": 37774,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6
+    },
+    {
+      "timestamp": "2026-10-13T05:18:34.3777609Z",
+      "log_line": 37808,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6
+    },
+    {
+      "timestamp": "2026-10-13T05:18:34.5644384Z",
+      "log_line": 37836,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6
+    },
+    {
+      "timestamp": "2026-10-13T05:18:35.1791018Z",
+      "log_line": 37871,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.623
+    },
+    {
+      "timestamp": "2026-10-13T05:18:35.8070450Z",
+      "log_line": 37906,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6349
+    },
+    {
+      "timestamp": "2026-10-13T05:18:36.4135748Z",
+      "log_line": 37940,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6446
+    },
+    {
+      "timestamp": "2026-10-13T05:18:37.0226637Z",
+      "log_line": 37975,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6543
+    },
+    {
+      "timestamp": "2026-10-13T05:18:37.6118991Z",
+      "log_line": 38009,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6656
+    },
+    {
+      "timestamp": "2026-10-13T05:18:38.2069506Z",
+      "log_line": 38043,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.675
+    },
+    {
+      "timestamp": "2026-10-13T05:18:38.8103171Z",
+      "log_line": 38078,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6842
+    },
+    {
+      "timestamp": "2026-10-13T05:18:39.4152059Z",
+      "log_line": 38112,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.6928
+    },
+    {
+      "timestamp": "2026-10-13T05:18:40.0076318Z",
+      "log_line": 38146,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.7026
+    },
+    {
+      "timestamp": "2026-10-13T05:18:40.5883533Z",
+      "log_line": 38180,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.7115
+    },
+    {
+      "timestamp": "2026-10-13T05:18:41.1688048Z",
+      "log_line": 38214,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.7202
+    },
+    {
+      "timestamp": "2026-10-13T05:18:41.7439360Z",
+      "log_line": 38248,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.7303
+    },
+    {
+      "timestamp": "2026-10-13T05:18:42.3209239Z",
+      "log_line": 38282,
+      "stage": "OpenROAD.GlobalPlacement",
+      "placement_target_density": 0.7398
+    },
+    {
+      "timestamp": "2026-10-13T05:18:44.2624257Z",
+      "log_line": 38338,
+      "stage": "OpenROAD.GlobalPlacement",
+      "partial_cells": 15623,
+      "partial_cell_area_um2": 206462.39
+    },
+    {
+      "timestamp": "2026-10-13T05:19:35.3708812Z",
+      "log_line": 38489,
+      "stage": "OpenROAD.RepairDesignPostGPL",
+      "partial_cells": 17928,
+      "partial_cell_area_um2": 223376.23
+    },
+    {
+      "timestamp": "2026-10-13T05:19:36.5594617Z",
+      "log_line": 38563,
+      "stage": "OpenROAD.DetailedPlacement",
+      "partial_cells": 17928,
+      "partial_cell_area_um2": 223376.23
+    },
+    {
+      "timestamp": "2026-10-13T05:19:53.6726383Z",
+      "log_line": 38709,
+      "stage": "OpenROAD.CTS",
+      "partial_cells": 18168,
+      "partial_cell_area_um2": 228186.2
+    },
+    {
+      "timestamp": "2026-10-13T05:19:55.7029288Z",
+      "log_line": 38752,
+      "stage": "OpenROAD.CTS",
+      "partial_cells": 18168,
+      "partial_cell_area_um2": 228186.2
+    },
+    {
+      "timestamp": "2026-10-13T08:41:08.1770478Z",
+      "log_line": 40043,
+      "stage": "OpenROAD.ResizerTimingPostCTS",
+      "partial_resizer_setup": {
+        "wns_ns": -6.745,
+        "tns_ns": -1247.8,
+        "violating_endpoints": 198,
+        "corner": null,
+        "corners_loaded": [
+          "nom_fast_1p32V_m40C",
+          "nom_slow_1p08V_125C",
+          "nom_typ_1p20V_25C"
+        ],
+        "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+      }
+    },
+    {
+      "timestamp": "2026-10-13T08:54:47.8373169Z",
+      "log_line": 40305,
+      "stage": "OpenROAD.ResizerTimingPostCTS",
+      "partial_resizer_hold": {
+        "wns_ns": 0.1,
+        "tns_ns": 0.0,
+        "corner": null,
+        "corners_loaded": [
+          "nom_fast_1p32V_m40C",
+          "nom_slow_1p08V_125C",
+          "nom_typ_1p20V_25C"
+        ],
+        "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+      }
+    },
+    {
+      "timestamp": "2026-10-13T08:54:50.3050467Z",
+      "log_line": 40336,
+      "stage": "OpenROAD.ResizerTimingPostCTS",
+      "partial_cells": 20013,
+      "partial_cell_area_um2": 264931.43
+    },
+    {
+      "timestamp": "2026-10-13T09:11:21.7132969Z",
+      "log_line": 40603,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_congestion": {
+        "layer": "Metal1",
+        "resource": 0,
+        "demand": 0,
+        "usage_percent": 0.0,
+        "max_horizontal_overflow": 0,
+        "max_vertical_overflow": 0,
+        "total_overflow": 0
+      }
+    },
+    {
+      "timestamp": "2026-10-13T09:11:21.7139901Z",
+      "log_line": 40604,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_congestion": {
+        "layer": "Metal2",
+        "resource": 159079,
+        "demand": 134768,
+        "usage_percent": 84.72,
+        "max_horizontal_overflow": 1,
+        "max_vertical_overflow": 2,
+        "total_overflow": 49
+      }
+    },
+    {
+      "timestamp": "2026-10-13T09:11:21.7147397Z",
+      "log_line": 40605,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_congestion": {
+        "layer": "Metal3",
+        "resource": 194422,
+        "demand": 181841,
+        "usage_percent": 93.53,
+        "max_horizontal_overflow": 8,
+        "max_vertical_overflow": 1,
+        "total_overflow": 10691
+      }
+    },
+    {
+      "timestamp": "2026-10-13T09:11:21.7154896Z",
+      "log_line": 40606,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_congestion": {
+        "layer": "Metal4",
+        "resource": 156558,
+        "demand": 66751,
+        "usage_percent": 42.64,
+        "max_horizontal_overflow": 1,
+        "max_vertical_overflow": 0,
+        "total_overflow": 106
+      }
+    },
+    {
+      "timestamp": "2026-10-13T09:11:21.7168689Z",
+      "log_line": 40609,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_congestion": {
+        "layer": "Total",
+        "resource": 510059,
+        "demand": 383360,
+        "usage_percent": 75.16,
+        "max_horizontal_overflow": 10,
+        "max_vertical_overflow": 3,
+        "total_overflow": 10846
+      }
+    },
+    {
+      "timestamp": "2026-10-13T09:11:21.7181200Z",
+      "log_line": 40611,
+      "stage": "OpenROAD.GlobalRouting",
+      "global_wirelength_um": 3769279
+    },
+    {
+      "timestamp": "2026-10-13T09:11:23.3566240Z",
+      "log_line": 40629,
+      "stage": "OpenROAD.GlobalRouting",
+      "partial_cells": 20013,
+      "partial_cell_area_um2": 264931.43
+    },
+    {
+      "timestamp": "2026-10-13T09:12:28.2534274Z",
+      "log_line": 40823,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_antenna_violations": 93
+    },
+    {
+      "timestamp": "2026-10-13T09:12:59.3084536Z",
+      "log_line": 40825,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_antenna_violations": 66
+    },
+    {
+      "timestamp": "2026-10-13T09:13:22.9271500Z",
+      "log_line": 40827,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_antenna_violations": 71
+    },
+    {
+      "timestamp": "2026-10-13T09:13:44.9486289Z",
+      "log_line": 40829,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_antenna_violations": 4
+    },
+    {
+      "timestamp": "2026-10-13T09:13:45.6046442Z",
+      "log_line": 40831,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_antenna_violations": 1
+    },
+    {
+      "timestamp": "2026-10-13T09:13:46.1033283Z",
+      "log_line": 40833,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_antenna_violations": 0
+    },
+    {
+      "timestamp": "2026-10-13T09:13:47.3795804Z",
+      "log_line": 40847,
+      "stage": "OpenROAD.DiodeInsertion",
+      "partial_cells": 20115,
+      "partial_cell_area_um2": 265486.64
+    },
+    {
+      "timestamp": "2026-10-13T09:19:41.2605912Z",
+      "log_line": 41104,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 10,
+      "partial_detail_violations": 0
+    },
+    {
+      "timestamp": "2026-10-13T09:23:40.4368182Z",
+      "log_line": 41106,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 20,
+      "partial_detail_violations": 0
+    },
+    {
+      "timestamp": "2026-10-13T09:26:20.3608810Z",
+      "log_line": 41108,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 30,
+      "partial_detail_violations": 7128
+    },
+    {
+      "timestamp": "2026-10-13T09:30:44.6117891Z",
+      "log_line": 41110,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 40,
+      "partial_detail_violations": 7128
+    },
+    {
+      "timestamp": "2026-10-13T09:34:52.4810454Z",
+      "log_line": 41112,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 50,
+      "partial_detail_violations": 7128
+    },
+    {
+      "timestamp": "2026-10-13T09:37:41.8262931Z",
+      "log_line": 41114,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 60,
+      "partial_detail_violations": 15387
+    },
+    {
+      "timestamp": "2026-10-13T09:42:04.8594874Z",
+      "log_line": 41116,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 70,
+      "partial_detail_violations": 15387
+    },
+    {
+      "timestamp": "2026-10-13T09:44:41.9375851Z",
+      "log_line": 41118,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 80,
+      "partial_detail_violations": 21774
+    },
+    {
+      "timestamp": "2026-10-13T09:49:26.8705184Z",
+      "log_line": 41120,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 90,
+      "partial_detail_violations": 21774
+    },
+    {
+      "timestamp": "2026-10-13T09:53:10.9175845Z",
+      "log_line": 41122,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 100,
+      "partial_detail_violations": 29091
+    },
+    {
+      "timestamp": "2026-10-13T09:53:12.0567084Z",
+      "log_line": 41124,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_violations": 36836
+    },
+    {
+      "timestamp": "2026-10-13T09:53:12.0950880Z",
+      "log_line": 41133,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_wirelength_um": 2560773
+    },
+    {
+      "timestamp": "2026-10-13T09:53:12.0975992Z",
+      "log_line": 41139,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_vias": 204726
+    },
+    {
+      "timestamp": "2026-10-13T09:55:15.3189613Z",
+      "log_line": 41153,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 10,
+      "partial_detail_violations": 36836
+    },
+    {
+      "timestamp": "2026-10-13T09:58:36.6541981Z",
+      "log_line": 41155,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 20,
+      "partial_detail_violations": 36836
+    },
+    {
+      "timestamp": "2026-10-13T10:00:36.2985172Z",
+      "log_line": 41157,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 30,
+      "partial_detail_violations": 33771
+    },
+    {
+      "timestamp": "2026-10-13T10:04:37.2476781Z",
+      "log_line": 41159,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 40,
+      "partial_detail_violations": 33771
+    },
+    {
+      "timestamp": "2026-10-13T10:08:47.2775449Z",
+      "log_line": 41161,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 50,
+      "partial_detail_violations": 33771
+    },
+    {
+      "timestamp": "2026-10-13T10:10:58.1283249Z",
+      "log_line": 41163,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 60,
+      "partial_detail_violations": 29740
+    },
+    {
+      "timestamp": "2026-10-13T10:14:23.3052023Z",
+      "log_line": 41165,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 70,
+      "partial_detail_violations": 29740
+    },
+    {
+      "timestamp": "2026-10-13T10:16:13.3371183Z",
+      "log_line": 41167,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 80,
+      "partial_detail_violations": 25553
+    },
+    {
+      "timestamp": "2026-10-13T10:20:21.8584978Z",
+      "log_line": 41169,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 90,
+      "partial_detail_violations": 25553
+    },
+    {
+      "timestamp": "2026-10-13T10:23:57.5753661Z",
+      "log_line": 41171,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 100,
+      "partial_detail_violations": 21444
+    },
+    {
+      "timestamp": "2026-10-13T10:23:58.7698795Z",
+      "log_line": 41173,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_violations": 21444
+    },
+    {
+      "timestamp": "2026-10-13T10:23:58.8213317Z",
+      "log_line": 41180,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_wirelength_um": 2536822
+    },
+    {
+      "timestamp": "2026-10-13T10:23:58.8249069Z",
+      "log_line": 41186,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_vias": 203306
+    },
+    {
+      "timestamp": "2026-10-13T10:25:48.7415689Z",
+      "log_line": 41200,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 10,
+      "partial_detail_violations": 21444
+    },
+    {
+      "timestamp": "2026-10-13T10:29:24.3470961Z",
+      "log_line": 41202,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 20,
+      "partial_detail_violations": 21444
+    },
+    {
+      "timestamp": "2026-10-13T10:31:11.6808395Z",
+      "log_line": 41204,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 30,
+      "partial_detail_violations": 20947
+    },
+    {
+      "timestamp": "2026-10-13T10:34:27.3877782Z",
+      "log_line": 41206,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 40,
+      "partial_detail_violations": 20947
+    },
+    {
+      "timestamp": "2026-10-13T10:38:25.7330624Z",
+      "log_line": 41208,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 50,
+      "partial_detail_violations": 20947
+    },
+    {
+      "timestamp": "2026-10-13T10:40:14.2797727Z",
+      "log_line": 41210,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 60,
+      "partial_detail_violations": 20574
+    },
+    {
+      "timestamp": "2026-10-13T10:43:29.7521473Z",
+      "log_line": 41212,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 70,
+      "partial_detail_violations": 20574
+    },
+    {
+      "timestamp": "2026-10-13T10:45:44.2301247Z",
+      "log_line": 41214,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 80,
+      "partial_detail_violations": 19426
+    },
+    {
+      "timestamp": "2026-10-13T10:49:12.9460906Z",
+      "log_line": 41216,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 90,
+      "partial_detail_violations": 19426
+    },
+    {
+      "timestamp": "2026-10-13T10:52:36.3349871Z",
+      "log_line": 41218,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 100,
+      "partial_detail_violations": 18716
+    },
+    {
+      "timestamp": "2026-10-13T10:52:37.5347182Z",
+      "log_line": 41220,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_violations": 18716
+    },
+    {
+      "timestamp": "2026-10-13T10:52:37.5863189Z",
+      "log_line": 41227,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_wirelength_um": 2524953
+    },
+    {
+      "timestamp": "2026-10-13T10:52:37.5902492Z",
+      "log_line": 41233,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_vias": 201513
+    },
+    {
+      "timestamp": "2026-10-13T10:53:47.8483777Z",
+      "log_line": 41247,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 10,
+      "partial_detail_violations": 18716
+    },
+    {
+      "timestamp": "2026-10-13T10:56:49.1197259Z",
+      "log_line": 41249,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 20,
+      "partial_detail_violations": 18716
+    },
+    {
+      "timestamp": "2026-10-13T10:57:51.2750693Z",
+      "log_line": 41251,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 30,
+      "partial_detail_violations": 15110
+    },
+    {
+      "timestamp": "2026-10-13T11:01:04.8813599Z",
+      "log_line": 41253,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 40,
+      "partial_detail_violations": 15110
+    },
+    {
+      "timestamp": "2026-10-13T11:03:01.4787491Z",
+      "log_line": 41255,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 50,
+      "partial_detail_violations": 15110
+    },
+    {
+      "timestamp": "2026-10-13T11:03:41.1410513Z",
+      "log_line": 41257,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 60,
+      "partial_detail_violations": 11176
+    },
+    {
+      "timestamp": "2026-10-13T11:06:36.9273567Z",
+      "log_line": 41259,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 70,
+      "partial_detail_violations": 11176
+    },
+    {
+      "timestamp": "2026-10-13T11:07:50.1692925Z",
+      "log_line": 41261,
+      "stage": "OpenROAD.DetailedRouting",
+      "partial_detail_completion_percent": 80,
+      "partial_detail_violations": 7628
+    },
+    {
+      "timestamp": "2026-10-13T11:10:07.4976074Z",
+      "log_line": 41263,
+      "stage": "OpenROAD.DetailedRouting",
+      "cancellation_message": true
+    }
+  ],
+  "final_metrics": null,
+  "cancellation_cause": null,
+  "scope": "Partial decoded log observations only; step intervals include transition overhead; no final STA, DRC, LVS, source-archive or physical qualification claim"
+}

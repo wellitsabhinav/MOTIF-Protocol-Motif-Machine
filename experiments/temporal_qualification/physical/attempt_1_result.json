@@ -1,0 +1,263 @@
+{
+  "schema_version": 3,
+  "physical_qualified": false,
+  "attempt": 1,
+  "source_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+  "workflow_run_id": 38349981124,
+  "workflow_status": "completed",
+  "workflow_conclusion": "cancelled",
+  "workflow_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124",
+  "failure_scope": "terminal official failure without published physical archives",
+  "errors": [
+    "gds: cancelled"
+  ],
+  "measurements": null,
+  "corners": null,
+  "routed_evidence": null,
+  "unavailable_reason": "No physical archive was published; no measured value or artifact identity is invented",
+  "jobs": [
+    {
+      "id": 115139931540,
+      "run_id": 38349981124,
+      "workflow_name": "gds",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVFgL1c8AAAAazt_tlA",
+      "head_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+      "url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/jobs/115139931540",
+      "html_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124/job/115139931540",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-13T05:09:40Z",
+      "started_at": "2026-10-13T05:09:43Z",
+      "completed_at": "2026-10-13T05:10:21Z",
+      "name": "docs",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-13T05:09:43Z",
+          "completed_at": "2026-10-13T05:09:46Z"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-13T05:09:46Z",
+          "completed_at": "2026-10-13T05:09:48Z"
+        },
+        {
+          "name": "Run TinyTapeout/tt-gds-action/docs@3412659307918422f3f0727917cf9b499aaca588",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-13T05:09:48Z",
+          "completed_at": "2026-10-13T05:10:18Z"
+        },
+        {
+          "name": "Post Run TinyTapeout/tt-gds-action/docs@3412659307918422f3f0727917cf9b499aaca588",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-13T05:10:18Z",
+          "completed_at": "2026-10-13T05:10:19Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-13T05:10:19Z",
+          "completed_at": "2026-10-13T05:10:19Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-13T05:10:19Z",
+          "completed_at": "2026-10-13T05:10:19Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/check-runs/115139931540",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001286,
+      "runner_name": "GitHub Actions 1000001286",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 115139931872,
+      "run_id": 38349981124,
+      "workflow_name": "gds",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVFgL1c8AAAAazt_u4A",
+      "head_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+      "url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/jobs/115139931872",
+      "html_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124/job/115139931872",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-13T05:09:41Z",
+      "started_at": "2026-10-13T05:09:42Z",
+      "completed_at": "2026-10-13T11:10:09Z",
+      "name": "gds",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-13T05:09:43Z",
+          "completed_at": "2026-10-13T05:09:45Z"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-13T05:09:45Z",
+          "completed_at": "2026-10-13T05:09:46Z"
+        },
+        {
+          "name": "Build CMOS5L GDS",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "number": 3,
+          "started_at": "2026-10-13T05:09:46Z",
+          "completed_at": "2026-10-13T11:10:07Z"
+        },
+        {
+          "name": "Post Build CMOS5L GDS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-13T11:10:07Z",
+          "completed_at": "2026-10-13T11:10:07Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-13T11:10:07Z",
+          "completed_at": "2026-10-13T11:10:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-13T11:10:08Z",
+          "completed_at": "2026-10-13T11:10:08Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/check-runs/115139931872",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001287,
+      "runner_name": "GitHub Actions 1000001287",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 115265621200,
+      "run_id": 38349981124,
+      "workflow_name": "gds",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVFgL1c8AAAAa1l3M0A",
+      "head_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+      "url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/jobs/115265621200",
+      "html_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124/job/115265621200",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-13T11:10:10Z",
+      "started_at": "2026-10-13T11:10:10Z",
+      "completed_at": "2026-10-13T11:10:09Z",
+      "name": "gl_test",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/check-runs/115265621200",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 115265621343,
+      "run_id": 38349981124,
+      "workflow_name": "gds",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVFgL1c8AAAAa1l3NXw",
+      "head_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b",
+      "url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/jobs/115265621343",
+      "html_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124/job/115265621343",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-13T11:10:10Z",
+      "started_at": "2026-10-13T11:10:10Z",
+      "completed_at": "2026-10-13T11:10:09Z",
+      "name": "precheck",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/check-runs/115265621343",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ],
+  "published_artifacts": [
+    {
+      "id": 11790357102,
+      "name": "PDF",
+      "size_in_bytes": 34393,
+      "url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/artifacts/11790357102",
+      "archive_download_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/artifacts/11790357102/zip",
+      "expired": false,
+      "created_at": "2026-10-13T05:10:18Z",
+      "expires_at": "2027-01-11T05:09:40Z",
+      "updated_at": "2026-10-13T05:10:18Z",
+      "digest": "sha256:4feeac2f5ad6cddc722bbe0608e750916f1a7adde8ef3ea2b67a3c92f3b3e0fe",
+      "workflow_run": {
+        "id": 38349981124,
+        "repository_id": 1415056341,
+        "head_repository_id": 1415056341,
+        "head_branch": "main",
+        "head_sha": "5467fd4d15a18dda9bc58a93bb3182b03629aa4b"
+      }
+    }
+  ],
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "physical_input_hashes_lf": {
+    "src/config.json": "4b192dffa877dcefa4ab969af9dedf105375921aa179c677524fa88ac94bb510",
+    "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+  },
+  "metadata_sha256_raw": {
+    "workflow": "a324c0edcd4dbe79cca5214ed7b87603200e12fa563698b1810539c9316e6c3b",
+    "jobs": "5e06a02097e9d1436c135407e0a479fd14a941e53fc2ffd1653044ee8838c5c2",
+    "artifacts": "098b7d78affe727eadce0ebfc4f6a66f4f6932cfbee9a39cd54197ef707e0d1f"
+  }
+}

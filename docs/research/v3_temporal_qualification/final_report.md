@@ -5,8 +5,13 @@
 The logical and local matched-cost qualification gates pass. V3 maps to
 210,241.9746 µm², 8.1623% above frozen v2, within the fixed 10% cap. The architecture
 is frozen. The independently selected LIN break/sync prefix passes its 34-case
-unseen logical gate without semantic changes. Physical qualification remains
-unreached in this interim report. Logical generalization and cost qualification
+unseen logical gate without semantic changes. The initial physical attempt ended
+cancelled without published physical archives. The first diagnosed revision
+completed routing and GDS generation but failed setup timing at all three
+measured corners. The final mapping revision exceeded GitHub's six-hour execution
+limit during detailed routing and published no physical archive. All three
+permitted attempts are exhausted; the campaign stops with physical qualification
+unestablished. Logical generalization and cost qualification
 do not establish physical closure. [Gate receipts](../../../experiments/temporal_qualification/),
 [cost receipt](../../../experiments/temporal_qualification/synthesis.json).
 
@@ -228,9 +233,11 @@ observable one-cycle HIGH splits, repeated interruptions, malformed sync/stop,
 stale-header rejection, fresh-break recovery while awaiting sync, lifecycle
 cuts, two prefixes and nine legal length/phase probes. Four runtime host cases
 also pass actual table loading, receive-only pad checks and posttraffic FIFO
-drain; that subset does not replace the dense timing gate. The local test set
-passes: 204 model/tooling tests plus all 15 receipt guard checks, including
-44 independent oracle tests in the first group.
+drain; that subset does not replace the dense timing gate. The 44 independent
+oracle tests also pass. Later delivery/tooling snapshot `2be40c4` passes all
+422 tests and the historical/v3 freeze checks in its identified CI model job;
+that later test count is distinct from the 160-test frozen qualification.
+[Delivery snapshot CI](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38437703555/job/115435917452).
 [Logical receipt](../../../experiments/temporal_qualification/unseen/logical_result.json),
 [runtime host receipt](../../../experiments/temporal_qualification/unseen/runtime_host_result.json),
 [executed-source binding](../../../experiments/temporal_qualification/unseen/source_binding.json).
@@ -256,27 +263,148 @@ autobaud, full LIN frames, analog compliance or physical closure.
 
 ## P. Physical qualification
 
-Unreached: no v3 physical attempt, routed-netlist test, official precheck, source
-correspondence check, DRC/LVS or antenna result exists. Setup/hold WNS/TNS,
-utilization, wirelength, vias and overflow are unavailable. Synthesis cannot
-establish physical closure. The allowed later flow remains pinned CMOS5L,
-6×4 allocation and 20 ns target, with initial run plus at most two diagnosed
-flow-setting revisions. [Flow identity](../../../flow-lock.json),
+The initial v3 attempt ran on merged source
+`5467fd4d15a18dda9bc58a93bb3182b03629aa4b`, after green reviewed PR #12. Its
+immutable intent was committed before dispatch, with the original separately
+identified physical inputs at 6×4 and 20 ns. Its GDS job ended cancelled after
+6 h 27 s; the log does not establish the cancellation cause. Official precheck
+and routed-netlist tests were skipped, and only a documentation PDF was
+published. No final physical archive, corner STA, DRC, LVS or layout view is
+available. The attempt is **not physically qualified**.
+
+The completed log records CTS entering the next stage after 18.995 s,
+post-CTS repair after 12,869.929 s, and global routing after 965.350 s.
+Global overflow was 10,846. Detailed routing last reported 7,628 violations at
+80% of an optimization iteration before cancellation; this is partial progress,
+not final DRC. The actual log and intermediate observations retain their
+source and raw-byte identity. At most two diagnosed setting revisions may
+follow; frozen semantics, allocation and clock remain fixed.
+[Terminal result](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
+[partial observations](../../../experiments/temporal_qualification/physical/attempt_1_log_observations.json),
+[diagnosis](physical_attempt_1_diagnosis.md),
+[Initial intent](../../../experiments/temporal_qualification/physical/attempt_1_intent.json),
+[dispatch receipt](../../../experiments/temporal_qualification/physical/attempt_1_dispatch.json),
+[completed physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38349981124),
+[flow identity](../../../flow-lock.json),
 [physical restriction](preregistration.json).
+
+Attempt 2 ran at exact source
+`f55553a2b10b0880268663d8f06067c5ba1e14e0`: density 45 and integer threads 4.
+Its immutable intent precedes dispatch. Approved helper run `38429454463`
+launched official run `38429471310` at `2026-10-13T16:18:53Z`. The downloaded
+helper API response matches its published archive digest and the actual source
+and run metadata. At that point two attempts had been dispatched and one diagnosed
+revision remained available. The official flow ended failed at `2026-10-13T19:58:31Z`;
+precheck and routed tests were skipped. The downloaded GDS log archive matches
+its published SHA-256, and all 911 extracted files, including the bundled frozen
+RTL, pass source correspondence. Final extracted metrics are available, but the
+independent physical gate exits nonzero.
+[Dispatch identities](physical_attempt_2_dispatch.md),
+[actual dispatch](../../../experiments/temporal_qualification/physical/attempt_2_dispatch.json),
+[accepted API response](../../../experiments/temporal_qualification/physical/attempt_2_dispatch_api_receipt.json),
+[completed physical workflow](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310),
+[attempt 2 intent](../../../experiments/temporal_qualification/physical/attempt_2_intent.json).
+
+| Corner | Setup WNS (ns) | Setup TNS (ns) | Hold WNS (ns) | Hold TNS (ns) |
+|---|---:|---:|---:|---:|
+| Fast 1.32 V / −40 °C | −0.532804 | −53.600020 | 0 | 0 |
+| Typical 1.20 V / 25 °C | −9.764565 | −1,859.024958 | 0 | 0 |
+| Slow 1.08 V / 125 °C | −26.751381 | −5,172.522525 | 0 | 0 |
+
+Hold worst slack is positive at all corners; WNS is separately zero. Routing
+DRC, Magic DRC, LVS and reported antenna violations are zero. KLayout DRC is
+unavailable. Global-route overflow is 7,782 at its measured stage, distinct from
+final detailed-routing DRC. None of these checks overrides failed setup or
+skipped official gates. [Attempt 2 gate result](../../../experiments/temporal_qualification/physical/attempt_2_result.json),
+[complete final measurements](../../../experiments/temporal_qualification/physical/attempt_2_metrics.json),
+[archive/source correspondence](../../../experiments/temporal_qualification/physical/attempt_2_source_correspondence.json),
+[diagnosis and final revision rationale](physical_attempt_2_diagnosis.md),
+[diagnosis before settings](../../../experiments/temporal_qualification/physical/attempt_3_diagnosis.json).
+
+The final attempt ran at source `5dbf3abf11f61a8e6bd26cc5f328999190f12859`:
+`SYNTH_STRATEGY = 'DELAY 0'` and existing slow-corner library selection.
+Diagnosis commit `ce37eba` precedes the settings commit; immutable intent commit
+`69d9409` precedes dispatch. Exact source CI `38468562163` and unseen gate
+`38468561995` are green. Approved helper `38470339854` launched official run
+`38470361703` at `2026-10-13T21:24:29Z`; its downloaded API-response archive
+matches the published digest and actual dispatch. All three allowed attempts
+are now used, with zero further setting revisions available. Frozen semantics,
+6×4, 20 ns, tool pins, margins and acceptance gates remain unchanged. The GDS job
+ended cancelled at `2026-10-14T03:25:18Z`; its check annotation explicitly records
+the six-hour execution limit. No physical archive was published, and official
+precheck and routed tests were skipped. The terminal-failure gate exits 1.
+The campaign stops with logical and matched-cost PASS and physical UNQUALIFIED.
+[Final immutable intent](../../../experiments/temporal_qualification/physical/attempt_3_intent.json),
+[actual dispatch](../../../experiments/temporal_qualification/physical/attempt_3_dispatch.json),
+[verified API receipt](../../../experiments/temporal_qualification/physical/attempt_3_dispatch_api_receipt.json),
+[final official run](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703).
+
+The final decoded log identifies 46 entered stages. Post-CTS repair entered the
+next stage after 6,337.473226 s and global routing after 1,391.497483 s.
+Global overflow was 71,352. Detailed routing's last checkpoint reported 80% of
+an optimization iteration and 270,448 violations before cancellation. These are
+partial observations, not final DRC. Final per-corner WNS/TNS, final cell/area and
+wire/via inventory, DRC, LVS, antenna results, source/archive correspondence and
+layout views are unavailable for attempt 3.
+[Final terminal result](../../../experiments/temporal_qualification/physical/attempt_3_result.json),
+[explicit cancellation annotation](../../../experiments/temporal_qualification/physical/attempt_3_check_annotations.json),
+[identified partial evidence](../../../experiments/temporal_qualification/physical/attempt_3_terminal_evidence.json),
+[final diagnosis](physical_attempt_3_diagnosis.md).
+
+The complete cancelled-job log and terminal metadata are published in a
+[read-only CI archive](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387087/artifacts/11868123053).
+Its ZIP digest, every file hash and equality with the retained terminal log
+were verified; no additional physical run was launched.
+[Terminal archive verification](../../../experiments/temporal_qualification/physical/job_snapshot_38507387087.json).
+
+A separately identified read-only snapshot confirms OpenROAD receives argument
+`4` and placement uses target density `0.4500`. The initial completed log is
+also preserved in the snapshot CI artifact and matches the retained terminal
+log byte-for-byte. That snapshot's then-active log is partial; its capture time does not identify
+the current execution stage or establish effective thread count, speedup or
+closure. [Snapshot observations](physical_attempt_2_observations.md),
+[verified snapshot receipt](../../../experiments/temporal_qualification/physical/job_snapshot_38435430815.json).
 
 ## Q. PPA comparison
 
-Temporal qualification costs 18 declared bits and 15,865.6428 µm² in this
+The [cost figure](../../demo/figures/cost/cost_summary.svg) renders the canonical
+matched v2/v3 receipt with axes starting at zero. Its [editable metric inventory](../../demo/figures/cost/cost_summary.json)
+retains measured source, tool, library and receipt identities. Legacy values
+without a comparable pinned receipt remain unavailable. Declared bits and mapped
+cell instances have separate panels; table storage is included in configuration
+and configuration is included once in total declared registers.
+
+Temporal qualification costs 18 declared bits and 15,865.6428 µm² in the
 matched mapping, principally additional combinational logic: +768 combinational
-cells versus +18 sequential cells. No v3 power, placed timing, routed area or maximum frequency is
-available. Earlier routed results retain their earlier source scope and cannot
-qualify v3. [Historical physical scope](../../physical.md).
+cells versus +18 sequential cells. Initial physical intermediate observations
+remain separate from final extraction. [Initial measurements](../../../experiments/temporal_qualification/physical/attempt_1_log_observations.json),
+[initial diagnosis](physical_attempt_1_diagnosis.md).
+
+Attempt 2's final extraction records 20,178 functional standard cells,
+263,349 µm² standard-cell area, 1,401 mapped sequential cells, 902,417 µm² core
+area and 29.1827% standard-cell utilization. Fillers are excluded from those
+functional counts. Detailed wirelength is 2,448,577 µm with 206,169 vias;
+global wirelength and overflow retain their earlier routing-stage scope.
+No matched v2 physical baseline exists, so these values cannot replace the
+preregistered nominal mapping comparison. No workload power, qualified maximum
+frequency or silicon measurement is established. Earlier routed results retain
+their earlier source scope and cannot qualify v3.
+[Physical metric figure](../../demo/figures/physical/attempt_2/physical_cost.svg),
+[corner timing figure](../../demo/figures/physical/attempt_2/physical_timing.svg),
+[full values and origins](../../../experiments/temporal_qualification/physical/attempt_2_metrics.json),
+[historical physical scope](../../physical.md).
+
+Attempt 3 supplies partial log inventories only. Its final physical metrics
+are unavailable, and its intermediate cell area cannot replace either the
+matched nominal cost gate or attempt 2's final values.
+[Final evidence scope](physical_attempt_3_diagnosis.md).
 
 ## R. Demonstration artifacts
 
 Measured result: eleven demonstrations pass over 702,987 compared cycles,
 including four selected LIN cases in addition to the seven qualified profiles.
-`python -m tools.demo --all --schematics` produces plain HTML at
+After `python -m tools.lin_unseen` recreates and validates the selected LIN
+traces and local hook, `python -m tools.demo --all --schematics` produces plain HTML at
 `build/demo/index.html`, real waveforms, ordered execution timelines,
 configuration summaries, expected/observed results and concise trace excerpts.
 Cache reuse requires matching source, stimulus and artifact identities; failed
@@ -284,6 +412,46 @@ validation exits nonzero. Selected editable and rendered artifacts are committed
 full traces, caches, simulator outputs and netlists remain ignored build outputs
 and reproducible CI artifacts. [Demonstration inventory](../../demo/demonstrations.json),
 [guide](../../GETTING_STARTED.md).
+
+The downloaded [CI plain HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38385913225/artifacts/11806692626)
+was checked against its published ZIP digest and manifest: all 464 listed files
+match, every local HTML link resolves, and all eleven demonstrations pass.
+This package identifies source head `052beae`; it predates the terminal physical
+diagnosis. [Delivery verification](../../../experiments/temporal_qualification/delivery.json).
+
+The later [prepared-revision HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38426446635/artifacts/11829931300)
+identifies head `7d3b0a9` and includes the terminal physical diagnosis and
+attempt-2 intent. All 473 manifest-listed files match their downloaded bytes,
+all local HTML links resolve, and all eleven demonstrations pass.
+[Later download verification](../../../experiments/temporal_qualification/delivery_7d3b0a9.json).
+
+The [updated guide and cost-figure package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38439964655/artifacts/11836295099)
+identifies clean head `16fafe7`. Its ZIP digest, all 490 file hashes, all local
+HTML links, eleven demonstration outcomes and the selected cost-renderer/image
+identities were checked after download. It includes the approved dispatch and
+read-only physical observations captured while attempt 2 was active.
+[Earlier package verification](../../../experiments/temporal_qualification/delivery_16fafe7.json).
+
+The [browsable report and physical-gallery package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38473966248/artifacts/11853572292)
+identifies clean head `cffe8f6`. All 517 manifest-listed file hashes, eleven
+demonstrations, 26 rendered A–Z sections, tables and local HTML links were checked
+after download. Its landing page presents the report with clickable evidence
+and six actual attempt-2 layout/metric/timing views. Those views are explicitly
+UNQUALIFIED and bind the retained failed result, measured corners and exact
+archive/source correspondence. The separately recorded final attempt-3 dispatch
+does not inherit a result from the attempt-2 gallery. This package predates the
+terminal attempt-3 result. Full layouts and traces remain separate artifacts.
+[Earlier gallery-package verification](../../../experiments/temporal_qualification/delivery_cffe8f6.json).
+
+The [final reached-report HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515)
+identifies clean head `161ed9a`. Its published ZIP digest, all 524 file hashes,
+eleven demonstration outcomes, 26 rendered report sections, every local HTML
+link, cost/physical figure identities and the actual final cancellation
+annotation were verified after download. The landing page records logical
+and matched-cost PASS and physical UNQUALIFIED after all three attempts.
+Final-run metrics and views remain unavailable; the earlier failed layout
+retains its own source. Extract the package and open `index.html`.
+[Final download verification](../../../experiments/temporal_qualification/delivery_final.json).
 
 ## S. Architecture diagrams
 
@@ -329,9 +497,22 @@ netlist and library hashes and does not rerun synthesis.
 
 ## V. GDS/floorplan/routing visuals
 
-Unavailable for v3 because the now-eligible physical workflow has not run. No
-historical layout is presented as a v3 result and no physical view is fabricated.
-[Physical scope record](../../physical.md), [campaign gate order](preregistration.json).
+Attempt 2 supplies actual identified [floorplan](../../demo/figures/physical/attempt_2/floorplan.svg),
+[placement](../../demo/figures/physical/attempt_2/placement.png),
+[routing](../../demo/figures/physical/attempt_2/routing.png) and
+[GDS preview](../../demo/figures/physical/attempt_2/gds.png), each labeled
+**UNQUALIFIED**. The previews preserve their actual artifact geometry and carry
+source/run/archive hashes and explicit omission scopes. Detailed routing is
+shown as centerline geometry; widths, power routes and a temporal-block region
+are not inferred. Full geometry and dense route vectors stay in the identified
+265 MB CI archive. GDS generation does not establish physical closure.
+[View identities](../../demo/figures/physical/attempt_2/identity.json),
+[actual archive](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310/artifacts/11843789314),
+[campaign gate order](preregistration.json).
+
+No attempt-3 physical archive was published, so its final layout views are
+unavailable. The identified attempt-2 geometry is not relabelled as final-run
+geometry. [Final result and view limits](physical_attempt_3_diagnosis.md).
 
 ## W. Negative evidence
 
@@ -343,13 +524,32 @@ counterexamples and the diagnosed CI lowering failure are also retained.
 [comparison evidence](../../../experiments/temporal_qualification/v2_composition_baseline.json),
 [correspondence record](implementation_correspondence.md).
 
+The initial physical attempt is retained as an unsuccessful cancelled run with
+remaining setup violations, routing congestion and unavailable final gates.
+[Physical negative](../../../experiments/temporal_qualification/physical/attempt_1_result.json),
+[diagnosed partial evidence](physical_attempt_1_diagnosis.md).
+
+Attempt 2 is a retained final setup failure with identified routing/GDS but
+negative setup timing in all three corners and skipped official downstream
+checks. Its deepest measured control paths run from table data to RX FIFO
+capture. [Second physical negative](../../../experiments/temporal_qualification/physical/attempt_2_result.json),
+[actual path excerpts](../../../experiments/temporal_qualification/physical/attempt_2_critical_paths.txt),
+[second diagnosis](physical_attempt_2_diagnosis.md).
+
+Attempt 3 exceeded the official six-hour execution limit during unfinished
+detailed routing. Its cancellation, explicit annotation, partial congestion and
+routing observations, and missing final gates are retained. This exhausts the
+attempt limit and ends the campaign without physical qualification.
+[Final negative](../../../experiments/temporal_qualification/physical/attempt_3_result.json),
+[final diagnosis](physical_attempt_3_diagnosis.md).
+
 ## X. Evidence strength
 
 Established facts are commit order, immutable bytes and actual interfaces.
 Measured results are independent bounded wire-oracle outcomes, exact
 model/RTL comparisons, bounded properties and source-identified accounting.
 Interpretation: tagged WAIT cleanly separates sampled persistence from timer
-sampling and repairs the known training failures. Hypothesis: the responsibility
+sampling and repairs the known training failures. Measured result: the responsibility
 composes with the one selected LIN prefix under its bounded electrical contract.
 Broader composition remains a hypothesis. Unverified possibilities include
 debounce, wake-up detection, unsampled analog behavior, complete protocol
@@ -366,9 +566,13 @@ closure. Fixed cost and attempt gates make an unfavorable result meaningful.
 
 ## Z. Recommended next step
 
-Review and merge the green qualified unseen PR, then run the initial pinned
-CMOS5L physical attempt at 6×4 and 20 ns. At most two diagnosed flow-setting
-revisions may follow. Preserve failed attempts, retain unavailable metrics as
-unavailable, and complete physical classification and reached demonstrations
-without changing frozen semantics or the selected oracle.
+This campaign is stopped after all three allowed physical attempts. Logical
+generalization and matched cost pass; physical qualification is unestablished.
+All reached demonstrations and the report remain reproducible, and every
+negative retains its source and evidence identity. No further flow revision,
+semantic repair, candidate substitution or oracle weakening is permitted here.
+Any follow-up requires a separate preregistration before implementation or
+evaluation. Attempt 2's deep table/control-to-FIFO paths motivate a possible
+future architecture study; they do not prove the temporal counter caused the
+physical failures. The frozen v3 semantics remain unchanged.
 [Stop conditions](preregistration.json).

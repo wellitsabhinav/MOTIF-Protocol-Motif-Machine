@@ -1,0 +1,8 @@
+{
+  "schema_version": 3,
+  "attempt": 3,
+  "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859",
+  "branch": "codex/v3-physical-attempt-3",
+  "intent_sha256_lf": "0a47370b37cf44fcf5e71f356ae91f0c88e3121452a70e0f35c013dfa040c417",
+  "authorization": "User authorized the full controlled campaign with initial attempt plus at most two diagnosed flow revisions and explicitly approved the guarded actions-write CI helper. Final source CI 38468562163 and unseen gate 38468561995 are green; ordinary authenticated dispatch retains the fixed limits and pinned flow."
+}

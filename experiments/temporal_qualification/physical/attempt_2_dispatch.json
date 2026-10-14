@@ -1,0 +1,18 @@
+{
+  "schema_version": 3,
+  "attempt": 2,
+  "intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
+  "run_id": 38429471310,
+  "run_attempt": 1,
+  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "workflow_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310",
+  "workflow_id": 381812642,
+  "created_at": "2026-10-13T16:18:53Z",
+  "flow_setting_revision": 1,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "snapshot_sha256_lf": "fb4b37d08b876b262cd1ade5647ce0b462b56e9bfcf2f3113407024463e55ac7"
+}

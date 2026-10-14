@@ -1,0 +1,78 @@
+{
+  "schema_version": 3,
+  "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "unseen_result_sha256_lf": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+  "selection_commit": "5f67d888df07a7e76f814a8df9984394a951f7ac",
+  "selection_sha256_lf": "f3e6d9b7661d61f07b390f0225deb43eeb03e5819dfd2d2191efc628d1a61663",
+  "all_protected_source_bytes_equal": true,
+  "rtl_source_hashes_lf": {
+    "src/motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "src/motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "src/motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "src/motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "src/motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "src/motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "src/motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "src/motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "src/motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "src/motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "src/motif_transaction.sv": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+    "src/motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "src/tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+  },
+  "physical_input_hashes_lf": {
+    "src/config.json": "49ca3b2dd50e3e1e7e9048218a8efa51bdc102790eab1fb7e127cf58e785889d",
+    "info.yaml": "c8bd301439c2a242b9d190191d76542c0f9a45853e0a427f589e8a397738ec4c",
+    "flow-lock.json": "9959e5f1e114fba8377f4274a3ec5eb29df58747a6b45d69d8105a2fb123af47",
+    ".github/workflows/gds.yml": "234c99ac3bf72ba21bf35483ebaa9c21da5e0975303d09509f198766f9b63213"
+  },
+  "tile": "6x4",
+  "clock_period_ns": 20,
+  "pinned_flow": {
+    "schema_version": 1,
+    "template": {
+      "repository": "TinyTapeout/ttihp-verilog-template",
+      "revision": "b86a2a781484bcab7ba522dc5de540086695a430"
+    },
+    "gds_action": {
+      "repository": "TinyTapeout/tt-gds-action",
+      "revision": "3412659307918422f3f0727917cf9b499aaca588"
+    },
+    "support_tools": {
+      "repository": "TinyTapeout/tt-support-tools",
+      "revision": "d66cf179e7bc4d296362ab7e2e3b344dc3c4f665"
+    },
+    "pdk": {
+      "name": "ihp-sg13cmos5l",
+      "repository": "IHP-GmbH/IHP-Open-PDK",
+      "revision": "2bbec755dc67ca3db0261c3d6163e15735d66710"
+    },
+    "librelane": "3.1.0.dev3",
+    "oss_cad_suite": "2026-10-11",
+    "oss_cad_action": "c7845bc0d335c8076aa22047e85972caa8a916df",
+    "python": "3.12",
+    "pytest": "8.3.5",
+    "cocotb": "2.0.1",
+    "cocotb_python": "3.11",
+    "cocotb_iverilog": "TinyTapeout/iverilog v13.0, iverilog_13.0-1_amd64.deb",
+    "local_tools": {
+      "iverilog": "12.0 devel s20150603-1391-gd480c4d7d",
+      "verilator": "5.020",
+      "yosys": "0.30+48 b5b0b7e83"
+    }
+  },
+  "diagnosis": {
+    "path": "experiments/temporal_qualification/physical/attempt_2_diagnosis.json",
+    "sha256_lf": "cd8afa8a55d1c01ed57534c4e218812690dcff176a0b688b7fd19c21a9e66a74"
+  },
+  "attempt": 2,
+  "flow_setting_revision": 1,
+  "semantic_changes": false,
+  "status": "prepared_before_dispatch",
+  "maximum_attempts": 3
+}

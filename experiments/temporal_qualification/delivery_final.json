@@ -1,0 +1,102 @@
+{
+  "schema_version": 3,
+  "kind": "downloaded_ci_final_stopped_campaign_html_delivery",
+  "passed": true,
+  "source_head_sha": "161ed9a43d6fab470edc3a2b776a9369ee0280ea",
+  "workflow_run_id": 38507387085,
+  "artifact_id": 11868951515,
+  "archive_bytes": 12568551,
+  "archive_sha256_raw": "fbfbd7abb09ca14a0b9e8169047aed893d7cb9e37331405259b9eab3e820851d",
+  "manifest_sha256_raw": "a52ce73bc53cdc21cb59090ec3966b2bff0045a9622862bb5db9c1505389083d",
+  "checkout_commit": "161ed9a43d6fab470edc3a2b776a9369ee0280ea",
+  "checkout_commit_role": "Checkout ancestry; the per-file manifest identifies the packaged bytes",
+  "packaged_working_tree_dirty": false,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "files": 524,
+  "all_packaged_bytes_verified": true,
+  "all_local_html_links_resolve": true,
+  "all_26_report_sections_rendered": true,
+  "selected_cost_source_and_image_hashes_verified": true,
+  "selected_physical_source_receipts_and_image_hashes_verified": true,
+  "actual_final_cancellation_and_annotation_verified": true,
+  "physical_attempt_limit_stop_verified": true,
+  "raw_layouts_and_full_traces_excluded": true,
+  "final_physical_outcome": {
+    "attempt": 3,
+    "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859",
+    "workflow_run_id": 38470361703,
+    "workflow_conclusion": "cancelled",
+    "physical_qualified": false,
+    "cancellation_cause": "Official GitHub six-hour execution limit",
+    "physical_archive_available": false,
+    "final_metrics_available": false,
+    "precheck": "skipped",
+    "routed_tests": "skipped",
+    "further_attempts_permitted": false
+  },
+  "demonstrations": [
+    {
+      "protocol": "i2c",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "microwire",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "interrupted_non_reset",
+      "passed": true
+    },
+    {
+      "protocol": "spi",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "uart",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "timed_stream",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "one_cycle_high_split",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "pending_sync_recovery",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "back_to_back",
+      "passed": true
+    }
+  ],
+  "public_unseen_receipt_sha256_lf": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+  "current_unseen_receipt_sha256_lf": "77ecdfacfc71fef7710940a7205a4e5bc4171b6853aca1247339d199c8136004",
+  "artifact_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515",
+  "scope": "Final reached report and eleven bounded demonstrations: logical and matched cost PASS, physical UNQUALIFIED after all three attempts. Final cancellation, official six-hour annotation, unavailable final metrics and source-specific failed-attempt-2 layout views are verified without a closure claim."
+}

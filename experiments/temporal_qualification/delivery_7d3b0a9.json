@@ -1,0 +1,81 @@
+{
+  "schema_version": 3,
+  "passed": true,
+  "kind": "downloaded_ci_plain_html_delivery",
+  "source_head_sha": "7d3b0a9e61710e5494e80cd5b5d9fdc86ea64904",
+  "workflow_run_id": 38426446635,
+  "artifact_id": 11829931300,
+  "archive_sha256_raw": "0297867e2d50989ac237fa684c13f6069989b96ae27ba07675fd84c3a76e37f1",
+  "manifest_sha256_raw": "52410d4c26178bf4fa83de3f0d36cc6c7314f862943b9750466f08774f8bf235",
+  "checkout_commit": "e0a987269117ebce0bbbfb35e44cdc1d03181fee",
+  "checkout_commit_role": "Checkout ancestry; the per-file manifest identifies the packaged bytes",
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "files": 473,
+  "all_packaged_bytes_verified": true,
+  "all_local_html_links_resolve": true,
+  "demonstrations": [
+    {
+      "protocol": "i2c",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "microwire",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "interrupted_non_reset",
+      "passed": true
+    },
+    {
+      "protocol": "spi",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "uart",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "timed_stream",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "one_cycle_high_split",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "pending_sync_recovery",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "back_to_back",
+      "passed": true
+    }
+  ],
+  "public_unseen_receipt_sha256_lf": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+  "current_unseen_receipt_sha256_lf": "041efbe57e4e717d8f46ea1cc0690512bfc4d2988d7faace8b28f825f42e35d2",
+  "artifact_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38426446635/artifacts/11829931300",
+  "scope": "Prepared physical revision and cancelled initial attempt reporting; eleven bounded logical demonstrations; no physical closure claim",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  }
+}

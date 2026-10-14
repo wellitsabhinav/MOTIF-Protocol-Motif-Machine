@@ -1,0 +1,84 @@
+{
+  "schema_version": 3,
+  "passed": true,
+  "kind": "downloaded_ci_plain_html_delivery",
+  "source_head_sha": "16fafe7d51b31dcd7a8b3562ae475d07ac8968b1",
+  "workflow_run_id": 38439964655,
+  "artifact_id": 11836295099,
+  "archive_bytes": 8750730,
+  "archive_sha256_raw": "1dc9b69b6373d1649e968a138e0851cb802a16cb90ccec562cb692755574af1f",
+  "manifest_sha256_raw": "d4852309126871cef7b28d289d789ed6afc0423cfc6100281c5c4ed8b2c7390d",
+  "checkout_commit": "16fafe7d51b31dcd7a8b3562ae475d07ac8968b1",
+  "checkout_commit_role": "Checkout ancestry; the per-file manifest identifies the packaged bytes",
+  "packaged_working_tree_dirty": false,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "files": 490,
+  "all_packaged_bytes_verified": true,
+  "all_local_html_links_resolve": true,
+  "selected_cost_source_and_image_hashes_verified": true,
+  "demonstrations": [
+    {
+      "protocol": "i2c",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "microwire",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "one_wire",
+      "case": "interrupted_non_reset",
+      "passed": true
+    },
+    {
+      "protocol": "spi",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "uart",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "timed_stream",
+      "case": "bounded",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "nominal",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "one_cycle_high_split",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "pending_sync_recovery",
+      "passed": true
+    },
+    {
+      "protocol": "unseen",
+      "case": "back_to_back",
+      "passed": true
+    }
+  ],
+  "public_unseen_receipt_sha256_lf": "915536e1e2f8c83f01db069d935189469d3514333120bf9ba79a1a273da75d7c",
+  "current_unseen_receipt_sha256_lf": "759b5e3d294db0186ee7f2f6e45694e80c251759daf92d1143a9a9e61c64088c",
+  "artifact_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38439964655/artifacts/11836295099",
+  "scope": "Approved physical dispatch and observed settings, retained cancelled initial attempt, current guide, actual nominal cost graphics and eleven bounded logical demonstrations. Physical attempt 2 remains active; no physical closure claim."
+}

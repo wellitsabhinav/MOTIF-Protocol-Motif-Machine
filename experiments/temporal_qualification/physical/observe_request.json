@@ -1,0 +1,8 @@
+{
+  "schema_version": 3,
+  "snapshot_request": "attempt_3_complete_terminal_log_after_six_hour_limit_stop",
+  "runs": [
+    {"run_id": 38470361703, "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859"}
+  ],
+  "scope": "Read-only metadata/log collection; no dispatch, rerun, cancellation, physical-setting or semantic changes"
+}

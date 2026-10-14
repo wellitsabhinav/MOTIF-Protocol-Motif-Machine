@@ -1,6 +1,21 @@
 # Reproducible MOTIF demonstrations
 
-`python -m tools.demo --all --schematics` generates `build/demo/index.html` from deterministic simulation. V3 is logically qualified, within its cost limits and frozen. Unseen evaluation and physical qualification are still unreached. Demonstration passes establish their recorded bounded behaviors; the campaign classifies each gate separately.
+`python -m tools.demo --all --schematics` generates `build/demo/index.html` from deterministic simulation. V3 is logically qualified, within its cost limits and frozen. The independently selected LIN prefix passes unseen logical qualification. Physical attempt 2 failed setup timing; identified layout previews are available but physical closure remains unqualified. Demonstration passes establish their recorded bounded behaviors; the campaign classifies each gate separately.
+
+Recreate the selected LIN traces before requesting all eleven reached demonstrations:
+
+```sh
+python -m tools.lin_unseen
+python -m tools.demo --all --schematics
+```
+
+The first command verifies the full 34-case unseen gate and creates its identified local demonstration hook. A clean checkout without that hook runs the seven base demonstrations with `--all`.
+
+For offline browsing, extract the [verified final HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515)
+and open `index.html`. It links all eleven demonstrations, the rendered A–Z
+report and the source-specific unqualified attempt-2 physical gallery.
+[Download verification](../../experiments/temporal_qualification/delivery_final.json)
+checks every packaged file and local HTML link.
 
 | Command selector | Independent expected behavior | Output |
 | --- | --- | --- |
@@ -10,10 +25,11 @@
 | `spi` | Receive 3C; return A6; release on deselection | `build/demo/spi/bounded/` |
 | `uart` | Receive 55 A6 in 8N1 frames | `build/demo/uart/bounded/` |
 | `timed_stream` | Receive 55 AA under external framing | `build/demo/timed_stream/bounded/` |
+| `unseen` | LIN prefix token 55; interrupted false break rejected; fresh-break recovery; two prefixes; all pads released | `build/demo/unseen/{nominal,one_cycle_high_split,pending_sync_recovery,back_to_back}/` |
 
 Every case includes `configuration.json`, `trace_excerpt.json`, `result.json`, `waveform.svg/png`, `timeline.svg/png`, and a case README. Source, stimulus, trace and artifact hashes identify the evidence. `inputs.txt`, `model.jsonl`, `rtl.jsonl`, testbench files and simulation logs retain the complete reproduction. `--reuse` checks all identities before accepting any cached RTL trace.
 
-The selected snapshots in [demonstrations.json](demonstrations.json) record seven passing demonstrations and 257,390 compared RTL cycles. Their source identities and recorded scope remain separate from the campaign gates.
+The selected snapshots in [demonstrations.json](demonstrations.json) record eleven passing demonstrations and 702,987 compared RTL cycles: seven base cases plus four selected LIN cases. Their source identities and recorded scope remain separate from the campaign gates.
 
 | Selected waveform | Actual ordered execution | Configuration and short trace |
 | --- | --- | --- |
@@ -24,6 +40,10 @@ The selected snapshots in [demonstrations.json](demonstrations.json) record seve
 | [SPI](figures/spi/bounded/waveform.svg) | [Timeline](figures/spi/bounded/timeline.svg) | [Configuration](figures/spi/bounded/configuration.json), [excerpt](figures/spi/bounded/trace_excerpt.json) |
 | [UART RX](figures/uart/bounded/waveform.svg) | [Timeline](figures/uart/bounded/timeline.svg) | [Configuration](figures/uart/bounded/configuration.json), [excerpt](figures/uart/bounded/trace_excerpt.json) |
 | [Timed stream](figures/timed_stream/bounded/waveform.svg) | [Timeline](figures/timed_stream/bounded/timeline.svg) | [Configuration](figures/timed_stream/bounded/configuration.json), [excerpt](figures/timed_stream/bounded/trace_excerpt.json) |
+| [LIN nominal prefix](figures/unseen/nominal/waveform.svg) | [Timeline](figures/unseen/nominal/timeline.svg) | [Configuration](figures/unseen/nominal/configuration.json), [excerpt](figures/unseen/nominal/trace_excerpt.json) |
+| [LIN interrupted false break](figures/unseen/one_cycle_high_split/waveform.svg) | [Timeline](figures/unseen/one_cycle_high_split/timeline.svg) | [Configuration](figures/unseen/one_cycle_high_split/configuration.json), [excerpt](figures/unseen/one_cycle_high_split/trace_excerpt.json) |
+| [LIN fresh-break recovery](figures/unseen/pending_sync_recovery/waveform.svg) | [Timeline](figures/unseen/pending_sync_recovery/timeline.svg) | [Configuration](figures/unseen/pending_sync_recovery/configuration.json), [excerpt](figures/unseen/pending_sync_recovery/trace_excerpt.json) |
+| [LIN two prefixes](figures/unseen/back_to_back/waveform.svg) | [Timeline](figures/unseen/back_to_back/timeline.svg) | [Configuration](figures/unseen/back_to_back/configuration.json), [excerpt](figures/unseen/back_to_back/trace_excerpt.json) |
 
 ![Repaired 1-Wire reset/presence from actual RTL](figures/one_wire/nominal/waveform.png)
 
@@ -35,7 +55,7 @@ The waveform renderer retains every transition; it does not sample away short pu
 
 Selected editable figures: [top-level schematic](figures/architecture/top.svg), [core connectivity](figures/architecture/architecture.svg), [transaction control](figures/architecture/transaction.svg), [temporal register](figures/architecture/temporal.svg), and [legacy→v2→v3 module inventories](figures/architecture/evolution.svg). Each connectivity view has a matching JSON file under the same directory. Full elaborated netlists remain reproducible build artifacts.
 
-The historical v2 interrupted-low false presence and earlier BYTE_EXCHANGE A5FF failure remain permanent evidence. The generated HTML embeds the unchanged v2 counterexample and labels it historical. It links the A–Z campaign report once available. Repaired v3 waveforms use current identified simulation traces.
+The historical v2 interrupted-low false presence and earlier BYTE_EXCHANGE A5FF failure remain permanent evidence. The generated HTML embeds the unchanged v2 counterexample and labels it historical. It links the [A–Z campaign report](../research/v3_temporal_qualification/final_report.md). Repaired v3 waveforms use current identified simulation traces.
 
 No unseen workload is researched by this package before the semantic freeze. No physical figure is generated without an identified v3 implementation artifact. If a campaign stop condition prevents later gates, reached demonstrations and an honest report are still deliverables.
 
@@ -50,6 +70,32 @@ connectivity, with omitted logic explicitly listed, rather than physical closure
 
 The [A–Z campaign report](../research/v3_temporal_qualification/final_report.md)
 records logical, cost, unseen and physical outcomes separately.
+
+[Cost graphics](figures/cost/cost_summary.svg) show the actual matched v2/v3
+mapped area, mapped cell classes and declared storage with axes starting at zero.
+[Editable metrics and identities](figures/cost/cost_summary.json) distinguish the
+measured source commits from the receipt checkout. Legacy values without a
+comparable pinned receipt remain unavailable. Reproduce this selected view with
+`python docs/demo/render_cost.py --receipt-commit 2be40c4 --output-dir build/demo/cost_fresh`.
+The renderer reads recorded receipts and does not run synthesis. Physical
+measurements, when available from an identified receipt, use a separate figure
+and retain their intermediate or final extraction scope.
+
+Attempt 2 supplies actual [floorplan](figures/physical/attempt_2/floorplan.svg),
+[placement](figures/physical/attempt_2/placement.png), [routing](figures/physical/attempt_2/routing.png)
+and [GDS preview](figures/physical/attempt_2/gds.png), all visibly labeled **UNQUALIFIED**.
+Their [identity inventory](figures/physical/attempt_2/identity.json) binds the
+actual failed source, workflow and archive. [Physical measurements](figures/physical/attempt_2/physical_cost.svg)
+and [three-corner timing](figures/physical/attempt_2/physical_timing.svg) use the
+final extracted metrics; official precheck and routed tests were skipped.
+Full geometry and dense route vectors stay in the identified CI archive.
+
+The final [attempt 3](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703)
+at the prequalified source `5dbf3ab` exceeded the official six-hour execution
+limit during detailed routing and published no physical archive. All three
+allowed attempts are used and physical qualification is unestablished.
+The selected attempt-2 views retain their own failed source identity;
+attempt-3 views are unavailable. [Final diagnosis](../research/v3_temporal_qualification/physical_attempt_3_diagnosis.md).
 
 The frozen renderer supports a later qualified unseen workload through the [late-input contract](unseen-input-contract.md). Its CLI option appears only when that evaluation supplies an identified result. The interface itself does not select or qualify a workload.
 

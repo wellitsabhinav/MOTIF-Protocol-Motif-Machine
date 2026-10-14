@@ -1,0 +1,31 @@
+name: v3-physical-dispatch
+on:
+  push:
+    branches: [codex/v3-physical-delivery]
+    paths: [experiments/temporal_qualification/physical/dispatch_request.json]
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: motif-v3-physical-dispatch
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    if: github.repository == 'wellitsabhinav/MOTIF-Protocol-Motif-Machine'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m tools.v3_physical_dispatch --request experiments/temporal_qualification/physical/dispatch_request.json --output build/v3_physical/dispatch_response.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: physical-dispatch-api-response
+          path: build/v3_physical/dispatch_response.json
+          retention-days: 90

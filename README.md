@@ -7,15 +7,32 @@ sixteen-entry table. An independent pad guardian controls final output enables.
 The **v3 temporal architecture is qualified and frozen**. Its
 tagged WAIT responsibility measures continuous synchronized RX levels
 or elapsed delays while retaining the existing timed sampler and table format.
-All 160 tests, 55 temporal fixtures, 18 repaired 1-Wire cases and the original
+Frozen qualification passed 160 tests, 55 temporal fixtures, 18 repaired 1-Wire cases and the original
 I²C/Microwire regressions pass. Matched mapped area is 210,241.9746 µm²,
 8.1623% above v2, within the fixed 10% cap. The
 [immutable freeze](experiments/temporal_qualification/frozen_v3_manifest.json)
 precedes independent unseen-workload selection. The selected LIN break/sync
 prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
-without changing frozen semantics. Physical qualification remains unreached.
+without changing frozen semantics. The initial pinned physical run ended cancelled
+without a published physical archive.
+The [first diagnosed revision](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310)
+completed routing and generated identified GDS, but failed setup timing at the
+fixed 6×4/20 ns target. Its [unqualified physical views](docs/demo/figures/physical/attempt_2/identity.json)
+and [negative timing evidence](docs/research/v3_temporal_qualification/physical_attempt_2_diagnosis.md)
+are retained. The [final timing-mapping attempt](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703)
+at source `5dbf3ab` exceeded the official six-hour execution limit during detailed
+routing and published no physical archive. All three permitted attempts are used;
+the campaign stops with logical and matched-cost PASS and physical qualification
+unestablished. The [final diagnosis](docs/research/v3_temporal_qualification/physical_attempt_3_diagnosis.md)
+preserves its explicit cancellation cause and partial observations.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
+
+The [verified final HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515)
+contains all eleven demonstrations, the rendered report and identified physical
+evidence. Extract it and open `index.html`.
+[Download verification](experiments/temporal_qualification/delivery_final.json)
+checks all 524 file hashes and local links.
 
 ![Actual Yosys-derived connected core modules](docs/demo/figures/architecture/architecture.png)
 
@@ -67,9 +84,27 @@ A5FF failure also remains permanent evidence. Read the
 
 V2 has no routed physical qualification. Earlier CMOS5L artifacts qualify only
 their identified earlier sources. V3 physical work requires an unseen logical
-pass after its semantic freeze. That logical gate now passes; no v3 GDS image
-is supplied until an identified physical artifact exists.
-See [physical evidence](docs/physical.md).
+pass after its semantic freeze. That logical gate now passes. Attempt 2 supplies
+identified layout previews labeled **UNQUALIFIED**; GDS availability does not
+establish timing closure, official precheck or routed functional qualification.
+See [historical physical evidence](docs/physical.md) and
+[v3 physical reproduction](docs/v3_physical_reproduction.md).
+
+After recreating the unseen traces, package all eleven validated demonstrations
+and linked source/evidence for offline browsing:
+
+```sh
+python -m tools.v3_delivery --output build/delivery/plain_html
+```
+
+Open `build/delivery/plain_html/index.html`. The unseen CI workflow publishes
+the same identified HTML package; complete traces and physical outputs remain
+separate CI artifacts.
+
+The [verified CI HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38426446635/artifacts/11829931300)
+contains all eleven passing demonstrations and linked public sources. Its
+[download verification receipt](experiments/temporal_qualification/delivery_7d3b0a9.json)
+binds the archive, manifest, file inventory and resolved HTML links.
 
 ```sh
 python -m pytest -q

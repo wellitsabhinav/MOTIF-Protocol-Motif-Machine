@@ -1,0 +1,29 @@
+{
+  "schema_version": 3,
+  "helper_workflow_run_id": 38429454463,
+  "helper_source_sha": "ead060d37d8729f7b7cac9c9ddcc89aabdeef8a6",
+  "artifact_id": 11829508722,
+  "archive_sha256_raw": "2e2b4e783b4681a764d4bff38f8f923ddef976bd90645b9df75cadb74417a57b",
+  "response_sha256_raw": "ea2477f544655b0d18a231219fce074976b8e544df297e94bbed1d80deae1dc1",
+  "response": {
+    "schema_version": 3,
+    "attempt": 2,
+    "source_sha": "f55553a2b10b0880268663d8f06067c5ba1e14e0",
+    "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+    "preregistration": {
+      "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+      "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+    },
+    "intent_sha256_lf": "9c5fcad8e67d97fd3322c9282841525f94873e8aec81151283ead027e7c3c101",
+    "dispatched": true,
+    "workflow_run_id": 38429471310,
+    "html_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310",
+    "api_response": {
+      "workflow_run_id": 38429471310,
+      "run_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310",
+      "html_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310"
+    },
+    "scope": "Accepted dispatch only; qualification requires actual official run metadata and gates"
+  },
+  "scope": "Verified accepted dispatch API response; actual official run bound by separate attempt_2_dispatch.json"
+}

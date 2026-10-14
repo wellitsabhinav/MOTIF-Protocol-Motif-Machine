@@ -1,0 +1,117 @@
+name: v3-routed-tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  selected_artifact:
+    runs-on: ubuntu-24.04
+    outputs:
+      run_id: ${{ steps.selection.outputs.run_id }}
+    steps:
+      - uses: actions/checkout@v6
+      - id: selection
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('experiments/temporal_qualification/physical/routed_retest.json')
+          run = json.loads(path.read_text())['build_run_id'] if path.is_file() else ''
+          if run and (not isinstance(run, int) or run <= 0):
+              raise ValueError('Identified positive physical run ID required')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'run_id={run}\n')
+          PY
+  routed_functional:
+    needs: selected_artifact
+    if: needs.selected_artifact.outputs.run_id != ''
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Verify selected run and exact protected source correspondence
+        env:
+          BUILD_RUN_ID: ${{ needs.selected_artifact.outputs.run_id }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          mkdir -p build/v3_physical/routed_retest
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN_ID" > build/v3_physical/routed_retest/workflow.json
+          source_sha=$(jq -r '.head_sha' build/v3_physical/routed_retest/workflow.json)
+          [[ "$source_sha" =~ ^[0-9a-f]{40}$ ]]
+          git diff --exit-code "$source_sha" HEAD -- src info.yaml flow-lock.json .github/workflows/gds.yml
+          python -m tools.v3_physical --source-sha "$source_sha"
+      - uses: actions/download-artifact@v7
+        with:
+          name: tt_submission
+          run-id: ${{ needs.selected_artifact.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: build/v3_physical/routed_retest/tt_submission
+      - name: Record routed netlist identity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('build/v3_physical/routed_retest')
+          files = sorted((root / 'tt_submission').rglob('*.v'))
+          if len(files) != 1:
+              raise ValueError('Exactly one identified routed netlist is required')
+          (root / 'netlist_identity.json').write_text(json.dumps({'path': files[0].relative_to(root).as_posix(), 'sha256_raw': hashlib.sha256(files[0].read_bytes()).hexdigest()}, indent=2) + '\n')
+          PY
+      - uses: actions/upload-artifact@v7
+        with:
+          name: tt_submission
+          path: build/v3_physical/routed_retest/tt_submission
+      - name: Official frozen five-test routed functional suite
+        uses: TinyTapeout/tt-gds-action/gl_test@3412659307918422f3f0727917cf9b499aaca588
+      - name: Require all five original tests without skips
+        run: |
+          python - <<'PY'
+          import hashlib, json, shutil, xml.etree.ElementTree as ET
+          from pathlib import Path
+          from tools.host_check import expected_test_names
+          tests = ET.parse('test/results.xml').getroot().findall('.//testcase')
+          assert {test.get('name') for test in tests} == expected_test_names()
+          assert len(tests) == len(expected_test_names())
+          assert all(all(test.find(tag) is None for tag in ('failure', 'error', 'skipped')) for test in tests)
+          root = Path('build/v3_physical/routed_retest')
+          identified = json.loads((root / 'netlist_identity.json').read_text())['sha256_raw']
+          compiled = Path('test/gate_level_netlist.v')
+          assert hashlib.sha256(compiled.read_bytes()).hexdigest() == identified
+          shutil.copyfile(compiled, root / 'compiled_netlist.v')
+          shutil.copyfile('test/results.xml', 'build/v3_physical/routed_retest/original_results.xml')
+          PY
+      - name: Selected LIN runtime checks on the same routed netlist
+        run: |
+          make -C test clean
+          GATES=yes make -C test COCOTB_TEST_MODULES=lin_runtime
+          python - <<'PY'
+          import hashlib, json, shutil, xml.etree.ElementTree as ET
+          from pathlib import Path
+          tests = ET.parse('test/results.xml').getroot().findall('.//testcase')
+          assert len(tests) == 1 and tests[0].get('name') == 'runtime_lin_unseen'
+          assert all(tests[0].find(tag) is None for tag in ('failure', 'error', 'skipped'))
+          root = Path('build/v3_physical/routed_retest')
+          identified = json.loads((root / 'netlist_identity.json').read_text())['sha256_raw']
+          assert hashlib.sha256(Path('test/gate_level_netlist.v').read_bytes()).hexdigest() == identified
+          shutil.copyfile('test/results.xml', 'build/v3_physical/routed_retest/lin_results.xml')
+          PY
+      - run: python -m tools.v3_inventory
+      - run: python -m tools.v3_routed_receipt build/v3_physical/routed_retest
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: identified-v3-routed-functional-evidence
+          path: |
+            build/v3_physical/routed_retest/
+            test/results.xml
+          retention-days: 14
