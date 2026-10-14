@@ -175,6 +175,41 @@ def physical_gallery(destination, commit):
     for report in (later, intent):
         require(report.get("frozen_manifest_sha256_lf") == frozen and report.get("preregistration") == preregistration,
                 "separate final dispatch identifies another frozen/preregistered scope")
+    terminal = None
+    final_result_name = ATTEMPTS + "/attempt_3_result.json"
+    if subprocess.run(["git", "cat-file", "-e", f"{commit}:{final_result_name}"], cwd=ROOT,
+                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0:
+        final_result = document(final_result_name)
+        final_evidence = document(ATTEMPTS + "/attempt_3_terminal_evidence.json")
+        annotation_name = ATTEMPTS + "/attempt_3_check_annotations.json"
+        annotations = document(annotation_name)
+        campaign = document("experiments/temporal_qualification/campaign_result.json")
+        for report in (final_result, final_evidence):
+            require(report.get("workflow_run_id") == later["run_id"] and report.get("source_sha") == later["source_sha"]
+                    and report.get("frozen_manifest_sha256_lf") == frozen and report.get("preregistration") == preregistration,
+                    "final outcome identifies another run/source/freeze")
+        require(final_result.get("physical_qualified") is False and final_result.get("workflow_status") == "completed"
+                and final_result.get("workflow_conclusion") == "cancelled", "final cancelled outcome is not retained")
+        final_jobs = {job["name"]: job for job in final_result["jobs"]}
+        require(final_jobs["gds"]["conclusion"] == "cancelled"
+                and final_jobs["precheck"]["conclusion"] == final_jobs["gl_test"]["conclusion"] == "skipped",
+                "final official cancelled/skipped job statuses differ")
+        require(final_evidence.get("job_id") == final_jobs["gds"]["id"]
+                and final_evidence.get("check_annotations_sha256_raw") == hashlib.sha256(blob(annotation_name)).hexdigest()
+                and any(row.get("annotation_level") == "failure"
+                        and row.get("message") == "The job has exceeded the maximum execution time of 6h0m0s"
+                        for row in annotations), "final execution-limit annotation is not bound to its job")
+        require(all(final_result.get(key) is None for key in ("measurements", "corners", "routed_evidence"))
+                and not any(item.get("name") in ("GDS_logs", "tt_submission") for item in final_result["published_artifacts"]),
+                "missing final physical evidence was replaced or relabelled")
+        require(campaign.get("physical_attempts") == 3 and campaign.get("physical_revisions_remaining") == 0
+                and campaign.get("physical_qualification") == "UNQUALIFIED_STOP_ATTEMPT_LIMIT"
+                and campaign.get("physical_result") == final_result, "campaign stop does not match the final retained outcome")
+        terminal = {"attempt": 3, "source_sha": later["source_sha"], "workflow_run_id": later["run_id"],
+                    "workflow_conclusion": "cancelled", "physical_qualified": False,
+                    "cancellation_cause": "Official GitHub six-hour execution limit",
+                    "physical_archive_available": False, "final_metrics_available": False,
+                    "precheck": "skipped", "routed_tests": "skipped", "further_attempts_permitted": False}
     # Only selected committed figures and their retained receipts enter the
     # gallery; raw GDS/DEF/netlists and full generated route SVG stay outside.
     for name, raw in blobs.items():
@@ -189,6 +224,7 @@ def physical_gallery(destination, commit):
              "selected_files_sha256_raw": {name: hashlib.sha256(raw).hexdigest() for name, raw in blobs.items()},
              "recorded_job_conclusions": jobs, "views": selected["views"],
              "separate_final_dispatch": {key: later[key] for key in ("attempt", "run_id", "source_sha", "workflow_url")},
+             "separate_final_terminal_outcome": terminal,
              "qualification_claim": False}
     (destination / "physical_gallery.json").write_text(json.dumps(audit, indent=2) + "\n", encoding="utf-8", newline="\n")
     return audit
@@ -299,6 +335,12 @@ def write_landing(destination, gallery):
     cards = "".join(f"<figure><a href='{PHYSICAL}/{name}.png'><img loading='lazy' src='{PHYSICAL}/{name}.png' alt='{escape(title)} — unqualified attempt 2'></a><figcaption><strong>{escape(title)}</strong><p>{escape(scope)}</p></figcaption></figure>"
                     for name, title, scope in figure_names)
     later = gallery["separate_final_dispatch"]
+    final = gallery["separate_final_terminal_outcome"]
+    if final is None:
+        final_text = f"A separate final attempt 3 was dispatched as run <code>{later['run_id']}</code> at source <code>{later['source_sha']}</code>; the attempt-2 gallery establishes no outcome for that run."
+    else:
+        final_text = f"The final allowed attempt 3, run <code>{later['run_id']}</code> at source <code>{later['source_sha']}</code>, exceeded GitHub's six-hour execution limit during detailed routing. It published no physical archive; official precheck and routed tests were skipped. The campaign stops after all three attempts with logical and matched-cost PASS and physical qualification unestablished. Final-run metrics and layout views are unavailable."
+        final_text += f" <a href='{ATTEMPTS}/attempt_3_result.json'>Final retained result</a> · <a href='{ATTEMPTS}/attempt_3_check_annotations.json'>Actual execution-limit annotation</a>"
     body = f"""<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>MOTIF evidence package</title><style>
 body{{max-width:1180px;margin:40px auto;padding:0 24px;font:16px/1.55 system-ui,sans-serif;color:#243d45;background:#f8faf9}}
@@ -316,7 +358,7 @@ a{{color:#175d79}}h1{{font-size:2.3rem;line-height:1.15}}h2{{margin-top:2rem}}.n
 <section aria-labelledby='physical-title'><h2 id='physical-title'>Physical attempt 2: identified real views</h2>
 <div class='status'><strong>UNQUALIFIED — this source failed physical timing.</strong><p>The official GDS job failed. Official precheck and routed functional tests were skipped. Final layout availability is not physical closure.</p>
 <p class='identity'>Run <code>{gallery['workflow_run_id']}</code> · source <code>{gallery['source_sha']}</code><br>Archive <code>{escape(gallery['artifact']['name'])} / {gallery['artifact']['id']}</code> · SHA-256 <code>{gallery['artifact']['archive_sha256_raw']}</code></p></div>
-<p>These figures belong only to attempt 2. A separate final attempt 3 was dispatched as run <code>{later['run_id']}</code> at source <code>{later['source_sha']}</code>; the attempt-2 gallery establishes no outcome for that run.</p>
+<p>These figures belong only to attempt 2. {final_text}</p>
 <p class='links'><a href='{ATTEMPTS}/attempt_2_result.json'>Retained failure result</a><a href='{ATTEMPTS}/attempt_2_metrics.json'>Actual metric receipt</a><a href='{ATTEMPTS}/attempt_2_source_correspondence.json'>Source/archive correspondence</a><a href='{ATTEMPTS}/attempt_3_dispatch.json'>Separate final dispatch</a><a href='physical_gallery.json'>Validated gallery identities</a></p>
 <div class='gallery'>{cards}</div></section>
 <footer><p>Frozen semantic boundary <code>{gallery['frozen_manifest_sha256_lf']}</code><br>Preregistration <code>{gallery['preregistration']['commit']}</code> · SHA-256 <code>{gallery['preregistration']['sha256_lf']}</code></p>

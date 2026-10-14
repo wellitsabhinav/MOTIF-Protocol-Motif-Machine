@@ -1,0 +1,146 @@
+{
+  "schema_version": 3,
+  "kind": "terminal_cancelled_physical_attempt_with_identified_partial_log",
+  "attempt": 3,
+  "workflow_run_id": 38470361703,
+  "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859",
+  "job_id": 115547538149,
+  "workflow_conclusion": "cancelled",
+  "cancellation_cause": "GitHub check annotation: maximum execution time of 6h0m0s exceeded",
+  "check_annotations_url": "https://api.github.com/repos/wellitsabhinav/MOTIF-Protocol-Motif-Machine/check-runs/115547538149/annotations",
+  "check_annotations_sha256_raw": "76ec54bcc94a783f10a86f70e7d210d426a9b2dca9f926a21d716c25db028ea3",
+  "decoded_terminal_log_sha256_raw": "dbe476608eb97ffa67055cbff03ee8093f38a203cc3099dd154b12cdcff9f2e9",
+  "decoded_terminal_log_bytes": 4519308,
+  "decoded_terminal_log_kind": "Complete UTF-8 encoding of the decoded GitHub connector response; original compressed/raw HTTP log format is not asserted",
+  "stages_observed": 46,
+  "partial_latest_observations": {
+    "core_area_um2": {
+      "value": 902417.242,
+      "timestamp": "2026-10-13T21:29:16.2581522Z",
+      "log_line": 37443,
+      "stage": "OpenROAD.GlobalPlacement"
+    },
+    "partial_cells": {
+      "value": 23590,
+      "timestamp": "2026-10-13T23:41:25.3136514Z",
+      "log_line": 40606,
+      "stage": "OpenROAD.DiodeInsertion"
+    },
+    "partial_cell_area_um2": {
+      "value": 308999.58,
+      "timestamp": "2026-10-13T23:41:25.3136514Z",
+      "log_line": 40606,
+      "stage": "OpenROAD.DiodeInsertion"
+    },
+    "placement_utilization_percent": {
+      "value": 31.039,
+      "timestamp": "2026-10-13T21:29:16.2615206Z",
+      "log_line": 37448,
+      "stage": "OpenROAD.GlobalPlacement"
+    },
+    "placement_target_density": {
+      "value": 0.5013,
+      "timestamp": "2026-10-13T21:29:30.9739124Z",
+      "log_line": 37795,
+      "stage": "OpenROAD.GlobalPlacement"
+    },
+    "partial_resizer_setup": {
+      "value": {
+        "wns_ns": -7.573,
+        "tns_ns": -1430.5,
+        "violating_endpoints": 198,
+        "corner": null,
+        "corners_loaded": [
+          "nom_fast_1p32V_m40C",
+          "nom_slow_1p08V_125C",
+          "nom_typ_1p20V_25C"
+        ],
+        "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+      },
+      "timestamp": "2026-10-13T23:14:35.3354097Z",
+      "log_line": 39571,
+      "stage": "OpenROAD.ResizerTimingPostCTS"
+    },
+    "partial_resizer_hold": {
+      "value": {
+        "wns_ns": 0.1,
+        "tns_ns": 0.0,
+        "corner": null,
+        "corners_loaded": [
+          "nom_fast_1p32V_m40C",
+          "nom_slow_1p08V_125C",
+          "nom_typ_1p20V_25C"
+        ],
+        "scope": "resizer progress with estimated parasitics; rows have no individual corner label"
+      },
+      "timestamp": "2026-10-13T23:16:42.3487740Z",
+      "log_line": 39797,
+      "stage": "OpenROAD.ResizerTimingPostCTS"
+    },
+    "global_congestion": {
+      "value": {
+        "layer": "Total",
+        "resource": 510059,
+        "demand": 453798,
+        "usage_percent": 88.97,
+        "max_horizontal_overflow": 19,
+        "max_vertical_overflow": 0,
+        "total_overflow": 71352
+      },
+      "timestamp": "2026-10-13T23:40:17.5235606Z",
+      "log_line": 40097,
+      "stage": "OpenROAD.GlobalRouting"
+    },
+    "global_wirelength_um": {
+      "value": 4202676,
+      "timestamp": "2026-10-13T23:40:17.5257649Z",
+      "log_line": 40099,
+      "stage": "OpenROAD.GlobalRouting"
+    },
+    "partial_antenna_violations": {
+      "value": 1,
+      "timestamp": "2026-10-13T23:41:23.7385054Z",
+      "log_line": 40591,
+      "stage": "OpenROAD.DiodeInsertion"
+    },
+    "partial_detail_completion_percent": {
+      "value": 80,
+      "timestamp": "2026-10-14T03:21:18.3630718Z",
+      "log_line": 40969,
+      "stage": "OpenROAD.DetailedRouting"
+    },
+    "partial_detail_violations": {
+      "value": 270448,
+      "timestamp": "2026-10-14T03:21:18.3630718Z",
+      "log_line": 40969,
+      "stage": "OpenROAD.DetailedRouting"
+    },
+    "partial_detail_wirelength_um": {
+      "value": 3345181,
+      "timestamp": "2026-10-14T02:21:28.6153939Z",
+      "log_line": 40935,
+      "stage": "OpenROAD.DetailedRouting"
+    },
+    "partial_detail_vias": {
+      "value": 252217,
+      "timestamp": "2026-10-14T02:21:28.6173225Z",
+      "log_line": 40941,
+      "stage": "OpenROAD.DetailedRouting"
+    },
+    "cancellation_message": {
+      "value": true,
+      "timestamp": "2026-10-14T03:25:15.2105738Z",
+      "log_line": 40971,
+      "stage": "OpenROAD.DetailedRouting"
+    }
+  },
+  "final_metrics": null,
+  "final_corners": null,
+  "source_archive_correspondence": null,
+  "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+  "preregistration": {
+    "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+    "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+  },
+  "scope": "Terminal metadata, explicit job annotation and identified partial-stage measurements. No physical archive, final metrics, final DRC, routed functional result or physical qualification is established."
+}

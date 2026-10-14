@@ -14,13 +14,17 @@ I²C/Microwire regressions pass. Matched mapped area is 210,241.9746 µm²,
 precedes independent unseen-workload selection. The selected LIN break/sync
 prefix passes all 34 unseen cases over 3,210,266 complete model/RTL cycles,
 without changing frozen semantics. The initial pinned physical run ended cancelled
-without a published physical archive; physical qualification remains incomplete.
+without a published physical archive.
 The [first diagnosed revision](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38429471310)
 completed routing and generated identified GDS, but failed setup timing at the
 fixed 6×4/20 ns target. Its [unqualified physical views](docs/demo/figures/physical/attempt_2/identity.json)
 and [negative timing evidence](docs/research/v3_temporal_qualification/physical_attempt_2_diagnosis.md)
 are retained. The [final timing-mapping attempt](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703)
-is running at source `5dbf3ab`; all three permitted attempts are used.
+at source `5dbf3ab` exceeded the official six-hour execution limit during detailed
+routing and published no physical archive. All three permitted attempts are used;
+the campaign stops with logical and matched-cost PASS and physical qualification
+unestablished. The [final diagnosis](docs/research/v3_temporal_qualification/physical_attempt_3_diagnosis.md)
+preserves its explicit cancellation cause and partial observations.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 

@@ -1,0 +1,65 @@
+Attempt 3; source 5dbf3abf11f61a8e6bd26cc5f328999190f12859; run 38470361703
+Decoded terminal log SHA-256 dbe476608eb97ffa67055cbff03ee8093f38a203cc3099dd154b12cdcff9f2e9
+Original one-based log line numbers; partial routing observations are not final DRC or closure.
+
+820: 2026-10-13T21:27:14.5354732Z [21:27:14] VERBOSE  Running 'Verilator.Lint' at                     step.py:1138
+831: 2026-10-13T21:27:15.0237603Z [21:27:15] VERBOSE  Running 'Checker.LintTimingConstructs' at       step.py:1138
+835: 2026-10-13T21:27:15.0297274Z [21:27:15] VERBOSE  Running 'Checker.LintErrors' at                 step.py:1138
+839: 2026-10-13T21:27:15.0355116Z [21:27:15] VERBOSE  Running 'Checker.LintWarnings' at               step.py:1138
+843: 2026-10-13T21:27:15.0415238Z [21:27:15] VERBOSE  Running 'Yosys.JsonHeader' at                   step.py:1138
+7839: 2026-10-13T21:27:19.2446057Z [21:27:19] VERBOSE  Running 'Yosys.Synthesis' at                    step.py:1138
+36859: 2026-10-13T21:28:08.9467671Z [21:28:08] VERBOSE  Running 'Checker.YosysUnmappedCells' at         step.py:1138
+36863: 2026-10-13T21:28:08.9527738Z [21:28:08] VERBOSE  Running 'Checker.YosysSynthChecks' at           step.py:1138
+36867: 2026-10-13T21:28:08.9586344Z [21:28:08] VERBOSE  Running 'Checker.NetlistAssignStatements' at    step.py:1138
+36871: 2026-10-13T21:28:08.9986172Z [21:28:08] VERBOSE  Running 'OpenROAD.CheckSDCFiles' at             step.py:1138
+36878: 2026-10-13T21:28:09.0063341Z [21:28:09] VERBOSE  Running 'OpenROAD.CheckMacroInstances' at       step.py:1138
+36882: 2026-10-13T21:28:09.0124489Z [21:28:09] VERBOSE  Running 'OpenROAD.STAPrePNR' at                 step.py:1138
+36918: 2026-10-13T21:29:09.2053681Z [21:29:09] VERBOSE  Running 'OpenROAD.Floorplan' at                 step.py:1138
+37006: 2026-10-13T21:29:10.4243930Z [21:29:10] VERBOSE  Running 'OpenROAD.DumpRCValues' at              step.py:1138
+37048: 2026-10-13T21:29:10.9386351Z [21:29:10] VERBOSE  Running 'Odb.CheckMacroAntennaProperties' at    step.py:1138
+37054: 2026-10-13T21:29:10.9451566Z [21:29:10] VERBOSE  Running 'Odb.SetPowerConnections' at            step.py:1138
+37060: 2026-10-13T21:29:11.8589039Z [21:29:11] VERBOSE  Running 'Odb.ManualMacroPlacement' at           step.py:1138
+37065: 2026-10-13T21:29:11.8667945Z [21:29:11] VERBOSE  Running 'OpenROAD.CutRows' at                   step.py:1138
+37109: 2026-10-13T21:29:12.7839111Z [21:29:12] VERBOSE  Running 'OpenROAD.TapEndcapInsertion' at        step.py:1138
+37162: 2026-10-13T21:29:13.6009021Z [21:29:13] VERBOSE  Running 'Odb.AddPDNObstructions' at             step.py:1138
+37167: 2026-10-13T21:29:13.6077496Z [21:29:13] VERBOSE  Running 'OpenROAD.GeneratePDN' at               step.py:1138
+37230: 2026-10-13T21:29:14.9288038Z [21:29:14] VERBOSE  Running 'Odb.RemovePDNObstructions' at          step.py:1138
+37235: 2026-10-13T21:29:14.9351802Z [21:29:14] VERBOSE  Running 'Odb.AddRoutingObstructions' at         step.py:1138
+37240: 2026-10-13T21:29:14.9418677Z [21:29:14] VERBOSE  Running 'OpenROAD.GlobalPlacementSkipIO' at     step.py:1138
+37248: 2026-10-13T21:29:14.9490820Z [21:29:14] VERBOSE  Running 'OpenROAD.IOPlacement' at               step.py:1138
+37256: 2026-10-13T21:29:14.9561323Z [21:29:14] VERBOSE  Running 'Odb.CustomIOPlacement' at              step.py:1138
+37261: 2026-10-13T21:29:14.9626811Z [21:29:14] VERBOSE  Running 'Odb.ApplyDEFTemplate' at               step.py:1138
+37395: 2026-10-13T21:29:15.8766340Z [21:29:15] VERBOSE  Running 'OpenROAD.GlobalPlacement' at           step.py:1138
+37873: 2026-10-13T21:29:34.5216782Z [21:29:34] VERBOSE  Running 'Odb.WriteVerilogHeader' at             step.py:1138
+37879: 2026-10-13T21:29:35.3351802Z [21:29:35] VERBOSE  Running 'Checker.PowerGridViolations' at        step.py:1138
+37885: 2026-10-13T21:29:35.3420887Z [21:29:35] VERBOSE  Running 'OpenROAD.STAMidPNR' at                 step.py:1138
+37912: 2026-10-13T21:30:05.9859116Z [21:30:05] VERBOSE  Running 'OpenROAD.RepairDesignPostGPL' at       step.py:1138
+38022: 2026-10-13T21:30:21.8994725Z [21:30:21] VERBOSE  Running 'Odb.ManualGlobalPlacement' at          step.py:1138
+38027: 2026-10-13T21:30:21.9059586Z [21:30:21] VERBOSE  Running 'OpenROAD.DetailedPlacement' at         step.py:1138
+38094: 2026-10-13T21:30:23.6277532Z [21:30:23] VERBOSE  Running 'OpenROAD.CTS' at                       step.py:1138
+38281: 2026-10-13T21:30:44.7635486Z [21:30:44] VERBOSE  Running 'OpenROAD.STAMidPNR-1' at               step.py:1138
+38308: 2026-10-13T21:31:08.0686071Z [21:31:08] VERBOSE  Running 'OpenROAD.ResizerTimingPostCTS' at      step.py:1138
+39845: 2026-10-13T23:16:45.5418336Z [23:16:45] VERBOSE  Running 'OpenROAD.STAMidPNR-2' at               step.py:1138
+39872: 2026-10-13T23:17:08.1332562Z [23:17:08] VERBOSE  Running 'OpenROAD.GlobalRouting' at             step.py:1138
+40125: 2026-10-13T23:40:19.6307396Z [23:40:19] VERBOSE  Running 'OpenROAD.CheckAntennas' at             step.py:1138
+40540: 2026-10-13T23:40:33.0846446Z [23:40:33] VERBOSE  Running 'Odb.DiodesOnPorts' at                  step.py:1138
+40549: 2026-10-13T23:40:33.0952261Z [23:40:33] VERBOSE  Running 'OpenROAD.RepairAntennas' at            step.py:1138
+40552: 2026-10-13T23:40:33.0994817Z [23:40:33] VERBOSE  Running 'OpenROAD.DiodeInsertion' at            step.py:1138
+40616: 2026-10-13T23:41:25.8225870Z [23:41:25] VERBOSE  Running 'OpenROAD.CheckAntennas' at             step.py:1138
+40650: 2026-10-13T23:41:37.1314678Z [23:41:37] VERBOSE  Running 'OpenROAD.STAMidPNR-3' at               step.py:1138
+40678: 2026-10-13T23:42:01.2379669Z [23:42:01] VERBOSE  Running 'OpenROAD.DetailedRouting' at           step.py:1138
+40919: 2026-10-14T02:00:09.1438385Z     Completing 80% with 254111 violations.
+40921: 2026-10-14T02:09:07.8163467Z     Completing 90% with 254111 violations.
+40923: 2026-10-14T02:21:26.6143155Z     Completing 100% with 271228 violations.
+40925: 2026-10-14T02:21:28.4953578Z [INFO DRT-0199]   Number of violations = 271243.
+40935: 2026-10-14T02:21:28.6153939Z Total wire length = 3345181 um.
+40941: 2026-10-14T02:21:28.6173225Z Total number of vias = 252217.
+40955: 2026-10-14T02:25:53.3396021Z     Completing 10% with 271243 violations.
+40957: 2026-10-14T02:31:50.6612340Z     Completing 20% with 271243 violations.
+40959: 2026-10-14T02:41:15.4913973Z     Completing 30% with 272188 violations.
+40961: 2026-10-14T02:50:00.8224719Z     Completing 40% with 272188 violations.
+40963: 2026-10-14T02:58:01.9325743Z     Completing 50% with 272188 violations.
+40965: 2026-10-14T03:05:51.6837467Z     Completing 60% with 270452 violations.
+40967: 2026-10-14T03:11:50.5164160Z     Completing 70% with 270452 violations.
+40969: 2026-10-14T03:21:18.3630718Z     Completing 80% with 270448 violations.
+40971: 2026-10-14T03:25:15.2105738Z ##[error]The operation was canceled.

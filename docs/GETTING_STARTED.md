@@ -1,6 +1,6 @@
 # Run MOTIF and inspect its evidence
 
-MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Its independently selected LIN prefix passes the unseen logical gate; physical attempt 2 failed setup timing and physical closure remains unqualified. The final allowed attempt is running; no further revision remains. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
+MOTIF is an executable digital model and synthesizable RTL for bounded programmable serial I/O. V3 passes logical and cost qualification and has an immutable semantic freeze. Its independently selected LIN prefix passes the unseen logical gate. Physical attempt 2 failed setup timing; the final attempt exceeded the official six-hour execution limit during detailed routing without a physical archive. All three attempts are exhausted and the campaign stops with physical qualification unestablished. See [campaign evidence](research/v3_temporal_qualification/final_report.md) and the [demonstration guide](demo/README.md). Historical v2 and earlier physical results retain their original scope.
 
 ## Dependencies
 
@@ -126,4 +126,6 @@ contains all eleven demonstrations, a readable A–Z report with evidence links,
 and the identified unqualified attempt-2 gallery. Extract it and open `index.html`.
 Its [download verification](../experiments/temporal_qualification/delivery_cffe8f6.json)
 checks all 517 file hashes and local HTML links. The final physical run is
-recorded separately and remains active at this receipt's scope.
+was recorded separately as active at that earlier receipt's scope. The
+[final diagnosis](research/v3_temporal_qualification/physical_attempt_3_diagnosis.md)
+records the subsequent cancellation and fixed attempt-limit stop.

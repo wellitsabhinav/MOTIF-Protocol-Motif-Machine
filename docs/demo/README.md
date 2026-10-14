@@ -91,9 +91,11 @@ final extracted metrics; official precheck and routed tests were skipped.
 Full geometry and dense route vectors stay in the identified CI archive.
 
 The final [attempt 3](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703)
-is running at the prequalified source `5dbf3ab`. All three allowed attempts
-are used; the selected attempt-2 views retain their own failed source identity
-and do not establish the outcome of the final run.
+at the prequalified source `5dbf3ab` exceeded the official six-hour execution
+limit during detailed routing and published no physical archive. All three
+allowed attempts are used and physical qualification is unestablished.
+The selected attempt-2 views retain their own failed source identity;
+attempt-3 views are unavailable. [Final diagnosis](../research/v3_temporal_qualification/physical_attempt_3_diagnosis.md).
 
 The frozen renderer supports a later qualified unseen workload through the [late-input contract](unseen-input-contract.md). Its CLI option appears only when that evaluation supplies an identified result. The interface itself does not select or qualify a workload.
 

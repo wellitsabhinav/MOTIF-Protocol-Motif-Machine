@@ -22,7 +22,7 @@ antenna metrics are zero, while KLayout DRC is unavailable and official precheck
 and routed functional tests were skipped. Final metrics and GDS availability
 do not establish physical qualification.
 
-Attempt 3 is **running** as
+Attempt 3 ended **cancelled after the official six-hour execution limit** as
 [official run 38470361703](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38470361703).
 The [final intent](../experiments/temporal_qualification/physical/attempt_3_intent.json)
 binds source `5dbf3abf11f61a8e6bd26cc5f328999190f12859` and LF intent SHA-256
@@ -36,8 +36,14 @@ Exact source CI and the unseen gate passed before the approved helper launched
 the run at `2026-10-13T21:24:29Z`. The
 [actual dispatch](../experiments/temporal_qualification/physical/attempt_3_dispatch.json)
 and [downloaded API receipt](../experiments/temporal_qualification/physical/attempt_3_dispatch_api_receipt.json)
-bind that execution to the previously committed intent. Consult the ledger
-for subsequent status; no final outcome is claimed while this run is active.
+bind that execution to the previously committed intent. No physical archive
+was published; official precheck and routed tests were skipped. Its
+[terminal result](../experiments/temporal_qualification/physical/attempt_3_result.json),
+[explicit check annotation](../experiments/temporal_qualification/physical/attempt_3_check_annotations.json)
+and [final diagnosis](research/v3_temporal_qualification/physical_attempt_3_diagnosis.md)
+preserve the actual failure and unavailable final metrics. The campaign is
+stopped with physical qualification unestablished; no further run or repair
+is permitted within its fixed limit.
 
 Run repository commands from its root. Local extraction and identity helpers
 use Python, Git and the committed qualification receipts. The renderer also
