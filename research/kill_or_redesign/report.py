@@ -79,7 +79,7 @@ def figures():
             ax.text(x,y,label,ha='center',va='center',fontsize=10,bbox={'boxstyle':'round,pad=.55','fc':color,'ec':'#253f56'})
         for a,b in zip(xs,xs[1:]):ax.annotate('',(b-.055,y),(a+.055,y),arrowprops={'arrowstyle':'->','lw':1.5,'color':'#253f56'})
     fig,ax=plt.subplots(figsize=(13,4));ax.axis('off');ax.set(xlim=(0,1),ylim=(0,1))
-    boxes(ax,['16 × 64 table\nindirect read','opcode / event\noperand decode','predicate / temporal\nworking state','action and\nfault selection','FIFO storage /\noutput requests'],.55)
+    boxes(ax,['16 × 64 table\nindirect read','opcode / event\noperand decode','predicate / temporal\nworking state','action and\nfault selection','FIFO storage /\noutput requests'],.55,color='#fae5df')
     ax.text(.5,.94,'Figure 1 — Current execution dependency',ha='center',fontsize=16)
     ax.annotate('Successor PC selects another word: up to four dependent actions per cycle',(.11,.64),(.50,.79),ha='center',arrowprops={'arrowstyle':'->','color':'#b74738'},color='#b74738',fontsize=11)
     ax.text(.50,.28,'Global configuration validity, lifecycle and watchdog qualify execution through this cone',ha='center',fontsize=11)

@@ -42,3 +42,9 @@ commands. Consult `decision.md` for the final classification.
 
 Run `python research/kill_or_redesign/analyze.py` for archived path/graph analysis.
 Further synthesis commands and tool identities are recorded in `experiments.md`.
+
+Final classification: **MOTIF_REDESIGN**. Read [decision.md](decision.md) for the
+measured result and exact replacement; this does not qualify new RTL or GDS.
+All eleven requested reports, compact evidence and four figures are present.
+Run `python research/kill_or_redesign/report.py` to recreate the figures/tables
+and `python research/kill_or_redesign/validate.py` to audit retained evidence.
