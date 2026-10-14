@@ -1,0 +1,24 @@
+{
+  "variant": "p4",
+  "status": "180_second_mapping_timeout",
+  "area_um2": null,
+  "wns_ns": null,
+  "command_sha256": "fd35a343815911ff464610bed314b7102e8bf55f2748b60804afca9d3fbf4e61",
+  "partial_log_available": false,
+  "source_hashes": {
+    "motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "motif_transaction.sv": "9f6f9978bc0dba907ea11cb7f7de72b07f67afeff3b58f42e15b4fea43a5716d",
+    "motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+  },
+  "interpretation": "incomplete measurement; overlapping mapping tasks can cause wall-time contention; not architectural timing failure; no retry"
+}

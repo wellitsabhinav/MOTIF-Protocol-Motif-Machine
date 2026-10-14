@@ -1,0 +1,14 @@
+{
+  "source_receipts": {
+    "tournament": "dd2824871627eae03021aa54be5b2fb7cec4431a9ff757d7e3c6ebaa4593416a",
+    "post_nom_typ_1p20V_25C_paths": "0f6834214e36d72913465f32882bd73f4457aa006f6e5efabfcda04ff0aa2a89",
+    "post_nom_slow_1p08V_125C_paths": "528cf6bc65aabd34f263f580976e676514ad02ce8c9cfa6f12cb3ad267018be6"
+  },
+  "figures": {
+    "01_current_path.svg": "11aee4ac515e841898465493d86f7d4a3bafa2d6c772a69ca905e3df2ce9e81a",
+    "02_timing_breakdown.svg": "64185e464cf9aed72485142e7a52d3eb035504e423621eafb5591d8ac7bca5d5",
+    "03_variants.svg": "fe6a88787e0b5c6ce067b0160e1eb5cfeff6d99ffb754e8b8d41763f9c84afc0",
+    "04_redesign.svg": "934449e02634bdff62ba9b2d434e6da2ef23129e7e7644a834447b666b1cd2dd"
+  },
+  "scope": "static plots from measured data; diagrams are sourced RTL dependencies/proposed design, not recovered placement"
+}

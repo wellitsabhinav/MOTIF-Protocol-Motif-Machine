@@ -1,0 +1,66 @@
+{
+  "raw_typ": {
+    "slack_ns": -31.616837,
+    "data_path_delay_ns": 51.269367,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[2][0]",
+    "logic_depth_excluding_buffers": 64,
+    "buffer_count": 0
+  },
+  "raw_typ_reg": {
+    "slack_ns": -31.616837,
+    "data_path_delay_ns": 51.269367,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[2][0]",
+    "logic_depth_excluding_buffers": 64,
+    "buffer_count": 0
+  },
+  "raw_slow": {
+    "slack_ns": -62.173683,
+    "data_path_delay_ns": 81.747147,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[2][0]",
+    "logic_depth_excluding_buffers": 64,
+    "buffer_count": 0
+  },
+  "raw_slow_reg": {
+    "slack_ns": -62.173683,
+    "data_path_delay_ns": 81.747147,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[2][0]",
+    "logic_depth_excluding_buffers": 64,
+    "buffer_count": 0
+  },
+  "buffered_typ": {
+    "slack_ns": 2.060567,
+    "data_path_delay_ns": 13.591966999999999,
+    "start_signal": "ena",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 65,
+    "buffer_count": 15
+  },
+  "buffered_typ_reg": {
+    "slack_ns": 4.056334,
+    "data_path_delay_ns": 15.596198,
+    "start_signal": "watchdog[4]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 75,
+    "buffer_count": 15
+  },
+  "buffered_slow": {
+    "slack_ns": -5.721711,
+    "data_path_delay_ns": 21.295191,
+    "start_signal": "ena",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 65,
+    "buffer_count": 15
+  },
+  "buffered_slow_reg": {
+    "slack_ns": -4.835862,
+    "data_path_delay_ns": 24.409342,
+    "start_signal": "watchdog[4]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 75,
+    "buffer_count": 15
+  }
+}

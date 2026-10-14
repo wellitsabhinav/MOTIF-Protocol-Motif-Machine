@@ -1,0 +1,25 @@
+{
+  "name": "i2c_live",
+  "passed": true,
+  "observed": {
+    "acks": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "received": [
+      85,
+      170
+    ],
+    "transmitted": [
+      165,
+      90
+    ],
+    "released": true
+  },
+  "cycles": 4154,
+  "scope": "closed-loop wired-AND controller, repeated START, two-byte write and read, ACK/NACK, stretch; one nominal profile",
+  "stimulus_sha256": "e837af8c03230e80035e6f8391e287a0db03187784cd4745f0ba650982eaefb1",
+  "rtl_sha256": "7a5becb52bb9f59e85f02f5ce9392204b693b6785c060e0f2c872c22f6d00242"
+}

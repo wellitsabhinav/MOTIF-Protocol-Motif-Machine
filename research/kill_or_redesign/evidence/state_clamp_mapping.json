@@ -1,0 +1,77 @@
+{
+  "variant": "state_clamp",
+  "synthesis_seconds": 130.5630000000001,
+  "yosys": "Yosys 0.30+48 (git sha1 b5b0b7e83, x86_64-w64-mingw32-g++ 13.1.0 -march=nocona -msahf -mtune=generic -O2 -Os)",
+  "library_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "mapping_command_sha256": "98a0bdd414806fa3d514236fa6493cfeaa6bfc9b2f91a340920410d974ccd598",
+  "source_hashes": {
+    "motif_core.sv": "aa5b84ad58183c79299177af0a13a631300ba72cc3067515720571445a2b9ec4",
+    "motif_event_frontend.sv": "4b6cf79a770568f94773b4eccfb6da14b8b79210596debe536f8087ef9b8298d",
+    "motif_fifo.sv": "e6f8ee1c145818ad2fc3639e15a7a0a7dca55bfd636967690e800a1e32aad58a",
+    "motif_host_spi.sv": "1face15dfe01e506757064ad211c51b799bfcaef7ce1d9a9545c7e8a10a22410",
+    "motif_pad_guardian.sv": "a4020ce107aa50110619825e5195bc6b8d485b73b74ff187b958e3180cfa6f24",
+    "motif_reference_top.sv": "d67b8d13be33af0fe50312e4bfe139b0cadc82dc2eeb925ebef7fb8f48d2efb6",
+    "motif_sequential_shift.sv": "1cd1507132c2da441b2bf0caa6f457b38176f2501f557c26d9dba143982b961f",
+    "motif_shift_rx_count.sv": "b5d58073f42f87f8a5dfb7a3c8168c749e7f6b5716583d61667fbaceca69ee26",
+    "motif_shift_tx.sv": "c1b89b64a5113bf6bf4c163d051021b0091776e5ef288fc3bd44a565ecc68507",
+    "motif_timed_sample.sv": "ca916ea7df09324bf962dffa3efba4e6493e1070ec1463a93b9b40739b816847",
+    "motif_transaction.sv": "1e32a2ddeca469c78a44dcd358fa975bf311ce7899e0f67a50a3c75fa6973513",
+    "motif_watchdog.sv": "8bc58bf929730f2b81921b4c2cac39ccb6582551813972f7cfce9c41e01d26e5",
+    "tt_um_wellitsabhinav_motif.sv": "3039a5be100066bc7a47ff6e8d0b1522763877da0ca570af125ad6617e61e5b4"
+  },
+  "area_um2": 203209.8516,
+  "cells": 12650,
+  "sequential_cells": 1385,
+  "modules": {
+    "$paramod$0b4f2862653e1f592ddd54b2858bdabd73768f4a\\motif_shift_rx_count": {
+      "area_um2": 2032.128,
+      "cells": 127
+    },
+    "$paramod\\motif_core\\REFERENCE=s32'00000000000000000000000000000000": {
+      "area_um2": 4941.9342,
+      "cells": 347
+    },
+    "\\motif_event_frontend": {
+      "area_um2": 1756.3392,
+      "cells": 88
+    },
+    "\\motif_fifo": {
+      "area_um2": 3518.1216,
+      "cells": 138
+    },
+    "\\motif_host_spi": {
+      "area_um2": 3759.4368,
+      "cells": 211
+    },
+    "\\motif_pad_guardian": {
+      "area_um2": 540.3888,
+      "cells": 54
+    },
+    "\\motif_shift_tx": {
+      "area_um2": 1273.6332,
+      "cells": 75
+    },
+    "\\motif_timed_sample": {
+      "area_um2": 2858.9274,
+      "cells": 184
+    },
+    "\\motif_transaction": {
+      "area_um2": 72788.625,
+      "cells": 4850
+    },
+    "\\motif_watchdog": {
+      "area_um2": 2975.5026,
+      "cells": 237
+    },
+    "\\tt_um_wellitsabhinav_motif": {
+      "area_um2": 103246.6932,
+      "cells": 6212
+    }
+  },
+  "fixed_tree_buffers": 2519,
+  "buffered_area_um2": 239773.6404,
+  "raw_netlist_sha256": "0a6be674c413760ad5a0f52f299f0a7b6a8c0724efe5c718d1e1db0e11ff3751",
+  "buffered_netlist_sha256": "05c673c4a980e6cf50237c2253d7f8fc455049d3e623a2a92ea0b86b6d54c5e4",
+  "extra_config_bits": 0,
+  "diagnostic_only": true
+}

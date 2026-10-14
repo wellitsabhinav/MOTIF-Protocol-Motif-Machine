@@ -41,7 +41,16 @@
           "_21713_",
           "A"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 1,
+      "named_source_examples": [
+        "rst_n"
+      ],
+      "source_categories": [
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_01711_",
@@ -81,7 +90,26 @@
           "_21717_",
           "B2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 9,
+      "boundary_source_count": 10,
+      "named_source_examples": [
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "host.write_o"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "host_configuration_interface"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_02216_",
@@ -121,7 +149,26 @@
           "_22372_",
           "B2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 9,
+      "boundary_source_count": 10,
+      "named_source_examples": [
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "host.write_o"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "host_configuration_interface"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "rst_n",
@@ -164,7 +211,16 @@
           "_21510_",
           "A"
         ]
-      ]
+      ],
+      "comb_cone_cells": 0,
+      "boundary_source_count": 1,
+      "named_source_examples": [
+        "rst_n"
+      ],
+      "source_categories": [
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_01764_",
@@ -202,7 +258,17 @@
           "_21772_",
           "D"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "address[0]",
+        "address[1]"
+      ],
+      "source_categories": [
+        "host_configuration_interface"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_01792_",
@@ -241,7 +307,17 @@
           "_23118_",
           "B"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "address[0]",
+        "address[1]"
+      ],
+      "source_categories": [
+        "host_configuration_interface"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_01699_",
@@ -280,7 +356,17 @@
           "_24963_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "address[0]",
+        "address[1]"
+      ],
+      "source_categories": [
+        "host_configuration_interface"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_01743_",
@@ -318,7 +404,17 @@
           "_24965_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "address[0]",
+        "address[1]"
+      ],
+      "source_categories": [
+        "host_configuration_interface"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_07360_",
@@ -360,7 +456,17 @@
           "_15953_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "core.exchange.pc_o[0]",
+        "core.exchange.pc_o[1]"
+      ],
+      "source_categories": [
+        "executor_control"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_07364_",
@@ -405,7 +511,17 @@
           "_15952_",
           "B1"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "core.exchange.pc_o[0]",
+        "core.exchange.pc_o[1]"
+      ],
+      "source_categories": [
+        "executor_control"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_08570_",
@@ -447,7 +563,46 @@
           "_17227_",
           "B1"
         ]
-      ]
+      ],
+      "comb_cone_cells": 2173,
+      "boundary_source_count": 1094,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]",
+        "core.exchange.first_word[15]",
+        "core.exchange.first_word[16]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_08562_",
@@ -488,7 +643,46 @@
           "_17226_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 2173,
+      "boundary_source_count": 1094,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]",
+        "core.exchange.first_word[15]",
+        "core.exchange.first_word[16]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_11250_",
@@ -529,7 +723,46 @@
           "_19849_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 5248,
+      "boundary_source_count": 1190,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[11]",
+        "core.exchange.first_word[12]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_11256_",
@@ -572,7 +805,46 @@
           "_19848_",
           "B1"
         ]
-      ]
+      ],
+      "comb_cone_cells": 5248,
+      "boundary_source_count": 1190,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[11]",
+        "core.exchange.first_word[12]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_11254_",
@@ -614,7 +886,46 @@
           "_19849_",
           "B1"
         ]
-      ]
+      ],
+      "comb_cone_cells": 5248,
+      "boundary_source_count": 1190,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[11]",
+        "core.exchange.first_word[12]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_07362_",
@@ -656,7 +967,17 @@
           "_15956_",
           "B"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "core.exchange.pc_o[0]",
+        "core.exchange.pc_o[1]"
+      ],
+      "source_categories": [
+        "executor_control"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_07358_",
@@ -698,7 +1019,17 @@
           "_15952_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 1,
+      "boundary_source_count": 2,
+      "named_source_examples": [
+        "core.exchange.pc_o[0]",
+        "core.exchange.pc_o[1]"
+      ],
+      "source_categories": [
+        "executor_control"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_08565_",
@@ -738,7 +1069,46 @@
           "_17227_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 2173,
+      "boundary_source_count": 1094,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]",
+        "core.exchange.first_word[15]",
+        "core.exchange.first_word[16]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_11252_",
@@ -780,7 +1150,46 @@
           "_19848_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 5248,
+      "boundary_source_count": 1190,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[11]",
+        "core.exchange.first_word[12]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "net": "_08568_",
@@ -820,7 +1229,46 @@
           "_17225_",
           "A2"
         ]
-      ]
+      ],
+      "comb_cone_cells": 2173,
+      "boundary_source_count": 1094,
+      "named_source_examples": [
+        "active",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]",
+        "core.compound.tx.value_o[7]",
+        "core.desired_role",
+        "core.exchange.first_word[0]",
+        "core.exchange.first_word[10]",
+        "core.exchange.first_word[13]",
+        "core.exchange.first_word[14]",
+        "core.exchange.first_word[15]",
+        "core.exchange.first_word[16]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     }
   ],
   "fanout_histogram": {
@@ -921,140 +1369,940 @@
       "state": "core.tx_fifo.memory[0][0]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27016_",
       "state": "core.tx_fifo.memory[0][1]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27017_",
       "state": "core.tx_fifo.memory[0][2]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27018_",
       "state": "core.tx_fifo.memory[0][3]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27019_",
       "state": "core.tx_fifo.memory[0][4]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27020_",
       "state": "core.tx_fifo.memory[0][5]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27021_",
       "state": "core.tx_fifo.memory[0][6]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27022_",
       "state": "core.tx_fifo.memory[0][7]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27055_",
       "state": "core.tx_fifo.memory[2][0]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27056_",
       "state": "core.tx_fifo.memory[2][1]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27057_",
       "state": "core.tx_fifo.memory[2][2]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27058_",
       "state": "core.tx_fifo.memory[2][3]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27059_",
       "state": "core.tx_fifo.memory[2][4]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27060_",
       "state": "core.tx_fifo.memory[2][5]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27061_",
       "state": "core.tx_fifo.memory[2][6]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27062_",
       "state": "core.tx_fifo.memory[2][7]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7026,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27063_",
       "state": "core.tx_fifo.memory[1][0]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7025,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27064_",
       "state": "core.tx_fifo.memory[1][1]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7025,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27065_",
       "state": "core.tx_fifo.memory[1][2]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7025,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     },
     {
       "endpoint": "_27066_",
       "state": "core.tx_fifo.memory[1][3]",
       "logic_depth": 65,
       "mapped_mux_depth": 12,
-      "comb_depth_with_buffers": 65
+      "comb_depth_with_buffers": 65,
+      "comb_cone_cells": 7025,
+      "boundary_source_count": 1203,
+      "named_source_examples": [
+        "active",
+        "address[0]",
+        "address[1]",
+        "address[2]",
+        "address[3]",
+        "address[4]",
+        "address[5]",
+        "address[6]",
+        "address[7]",
+        "control[0]",
+        "control[1]",
+        "control[2]",
+        "control[3]",
+        "control[4]",
+        "core.accepted",
+        "core.captured_response",
+        "core.clock_pin_i[0]",
+        "core.clock_pin_i[1]",
+        "core.clock_pin_i[2]",
+        "core.compound.tx.remaining_o[0]",
+        "core.compound.tx.remaining_o[1]",
+        "core.compound.tx.remaining_o[2]",
+        "core.compound.tx.remaining_o[3]",
+        "core.compound.tx.value_o[0]"
+      ],
+      "source_categories": [
+        "configuration_table_decode",
+        "temporal_logic",
+        "predicate_logic",
+        "executor_control",
+        "fifo_control",
+        "fifo_data",
+        "output_control",
+        "host_configuration_interface",
+        "unrelated_infrastructure"
+      ],
+      "rtl_function_attribution": "named boundary sources; individual optimized gates not uniquely attributable"
     }
   ],
   "max_logic_depth": 65,

@@ -24,10 +24,30 @@ def save(name, data):
 
 def verilog_cells(path):
     text = path.read_text()
+    # Restore alias connectivity from the matching Yosys JSON. A Verilog-only
+    # graph would incorrectly break chains at assign statements after flatten.
+    candidate=path.parent/('buffered.json' if path.stem=='buffered' else 'flat.json')
+    if not candidate.exists():candidate=path.with_suffix(path.suffix+'.json')
+    aliases={}
+    if candidate.exists():
+        module=json.loads(candidate.read_text())['modules'][TOP]
+        bit_names=defaultdict(list)
+        for name,n in module['netnames'].items():
+            for i,b in enumerate(n['bits']):
+                if isinstance(b,int):
+                    spelling=name+('['+str(i+n.get('offset',0))+']' if len(n['bits'])>1 else '')
+                    bit_names[b].append(spelling)
+        def preference(n):return ('_unused' in n,n.startswith('_'),n.startswith('$'),'program' not in n,len(n),n)
+        for names in bit_names.values():
+            preferred=min(names,key=preference)
+            for name in names:aliases[name]=preferred
     cells = {}
     for m in re.finditer(r"\b(sg13cmos5l_\w+)\s+(\\[^\s]+|[^\s(]+)\s*\((.*?)\);", text, re.S):
-        cells[m[2].lstrip("\\")] = {"type": m[1], "pins": {
-            p[1]: p[2].strip().lstrip("\\") for p in re.finditer(r"\.(\w+)\s*\(([^()]*)\)", m[3])}}
+        pins={}
+        for p in re.finditer(r"\.(\w+)\s*\(([^()]*)\)",m[3]):
+            spelling=re.sub(r'\s+','',p[2].strip().lstrip('\\'))
+            pins[p[1]]=aliases.get(spelling,spelling)
+        cells[m[2].lstrip("\\")] = {"type": m[1], "pins": pins}
     return cells
 
 
@@ -69,13 +89,16 @@ def paths(path, cells, limit=20):
             if m:
                 parsed.append({"fanout": int(m[1]) if m[1] else None, "delay": float(m[2]),
                                "time": float(m[3]), "pin": m[4], "type": m[5]})
+            else:
+                net_row=re.match(r'^\s*(\d+)\s+[\d.]+\s+.+\(net\)\s*$',line)
+                if net_row and parsed:parsed[-1]['fanout']=int(net_row[1])
         # Clock paths precede data; isolate exactly launch-Q/input through capture-D.
         first = next((i for i, r in enumerate(parsed) if r["pin"] in [start+"/Q", start+"/QN", start]), None)
         last = next((i for i, r in enumerate(parsed) if r["pin"] in [end+"/D", end]), None)
         if first is None or last is None:
             raise ValueError(f"Cannot isolate data rows in {path}: {start} -> {end}")
         data = parsed[first:last+1]
-        out_arcs = [r for r in data if r["fanout"] is not None and r["type"] and r["type"].startswith("sg13cmos5l_")]
+        out_arcs = [r for r in data if r['pin'].rsplit('/',1)[-1] in ['Q','QN','X','Y'] and r["type"] and r["type"].startswith("sg13cmos5l_")]
         comb = [r for r in out_arcs if not re.search(r"_df|_latch", r["type"])]
         buffers = [r for r in comb if "_buf_" in r["type"]]
         signals = []
@@ -139,8 +162,9 @@ def graph(cells):
             endpoints.append({"endpoint":name,"state":c["pins"].get("Q"),"logic_depth":d[0],"mapped_mux_depth":d[1],"comb_depth_with_buffers":d[2]})
     fanout=[]
     for net,loads in sinks.items():
+        if re.fullmatch(r"\d+'[bdh][0-9a-fxz]+",net,re.I):continue
         driver=drivers.get(net)
-        clock=all(p in ["CLK","GATE"] for n,p in loads)
+        clock=net=='clk' or net.startswith('clknet_') or all(p in ["CLK","GATE"] for n,p in loads)
         fanout.append({"net":net,"fanout_pin_count":len(loads),"distinct_sink_cells":len(set(n for n,p in loads)),
                        "driver":driver,"clock_only":clock,"categories":category([net]),
                        "sink_type_histogram":dict(Counter(cells[n]["type"] for n,p in loads)),
@@ -148,6 +172,23 @@ def graph(cells):
                        "first_sinks":loads[:5]})
     fanout.sort(key=lambda x:-x["fanout_pin_count"])
     endpoints.sort(key=lambda x:-x["logic_depth"])
+    def cone(net):
+        seen, sources, todo=set(),set(),[net]
+        while todo:
+            n=todo.pop();driver=drivers.get(n)
+            if not driver:
+                sources.add(n);continue
+            name,pin=driver;c=cells[name]
+            if '_df' in c['type'] or '_latch' in c['type']:
+                sources.add(n);continue
+            if name in seen:continue
+            seen.add(name)
+            todo.extend(v for p,v in c['pins'].items() if p not in ['Q','QN','X','Y','VPWR','VGND','VDD','VSS'])
+        named=sorted(n for n in sources if not n.startswith('_'))
+        return {'comb_cone_cells':len(seen),'boundary_source_count':len(sources),'named_source_examples':named[:24],
+                'source_categories':category(named),'rtl_function_attribution':'named boundary sources; individual optimized gates not uniquely attributable'}
+    for row in [x for x in fanout if not x['clock_only']][:20]:row.update(cone(row['net']))
+    for row in endpoints[:20]:row.update(cone(cells[row['endpoint']]['pins']['D']))
     return {"num_cells":len(cells),"top_nonclock_fanout": [x for x in fanout if not x["clock_only"]][:20],
             "fanout_histogram":dict(sorted(Counter(x["fanout_pin_count"] for x in fanout if not x["clock_only"]).items())),
             "maximum_nonclock_fanout":max(x["fanout_pin_count"] for x in fanout if not x["clock_only"]),
@@ -158,7 +199,8 @@ def graph(cells):
 def main():
     pre=RUN/'06-yosys-synthesis/tt_um_wellitsabhinav_motif.nl.v'
     post=RUN/'final/nl/tt_um_wellitsabhinav_motif.nl.v'
-    identities={"baseline_commit":subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+    identities={"baseline_commit":"9e4c500d1cc38c5b008babd245580d1b7d7e542d",
+                "analysis_parent_commit":subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                 "archive_sha256":sha(ROOT/'build/v3_physical/attempt_2/GDS_logs.zip'),
                 "archive_expected_sha256":"5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0"}
     assert identities['archive_sha256']==identities['archive_expected_sha256']

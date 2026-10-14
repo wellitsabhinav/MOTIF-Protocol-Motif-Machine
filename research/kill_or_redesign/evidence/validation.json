@@ -1,0 +1,58 @@
+{
+  "buffered_connectivity_checks": [
+    {
+      "variant": "v2",
+      "buffer_only_connectivity_equivalent": true,
+      "original_cells": 12546,
+      "added_buffers": 2567,
+      "all_final_sta_logs_error_free": true,
+      "selected_reports_hash_match": true
+    },
+    {
+      "variant": "v3",
+      "buffer_only_connectivity_equivalent": true,
+      "original_cells": 13332,
+      "added_buffers": 2619,
+      "all_final_sta_logs_error_free": true,
+      "selected_reports_hash_match": true
+    },
+    {
+      "variant": "elided",
+      "buffer_only_connectivity_equivalent": true,
+      "original_cells": 12880,
+      "added_buffers": 2416,
+      "all_final_sta_logs_error_free": true,
+      "selected_reports_hash_match": true
+    },
+    {
+      "variant": "state_clamp",
+      "buffer_only_connectivity_equivalent": true,
+      "original_cells": 12650,
+      "added_buffers": 2519,
+      "all_final_sta_logs_error_free": true,
+      "selected_reports_hash_match": true
+    },
+    {
+      "variant": "p1",
+      "buffer_only_connectivity_equivalent": true,
+      "original_cells": 13550,
+      "added_buffers": 2602,
+      "all_final_sta_logs_error_free": true,
+      "selected_reports_hash_match": true
+    },
+    {
+      "variant": "p2",
+      "buffer_only_connectivity_equivalent": true,
+      "original_cells": 9086,
+      "added_buffers": 1542,
+      "all_final_sta_logs_error_free": true,
+      "selected_reports_hash_match": true
+    }
+  ],
+  "baseline_pytest": "422 passed in 30.94s",
+  "production_inputs_unchanged": true,
+  "p2_atomic_negative_reproduced": true,
+  "physical_jobs_launched": 0,
+  "required_reports_and_links_valid": true,
+  "executive_under_300_words": true
+}

@@ -1,0 +1,66 @@
+{
+  "raw_typ": {
+    "slack_ns": -10.663266,
+    "data_path_delay_ns": 26.315329,
+    "start_signal": "rst_n",
+    "endpoint_state_signal": "core.exchange.uop_q[63]",
+    "logic_depth_excluding_buffers": 9,
+    "buffer_count": 0
+  },
+  "raw_typ_reg": {
+    "slack_ns": -6.878173,
+    "data_path_delay_ns": 26.530235,
+    "start_signal": "watchdog[1]",
+    "endpoint_state_signal": "core.exchange.uop_q[63]",
+    "logic_depth_excluding_buffers": 25,
+    "buffer_count": 0
+  },
+  "raw_slow": {
+    "slack_ns": -25.187111,
+    "data_path_delay_ns": 40.720379,
+    "start_signal": "rst_n",
+    "endpoint_state_signal": "core.exchange.uop_q[59]",
+    "logic_depth_excluding_buffers": 9,
+    "buffer_count": 0
+  },
+  "raw_slow_reg": {
+    "slack_ns": -21.641609,
+    "data_path_delay_ns": 41.174877,
+    "start_signal": "watchdog[1]",
+    "endpoint_state_signal": "core.exchange.uop_q[59]",
+    "logic_depth_excluding_buffers": 25,
+    "buffer_count": 0
+  },
+  "buffered_typ": {
+    "slack_ns": 10.568331,
+    "data_path_delay_ns": 1.1816700000000004,
+    "start_signal": "uio_in[7]",
+    "endpoint_state_signal": "uio_out[3]",
+    "logic_depth_excluding_buffers": 8,
+    "buffer_count": 1
+  },
+  "buffered_typ_reg": {
+    "slack_ns": 13.662055,
+    "data_path_delay_ns": 2.087946,
+    "start_signal": "core.program_i[783]",
+    "endpoint_state_signal": "uio_out[3]",
+    "logic_depth_excluding_buffers": 12,
+    "buffer_count": 1
+  },
+  "buffered_slow": {
+    "slack_ns": 9.824954,
+    "data_path_delay_ns": 5.748525000000001,
+    "start_signal": "ena",
+    "endpoint_state_signal": "core.tx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 27,
+    "buffer_count": 1
+  },
+  "buffered_slow_reg": {
+    "slack_ns": 10.680643,
+    "data_path_delay_ns": 8.892836,
+    "start_signal": "pins_high[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 27,
+    "buffer_count": 4
+  }
+}

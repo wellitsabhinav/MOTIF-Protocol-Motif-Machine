@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "scope": "all table words, live controls, arbitrary current state, all combinational output ports and all 46 next-state bits; sequential priorities unchanged",
+  "frozen_transaction_sha256": "f9b1cabdba086a0ead9d4ffe6a2b4d9a4c1eb7d129badccd1526b41c417dd54e",
+  "p4_transaction_sha256": "9f6f9978bc0dba907ea11cb7f7de72b07f67afeff3b58f42e15b4fea43a5716d",
+  "miter_sha256": {
+    "gold.sv": "e3897f4251e3d79a313c4932c0acf858b184593fe427a9a4c687582417589a17",
+    "gate.sv": "82e93ae8631b2eb0ce1c092e0d0489f13cad160b1dea095b1f1285be8b48610e"
+  },
+  "command_sha256": "c819daef341b79fa4954b5918f7a62fbb913814b92cea6b5ae04a716e334b30a",
+  "log_sha256": "a6d3caafcfaf6343418f1bb6d887224c158f85ecb40897fda6aafdfa733ed1f3",
+  "seconds": 9.17200000000048,
+  "exit_code": 0
+}

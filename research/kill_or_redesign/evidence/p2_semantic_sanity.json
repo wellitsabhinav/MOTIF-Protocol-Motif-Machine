@@ -1,0 +1,314 @@
+{
+  "qualified": false,
+  "cases": [
+    {
+      "name": "spi",
+      "cycles": 218,
+      "first_frozen_model_divergence": null,
+      "stimulus_sha256": "5efe9705cca62dfacb56c3a00d2d8e5c504217e2ccb6f199e2b874b13f01664a",
+      "bench_sha256": "9ed0a91bf1ce6cfc93b5f91b6315d3f2a3ece5358c69f38bca2bb1f57a226ad7",
+      "simulation_sha256": "efda873bd7f80432c8b992f553217322c3c082bd776f3a930c02f6fd54febf39",
+      "scope": "complete fixed-stimulus visible trace equality; table executor unused in these modes",
+      "passed": true
+    },
+    {
+      "name": "uart",
+      "cycles": 722,
+      "first_frozen_model_divergence": null,
+      "stimulus_sha256": "64185f7894ea2e5745db2f05d1a073a25588144b597f623816693390d68fb442",
+      "bench_sha256": "d8b084eb770c6d39240b9005ee20ecc715354403375bb2a5cdaa5e30a14d724a",
+      "simulation_sha256": "349141f71a5afd11c71178ad09733da462d7c3ecb45827e97fa2025fa4ead45c",
+      "scope": "complete fixed-stimulus visible trace equality; table executor unused in these modes",
+      "passed": true
+    },
+    {
+      "name": "timed_stream",
+      "cycles": 278,
+      "first_frozen_model_divergence": null,
+      "stimulus_sha256": "42d5133f1c2f67eeb858d63ad73af21b4efbc1eaabac50290397c09d4fefc663",
+      "bench_sha256": "87bf779bd793c003d1877cf8d43dca305ce59bcb412b00b635350485e35874a2",
+      "simulation_sha256": "5a9bf53f4a15812681c8477a95ab85086ff81a5254f0d22a9c31d5e6775d0e54",
+      "scope": "complete fixed-stimulus visible trace equality; table executor unused in these modes",
+      "passed": true
+    },
+    {
+      "name": "microwire",
+      "cycles": 1970,
+      "first_frozen_model_divergence": {
+        "cycle": 853,
+        "differences": {
+          "motifs": [
+            832,
+            64
+          ],
+          "events": [
+            532,
+            4
+          ],
+          "oe": [
+            8,
+            0
+          ],
+          "pc": [
+            4,
+            2
+          ],
+          "drive_enable": [
+            1,
+            0
+          ],
+          "executed_count": [
+            3,
+            1
+          ],
+          "executed_pcs": [
+            801,
+            1
+          ]
+        }
+      },
+      "stimulus_sha256": "894cbfbc330437ff96858c679773c16a2fc54f6af4d0f9b37f84ca5ed4ff9c13",
+      "bench_sha256": "3b6295643b987f7d96b65a0ed19a462143368843c5c30db1b67351ebf6615d30",
+      "simulation_sha256": "c435e5d11b225742bf68e018b6c3e29f0525ba10f1dec04ff7092a1d8c165611",
+      "observed_word_hex": "0xa55a",
+      "scope": "independent fixed controller sample indices and no target clock ownership",
+      "passed": true
+    },
+    {
+      "name": "i2c",
+      "cycles": 4152,
+      "first_frozen_model_divergence": {
+        "cycle": 722,
+        "differences": {
+          "motifs": [
+            896,
+            256
+          ],
+          "events": [
+            544,
+            32
+          ],
+          "pc": [
+            7,
+            4
+          ],
+          "executed_count": [
+            3,
+            1
+          ],
+          "executed_pcs": [
+            1347,
+            3
+          ]
+        }
+      },
+      "stimulus_sha256": "c29007d60f00f04fe8776b3409ceb0dc159411b55bc7cdd0c5e638d21814d855",
+      "bench_sha256": "ef13c2a61d2d9e1c48954cf4e8225144944e4f2dc345f0cf77d4c6e00cc72eec",
+      "simulation_sha256": "6136fc49add66bec95e6fde8680fbc1540a0e5f4b50d3e3aca1c87b38a8f1d51",
+      "visible_divergence_cycles": 8,
+      "scope": "fixed resolved-pin replay, not a new closed-loop I2C qualification",
+      "passed": false
+    },
+    {
+      "name": "one_wire_nominal",
+      "cycles": 125000,
+      "first_frozen_model_divergence": {
+        "cycle": 74002,
+        "differences": {
+          "executed_count": [
+            2,
+            1
+          ],
+          "executed_pcs": [
+            16,
+            0
+          ]
+        }
+      },
+      "stimulus_sha256": "ef0d72c291634b4055c2cf9cfcc08bd64a510396d44c9782d51491640b7786ce",
+      "bench_sha256": "b9f0978083e9fa963d28e7af2a9687d4922a59bc5d5a69637d37e1768ebe98a9",
+      "simulation_sha256": "75a572efe45cb13bfdb8f05f682b8a18a1969ce7312e83f167d3196853451492",
+      "passed": true,
+      "independent_wire_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          75000
+        ],
+        "observed_presence_cycles": [
+          [
+            76504,
+            82506
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 1530.08,
+            "low": 120.04
+          }
+        ]
+      },
+      "scope": "live wired-AND target feedback with unchanged wire oracle"
+    },
+    {
+      "name": "one_wire_interrupted_non_reset",
+      "cycles": 125050,
+      "first_frozen_model_divergence": null,
+      "stimulus_sha256": "4df62bed5c2407ff21fdd50e537fdf45dea4a513cdba6d6be304c7b1d653cd44",
+      "bench_sha256": "2ca11d3ac55d88d2479fe76f886644dda481dfb34ede02cc9217e25f664d9d7a",
+      "simulation_sha256": "9f35ad6bce998cbc61fa5c0aee5af560a2835d9fe0d97dd503f7099b1f2fc763",
+      "passed": true,
+      "independent_wire_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [],
+        "observed_presence_cycles": [],
+        "timings_us": []
+      },
+      "scope": "live wired-AND target feedback with unchanged wire oracle"
+    },
+    {
+      "name": "one_wire_restart_then_valid",
+      "cycles": 89058,
+      "first_frozen_model_divergence": {
+        "cycle": 29060,
+        "differences": {
+          "pc": [
+            2,
+            1
+          ],
+          "executed_count": [
+            2,
+            1
+          ],
+          "executed_pcs": [
+            16,
+            0
+          ]
+        }
+      },
+      "stimulus_sha256": "5ff4ca172f59d812312e655cf56ec01373a6c5739b64329c4f13983fcc2c108e",
+      "bench_sha256": "22fb4b3f65ec2912b312e12f78e403d02372803bb9e61b25f4b0218c789f73e5",
+      "simulation_sha256": "fb27d4557f57db3044e0c9d73b57530d9980a6d4a10fa4752ccfb2138c99ee94",
+      "passed": true,
+      "independent_wire_oracle": {
+        "passed": true,
+        "errors": [],
+        "qualified_controller_releases_cycles": [
+          29058
+        ],
+        "observed_presence_cycles": [
+          [
+            30563,
+            36565
+          ]
+        ],
+        "timings_us": [
+          {
+            "start": 611.26,
+            "low": 120.04
+          }
+        ]
+      },
+      "scope": "live wired-AND target feedback with unchanged wire oracle"
+    },
+    {
+      "name": "lin_nominal",
+      "cycles": 85524,
+      "first_frozen_model_divergence": {
+        "cycle": 47502,
+        "differences": {
+          "executed_count": [
+            2,
+            1
+          ],
+          "executed_pcs": [
+            16,
+            0
+          ]
+        }
+      },
+      "stimulus_sha256": "3ea28c0d423b50b0dee7952acfef00f4a0855d5c7baa00f57e6ead492fb33a98",
+      "bench_sha256": "3921b784122d277bde7ea9ed0deb7b0fc9f0ccb2da8f6777d491f3182e9c3199",
+      "simulation_sha256": "c422f906ef6f54be65851dd2ad73a8c9e89693f750a80fe4398388961f5c5a22",
+      "independent_wire_oracle": {
+        "expected": [
+          {
+            "value": 85,
+            "break_start": 20000,
+            "break_end": 52500,
+            "byte_start": 55500,
+            "stop_start": 78000,
+            "stop_end": 80500,
+            "earliest": 78000,
+            "latest": 85500,
+            "epoch": 0
+          }
+        ],
+        "observed_acceptances": [
+          {
+            "cycle": 79259,
+            "public_head": 85
+          }
+        ],
+        "errors": []
+      },
+      "scope": "unchanged independent LIN prefix oracle, one nominal case",
+      "passed": true
+    },
+    {
+      "name": "atomic_terminate_cancels_push",
+      "cycles": 24,
+      "first_frozen_model_divergence": {
+        "cycle": 11,
+        "differences": {
+          "motifs": [
+            70,
+            64
+          ],
+          "events": [
+            36868,
+            4
+          ],
+          "active": [
+            0,
+            1
+          ],
+          "rx_fifo_count": [
+            0,
+            1
+          ],
+          "pc": [
+            0,
+            1
+          ],
+          "accepted": [
+            0,
+            1
+          ],
+          "rx_push": [
+            0,
+            1
+          ],
+          "executed_count": [
+            2,
+            1
+          ],
+          "executed_pcs": [
+            16,
+            0
+          ]
+        }
+      },
+      "stimulus_sha256": "73a4e6fde76f39160cf85f5fe8efa71ea52e1f48e49d548da65812f75b0ce90b",
+      "bench_sha256": "641c780a222dfe379aaafa04154161958be7f37f0d9ad8a2f902c7bae44d651d",
+      "simulation_sha256": "ff1fdad53a1b3224b45429694d49ed6771e873b2e598bdded938b7db3dca13d7",
+      "passed": false,
+      "expected_negative_reproduced": true,
+      "frozen_max_rx_count": 0,
+      "p2_max_rx_count": 1,
+      "scope": "two generic entries; termination must suppress same-batch push"
+    }
+  ],
+  "conclusion": "P2 is a timing lower bound. Atomic commit/event snapshots and lifecycle alignment are required before production use."
+}

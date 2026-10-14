@@ -1,0 +1,183 @@
+{
+  "rows": [
+    {
+      "variant": "v2",
+      "area_um2": 194376.3318,
+      "delta_area_percent": -7.546372616688679,
+      "buffered_area_um2": 231636.85020000002,
+      "full_slow": {
+        "slack_ns": -5.527946,
+        "data_path_delay_ns": 21.101425,
+        "start_signal": "ena",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 60,
+        "buffer_count": 15
+      },
+      "register_slow": {
+        "slack_ns": -4.3008,
+        "data_path_delay_ns": 23.874279,
+        "start_signal": "watchdog[1]",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 73,
+        "buffer_count": 16
+      },
+      "cells": 12546,
+      "sequential_cells": 1385,
+      "combinational_cells": 11161,
+      "max_graph_depth": 79,
+      "max_graph_mux_depth": 27,
+      "fixed_tree_buffers": 2567,
+      "extra_declared_state": -18
+    },
+    {
+      "variant": "v3",
+      "area_um2": 210241.9746,
+      "delta_area_percent": 0.0,
+      "buffered_area_um2": 248257.2834,
+      "full_slow": {
+        "slack_ns": -5.721711,
+        "data_path_delay_ns": 21.295191,
+        "start_signal": "ena",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 65,
+        "buffer_count": 15
+      },
+      "register_slow": {
+        "slack_ns": -4.835862,
+        "data_path_delay_ns": 24.409342,
+        "start_signal": "watchdog[4]",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 75,
+        "buffer_count": 15
+      },
+      "cells": 13332,
+      "sequential_cells": 1403,
+      "combinational_cells": 11929,
+      "max_graph_depth": 81,
+      "max_graph_mux_depth": 21,
+      "fixed_tree_buffers": 2619,
+      "extra_declared_state": 0
+    },
+    {
+      "variant": "elided",
+      "area_um2": 200468.4444,
+      "delta_area_percent": -4.648705482620585,
+      "buffered_area_um2": 235537.16760000002,
+      "full_slow": {
+        "slack_ns": -6.857043,
+        "data_path_delay_ns": 22.430523,
+        "start_signal": "ena",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 63,
+        "buffer_count": 17
+      },
+      "register_slow": {
+        "slack_ns": -5.872405,
+        "data_path_delay_ns": 25.445885,
+        "start_signal": "watchdog[4]",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 74,
+        "buffer_count": 17
+      },
+      "cells": 12880,
+      "sequential_cells": 1385,
+      "combinational_cells": 11495,
+      "max_graph_depth": 79,
+      "max_graph_mux_depth": 23,
+      "fixed_tree_buffers": 2416,
+      "extra_declared_state": -18
+    },
+    {
+      "variant": "state_clamp",
+      "area_um2": 203209.8516,
+      "delta_area_percent": -3.344775948465617,
+      "buffered_area_um2": 239773.6404,
+      "full_slow": {
+        "slack_ns": -6.52868,
+        "data_path_delay_ns": 22.10216,
+        "start_signal": "ena",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 60,
+        "buffer_count": 17
+      },
+      "register_slow": {
+        "slack_ns": -5.622896,
+        "data_path_delay_ns": 25.196375,
+        "start_signal": "watchdog[4]",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 71,
+        "buffer_count": 17
+      },
+      "cells": 12650,
+      "sequential_cells": 1385,
+      "combinational_cells": 11265,
+      "max_graph_depth": 78,
+      "max_graph_mux_depth": 22,
+      "fixed_tree_buffers": 2519,
+      "extra_declared_state": -18
+    },
+    {
+      "variant": "p1",
+      "area_um2": 217871.1486,
+      "delta_area_percent": 3.6287587264698384,
+      "buffered_area_um2": 255639.699,
+      "full_slow": {
+        "slack_ns": -5.126348,
+        "data_path_delay_ns": 20.699827,
+        "start_signal": "ena",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 65,
+        "buffer_count": 15
+      },
+      "register_slow": {
+        "slack_ns": -4.240498,
+        "data_path_delay_ns": 23.813978,
+        "start_signal": "watchdog[4]",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 75,
+        "buffer_count": 15
+      },
+      "cells": 13550,
+      "sequential_cells": 1467,
+      "combinational_cells": 12083,
+      "max_graph_depth": 81,
+      "max_graph_mux_depth": 25,
+      "fixed_tree_buffers": 2602,
+      "extra_declared_state": 64
+    },
+    {
+      "variant": "p2",
+      "area_um2": 155669.5098,
+      "delta_area_percent": -25.956978811594546,
+      "buffered_area_um2": 178051.94819999998,
+      "full_slow": {
+        "slack_ns": 9.824954,
+        "data_path_delay_ns": 5.748525000000001,
+        "start_signal": "ena",
+        "endpoint_state_signal": "core.tx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 27,
+        "buffer_count": 1
+      },
+      "register_slow": {
+        "slack_ns": 10.680643,
+        "data_path_delay_ns": 8.892836,
+        "start_signal": "pins_high[0]",
+        "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+        "logic_depth_excluding_buffers": 27,
+        "buffer_count": 4
+      },
+      "cells": 9086,
+      "sequential_cells": 1468,
+      "combinational_cells": 7618,
+      "max_graph_depth": 41,
+      "max_graph_mux_depth": 8,
+      "fixed_tree_buffers": 1542,
+      "extra_declared_state": 66
+    }
+  ],
+  "unmeasured": [
+    "p3",
+    "p4"
+  ],
+  "scope": "raw area; timing after identical ideal-wire fanout-eight trees; worst delay belongs to worst constrained setup path, excludes input budget/clock latency; max fanout excludes clocks/constants"
+}

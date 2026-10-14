@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-14",
+  "python": "3.12.5",
+  "yosys_exe_sha256": "da2209de850fff3546f3fc7fb4203e62c611fda7d5103785a1a453e16566aaa5",
+  "abc_exe_sha256": "1394d146474be249f241cc8d98eafd1d73d56e0d5d40af0d1532ebb7997686db",
+  "opensta_version": "2.0.17",
+  "opensta_exe_sha256": "7b9994f6e26be12db7285c4fdfb0a8e3dbac0a65de328dd1b448005cc9b0edd8",
+  "opensta_archive_sha256": "9ec29cc74cc66cd82e6fa85aad2d3897c6315aa26adbc380892416e7a5e87a1b",
+  "opensta_archive_url": "https://archive.ubuntu.com/ubuntu/pool/universe/o/opensta/opensta_0~20191111gitc018cb2+dfsg-1.1_amd64.deb",
+  "typ_lib_sha256": "34163f3e7de9f854afac57332ba06f1739b78e7ac35660a8a5ddd39c570124ad",
+  "slow_lib_sha256": "3ee222c580ba33acb2131ac2bf224ff8ee9700751835b73aaec72b670bb31d3c",
+  "pdk_revision": "2bbec755dc67ca3db0261c3d6163e15735d66710",
+  "zero_wire_load": true,
+  "fanout_tree_limit": 8,
+  "derates": {
+    "early": 0.95,
+    "late": 1.05
+  }
+}

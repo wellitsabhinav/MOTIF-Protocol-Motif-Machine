@@ -1,0 +1,66 @@
+{
+  "raw_typ": {
+    "slack_ns": -30.910685,
+    "data_path_delay_ns": 50.563217,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 62,
+    "buffer_count": 0
+  },
+  "raw_typ_reg": {
+    "slack_ns": -30.910685,
+    "data_path_delay_ns": 50.563217,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 62,
+    "buffer_count": 0
+  },
+  "raw_slow": {
+    "slack_ns": -58.983624,
+    "data_path_delay_ns": 78.557106,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 62,
+    "buffer_count": 0
+  },
+  "raw_slow_reg": {
+    "slack_ns": -58.983624,
+    "data_path_delay_ns": 78.557106,
+    "start_signal": "core.exchange.pc_o[0]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 62,
+    "buffer_count": 0
+  },
+  "buffered_typ": {
+    "slack_ns": 2.171413,
+    "data_path_delay_ns": 13.481119,
+    "start_signal": "ena",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 60,
+    "buffer_count": 15
+  },
+  "buffered_typ_reg": {
+    "slack_ns": 4.370699,
+    "data_path_delay_ns": 15.281833,
+    "start_signal": "watchdog[1]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 73,
+    "buffer_count": 16
+  },
+  "buffered_slow": {
+    "slack_ns": -5.527946,
+    "data_path_delay_ns": 21.101425,
+    "start_signal": "ena",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 60,
+    "buffer_count": 15
+  },
+  "buffered_slow_reg": {
+    "slack_ns": -4.3008,
+    "data_path_delay_ns": 23.874279,
+    "start_signal": "watchdog[1]",
+    "endpoint_state_signal": "core.rx_fifo.memory[1][0]",
+    "logic_depth_excluding_buffers": 73,
+    "buffer_count": 16
+  }
+}

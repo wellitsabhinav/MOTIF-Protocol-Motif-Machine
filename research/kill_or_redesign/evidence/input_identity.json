@@ -1,5 +1,6 @@
 {
   "baseline_commit": "9e4c500d1cc38c5b008babd245580d1b7d7e542d",
+  "analysis_parent_commit": "2f02976d77affd38c61cad28dd8ad8917d7aa929",
   "archive_sha256": "5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0",
   "archive_expected_sha256": "5cdff1a5201ebad89713da86188c8bd5b0b7d93afa1737752023c6b7d5e2a7d0",
   "tracked_input_inventory": {
