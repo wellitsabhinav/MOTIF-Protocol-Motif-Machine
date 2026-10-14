@@ -121,11 +121,11 @@ every packaged file. Full raw traces, netlists and physical archives remain
 separately identified artifacts. The unseen CI workflow publishes this package
 under `motif-v3-plain-html-demonstration-package`.
 
-The [verified clean HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38473966248/artifacts/11853572292)
+The [verified final HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515)
 contains all eleven demonstrations, a readable A–Z report with evidence links,
 and the identified unqualified attempt-2 gallery. Extract it and open `index.html`.
-Its [download verification](../experiments/temporal_qualification/delivery_cffe8f6.json)
-checks all 517 file hashes and local HTML links. The final physical run is
-was recorded separately as active at that earlier receipt's scope. The
+Its [download verification](../experiments/temporal_qualification/delivery_final.json)
+checks all 524 file hashes and local HTML links, including the actual terminal
+physical outcome and fixed-attempt stop. The
 [final diagnosis](research/v3_temporal_qualification/physical_attempt_3_diagnosis.md)
 records the subsequent cancellation and fixed attempt-limit stop.

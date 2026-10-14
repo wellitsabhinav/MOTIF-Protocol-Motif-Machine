@@ -36,6 +36,14 @@ the committed excerpt retains original one-based line numbers. These log
 measurements have their own stage and timestamp; they are not final STA, DRC,
 LVS, utilization or cost qualification.
 
+The [complete terminal-log archive](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387087/artifacts/11868123053)
+is published by the read-only observer at head `161ed9a`. Its 432,049-byte ZIP
+has SHA-256 `65eb7b19473d43586eb812094bed5f21e1372ab24934d3185ddf31ee7cc598d6`.
+The downloaded digest, every snapshot file hash and byte-for-byte equality with
+the retained complete terminal log were verified. This is a log archive, not
+a physical layout archive, and collecting it launched no physical run.
+[Archive verification](../../../experiments/temporal_qualification/physical/job_snapshot_38507387087.json).
+
 Post-CTS timing repair entered the next stage after 6,337.473226 s.
 Its estimated-parasitic setup row reports WNS −7.573 ns, TNS −1,430.5 ns and
 198 violating endpoints. The hold row reports WNS +0.100 ns and TNS 0.

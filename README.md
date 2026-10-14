@@ -28,6 +28,12 @@ preserves its explicit cancellation cause and partial observations.
 See the
 [A–Z campaign report](docs/research/v3_temporal_qualification/final_report.md).
 
+The [verified final HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515)
+contains all eleven demonstrations, the rendered report and identified physical
+evidence. Extract it and open `index.html`.
+[Download verification](experiments/temporal_qualification/delivery_final.json)
+checks all 524 file hashes and local links.
+
 ![Actual Yosys-derived connected core modules](docs/demo/figures/architecture/architecture.png)
 
 Run an identified wire-level demonstration and inspect the resulting waveforms:

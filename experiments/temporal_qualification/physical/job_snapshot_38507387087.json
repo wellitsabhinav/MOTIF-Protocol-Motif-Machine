@@ -1,0 +1,45 @@
+{
+  "schema_version": 3,
+  "kind": "verified_read_only_terminal_physical_log_archive",
+  "observer_run_id": 38507387087,
+  "observer_source_sha": "161ed9a43d6fab470edc3a2b776a9369ee0280ea",
+  "artifact_id": 11868123053,
+  "archive_sha256_raw": "65eb7b19473d43586eb812094bed5f21e1372ab24934d3185ddf31ee7cc598d6",
+  "archive_bytes": 432049,
+  "all_snapshot_file_hashes_verified": true,
+  "completed_log_equals_retained_decoded_terminal_log": true,
+  "complete_terminal_log_sha256_raw": "dbe476608eb97ffa67055cbff03ee8093f38a203cc3099dd154b12cdcff9f2e9",
+  "complete_terminal_log_bytes": 4519308,
+  "snapshot": {
+    "schema_version": 3,
+    "kind": "read_only_physical_job_snapshot",
+    "captured_at_utc": "2026-10-14T03:39:43.909126+00:00",
+    "workflow_run_id": 38470361703,
+    "source_sha": "5dbf3abf11f61a8e6bd26cc5f328999190f12859",
+    "workflow_status": "completed",
+    "workflow_conclusion": "cancelled",
+    "frozen_manifest_sha256_lf": "71d5b07b5524fb6fa702357291eb35f52eccc5861111f7824b6fb9ead98a3047",
+    "preregistration": {
+      "commit": "637aeb947e7726ce0ef6347f0788c2803149f091",
+      "sha256_lf": "2c294fc24c46c0a14bb16e24087ece1fbb60e347939536fedd9141ce1ed21522"
+    },
+    "jobs": [
+      {
+        "job_id": 115547538149,
+        "status": "completed",
+        "conclusion": "cancelled",
+        "log_available": true,
+        "log_file": "job_115547538149.log",
+        "log_bytes": 4519308
+      }
+    ],
+    "files_sha256_raw": {
+      "workflow.json": "fce4c4004ea1607975aa6b3451eac94dd78ec4aeeee6b1881d13a446bffb5fef",
+      "jobs.json": "6b7274010adaf391e307ce1b4906b8eeddaeaaa985026df3a21e71aa3fe70c13",
+      "job_115547538149.log": "dbe476608eb97ffa67055cbff03ee8093f38a203cc3099dd154b12cdcff9f2e9"
+    },
+    "scope": "Job metadata and downloaded log contents only; active logs may be partial; no latest-stage, final metric, archive correspondence or physical qualification claim"
+  },
+  "artifact_url": "https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387087/artifacts/11868123053",
+  "scope": "Read-only archive of actual terminal metadata and complete cancelled-job log; no new physical run, physical settings or semantic changes. This is a log archive, not a physical layout archive or physical qualification."
+}

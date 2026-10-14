@@ -351,6 +351,12 @@ layout views are unavailable for attempt 3.
 [identified partial evidence](../../../experiments/temporal_qualification/physical/attempt_3_terminal_evidence.json),
 [final diagnosis](physical_attempt_3_diagnosis.md).
 
+The complete cancelled-job log and terminal metadata are published in a
+[read-only CI archive](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387087/artifacts/11868123053).
+Its ZIP digest, every file hash and equality with the retained terminal log
+were verified; no additional physical run was launched.
+[Terminal archive verification](../../../experiments/temporal_qualification/physical/job_snapshot_38507387087.json).
+
 A separately identified read-only snapshot confirms OpenROAD receives argument
 `4` and placement uses target density `0.4500`. The initial completed log is
 also preserved in the snapshot CI artifact and matches the retained terminal
@@ -436,6 +442,16 @@ archive/source correspondence. The separately recorded final attempt-3 dispatch
 does not inherit a result from the attempt-2 gallery. This package predates the
 terminal attempt-3 result. Full layouts and traces remain separate artifacts.
 [Earlier gallery-package verification](../../../experiments/temporal_qualification/delivery_cffe8f6.json).
+
+The [final reached-report HTML package](https://github.com/wellitsabhinav/MOTIF-Protocol-Motif-Machine/actions/runs/38507387085/artifacts/11868951515)
+identifies clean head `161ed9a`. Its published ZIP digest, all 524 file hashes,
+eleven demonstration outcomes, 26 rendered report sections, every local HTML
+link, cost/physical figure identities and the actual final cancellation
+annotation were verified after download. The landing page records logical
+and matched-cost PASS and physical UNQUALIFIED after all three attempts.
+Final-run metrics and views remain unavailable; the earlier failed layout
+retains its own source. Extract the package and open `index.html`.
+[Final download verification](../../../experiments/temporal_qualification/delivery_final.json).
 
 ## S. Architecture diagrams
 
